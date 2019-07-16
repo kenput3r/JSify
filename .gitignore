@@ -1,1 +1,8 @@
 config.yml
+/assets/main.js
+/assets/main.js.map
+/assets/materializeCss.css
+/assets/materializeCss.css.map
+/assets/materializeCss.js
+/assets/materializeCss.js.map
+/src/node_modules
