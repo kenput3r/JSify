@@ -4,8 +4,8 @@ export default class Button extends BaseClass {
     constructor(rootElement, args) {
         super(rootElement, args);
         // console.log('button');
-        console.log(this);
-        console.log(this.rootElement);
+        // console.log(this);
+        // console.log(this.rootElement);
 
         this.span = this.rootElement.querySelector('span');
 

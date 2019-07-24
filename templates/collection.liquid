@@ -1,20 +1,18 @@
 {% paginate collection.products by 24 %}
-  <h1>{{ collection.title }}</h1>
-  {% for product in collection.products %}
-    <div>
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-      {{ product.price | money }}
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-      <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      </a>
-      {% assign enum = forloop.index %}
-      {% include 'button' %}
+  <div class="container">
+    <h1>{{ collection.title }}</h1>
+
+    <div class="row">
+      {% for product in collection.products %}
+        {% include 'product_tile' %}
+      {% else %}
+        <p>no matches</p>
+      {% endfor %}
     </div>
-  {% else %}
-    <p>no matches</p>
-  {% endfor %}
-  {% if paginate.pages > 1 %}
-    {{ paginate | default_pagination }}
-  {% endif %}
+
+    {% if paginate.pages > 1 %}
+      <button class="waves-effect waves-light btn" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2">LOAD MORE</button>
+      {{ paginate | default_pagination }}
+    {% endif %}
+  </div>
 {% endpaginate %}
