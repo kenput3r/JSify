@@ -1,5 +1,5 @@
 {% paginate collection.products by 24 %}
-  <div class="container">
+  <div class="container" data-collection="true" data-url="{{shop.domain | append: collection.url}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
     <h1>{{ collection.title }}</h1>
 
     <div class="row">
