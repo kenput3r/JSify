@@ -9,7 +9,7 @@
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'application.js' | asset_url | script_tag }}
-  {{ 'materializeCss.css' | asset_url | stylesheet_tag }}
+  {{ 'bundleCss.css' | asset_url | stylesheet_tag }}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
@@ -37,7 +37,7 @@
       {{ 'register' | customer_register_link }}
     {% endif %}
   {% endif %}
-  {% include 'product_drawer' %}
+  {% include 'ProductDrawer' %}
   <main role="main">
     {{ content_for_layout }}
   </main>

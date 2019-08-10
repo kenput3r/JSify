@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: {
         main: './index.js',
-        materializeCss: './index.scss',
+        bundleCss: './index.scss',
     },
     devtool: 'source-map',
     mode: "development",
