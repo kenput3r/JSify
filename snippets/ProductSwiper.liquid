@@ -1,0 +1,12 @@
+<div id="ProductSwiper" class="swiper-container" data-s-module="ProductSwiper">
+  <div class="swiper-wrapper">
+    {% for image in product.images %}
+      <div class="swiper-slide center-align">
+        <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+      </div>
+    {% endfor %}
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination margin-top position-relative"></div>
+</div>

@@ -1,0 +1,125 @@
+/**************************************************
+Cards
+**************************************************/
+span.card-title {
+  min-height: 96px;
+}
+
+/**************************************************
+Product Drawer
+**************************************************/
+#ProductDrawer {
+  width: 60%;
+
+  h1 {
+    font-size: 3.2em;
+    margin: 0;
+  }
+}
+
+.drawer-product {
+  padding: 30px 15px 15px 15px;
+  margin-bottom: 30px;
+}
+
+/**************************************************
+Product Compare Chart
+**************************************************/
+#ProductCompareChart {
+  box-sizing: border-box;
+  overflow-x: scroll;
+
+  .div-table-cell a {
+    color: #000;
+    transition: all .2s;
+    &:hover {
+      color: #222;
+    }
+  }
+  .div-table {
+    display: table;
+    width: 100%;
+    text-align: center;
+  }
+  .div-table-row {
+    display: table-row;
+  }
+  .div-table-heading {
+    background-color: #EEE;
+    display: table-header-group;
+  }
+  .div-table-head {
+    background-color: #e5e5e5;
+    display: table-cell;
+    padding: 10px 10px;
+  }
+  .div-table-cell {
+    display: table-cell;
+    padding: 10px 10px;
+
+    &.active {
+      background-color: #e5e5e5;
+    }
+  }
+  .div-table-heading {
+    background-color: #EEE;
+    display: table-header-group;
+    font-weight: bold;
+  }
+  .div-table-foot {
+    background-color: #EEE;
+    display: table-footer-group;
+    font-weight: bold;
+  }
+  .div-table-body {
+    display: table-row-group;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .div-table {
+      font-size: 12px;
+      overflow: scroll;
+      display: block;
+      .div-table-head {
+        min-width: 45vw;
+      }
+      .div-table-cell {
+        min-width: 50vw;
+        &.first-cell {
+          margin-left: 45vw;
+          display: block;
+        }
+      }
+      .div-table-head {
+        position: fixed;
+        &.empty {
+          background-color: #e5e5e5;
+          div {
+            background-color: #e5e5e5;
+            display: block;
+            padding-top: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**************************************************
+Helpers
+**************************************************/
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.margin-top {
+  margin-top: 30px;
+
+  @media screen and(max-width: 480px) {
+    margin-top: 15px;
+  }
+}
+
+.position-relative {
+  position: relative !important;
+}

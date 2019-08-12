@@ -41,6 +41,7 @@
   <main role="main">
     {{ content_for_layout }}
   </main>
+  {{ 'swiper.min.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
 </body>
 </html>

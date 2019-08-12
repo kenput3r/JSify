@@ -1,0 +1,97 @@
+{% assign obp = '' %}
+{% assign fcp = '' %}
+{% assign smp = '' %}
+{% assign fhp = '' %}
+{% assign ohp = '' %}
+{% assign lhp = '' %}
+{% if pomade == 'Oil Based Pomade' %}
+  {% assign obp = 'active' %}
+{% elsif pomade == 'Firme Clay Pomade' %}
+  {% assign fcp = 'active' %}
+{% elsif pomade == 'Suavecito Matte Pomade' %}
+  {% assign smp = 'active' %}
+{% elsif pomade == 'Firme (Strong) Hold Pomade' %}
+  {% assign fhp = 'active' %}
+{% elsif pomade == 'Original Hold Pomade' %}
+  {% assign ohp = 'active' %}
+{% elsif pomade == 'Light Hold Pomade' %}
+  {% assign lhp = 'active' %}
+{% endif %}
+
+<div id="ProductCompareChart">
+  <div class="div-table">
+    <div class="div-table-body">
+
+      <div class="div-table-row no-border">
+        <div class="div-table-head empty"><div></div></div>
+        <div class="div-table-cell product-image first-cell"><a href="https://www.suavecito.com/products/oil-based-pomade"><img src="https://cdn.shopify.com/s/files/1/0274/1389/products/suavecito-petroleum-pomade-side_large.jpg?v=1546633970" alt="Oil Based Pomade" /></a></div>
+        <div class="div-table-cell product-image"><a href="https://www.suavecito.com/products/firme-clay-pomade"><img src="https://cdn.shopify.com/s/files/1/0274/1389/products/suavecito-firme-clay-4oz_large.jpg?v=1564072154" alt="Firme Clay Pomade" /></a></div>
+        <div class="div-table-cell product-image"><a href="https://www.suavecito.com/products/suavecito-matte-pomade"><img src="https://cdn.shopify.com/s/files/1/0274/1389/products/suavecito-matte-pomade-4oz_large.jpg?v=1564072725" alt="Matte Pomade" /></a></div>
+        <div class="div-table-cell product-image"><a href="https://www.suavecito.com/products/firme-strong-hold-pomade"><img src="https://cdn.shopify.com/s/files/1/0274/1389/products/Suavecito_Pomade_Firme_Hold__Side_large.jpg?v=1562693477" alt="Firme (Strong) Hold Pomade" /></a></div>
+        <div class="div-table-cell product-image"><a href="https://www.suavecito.com/products/original-hold-pomade"><img src="https://cdn.shopify.com/s/files/1/0274/1389/products/Suavecito_Pomade_OG_Hold__Side_large.jpg?v=1562693685" alt="Original Hold Pomade" /></a></div>
+        <div class="div-table-cell product-image"><a href="https://www.suavecito.com/products/light-hold-pomade"><img src="https://cdn.shopify.com/s/files/1/0274/1389/products/suavecito-light-hold-pomade-angled_large.jpg?v=1555515000" alt="Light Hold Pomade" /></a></div>
+      </div>
+
+      <div class="div-table-row no-border">
+        <div class="div-table-head">Name</div>
+        <div class="div-table-cell first-cell {{ obp }}" id="p1"><a href="https://www.suavecito.com/products/oil-based-pomade">Oil Based Pomade</a></div>
+        <div class="div-table-cell {{ fcp }}" id="p2"><a href="https://www.suavecito.com/products/firme-clay-pomade">Firme Clay</a></div>
+        <div class="div-table-cell {{ smp }}" id="p3"><a href="https://www.suavecito.com/products/suavecito-matte-pomade">Matte Pomade</a></div>
+        <div class="div-table-cell {{ fhp }}" id="p4"><a href="https://www.suavecito.com/products/firme-strong-hold-pomade">Firme Hold Pomade</a></div>
+        <div class="div-table-cell {{ ohp }}" id="p5"><a href="https://www.suavecito.com/products/original-hold-pomade">Original Hold Pomade</a></div>
+        <div class="div-table-cell {{ lhp }}" id="p6"><a href="https://www.suavecito.com/products/light-hold-pomade">Light Hold Pomade</a></div>
+      </div>
+
+      <div class="div-table-row">
+        <div class="div-table-head">Shine Level</div>
+        <div class="div-table-cell first-cell {{ obp }}">9 / 10</div>
+        <div class="div-table-cell {{ fcp }}">2 / 10</div>
+        <div class="div-table-cell {{ smp }}">1 / 10</div>
+        <div class="div-table-cell {{ fhp }}">4 / 10</div>
+        <div class="div-table-cell {{ ohp }}">5 / 10</div>
+        <div class="div-table-cell {{ lhp }}">5 / 10</div>
+      </div>
+
+      <div class="div-table-row">
+        <div class="div-table-head">Hold Strength</div>
+        <div class="div-table-cell first-cell {{ obp }}">5 / 10</div>
+        <div class="div-table-cell {{ fcp }}">5 / 10</div>
+        <div class="div-table-cell {{ smp }}">4 / 10</div>
+        <div class="div-table-cell {{ fhp }}">10 / 10</div>
+        <div class="div-table-cell {{ ohp }}">6 / 10</div>
+        <div class="div-table-cell {{ lhp }}">5 / 10</div>
+      </div>
+
+      <div class="div-table-row">
+        <div class="div-table-head">Washability</div>
+        <div class="div-table-cell first-cell {{ obp }}">1 / 10</div>
+        <div class="div-table-cell {{ fcp }}">5 / 10</div>
+        <div class="div-table-cell {{ smp }}">7 / 10</div>
+        <div class="div-table-cell {{ fhp }}">10 / 10</div>
+        <div class="div-table-cell {{ ohp }}">10 / 10</div>
+        <div class="div-table-cell {{ lhp }}">10 / 10</div>
+      </div>
+
+      <div class="div-table-row">
+        <div class="div-table-head">Original Fragrance</div>
+        <div class="div-table-cell first-cell {{ obp }}">√</div>
+        <div class="div-table-cell {{ fcp }}">√</div>
+        <div class="div-table-cell {{ smp }}">√</div>
+        <div class="div-table-cell {{ fhp }}">√</div>
+        <div class="div-table-cell {{ ohp }}">√</div>
+        <div class="div-table-cell {{ lhp }}">√</div>
+      </div>
+
+      <div class="div-table-row">
+        <div class="div-table-head last">Water Based</div>
+        <div class="div-table-cell last first-cell {{ obp }}">&nbsp;</div>
+        <div class="div-table-cell last {{ fcp }}">&nbsp;</div>
+        <div class="div-table-cell last {{ smp }}">√</div>
+        <div class="div-table-cell last {{ fhp }}">√</div>
+        <div class="div-table-cell last {{ ohp }}">√</div>
+        <div class="div-table-cell last {{ lhp }}">√</div>
+      </div>
+
+    </div>
+  </div>
+</div>
