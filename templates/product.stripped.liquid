@@ -7,34 +7,7 @@
     <div class="col"><h1>{{ product.title }}</h1></div>
   </div>
   {% include 'ProductSwiper' %}
-  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
-    <div class="row">
-      <div class="input-field col s12 m6">
-        <select name="id" id="ProductSelect" class="product-option">
-          {% for variant in product.variants %}
-            {% if variant.available %}
-              <option value="{{ variant.id }}">
-                {{ variant.title }} - {{ variant.price | money_with_currency }}
-              </option>
-            {% else %}
-              <option disabled="disabled">
-                {{ variant.title }} - sold out
-              </option>
-            {% endif %}
-          {% endfor %}
-        </select>
-      </div>
-      <div class="input-field col s12 m6">
-        <select name="quantity" id="ProductQuantity" class="product-option">
-          {% for i in (1..30) %}
-          <option value="{{i}}">{{i}}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-    {{ current_variant.price | money }}
-    <button type="submit" name="add" id="AddToCart">Add to cart</button>
-  </form>
+  {% include 'ProductForm' %}
   <div>{{ product.description }}</div>
   {% if product.title == 'Oil Based Pomade' or product.title == 'Firme Clay Pomade' or product.title == 'Suavecito Matte Pomade' or product.title == 'Original Hold Pomade' or product.title == 'Firme (Strong) Hold Pomade' or product.title == 'Light Hold Pomade' %}
     <hr />

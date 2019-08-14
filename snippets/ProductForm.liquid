@@ -1,0 +1,53 @@
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form" 
+data-s-module="ProductForm" 
+data-id="{{ product.selected_or_first_available_variant.id }}" 
+data-price="{{ product.selected_or_first_available_variant.price | money_with_currency | strip_html }}"
+data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+data-image="{{ product.selected_or_first_available_variant.image }}"
+{%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
+  <div class="row">
+    <div class="input-field col s12 m6">
+      {% unless product.variants.size == 1 %}
+      <select class="product-option variant-selector">
+        {% for variant in product.variants %}
+          {% if variant.available %}
+            <option value="{{ variant.id }}"
+            data-id="{{ variant.id }}" 
+            data-price="{{ variant.price | money_with_currency | strip_html }}"
+            data-inventory-quantity="{{ variant.inventory_quantity }}"
+            data-image="{{ variant.image }}">
+              {{ variant.title }} - {{ variant.price | money_with_currency }}
+            </option>
+          {% else %}
+            <option disabled="disabled">
+              {{ variant.title }} - sold out
+            </option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      {% endunless %}
+    </div>
+    <div class="input-field col s12 m6">
+      {% if product.available %}
+      <select class="product-option quantity-selector">
+        {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}
+          {% assign x = product.selected_or_first_available_variant.inventory_quantity %}
+        {% else %}
+          {% assign x = 30 %}
+        {% endif %}
+        {% for i in (1..x) %}
+        <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+      </select>
+      {% endif %}
+    </div>
+    <div class="col s6 right-align">{{ product.selected_or_first_available_variant.price | money }}</div>
+    <div class="col s6">
+      {% if product.available %}
+      <button class="btn waves-effect waves-light w100 add-to-cart" type="submit" name="add">Add to cart</button>
+      {% else %}
+      <button class="waves-effect waves-teal btn-flat w100">SOLD OUT</button>
+      {% endif %}
+    </div>
+  </div>
+</form>

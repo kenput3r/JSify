@@ -1,5 +1,4 @@
 import BaseClass from '../system/BaseClass';
-import initializeSwiper from '../utils/initializeSwiper';
 
 export default class ProductSwiper extends BaseClass {
   constructor(rootElement, args) {
@@ -19,6 +18,6 @@ export default class ProductSwiper extends BaseClass {
         dynamicBullets: true
       },
     }
-    initializeSwiper('#ProductSwiper', options);
+    const swiper = new Swiper(this.rootElement, options);
   }
 }
