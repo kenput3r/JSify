@@ -3,6 +3,7 @@ import initializeDrawer from '../utils/initializeDrawer';
 import insertDrawerContent from '../utils/insertDrawerContent';
 import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
+import ProductReviews from '../components/ProductReviews';
 
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -18,6 +19,7 @@ export default class ProductDrawer extends BaseClass {
   }
 
   async onOpenStart() {
+    const product_id = event.target.dataset.id;
     const product_url = event.target.dataset.url;
     const page_title = event.target.dataset.pageTitle;
     await new Promise((resolve, reject)=> {
@@ -38,7 +40,9 @@ export default class ProductDrawer extends BaseClass {
     }
     this.Swiper = new Swiper('#ProductSwiper', swiper_options);
     const form = document.getElementById('ProductDrawer').getElementsByClassName('product-form')[0];
-    this.ProductForm = new ProductForm(form);
+    this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
+    const review_container = this.rootElement.querySelector('.product-reviews');
+    const yotpo = new ProductReviews(review_container, {product_id: product_id});
   }
 
   onCloseStart() {

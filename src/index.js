@@ -4,14 +4,14 @@ import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
 import ProductSwiper from './components/ProductSwiper';
-import ProductForm from './components/ProductForm';
+import ProductTile from './components/ProductTile';
 
 const classes = {
     Button,
     LoadCollectionPageXbutton,
     ProductDrawer,
     ProductSwiper,
-    ProductForm
+    ProductTile
 };
 
 const system = new System(classes);

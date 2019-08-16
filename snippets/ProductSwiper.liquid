@@ -2,7 +2,7 @@
   <div class="swiper-wrapper">
     {% for image in product.images %}
       <div class="swiper-slide center-align">
-        <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+        <img class="swiper-image" src="{{ image.src | img_url: 'large' }}"  alt="{{ image.alt | escape }}" data-src="{{ image.src | img_url: 'large' }}" data-index="{{ forloop.index }}">
       </div>
     {% endfor %}
   </div>

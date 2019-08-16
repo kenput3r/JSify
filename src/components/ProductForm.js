@@ -4,9 +4,29 @@ export default class ProductForm extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
     this.state = {};
+    this.changeImage = this.changeImage.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.init();
+  }
+
+  changeImage() {
+    if(this.ProductTile) {
+      if(this.state.image) {
+        this.ProductTile.querySelector('.product-image').src = this.state.image;
+      }
+    }else if(this.Swiper) {
+      const el = document.getElementById(this.Swiper.$el[0].id);
+      const images = Array.from(el.getElementsByClassName('swiper-image'));
+      for(let i = 0; i < images.length; i++) {
+        let image = images[i];
+        if(image.dataset.src === this.state.image) {
+          let index = parseInt(image.dataset.index);
+          this.Swiper.slideTo(index);
+          break;
+        }
+      }
+    }
   }
 
   handleChange(event) {
@@ -29,6 +49,7 @@ export default class ProductForm extends BaseClass {
       }
     }
     this.rootElement.querySelector('.product-price').innerHTML = this.state.price;
+    this.changeImage();
   }
 
   async handleSubmit(event) {

@@ -1,6 +1,6 @@
 import BaseClass from '../system/BaseClass';
 import getCollectionPageX from '../utils/getCollectionPage';
-import ProductForm from '../components/ProductForm';
+import ProductTile from '../components/ProductTile';
 
 export default class LoadCollectionPageXbutton extends BaseClass {
   constructor(rootElement, args) {
@@ -41,9 +41,9 @@ export default class LoadCollectionPageXbutton extends BaseClass {
         if(parseInt(this.collection.currentPage) === parseInt(this.ending_page)) {
           this.rootElement.classList.add('hide');
         }
-        const forms = Array.from(document.querySelectorAll(`.product-form-page-${next_page}`));
-        forms.map(form=> {
-          return new ProductForm(form);
+        const tiles = Array.from(document.querySelectorAll(`.product-tile-page-${next_page}`));
+        tiles.map(tile=> {
+          return new ProductTile(tile);
         });
       }catch(error) {
         console.log(error);

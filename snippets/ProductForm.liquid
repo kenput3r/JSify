@@ -1,5 +1,4 @@
-<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}}" 
-data-s-module="ProductForm" 
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}}"
 data-id="{{ product.selected_or_first_available_variant.id }}" 
 data-price="{{ product.selected_or_first_available_variant.price | money_with_currency | strip_html }}"
 data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
@@ -16,7 +15,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
             data-id="{{ variant.id }}" 
             data-price="{{ variant.price | money_with_currency | strip_html }}"
             data-inventory-quantity="{{ variant.inventory_quantity }}"
-            data-image="{{ variant.image }}">
+            data-image="{{ variant.image | img_url: 'large' }}">
               {{ variant.title }}
             </option>
           {% else %}
@@ -42,12 +41,14 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       </select>
       {% endif %}
     </div>
-    <div class="col s6 right-align product-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+    <div class="col s6 right-align product-price">
+      {{ product.selected_or_first_available_variant.price | money }}
+    </div>
     <div class="col s6">
       {% if product.available %}
       <button class="btn waves-effect waves-light w100 add-to-cart" type="submit" name="add">Add to cart</button>
       {% else %}
-      <button class="waves-effect waves-teal btn-flat w100">SOLD OUT</button>
+      <button class="waves-effect waves-teal btn-flat w100" disabled="true">SOLD OUT</button>
       {% endif %}
     </div>
   </div>
