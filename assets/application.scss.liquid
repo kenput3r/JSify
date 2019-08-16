@@ -110,8 +110,22 @@ Product Compare Chart
 }
 
 /**************************************************
+Colors
+**************************************************/
+$s_red: #822808;
+$s_red_compliment: #087c82;
+$m_teal: #26a69a;
+
+/**************************************************
 Helpers
 **************************************************/
+.background-s-red {
+  background-color: $s_red !important;
+  &:hover {
+    background-color: lighten($s_red, 10%) !important;
+  }
+}
+
 .margin-bottom-none {
   margin-bottom: 0 !important;
 }
@@ -126,6 +140,18 @@ Helpers
 
 .position-relative {
   position: relative !important;
+}
+
+.text-m-teal {
+  color: $m_teal !important;
+}
+
+.text-s-red {
+  color: $s_red !important;
+}
+
+.text-s-red-compliment {
+  color: $s_red_compliment;
 }
 
 .w100 {

@@ -7,7 +7,8 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
   <div class="row">
-    <div class="input-field col s12 m6">
+    <div class="col s6 product-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+    <div class="input-field col s12 m8">
       {% unless product.variants.size == 1 %}
       <select class="product-option variant-selector">
         {% for variant in product.variants %}
@@ -28,7 +29,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       </select>
       {% endunless %}
     </div>
-    <div class="input-field col s12 m6">
+    <div class="input-field col s12 m4">
       {% if product.available %}
       <select class="product-option quantity-selector">
         {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}
@@ -42,10 +43,9 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       </select>
       {% endif %}
     </div>
-    <div class="col s6 right-align product-price">{{ product.selected_or_first_available_variant.price | money }}</div>
-    <div class="col s6">
+    <div class="col s12">
       {% if product.available %}
-      <button class="btn waves-effect waves-light w100 add-to-cart" type="submit" name="add">Add to cart</button>
+      <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">Add to cart</button>
       {% else %}
       <button class="waves-effect waves-teal btn-flat w100">SOLD OUT</button>
       {% endif %}

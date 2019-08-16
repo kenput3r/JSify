@@ -2,14 +2,11 @@
   <div class="card hoverable">
     <div class="card-image">
       <img class="sidenav-trigger" data-target="ProductDrawer" data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      <a href="#" class="btn-floating halfway-fab waves-effect waves-light red sidenav-trigger" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped"class="material-icons">add</i></a>
+      <a href="#" class="btn-floating halfway-fab waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped"class="material-icons">visibility</i></a>
     </div>
     <div class="card-content">
-      <span class="card-title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></span>
-      <div class="card-action">
-        {%comment%}{{ product.price | money }}{%endcomment%}
-        {% include 'ProductForm' %}
-      </div>
+      <span class="card-title"><a href="{{ product.url | within: collection }}" class="text-s-red-compliment">{{ product.title }}</a></span>
+      {% include 'ProductFormCompact' %}
     </div>
   </div>
 </div>

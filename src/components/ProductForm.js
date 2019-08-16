@@ -28,6 +28,7 @@ export default class ProductForm extends BaseClass {
         quantity_selector.appendChild(new_option);
       }
     }
+    this.rootElement.querySelector('.product-price').innerHTML = this.state.price;
   }
 
   async handleSubmit(event) {
@@ -51,14 +52,20 @@ export default class ProductForm extends BaseClass {
     this.state = this.rootElement.dataset;
     if(this.state.hasVariants) {
       this.rootElement.querySelector('.variant-selector').addEventListener('change', this.handleChange);
+
     }
-    this.rootElement.querySelector('.add-to-cart').addEventListener('click', this.handleSubmit);
+    if(this.state.available) {
+      this.rootElement.querySelector('.add-to-cart').addEventListener('click', this.handleSubmit);
+    }
   }
 
   destroy() {
     if(this.state.hasVariants) {
       this.rootElement.querySelector('.variant-selector').removeEventListener('change', this.handleChange);
     }
-    this.rootElement.querySelector('.add-to-cart').removeEventListener('click', this.handleSubmit);
+    
+    if(this.state.available) {
+      this.rootElement.querySelector('.add-to-cart').removeEventListener('click', this.handleSubmit);
+    }
   }
 }
