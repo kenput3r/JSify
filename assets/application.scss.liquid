@@ -1,8 +1,106 @@
 /**************************************************
+Break points
+**************************************************/
+
+$small: 600px;
+$medium: 601px;
+$large: 993px;
+$xlarge: 1201px;
+
+/**************************************************
+Colors
+**************************************************/
+$s_red: #822808;
+$s_yellow: #fab203;
+$s_red_compliment: #087c82;
+$m_teal: #26a69a;
+
+/**************************************************
+Helpers
+**************************************************/
+.background-s-red {
+  background-color: $s_red !important;
+  &:hover {
+    background-color: lighten($s_red, 10%) !important;
+  }
+}
+
+.background-s-yello {
+  background-color: $s_yellow !important;
+  &:hover {
+    background-color: lighten($s_yellow, 10%) !important;
+  }
+}
+
+.color-s-red {
+  color: $s_red !important;
+}
+
+.color-s-yellow {
+  color: $s_yellow !important;
+}
+
+.margins-auto {
+  margin: auto;
+}
+
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.margin-top {
+  margin-top: 30px;
+
+  @media screen and(max-width: 480px) {
+    margin-top: 15px;
+  }
+}
+
+.padding-none {
+  padding: 0 !important;
+}
+
+.padding-left-none {
+  padding-left: 0 !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.text-m-teal {
+  color: $m_teal !important;
+}
+
+.text-s-red {
+  color: $s_red !important;
+}
+
+.text-s-red-compliment {
+  color: $s_red_compliment;
+}
+
+.w100 {
+  width: 100%;
+}
+
+/**************************************************
 Cards
 **************************************************/
 span.card-title {
   min-height: 96px;
+  @media screen and(max-width: $small) {
+    min-height: 0;
+  }
 }
 
 /**************************************************
@@ -26,12 +124,27 @@ select.product-option {
   display: inline-block;
 }
 
+.product-price {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 /**************************************************
 Product Tile
 **************************************************/
 .product-tile {
   .product-form {
-    min-height: 133px;
+    @media screen and(max-width: 1645px) {
+      .product-price, .star-rating-container {
+        width: 100% !important;
+      }
+      .product-star-rating {
+        margin: 0 !important;
+      }
+    }
+    @media screen and(min-width: $medium) {
+      min-height: 169px;
+    }
   }
 }
 /**************************************************
@@ -115,53 +228,4 @@ Product Compare Chart
       }
     }
   }
-}
-
-/**************************************************
-Colors
-**************************************************/
-$s_red: #822808;
-$s_red_compliment: #087c82;
-$m_teal: #26a69a;
-
-/**************************************************
-Helpers
-**************************************************/
-.background-s-red {
-  background-color: $s_red !important;
-  &:hover {
-    background-color: lighten($s_red, 10%) !important;
-  }
-}
-
-.margin-bottom-none {
-  margin-bottom: 0 !important;
-}
-
-.margin-top {
-  margin-top: 30px;
-
-  @media screen and(max-width: 480px) {
-    margin-top: 15px;
-  }
-}
-
-.position-relative {
-  position: relative !important;
-}
-
-.text-m-teal {
-  color: $m_teal !important;
-}
-
-.text-s-red {
-  color: $s_red !important;
-}
-
-.text-s-red-compliment {
-  color: $s_red_compliment;
-}
-
-.w100 {
-  width: 100%;
 }

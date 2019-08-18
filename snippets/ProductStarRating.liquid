@@ -1,0 +1,17 @@
+{% assign reviews_average = product.metafields.yotpo.reviews_average %}
+{% assign reviews_count = product.metafields.yotpo.reviews_count %}
+{% assign full_stars = reviews_average | floor %}
+{% assign half_strars = reviews_average | modulo: 1 | round %}
+{% assign empty_stars = 5 | minus: full_stars | minus: half_strars %}
+<div class="product-star-rating color-s-yellow table margins-auto">
+{% for star in (1..full_stars) %}
+  <i class="material-icons table-cell">star</i>
+{% endfor %}
+{% for star in (1..half_strars) %}
+  <i class="material-icons table-cell">star_half</i>
+{% endfor %}
+{% for star in (1..empty_stars) %}
+  <i class="material-icons table-cell">star_border</i>
+{% endfor %}
+<span class="table-cell">{{reviews_count}} Reviews</span>
+</div>

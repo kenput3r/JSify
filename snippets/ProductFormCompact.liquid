@@ -6,7 +6,8 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
   <div class="row">
-    <div class="col s6 product-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+    <div class="col s12 m5 product-price padding-left-none">{{ product.selected_or_first_available_variant.price | money }}</div>
+    <div class="col s12 m7 padding-none star-rating-container">{%include 'ProductStarRating'%}</div>
     <div class="input-field col s12 m8">
       {% unless product.variants.size == 1 %}
       <select class="product-option variant-selector">

@@ -44,6 +44,18 @@ export default class ProductReviews extends BaseClass {
     }else{
       console.log('no reviews yet');
     }
+    const full_stars = Math.floor(average_score);
+    const half_stars = Math.round(average_score % 1);
+    const empty_stars = 5 - half_stars - full_stars;
+    const star_container = document.createElement('SPAN');
+    for(let i = 1; i <= average_score; i++) {
+      star_container.insertAdjacentHTML('beforeend', '<i class="material-icons">star</i>');
+    }
+    half_stars === 1 ? star_container.insertAdjacentHTML('beforeend', '<i class="material-icons">star_half</i>') : null;
+    for(let i = 1; i <= empty_stars; i++) {
+      star_container.insertAdjacentHTML('beforeend', '<i class="material-icons">star_border</i>');
+    }
+    this.rootElement.appendChild(star_container);
   }
 
   async init() {
