@@ -1,4 +1,5 @@
 import BaseClass from '../system/BaseClass';
+import ProductReview from './ProductReview';
 
 export default class ProductReviews extends BaseClass {
   constructor(rootElement, args) {
@@ -6,12 +7,14 @@ export default class ProductReviews extends BaseClass {
     this.app_key = 'q7EYKyLuCq4wDQ7s0M36GkawfE2I4JDL9gg4wvGY';
     this.getReviews = this.getReviews.bind(this);
     this.generateStars = this.generateStars.bind(this);
+    this.displayReviews = this.displayReviews.bind(this);
     this.init();
   }
 
-  async getReviews(promise) {
+  async getReviews(promise, page) {
+    if(!page) page = 1;
     const headers = new Headers({'Content-Type': 'application/json'});
-    const url = `https://api.yotpo.com/v1/widget/${this.app_key}/products/${this.product_id}/reviews.json?page=2`;
+    const url = `https://api.yotpo.com/v1/widget/${this.app_key}/products/${this.product_id}/reviews.json?page=${page}`;
     const data = await fetch(url, {headers: headers});
     const reviews = await data.json();
     console.log(reviews);
@@ -19,31 +22,6 @@ export default class ProductReviews extends BaseClass {
   }
 
   generateStars(average_score, review_count) {
-    if(average_score === 5) {
-      console.log('5 stars');
-    }else if(average_score < 5 && average_score > 4) {
-      console.log('4.5 stars');
-    }else if(average_score === 4) {
-      console.log('4 stars');
-    }else if(average_score < 4 && average_score > 3) {
-      console.log('3.5 stars');
-    }else if(average_score === 3) {
-      console.log('3 stars');
-    }else if(average_score < 3 && average_score > 2) {
-      console.log( '2.5 stars');
-    }else if(average_score === 2) {
-      console.log('2 stars');
-    }else if(average_score < 2 && average_score > 1) {
-      console.log('1.5 stars');
-    }else if(average_score === 1) {
-      console.log('1 star');
-    }else if(average_score < 1 && average_score > 0) {
-      console.log('half star')
-    }else if(average_score < 1 && review_count > 1) {
-      console.log('zero stars');
-    }else{
-      console.log('no reviews yet');
-    }
     const full_stars = Math.floor(average_score);
     const half_stars = Math.round(average_score % 1);
     const empty_stars = 5 - half_stars - full_stars;
@@ -58,9 +36,28 @@ export default class ProductReviews extends BaseClass {
     this.rootElement.appendChild(star_container);
   }
 
+  displayReviews(yotpo) {
+    const total_reviews = yotpo.bottomline.total_review;
+    const total_pages = Math.ceil(total_reviews / yotpo.pagination.per_page);
+    const current_page = yotpo.pagination.page;
+    for(let i = 0; i < yotpo.reviews.length; i++) {
+      const review = yotpo.reviews[i];
+      //const div = document.createElement('DIV');
+      //div.insertAdjacentHTML('beforeend', `<p>${review.content}</p>`);
+      const card = new ProductReview(this.rootElement, {review: review});
+      //div.insertAdjacentHTML('beforeend', card)
+      console.log(card);
+      this.rootElement.appendChild(card.card);
+    }
+    if(current_page < total_pages) {
+      console.log(`There are ${total_pages - current_page} pages remaining`);
+    }
+  }
+
   async init() {
     console.log('yotpo init');
     const reviews = await new Promise((resolve, reject)=>this.getReviews({resolve:resolve, reject:reject}));
+    this.displayReviews(reviews);
     const average_score = reviews.bottomline.average_score;
     const review_count = reviews.bottomline.total_review
     this.generateStars(average_score, review_count);

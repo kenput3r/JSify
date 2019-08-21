@@ -13,5 +13,7 @@
 {% for star in (1..empty_stars) %}
   <i class="material-icons table-cell">star_border</i>
 {% endfor %}
-<span class="table-cell">{{reviews_count}} Reviews</span>
+  <span class="table-cell">
+    {% if reviews_count %}{{reviews_count}}{% else %}0{% endif %} Reviews
+  </span>
 </div>

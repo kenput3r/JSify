@@ -8,7 +8,9 @@
   </div>
   {% include 'ProductSwiper' %}
   {% include 'ProductForm' %}
-  <div>{{ product.description }}</div>
+  <div class="row">
+    <div class="col">{{ product.description }}</div>
+  </div>
   {% if product.title == 'Oil Based Pomade' or product.title == 'Firme Clay Pomade' or product.title == 'Suavecito Matte Pomade' or product.title == 'Original Hold Pomade' or product.title == 'Firme (Strong) Hold Pomade' or product.title == 'Light Hold Pomade' %}
     <hr />
     {% assign pomade = product.title %}
