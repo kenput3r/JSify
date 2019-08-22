@@ -96,12 +96,20 @@ Helpers
 /**************************************************
 Cards
 **************************************************/
-span.card-title {
-  min-height: 96px;
-  @media screen and(max-width: $small) {
-    min-height: 0;
+  .product-tile {
+    span.card-title {
+      min-height: 96px;
+      @media screen and(max-width: $small) {
+        min-height: 0;
+      }
+    }
   }
-}
+
+  .card-action {
+    .row {
+      margin-bottom: 0;
+    }
+  }
 
 /**************************************************
 Product Drawer

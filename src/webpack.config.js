@@ -6,7 +6,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: {
         main: './index.js',
-        swiperJS: './node_modules/swiper/dist/js/swiper.min.js',
         bundleCss: './index.scss',
     },
     devtool: 'source-map',

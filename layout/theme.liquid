@@ -42,6 +42,7 @@
   <main role="main">
     {{ content_for_layout }}
   </main>
+  {{ 'dayjs.min.js' | asset_url | script_tag }}
   {{ 'swiper.min.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
 </body>
