@@ -5,6 +5,7 @@ import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
 import ProductReviews from '../components/ProductReviews';
 import renderSnptScript from '../utils/renderSnptScript';
+import renderFbtScript from '../utils/renderFbtScript';
 
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -48,6 +49,18 @@ export default class ProductDrawer extends BaseClass {
     const snpt_container = document.querySelector('.snpt-wdgt--ppg');
     const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
     snpt_container.appendChild(snpt_script);
+    // const doc_scripts = Array.from(document.head.querySelectorAll('script'));
+    // for(let i = 0; i < doc_scripts.length; i++) {
+    //   const script = doc_scripts[i];
+    //   if(script.src.includes('codeblackbelt.com')) {
+    //     script.remove();
+    //     console.log('script removed');
+    //     break;
+    //   }
+    // }
+    // const fbt_script = renderFbtScript();
+    // console.log(fbt_script);
+    // document.head.appendChild(fbt_script);
   }
 
   onCloseStart() {
