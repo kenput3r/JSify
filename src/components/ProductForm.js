@@ -12,7 +12,7 @@ export default class ProductForm extends BaseClass {
 
   changeImage() {
     if(this.ProductTile) {
-      if(this.state.image) {
+      if(this.state.image !== 'no-image') {
         this.ProductTile.querySelector('.product-image').src = this.state.image;
       }
     }else if(this.Swiper) {
@@ -62,6 +62,7 @@ export default class ProductForm extends BaseClass {
     if(!response.key) {
       console.log(response);
     }else{
+      M.toast({html: 'ADDED TO CART'});
       event.target.innerHTML = 'ADDED';
       setTimeout(()=> {
         event.target.innerHTML = 'ADD TO CART'

@@ -52,15 +52,25 @@ export default class ProductDrawer extends BaseClass {
     // const doc_scripts = Array.from(document.head.querySelectorAll('script'));
     // for(let i = 0; i < doc_scripts.length; i++) {
     //   const script = doc_scripts[i];
-    //   if(script.src.includes('codeblackbelt.com')) {
+    //   if(script.src.includes('frequently-bought-together')) {
     //     script.remove();
-    //     console.log('script removed');
+    //     console.log('script deleted');
     //     break;
     //   }
     // }
+    // console.log('frequently-bought-togetherLoaded:', window.codeblackbelt['frequently-bought-togetherLoaded']);
+    // delete window.codeblackbelt['frequently-bought-togetherLoaded'];
+    // console.log('frequently-bought-togetherLoaded:', window.codeblackbelt['frequently-bought-togetherLoaded']);
+    // let rid = document.querySelector('.drawer-product').dataset.id;
+    // rid = parseInt(rid);
+    // window['__st'].rid = rid;
+    // console.log('window __st.rid:', window['__st'].rid, 'product.id:', rid);
     // const fbt_script = renderFbtScript();
-    // console.log(fbt_script);
+    // console.log('fbt_script:', fbt_script);
+    // const fbt_container = document.querySelector('.fbt-container');
+    // console.log('.fbt-container', fbt_container);
     // document.head.appendChild(fbt_script);
+
   }
 
   onCloseStart() {
@@ -77,10 +87,12 @@ export default class ProductDrawer extends BaseClass {
 
   async init() {
     const options = {
-      edge: 'right', 
+      edge: 'right',
+      draggable: false, 
       onOpenStart: ()=>this.onOpenStart(),
       onCloseStart: ()=>this.onCloseStart(),
-      onCloseEnd: ()=>this.onCloseEnd()
+      onCloseEnd: ()=>this.onCloseEnd(),
+      preventScrolling: true
     };
     this.Instance = await new Promise((resolve, reject)=> {
       initializeDrawer('ProductDrawer', options, {resolve: resolve, reject: reject});

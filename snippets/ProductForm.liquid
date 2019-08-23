@@ -10,12 +10,17 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       {% unless product.variants.size == 1 %}
       <select class="product-option variant-selector">
         {% for variant in product.variants %}
+          {% if variant.image.product_id %}
+            {% assign variant_image = variant.image | img_url: 'large' %}
+          {% else %}
+            {% assign variant_image = 'no-image' %}
+          {% endif %}
           {% if variant.available %}
             <option value="{{ variant.id }}"
             data-id="{{ variant.id }}" 
             data-price="{{ variant.price | money_with_currency | strip_html }}"
             data-inventory-quantity="{{ variant.inventory_quantity }}"
-            data-image="{{ variant.image | img_url: 'large' }}">
+            data-image="{{ variant_image }}">
               {{ variant.title }}
             </option>
           {% else %}

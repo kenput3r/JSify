@@ -18,7 +18,7 @@ export default class ProductReviews extends BaseClass {
     const url = `https://api.yotpo.com/v1/widget/${this.app_key}/products/${this.product_id}/reviews.json?page=${page}`;
     const data = await fetch(url, {headers: headers});
     const reviews = await data.json();
-    console.log(reviews);
+    //console.log(reviews);
     return promise.resolve(reviews.response);
   }
 
@@ -45,9 +45,16 @@ export default class ProductReviews extends BaseClass {
     const headers = new Headers({'content-type': 'application/json'});
     const response = await fetch(url, {type: 'POST', headers: headers});
     const results = await response.json();
-    console.log(review_id);
+    const count = parseInt(el.dataset.count) + 1;
+    el.nextSibling.innerHTML = count;
     el.removeEventListener('click', this.vote);
-    console.log(results);
+    const previous_vote = el.parentElement.querySelector('[data-voted')
+    if(previous_vote) {
+      const new_count = parseInt(previous_vote.dataset.count);
+      previous_vote.nextSibling.innerHTML = new_count;
+      previous_vote.setAttribute('data-voted', false);
+    }
+    el.setAttribute('data-voted', true);
   }
 
   generateCard(review, el_stars) {
@@ -63,14 +70,18 @@ export default class ProductReviews extends BaseClass {
           <div class="row">
             <div class="col color-s-yellow">${el_stars.outerHTML}</div>
             <div class="col" data-id="${review.id}">
-              <i class="material-icons color-s-red vote" data-vote="up">thumb_up</i> ${review.votes_up}
-              <i class="material-icons color-s-red vote" data-vote="down">thumb_down</i> ${review.votes_down}</div>
-            <div class="col">${review.user.display_name}</div>
+              <i class="material-icons color-s-red vote" data-count="${review.votes_up}" data-vote="up">thumb_up</i><span class="count">${review.votes_up}</span>
+              <i class="material-icons color-s-red vote" data-count="${review.votes_down}" data-vote="down">thumb_down</i><span class="count">${review.votes_down}</span></div>
+            <div class="col">
+            ${review.verified_buyer ? '<i class="material-icons tiny tooltipped" data-position="top" data-tooltip="Verified Buyer">verified_user</i>' : ''}
+            ${review.user.display_name}
+            </div>
             <div class="col">${dayjs(review.created_at).format('MMM DD, YYYY')}</div>
           </div>
         </div>
       </div>
     </div>`);
+    M.Tooltip.init(card.querySelectorAll('.tooltipped'));
     return card;
   }
 

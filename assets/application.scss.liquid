@@ -16,6 +16,13 @@ $s_red_compliment: #087c82;
 $m_teal: #26a69a;
 
 /**************************************************
+Fonts
+**************************************************/
+$roboto: 'Roboto', sans-serif;
+$thin: 100 !important;
+$regular: 400 !important;
+
+/**************************************************
 Helpers
 **************************************************/
 .background-s-red {
@@ -123,26 +130,51 @@ Helpers
 /**************************************************
 Cards
 **************************************************/
-  .product-tile {
-    span.card-title {
-      min-height: 96px;
-      @media screen and(max-width: $small) {
-        min-height: 0;
-      }
+.product-tile {
+  span.card-title {
+    min-height: 96px;
+    @media screen and(max-width: $small) {
+      min-height: 0;
     }
   }
+}
 
-  .card-action {
-    .row {
-      margin-bottom: 0;
-    }
+.card-action {
+  .row {
+    margin-bottom: 0;
   }
+}
+
+/**************************************************
+General
+**************************************************/
+body {
+  font-family: $roboto;
+  font-weight: $regular;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $roboto;
+  font-weight: $thin;
+ }
+
+ .toast {
+   background-color: $s_yellow !important;
+ }
 
 /**************************************************
 Product Drawer
 **************************************************/
 #ProductDrawer {
   width: 60%;
+  -webkit-overflow-scrolling: touch;
+
+  .close-drawer {
+    color: #fff;
+    height: auto;
+    margin-right: 5px;
+    padding: 0;
+  }
 
   h1 {
     font-size: 3.2em;
@@ -159,6 +191,15 @@ Product Drawer
   .review-count {
     @media screen and(max-width: $small) {
       display: block !important;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 40px;
+
+    li {
+      list-style-type: disc;
     }
   }
 }
@@ -211,7 +252,7 @@ Product Compare Chart
   }
   .div-table {
     display: table;
-    width: 100%;
+    width: 1040px;
     text-align: center;
   }
   .div-table-row {
@@ -248,33 +289,9 @@ Product Compare Chart
     display: table-row-group;
   }
 
-  @media only screen and (max-width: 480px) {
-    .div-table {
-      font-size: 12px;
-      overflow: scroll;
-      display: block;
-      .div-table-head {
-        min-width: 45vw;
-      }
-      .div-table-cell {
-        min-width: 50vw;
-        &.first-cell {
-          margin-left: 45vw;
-          display: block;
-        }
-      }
-      .div-table-head {
-        position: fixed;
-        &.empty {
-          background-color: #e5e5e5;
-          div {
-            background-color: #e5e5e5;
-            display: block;
-            padding-top: 100%;
-          }
-        }
-      }
-    }
+  img {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -295,6 +312,14 @@ Swiper
   @media screen and(max-width: $small) {
     display: none;
   }
+}
+
+.swiper-button-next {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23822808'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.swiper-button-prev {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23822808'%2F><%2Fsvg>") !important;
 }
 
 .swiper-image {
