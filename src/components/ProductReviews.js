@@ -103,12 +103,14 @@ export default class ProductReviews extends BaseClass {
       this.rootElement.appendChild(card);
     }
     if(current_page < total_pages) {
-      console.log(`There are ${total_pages - current_page} pages remaining`);
       const next_page = current_page + 1;
       const old_button = this.rootElement.querySelector('.button-container');
-      console.log(old_button);
       if(old_button) this.rootElement.removeChild(old_button);
       this.viewMoreButton(next_page);
+    }
+    if(current_page === total_pages) {
+      const old_button = this.rootElement.querySelector('.button-container');
+      if(old_button) this.rootElement.removeChild(old_button);
     }
   }
 

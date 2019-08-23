@@ -4,6 +4,7 @@ import insertDrawerContent from '../utils/insertDrawerContent';
 import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
 import ProductReviews from '../components/ProductReviews';
+import renderSnptScript from '../utils/renderSnptScript';
 
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -26,6 +27,7 @@ export default class ProductDrawer extends BaseClass {
       insertDrawerContent(this.rootElement, product_url, {resolve: resolve, reject: reject});
     });
     history.pushState(this.state, page_title, product_url.replace('?view=stripped', ''));
+    document.getElementById('canonical').href = product_url.replace('?view=stripped', '');
     window.addEventListener('popstate', close);
     const swiper_options = {
       loop: true,
@@ -43,10 +45,14 @@ export default class ProductDrawer extends BaseClass {
     this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
+    const snpt_container = document.querySelector('.snpt-wdgt--ppg');
+    const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
+    snpt_container.appendChild(snpt_script);
   }
 
   onCloseStart() {
     window.removeEventListener('popstate', close);
+    document.getElementById('canonical').href = this.page_url;
     history.pushState(this.state, this.state.page_title, this.state.page_url);
   }
 
