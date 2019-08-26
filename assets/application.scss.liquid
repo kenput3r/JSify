@@ -305,6 +305,36 @@ i.vote {
   }
 }
 
+.star-rating-selector {
+  position: relative;
+  .stars {
+    background-color: #fafafa;
+    color: $s_yellow;
+    position: absolute;
+    z-index: 1;
+    &.active-stars {
+      z-index: 2;
+    }
+    i {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+#ReviewForm {
+  &.modal {
+    @media screen and(max-width: $small) {
+      max-height: 80%;
+      width: 95%;
+      .modal-content {
+        padding: 12px;
+      }
+    }
+  }
+}
+
 /**************************************************
 Swiper
 **************************************************/

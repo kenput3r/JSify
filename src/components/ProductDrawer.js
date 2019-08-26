@@ -5,7 +5,7 @@ import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
 import ProductReviews from '../components/ProductReviews';
 import renderSnptScript from '../utils/renderSnptScript';
-import renderFbtScript from '../utils/renderFbtScript';
+import ProductReviewForm from './ProductReviewForm';
 
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -17,6 +17,7 @@ export default class ProductDrawer extends BaseClass {
     this.Instance = {};
     this.Swiper = {};
     this.ProductForm = {};
+    this.ReviewModal = {};
     this.init();
   }
 
@@ -44,8 +45,13 @@ export default class ProductDrawer extends BaseClass {
     this.Swiper = new Swiper('#ProductSwiper', swiper_options);
     const form = document.getElementById('ProductDrawer').getElementsByClassName('product-form')[0];
     this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
+    //const review_modal = document.getElementById("ReviewForm");
+    //this.ReviewModal = M.Modal.init(review_modal);
+    // const star_rating_container = review_modal.querySelector('.star-rating-selector');
+    // const star_rating_selector = new StarRatingSelector(star_rating_container);
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
+    this.ReviewModal = new ProductReviewForm(document.getElementById('ReviewForm'));
     const snpt_container = document.querySelector('.snpt-wdgt--ppg');
     const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
     snpt_container.appendChild(snpt_script);
@@ -83,6 +89,7 @@ export default class ProductDrawer extends BaseClass {
     insertDrawerPlaceholder(this.rootElement);
     this.Swiper.destroy();
     this.ProductForm.destroy();
+    //this.ReviewModal.destroy();
   }
 
   async init() {

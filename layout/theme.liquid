@@ -43,6 +43,9 @@
   <main role="main">
     {{ content_for_layout }}
   </main>
+  {% if template == 'collection' %}
+    {% include 'ReviewModal' %}
+  {% endif %}
   {{ 'dayjs.min.js' | asset_url | script_tag }}
   {{ 'swiper.min.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
