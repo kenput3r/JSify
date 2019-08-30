@@ -14,7 +14,7 @@
 
 {% paginate collection.products by 24 %}
   <div id="Collection" class="container" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
-    <h1>{{ collection.title }}</h1>
+    {% include 'CollectionHeader' %}
 
     <div id="Products" class="row">
       {% for product in collection.products %}

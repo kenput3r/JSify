@@ -1,0 +1,63 @@
+{% assign apparel_age_and_gender_tags = '' %}
+{% assign color_tags = '' %}
+{% assign apparel_tags = '' %}
+{% assign apparel_fit_tags = '' %}
+{% assign adult_size_tags = '' %}
+{% assign adult_plus_size_tags = '' %}
+{% assign youth_size_tags = '' %}
+{% assign toddler_size_tags = '' %}
+{% assign infant_size_tags = '' %}
+{% assign season_tags = '' %}
+{% assign brand_tags = '' %}
+{% assign collab_tags = '' %}
+{% assign grooming_tags = '' %}
+{% assign merch_tags = '' %}
+
+{% for tag in collection.tags %}
+  {% assign tag_ = tag | append: ',' %}
+  {% if settings.ApparelAgeGenderTags contains tag_ %}
+    {% assign apparel_age_and_gender_tags = apparel_age_and_gender_tags | append: tag_ %}
+  {% elsif settings.ColorTags contains tag_ %}
+    {% assign color_tags = color_tags | append: tag_ %}
+  {% elsif settings.ApparelTags contains tag_ %}
+    {% assign apparel_tags = apparel_tags | append: tag_ %}
+  {% elsif settings.ApparelFitTags contains tag_ %}
+    {% assign apparel_fit_tags = apparel_fit_tags | append: tag_ %}
+  {% elsif settings.AdultSizeTags contains tag_ %}
+    {% assign adult_size_tags = adult_size_tags | append: tag_ %}
+  {% elsif settings.AdultPlusSizeTags contains tag_ %}
+    {% assign adult_plus_size_tags = adult_plus_size_tags | append: tag_ %}
+  {% elsif settings.YouthSizeTags contains tag_ %}
+    {% assign youth_size_tags = youth_size_tags | append: tag_ %}
+  {% elsif settings.ToddlerSizeTags contains tag_ %}
+    {% assign toddler_size_tags = toddler_size_tags | append: tag_ %}
+  {% elsif settings.InfantSizeTags contains tag_ %}
+    {% assign infant_size_tags = infant_size_tags | append: tag_ %}
+  {% elsif settings.SeasonTags contains tag_ %}
+    {% assign season_tags = season_tags | append: tag_ %}
+  {% elsif settings.BrandTags contains tag_ %}
+    {% assign brand_tags = brand_tags | append: tag_ %}
+  {% elsif settings.CollabTags contains tag_ %}
+    {% assign collab_tags = collab_tags | append: tag_ %}
+  {% elsif settings.GroomingTags contains tag_ %}
+    {% assign grooming_tags = grooming_tags | append: tag_ %}
+  {% elsif settings.merch_tags contains tag_ %}
+    {% assign merch_tags = merch_tags | append: tag_ %}
+  {% endif %}
+{% endfor %}
+
+{% assign apparel_age_and_gender_tags = apparel_age_and_gender_tags | split: ',' %}
+{% assign color_tags = color_tags | split: ',' %}
+{% assign apparel_tags = apparel_tags | split: ',' %}
+{% assign apparel_fit_tags = apparel_fit_tags | split: ',' %}
+{% assign adult_size_tags = adult_size_tags | split: ',' %}
+{% assign adult_plus_size_tags = adult_plus_size_tags | split: ',' %}
+{% assign youth_size_tags = youth_size_tags | split: ',' %}
+{% assign toddler_size_tags = toddler_size_tags | split: ',' %}
+{% assign infant_size_tags = infant_size_tags | split: ',' %}
+{% assign season_tags = season_tags | split: ',' %}
+{% assign brand_tags = brand_tags | split: ',' %}
+{% assign collab_tags = collab_tags | split: ',' %}
+{% assign grooming_tags = grooming_tags | split: ',' %}
+{% assign merch_tags = merch_tags | split: ',' %}
+

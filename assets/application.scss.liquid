@@ -146,6 +146,63 @@ Cards
 }
 
 /**************************************************
+Collection Header
+**************************************************/
+#CollectionHeader {
+  margin-top: 20px;
+  h1 {
+    margin: 0;
+  }
+  .active-tag {
+    display: inline-block;
+    a {
+      align-items: center;
+      background-color: $s_red;
+      border-radius: 4px;
+      color: #fff;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      padding: 0 5px;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      &:hover {
+        background-color: lighten($s_red, 10%)
+      }
+      i {
+        padding-right: 5px;
+      }
+    }
+  }
+
+  .filter-list-container {
+    height: 54px;
+  }
+
+  .row {
+    &.valign-wrapper {
+      margin-bottom: 0;
+    }
+  }
+  .input-field {
+    &.sort-by {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .select-dropdown {
+    color: $s_red;
+  }
+  .select-wrapper {
+    .caret {
+      fill: $s_red;
+    }
+  }
+}
+
+/**************************************************
 General
 **************************************************/
 body {
@@ -156,6 +213,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: $roboto;
   font-weight: $thin;
+ }
+
+ h1 {
+   font-size: 46px;
  }
 
  .toast {

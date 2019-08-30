@@ -1,0 +1,38 @@
+<section id="CollectionHeader" class="row" data-s-module="CollectionHeader">
+  <div class="col s12 m6">
+    <h1>{{ collection.title }}</h1>
+  </div>
+  <div class="col s6 m2 valign-wrapper filter-list-container">
+  <label for="filter-list">Filter</label>
+  <a href="#" data-target="FiltersDrawer" class="sidenav-trigger color-s-red"><i name="filter-list" class="material-icons small">filter_list</i></a>
+  </div>
+
+  <div class="col s6 m4">
+    <div class="row valign-wrapper">
+      <div class="col s4"><label for="sort-by">Sort By</label></div>
+      <div class="col s8">
+        <div class="input-field sort-by">
+          {% assign s = collection.sort_by | default: collection.default_sort_by | escape %}
+          <select id="sort-by">
+            <option {%if s == 'manual' %}selected="true"{%endif%} value="manual">Featured</option>
+            <option {%if s == 'price-ascending' %}selected="true"{%endif%} value="price-ascending">Price: Low to High</option>
+            <option {%if s == 'price-descending' %}selected="true"{%endif%} value="price-descending">Price: High to Low</option>
+            <option {%if s == 'title-ascending' %}selected="true"{%endif%} value="title-ascending">A-Z</option>
+            <option {%if s == 'title-descending' %}selected="true"{%endif%} value="title-descending">Z-A</option>
+            <option {%if s == 'created-ascending' %}selected="true"{%endif%} value="created-ascending">Oldest to Newest</option>
+            <option {%if s == 'created-descending' %}selected="true"{%endif%} value="created-descending">Newest to Oldest</option>
+            <option {%if s == 'best-selling' %}selected="true"{%endif%} value="best-selling">Best Selling</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 active-tags">
+    {% for tag in current_tags %}
+    {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+      <span class="active-tag valign-wrapper">
+        {{ html | link_to_remove_tag: tag | replace: '<a', '<a class="btn waves-effect waves-light"'}}
+      </span>
+    {% endfor %}
+  </div>
+</section>

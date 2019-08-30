@@ -1,5 +1,4 @@
 import BaseClass from '../system/BaseClass';
-import initializeDrawer from '../utils/initializeDrawer';
 import insertDrawerContent from '../utils/insertDrawerContent';
 import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
@@ -45,38 +44,12 @@ export default class ProductDrawer extends BaseClass {
     this.Swiper = new Swiper('#ProductSwiper', swiper_options);
     const form = document.getElementById('ProductDrawer').getElementsByClassName('product-form')[0];
     this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
-    //const review_modal = document.getElementById("ReviewForm");
-    //this.ReviewModal = M.Modal.init(review_modal);
-    // const star_rating_container = review_modal.querySelector('.star-rating-selector');
-    // const star_rating_selector = new StarRatingSelector(star_rating_container);
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
     this.ReviewModal = new ProductReviewForm(document.getElementById('ReviewForm'));
     const snpt_container = document.querySelector('.snpt-wdgt--ppg');
     const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
     snpt_container.appendChild(snpt_script);
-    // const doc_scripts = Array.from(document.head.querySelectorAll('script'));
-    // for(let i = 0; i < doc_scripts.length; i++) {
-    //   const script = doc_scripts[i];
-    //   if(script.src.includes('frequently-bought-together')) {
-    //     script.remove();
-    //     console.log('script deleted');
-    //     break;
-    //   }
-    // }
-    // console.log('frequently-bought-togetherLoaded:', window.codeblackbelt['frequently-bought-togetherLoaded']);
-    // delete window.codeblackbelt['frequently-bought-togetherLoaded'];
-    // console.log('frequently-bought-togetherLoaded:', window.codeblackbelt['frequently-bought-togetherLoaded']);
-    // let rid = document.querySelector('.drawer-product').dataset.id;
-    // rid = parseInt(rid);
-    // window['__st'].rid = rid;
-    // console.log('window __st.rid:', window['__st'].rid, 'product.id:', rid);
-    // const fbt_script = renderFbtScript();
-    // console.log('fbt_script:', fbt_script);
-    // const fbt_container = document.querySelector('.fbt-container');
-    // console.log('.fbt-container', fbt_container);
-    // document.head.appendChild(fbt_script);
-
   }
 
   onCloseStart() {
@@ -101,8 +74,6 @@ export default class ProductDrawer extends BaseClass {
       onCloseEnd: ()=>this.onCloseEnd(),
       preventScrolling: true
     };
-    this.Instance = await new Promise((resolve, reject)=> {
-      initializeDrawer('ProductDrawer', options, {resolve: resolve, reject: reject});
-    });
+    this.Instance = M.Sidenav.init(this.rootElement, options);
   }
 }

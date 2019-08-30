@@ -1,17 +1,19 @@
 import './node_modules/materialize-css/dist/js/materialize.min.js';
-import Button from './components/Button';
 import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
 import ProductSwiper from './components/ProductSwiper';
 import ProductTile from './components/ProductTile';
+import CollectionHeader from './components/CollectionHeader';
+import FiltersDrawer from './components/FiltersDrawer';
 
 const classes = {
-    Button,
     LoadCollectionPageXbutton,
     ProductDrawer,
     ProductSwiper,
-    ProductTile
+    ProductTile,
+    CollectionHeader,
+    FiltersDrawer
 };
 
 const system = new System(classes);

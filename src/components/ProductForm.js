@@ -29,6 +29,12 @@ export default class ProductForm extends BaseClass {
     }
   }
 
+  /**
+   * 
+   * @param event event
+   *  changes current image to selected variant
+   *  and sets product info to state
+   */
   handleChange(event) {
     this.state = event.target.options[event.target.selectedIndex].dataset;
     const quantity_selector = this.rootElement.querySelector('.quantity-selector');
