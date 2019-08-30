@@ -16,7 +16,7 @@
 </head>
 <body>
 
-  {% for link in linklists.main-menu.links %}
+  {% comment %} {% for link in linklists.main-menu.links %}
     {% assign child_list_handle = link.title | handleize %}
     {% if linklists[child_list_handle].links != blank %}
       <a href="{{ link.url }}">{{ link.title }}</a>
@@ -26,9 +26,9 @@
     {% else %}
       <a href="{{ link.url }}">{{ link.title }}</a>
     {% endif %}
-  {% endfor %}
+  {% endfor %} {% endcomment %}
 
-  <a href="/cart">cart</a>
+  {% comment %} <a href="/cart">cart</a>
 
   {% if shop.customer_accounts_enabled %}
     {% if customer %}
@@ -38,7 +38,8 @@
       {{ 'log in ' | customer_login_link }}
       {{ 'register' | customer_register_link }}
     {% endif %}
-  {% endif %}
+  {% endif %} {% endcomment %}
+  {% include 'temp-nav' %}
   {% include 'ProductDrawer' %}
   <main role="main">
     {{ content_for_layout }}

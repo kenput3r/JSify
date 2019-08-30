@@ -41,7 +41,7 @@
     {% assign collab_tags = collab_tags | append: tag_ %}
   {% elsif settings.GroomingTags contains tag_ %}
     {% assign grooming_tags = grooming_tags | append: tag_ %}
-  {% elsif settings.merch_tags contains tag_ %}
+  {% elsif settings.MerchTags contains tag_ %}
     {% assign merch_tags = merch_tags | append: tag_ %}
   {% endif %}
 {% endfor %}

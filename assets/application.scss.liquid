@@ -1,3 +1,14 @@
+@mixin color_drop($color) {
+  &:hover {
+    a {
+      border-bottom: 4px solid $color;
+    }
+  }
+  i {
+    color: $color;
+  }
+}
+
 /**************************************************
 Break points
 **************************************************/
@@ -14,6 +25,20 @@ $s_red: #822808;
 $s_yellow: #fab203;
 $s_red_compliment: #087c82;
 $m_teal: #26a69a;
+$black: #000;
+$blue: #0000ff;
+$brown: #8b4513;
+$burgundy: #800020;
+$cream: #fffdd0;
+$green: #008000;
+$grey: #808080;
+$orange: #ffa500;
+$pink: #ffc0cb;
+$purple: #800080;
+$red: #ff0000;
+$white: #ffffff;
+$yellow: #ffff00;
+
 
 /**************************************************
 Fonts
@@ -32,7 +57,7 @@ Helpers
   }
 }
 
-.background-s-yello {
+.background-s-yellow {
   background-color: $s_yellow !important;
   &:hover {
     background-color: lighten($s_yellow, 10%) !important;
@@ -45,6 +70,13 @@ Helpers
 
 .color-s-yellow {
   color: $s_yellow !important;
+}
+
+.h100 {
+  height: 100%;
+  img {
+    max-height: 100%;
+  }
 }
 
 .margins-auto {
@@ -121,6 +153,17 @@ Helpers
 
 .text-s-red-compliment {
   color: $s_red_compliment;
+}
+
+.valign-wrapper_important {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
 }
 
 .w100 {
@@ -206,8 +249,46 @@ Collection Header
 Filters Drawer
 **************************************************/
 #FiltersDrawer {
+  -webkit-overflow-scrolling: touch;
   h5 {
+    border-top: 1px solid #f1efef;
     margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+  }
+
+  ul.colors {
+    li {
+      background-color: transparent !important;
+      &.black{@include color_drop($black);}
+      &.blue{@include color_drop($blue);}
+      &.brown{@include color_drop($brown);}
+      &.burgundy{@include color_drop($burgundy);}
+      &.cream{@include color_drop($cream);}
+      &.green{@include color_drop($green);}
+      &.grey{@include color_drop($grey);}
+      &.orange{@include color_drop($orange);}
+      &.pink{@include color_drop($pink);}
+      &.purple{@include color_drop($purple);}
+      &.red{@include color_drop($red);}
+      &.white{@include color_drop($black);}
+      &.yellow{@include color_drop($yellow);}
+      a {
+        border-bottom: 4px solid #fff;
+        height: auto;
+        line-height: 14px;
+        text-align: center;
+        padding: 5px;
+        &:hover {
+          background-color: transparent !important;
+        }
+        i {
+          background-color: transparent !important;
+          float: none;
+          margin: auto;
+        }
+      }
+    }
   }
 }
 
@@ -425,4 +506,17 @@ Swiper
 
 .swiper-image {
   max-width: 100%;
+}
+
+/**************************************************
+Top Nav
+**************************************************/
+#TopNav {
+  .brand-logo {
+    padding: 5px;
+  }
+}
+
+div#smile-ui-container[style] {
+  z-index: 998 !important;
 }

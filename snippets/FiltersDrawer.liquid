@@ -1,15 +1,5 @@
 {% include 'tags_logic' %}
 <div id="FiltersDrawer" class="sidenav" data-s-module="FiltersDrawer">
-  {% comment %} <ul>
-  {% for tag in collection.tags %}
-    {% if current_tags contains tag %}
-      {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
-      <li class="active">{{ html | link_to_remove_tag: tag }}</li>
-    {% else %}
-      <li>{{ tag | link_to_add_tag: tag }}</li>
-    {% endif %}
-  {% endfor %}
-  </ul> {% endcomment %}
 
   {% if grooming_tags.size > 0 %}
   <h5>Personal Care</h5>
@@ -139,13 +129,24 @@
 
   {% if color_tags.size > 0 %}
   <h5>Color</h5>
-  <ul>
+  <ul class="row colors">
     {% for tag in color_tags %}
       {% if current_tags contains tag %}
-        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
-        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+        {% assign color = tag | downcase %}
+        {% if color == 'white' %}
+        {% assign html = '<i class="material-icons small">remove_circle_outline</i><br>' | append: tag %}
+        {% else %}
+        {% assign html = '<i class="material-icons small">remove_circle</i><br>' | append: tag %}
+        {% endif %}
+        <li class="col s4 {{color}}">{{ html | link_to_remove_tag: tag }}</li>
       {% else %}
-        <li>{{ tag | link_to_add_tag: tag }}</li>
+        {% assign color = tag | downcase %}
+        {% if color == 'white' %}
+        {% assign html = '<i class="material-icons small">panorama_fish_eye</i><br>' | append: tag %}
+        {% else %}
+        {% assign html = '<i class="material-icons small">brightness_1</i><br>' | append: tag %}
+        {% endif %}
+        <li class="col s4 {{color}}">{{ html | link_to_add_tag: tag }}</li>
       {% endif %}
     {% endfor %}
   </ul>
