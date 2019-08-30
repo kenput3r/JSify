@@ -1,15 +1,15 @@
 <section id="CollectionHeader" class="row" data-s-module="CollectionHeader">
-  <div class="col s12 m6">
+  <div class="col s12 m7">
     <h1>{{ collection.title }}</h1>
   </div>
-  <div class="col s6 m2 valign-wrapper filter-list-container">
+  <div class="col s3 m1 valign-wrapper filter-list-container">
   <label for="filter-list">Filter</label>
   <a href="#" data-target="FiltersDrawer" class="sidenav-trigger color-s-red"><i name="filter-list" class="material-icons small">filter_list</i></a>
   </div>
 
-  <div class="col s6 m4">
+  <div class="col s9 m4">
     <div class="row valign-wrapper">
-      <div class="col s4"><label for="sort-by">Sort By</label></div>
+      <div class="col s4 right-align"><label for="sort-by">Sort By</label></div>
       <div class="col s8">
         <div class="input-field sort-by">
           {% assign s = collection.sort_by | default: collection.default_sort_by | escape %}
