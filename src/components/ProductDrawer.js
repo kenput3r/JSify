@@ -24,6 +24,12 @@ export default class ProductDrawer extends BaseClass {
     const product_id = event.target.dataset.id;
     const product_url = event.target.dataset.url;
     const page_title = event.target.dataset.pageTitle;
+    const close = (event)=> {
+      this.Instance.close();
+      window.onbeforeunload = ()=> {
+        alert('the page is reloading');
+      }
+    }
     await new Promise((resolve, reject)=> {
       insertDrawerContent(this.rootElement, product_url, {resolve: resolve, reject: reject});
     });

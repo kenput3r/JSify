@@ -173,15 +173,6 @@ Helpers
 /**************************************************
 Cards
 **************************************************/
-.product-tile {
-  span.card-title {
-    min-height: 96px;
-    @media screen and(max-width: $small) {
-      min-height: 0;
-    }
-  }
-}
-
 .card-action {
   .row {
     margin-bottom: 0;
@@ -374,6 +365,13 @@ select.product-option {
 Product Tile
 **************************************************/
 .product-tile {
+  .card-title {
+    font-weight: bold;
+    min-height: 96px;
+    @media screen and(max-width: $small) {
+      min-height: 0;
+    }
+  }
   .product-form {
     @media screen and(max-width: 1645px) {
       .product-price, .star-rating-container {
