@@ -20,7 +20,7 @@
     {% include 'FiltersColumn' %}
 
     <div id="Products" class="col m12 l9 transition-width">
-      <div class="row">
+      <div class="tile-container row">
         {% comment %} {% assign grid_sizes = 's12 m6 l6 xl3' %} {% endcomment %}
         {% for product in collection.products %}
           {% include 'ProductTile' %}
@@ -28,14 +28,19 @@
           <p>no matches</p>
         {% endfor %}
       </div>
+      {% if paginate.pages > 1 %}
+        <div class="col s12 center-align">
+          <button class="waves-effect waves-light btn background-s-red" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2">LOAD MORE</button>
+        </div>
+      {% endif %}
     </div>
 
-    {% if paginate.pages > 1 %}
+    {% comment %} {% if paginate.pages > 1 %}
       <div class="row">
         <div class="col s12 center-align">
           <button class="waves-effect waves-light btn background-s-red" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2">LOAD MORE</button>
         </div>
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
   </div>
 {% endpaginate %}

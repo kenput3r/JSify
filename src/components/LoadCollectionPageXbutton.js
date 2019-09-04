@@ -35,7 +35,7 @@ export default class LoadCollectionPageXbutton extends BaseClass {
 
       try {
         let elements = await new Promise((resolve, reject)=> getCollectionPageX(collection_url, {resolve: resolve, reject: reject}));
-        document.getElementById('Products').insertAdjacentHTML('beforeend', elements);
+        document.getElementById('Products').querySelector('.tile-container').insertAdjacentHTML('beforeend', elements);
         history.pushState(this.state_object, page_title, collection_url.replace('view=products&', ''));
         this.collection.currentPage = next_page;
         if(parseInt(this.collection.currentPage) === parseInt(this.ending_page)) {

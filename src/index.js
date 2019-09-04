@@ -7,6 +7,7 @@ import ProductTile from './components/ProductTile';
 import CollectionHeader from './components/CollectionHeader';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumnToggle from './components/FiltersColumnToggle';
+import FiltersColumn from './components/FiltersColumn';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -15,7 +16,8 @@ const classes = {
     ProductTile,
     CollectionHeader,
     FiltersDrawer,
-    FiltersColumnToggle
+    FiltersColumnToggle,
+    FiltersColumn
 };
 
 const system = new System(classes);
