@@ -6,6 +6,7 @@ import ProductSwiper from './components/ProductSwiper';
 import ProductTile from './components/ProductTile';
 import CollectionHeader from './components/CollectionHeader';
 import FiltersDrawer from './components/FiltersDrawer';
+import FiltersColumnToggle from './components/FiltersColumnToggle';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -13,7 +14,8 @@ const classes = {
     ProductSwiper,
     ProductTile,
     CollectionHeader,
-    FiltersDrawer
+    FiltersDrawer,
+    FiltersColumnToggle
 };
 
 const system = new System(classes);

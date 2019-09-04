@@ -17,6 +17,7 @@ export default class ProductDrawer extends BaseClass {
     this.Swiper = {};
     this.ProductForm = {};
     this.ReviewModal = {};
+    this.name = 'ProductDrawer';
     this.init();
   }
 

@@ -1,3 +1,4 @@
+{% include 'tags_logic' %}
 {% assign url_with_tags = shop.domain | append: collection.url %}
 
 {% if current_tags.size > 0 %}
@@ -13,15 +14,20 @@
 {% endif %}
 
 {% paginate collection.products by 24 %}
-  <div id="Collection" class="container" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
+  <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
     {% include 'CollectionHeader' %}
 
-    <div id="Products" class="row">
-      {% for product in collection.products %}
-        {% include 'ProductTile' %}
-      {% else %}
-        <p>no matches</p>
-      {% endfor %}
+    {% include 'FiltersColumn' %}
+
+    <div id="Products" class="col m12 l9 transition-width">
+      <div class="row">
+        {% comment %} {% assign grid_sizes = 's12 m6 l6 xl3' %} {% endcomment %}
+        {% for product in collection.products %}
+          {% include 'ProductTile' %}
+        {% else %}
+          <p>no matches</p>
+        {% endfor %}
+      </div>
     </div>
 
     {% if paginate.pages > 1 %}

@@ -1,6 +1,8 @@
-{% include 'tags_logic' %}
-<div id="FiltersDrawer" class="sidenav" data-s-module="FiltersDrawer">
-
+{% comment %}
+  Requires include 'tags_logic',
+  which has been included in collection.liquid
+{% endcomment %}
+{% capture drawer_items %}
   {% if grooming_tags.size > 0 %}
   <h5>Personal Care</h5>
   <ul>
@@ -208,4 +210,9 @@
   </ul>
   {% endif %}
   <div style="height: 80px"></div>
+{% endcapture %}
+
+<div id="FiltersDrawer" class="sidenav filters-drawer" data-s-module="FiltersDrawer">
+  {{ drawer_items }}
 </div>
+
