@@ -10,5 +10,5 @@ document classes | add white space control |
 add error handling | add schema | 
 progressive image loading | optimize image sizes |
 handle accessability | handle accessability | 
-use of cookies notification | user data deletion request form |
-   | user data uasage and privacy statement |
+use of cookies notification | user data deletion request form 
+&nbsp; | user data uasage and privacy statement |
