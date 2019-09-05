@@ -11,4 +11,4 @@ add error handling | add schema |
 progressive image loading | optimize image sizes |
 handle accessability | handle accessability | 
 use of cookies notification | user data deletion request form |
- | user data uasage and privacy statement |
+   | user data uasage and privacy statement |
