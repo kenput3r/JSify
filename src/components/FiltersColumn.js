@@ -2,12 +2,11 @@ import BaseClass from '../system/BaseClass';
 export default class FiltersColumn extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
-    this.bottom = this.rootElement.querySelector('.bottom-marker').offsetTop;
-    this.top = this.rootElement.querySelector('.top-marker').offsetTop;
     this.fixed_bottom = false;
     this.fixed_top = false;
     this.absolute_top = false;
     this.lastScrollTop = window.pageYOffset;
+    this.sibling = document.getElementById('Products');
     this.init();
   }
 
@@ -22,48 +21,80 @@ export default class FiltersColumn extends BaseClass {
     }
   }
 
+  offset(el) {
+    var rect = el.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+  }
+
   fixColumn() {
     const column = this.rootElement.querySelector('.list-wrapper');
     const bottom_marker = column.querySelector('.bottom-marker');
     const top_marker = column.querySelector('.top-marker');
-    window.addEventListener('scroll', (event) => {
-      let yPosition = window.pageYOffset + window.innerHeight;
-      let scrolling_up = this.scrollingUp();
-      //Handle fixing to bottom
-      if(yPosition >= bottom_marker.offsetTop && !this.absolute_top && !this.fixed_bottom && !this.fixed_top && !scrolling_up) {
-        column.setAttribute('style', 'position:fixed; bottom:0');
-        this.fixed_bottom = true;
-      //Scroll up with body from fixed at bottom
-      }else if(this.fixed_bottom && scrolling_up && !this.absolute_top) {
-        const difference = column.scrollHeight - window.innerHeight;
-        const abs_pos = window.pageYOffset - difference;
-        column.setAttribute('style', `position:absolute; top:${abs_pos}px;`);
-        this.absolute_top = true;
-        this.fixed_bottom = false;
-      //Handle fixing to top
-      }else if(this.absolute_top && scrolling_up && !this.fixed_top && window.pageYOffset <= column.offsetTop) {
-        column.setAttribute('style', 'position:fixed; top:0');
-        this.fixed_top = true;
-        this.absolute_top = false;
-        this.fixed_bottom = false;
-      //Scroll down with body from fixed at top
-      }else if(this.fixed_top && !scrolling_up && !this.absolute_top){
-        const abs_pos = window.pageYOffset;
-        column.setAttribute('style', `position:absolute; top:${abs_pos}px;`);
-        this.absolute_top = true;
-        this.fixed_top = false;
-      }else if(this.fixed_top && window.pageYOffset <= top_marker.offsetTop) {
-        column.setAttribute('style', ``);
-        this.fixed_top = false;
-      //Handle fixing to bottom from absolute position
-      }else if(this.absolute_top) {
-        console.log(yPosition, bottom_marker.offsetTop)
-      }
-    })
+    const outer_top_marker = this.rootElement.querySelector('.outer-top-marker');
+    const outer_top_marker_offset = this.offset(outer_top_marker);
+    if(column.offsetHeight < window.innerHeight) {
+      window.addEventListener('scroll', (event) => {
+        const column_offset = this.offset(column);
+        const scrolling_up = this.scrollingUp();
+        if(!this.fixed_top && window.pageYOffset >= column_offset.top) {
+          column.setAttribute('style', 'position:fixed; top:0');
+          this.fixed_top = true;
+        }else if(this.fixed_top && window.pageYOffset <= column_offset.top && scrolling_up) {
+          column.setAttribute('style', '');
+          this.fixed_top = false;
+        }
+      });
+    }else {
+      window.addEventListener('scroll', (event) => {
+        const yPosition = window.pageYOffset + window.innerHeight;
+        const scrolling_up = this.scrollingUp();
+        const column_offset = this.offset(column);
+        const bottom_marker_offset = this.offset(bottom_marker);
+        //Handle fixing to bottom
+        if(yPosition >= bottom_marker_offset.top && !this.absolute_top 
+          && !this.fixed_bottom && !this.fixed_top && !scrolling_up) {
+          if(column.offsetHeight < this.sibling.offsetHeight) {
+          column.setAttribute('style', 'position:fixed; bottom:0');
+          this.fixed_bottom = true;
+          this.fixed_top = false;
+          this.absolute_top = false;
+          }
+        //Scroll up with body from fixed at bottom
+        }else if(this.fixed_bottom && scrolling_up && !this.absolute_top) {
+          const difference = column.offsetHeight - window.innerHeight;
+          const abs_pos = window.pageYOffset - difference;
+          column.setAttribute('style', `position:absolute; top:${abs_pos}px;`);
+          this.absolute_top = true;
+          this.fixed_bottom = false;
+          this.fixed_top = false;
+        //Handle fixing to top
+        }else if(this.absolute_top && scrolling_up && !this.fixed_top 
+          && window.pageYOffset <= column_offset.top) {
+          column.setAttribute('style', 'position:fixed; top:0');
+          this.fixed_top = true;
+          this.absolute_top = false;
+          this.fixed_bottom = false;
+        //Scroll down with body from fixed at top
+        }else if(this.fixed_top && !scrolling_up){
+          const abs_pos = window.pageYOffset;
+          column.setAttribute('style', `position:absolute; top:${abs_pos}px;`);
+          this.absolute_top = true;
+          this.fixed_top = false;
+          this.fixed_bottom = false;
+        //Release Fixed Top
+        }else if(this.fixed_top && window.pageYOffset <= outer_top_marker_offset.top) {
+          column.setAttribute('style', ``);
+          this.fixed_top = false;
+          this.absolute_top = false;
+          this.fixed_bottom = false;
+        }
+      });
+    }
   }
 
   init() {
-    console.log('FiltersColumn Initialized');
     this.fixColumn();
   }
 }
