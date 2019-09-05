@@ -41,8 +41,7 @@ export default class FiltersColumn extends BaseClass {
   fixColumn() {
     const column = this.rootElement.querySelector('.inner-wrapper');
     const bottom_marker = column.querySelector('.bottom-marker');
-    const outer_top_marker = this.rootElement.querySelector('.outer-top-marker');
-    const outer_top_marker_offset = this.offset(outer_top_marker);
+    const column_starting_offset = this.offset(column);
     //Handles case when column is shorter than sibling
     if(column.offsetHeight < window.innerHeight) {
       window.addEventListener('scroll', (event) => {
@@ -53,7 +52,7 @@ export default class FiltersColumn extends BaseClass {
           column.setAttribute('style', 'position:fixed; top:0');
           this.fixed_top = true;
         //Handle releasing fixed position
-        }else if(this.fixed_top && window.pageYOffset <= outer_top_marker_offset.top && scrolling_up) {
+        }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top && scrolling_up) {
           column.setAttribute('style', '');
           this.fixed_top = false;
         }
@@ -66,10 +65,13 @@ export default class FiltersColumn extends BaseClass {
         const column_offset = this.offset(column);
         const bottom_marker_offset = this.offset(bottom_marker);
         //Handle fixing to bottom
+        //if page offset + window height >= bottom marker offset
+        //and if not already fixed and not scrolling up
+        //and column is shorter than sibling
         if(yPosition >= bottom_marker_offset.top 
-          && !this.fixed_bottom && !this.fixed_top && !scrolling_up
+          && !this.fixed_bottom && !scrolling_up
           && column.offsetHeight < this.sibling.offsetHeight) {
-          column.setAttribute('style', 'position:fixed; bottom:0');
+          column.setAttribute('style', 'position:fixed; bottom:20px');
           this.fixed_bottom = true;
           this.fixed_top = false;
           this.absolute_top = false;
@@ -99,14 +101,14 @@ export default class FiltersColumn extends BaseClass {
           this.scroll_change = false;
         //Scroll down with body from fixed top position
         }else if(this.fixed_top && !scrolling_up){
-          const abs_pos = window.pageYOffset;
+          const abs_pos = window.pageYOffset - column_starting_offset.top;
           column.setAttribute('style', `position:absolute; top:${abs_pos}px;`);
           this.absolute_top = true;
           this.fixed_top = false;
           this.fixed_bottom = false;
           this.scroll_change = false;
         //Release fixed top position
-        }else if(this.fixed_top && window.pageYOffset <= outer_top_marker_offset.top) {
+        }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top) {
           column.setAttribute('style', ``);
           this.fixed_top = false;
           this.absolute_top = false;
