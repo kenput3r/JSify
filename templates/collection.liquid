@@ -19,7 +19,7 @@
 
     {% include 'FiltersColumn' %}
 
-    <div id="Products" class="col m12 l9 transition-width">
+    <div id="Products" class="col m12 l9 transition-width" data-column-sibling="FiltersColumn">
       <div class="tile-container row">
         {% comment %} {% assign grid_sizes = 's12 m6 l6 xl3' %} {% endcomment %}
         {% for product in collection.products %}
