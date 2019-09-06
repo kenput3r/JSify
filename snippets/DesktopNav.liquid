@@ -1,0 +1,63 @@
+<nav id="DesktopNav" class="black hide-on-med-and-down" data-s-module="DesktopNav">
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo valign-wrapper_important h100">{{ settings.SuavecitoLogo.src | img_tag: 'Suavecito Script Logo', 'logo', 'medium' }}</a>
+    <ul class="right">
+
+      {% assign dropdown_number = 0 %}{% comment %}Used to create unique IDs{% endcomment %}
+      {% for link in linklists['jsify-desktop-nav'].links %}
+        {% if link.links != blank %}
+        {% assign dropdown_number = dropdown_number | plus: 1 %}
+        <li>
+          <a href="{{ link.url }}" class="dropdown-trigger" data-target="Dropdown{{dropdown_number}}">{{ link.title }}</a>
+            <div id="Dropdown{{dropdown_number}}" class="dropdown-content{%if link.levels > 1%} meganav{% endif %}">
+              <ul class="row">
+              {% for childlink in link.links %}
+                {% if childlink.links != blank %}
+                {% comment %}Calculate col widths{% endcomment %}
+                {% assign col_size = 12 | divided_by: link.links.size | floor %}
+                {% assign push_size = 12 | modulo: link.links.size | divided_by: 2 | floor %}
+                {% assign col_class = 's' | append: col_size %}
+                {% assign push_class = 'push-s' | append: push_size %}
+                  <li class="col {{col_class}} {%if push_size >= 1 %}{{push_class}}{%endif%}">
+                    <h6>{{ childlink.title | escape }}</h6>
+                    <ul class="clear-fix{%if forloop.last%} no-border{%endif%}">
+                      {% for childlink_link in childlink.links %}
+                        <li><a href="{{ childlink_link.url }}">{{ childlink_link.title | escape }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% else %}
+                  <li class="col"><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                {% endif %}
+              {% endfor %}
+              </ul>
+            </div>
+        </li>
+        {% else %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% comment %}Harded items to take advantage of liquid{% endcomment %}
+      <li>
+        <a href="#" class="dropdown-trigger" data-target="AccountDropdown"><i class="material-icons">person</i></a>
+        <ul id="AccountDropdown" class="dropdown-content">
+          {% if customer %}
+            <li><a href="/account/login">Sign Out</a></li>
+            <li><a href="/account/">My Account</a></li>
+          {% else %}
+            <li><a href="/account/login">Sign In</a></li>
+            <li><a href="/account/register">Register</a></li>
+          {% endif %}
+        </ul>
+      </li>
+      <li class="search-icon"><i class="material-icons">search</i></li>
+      <li class="search-bar">
+        <form class="search" action="/search">
+          <input type="hidden" name="type" value="product" />
+          <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+          <input class="hide" type="submit" value="Search" />
+        </form>
+      </li>
+    </ul>
+  </div>
+</nav>

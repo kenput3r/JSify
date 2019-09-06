@@ -77,6 +77,10 @@ Helpers
   }
 }
 
+.clear-fix {
+  overflow: auto;
+}
+
 .color-s-red {
   color: $s_red !important;
 }
@@ -578,11 +582,63 @@ Swiper
 }
 
 /**************************************************
-Top Nav
+DesktopNav
 **************************************************/
-#TopNav {
+#DesktopNav {
+  text-transform: uppercase;
   .brand-logo {
     padding: 5px;
+  }
+  .dropdown-content {
+    a {
+      color: $s_red_compliment;
+    }
+    .col {
+      clear: none;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  li.search-icon {
+    i {
+      padding: 0 5px;
+    }
+  }
+  li.search-bar {
+    padding-right: 10px;
+    form {
+      display: inline-block;
+      input[type="text"] {
+        color: #fff;
+        &:focus {
+          border-bottom: 1px solid #fff;
+          box-shadow: 0 1px 0 0 #fff;
+        }
+      }
+    }
+  }
+  .meganav {
+    min-width: 100%;
+    ul.row {
+      height: 100%;
+    }
+    h6 {
+      font-weight: bold;
+    }
+    li.col {
+      height: 100%;
+      padding: 0 0 0 0.75rem;
+    }
+    ul.clear-fix {
+      height: 80%;
+      max-height: 100%;
+      border-right: 1px solid #f1efef;
+      padding: 0 0.75rem 0 0;
+      &.no-border {
+        border-right: 0;
+      }
+    }
   }
 }
 

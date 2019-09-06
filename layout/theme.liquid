@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/q7EYKyLuCq4wDQ7s0M36GkawfE2I4JDL9gg4wvGY/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>
+  {% include 'algolia_scripts' %}
 </head>
 <body>
 
@@ -39,7 +40,7 @@
       {{ 'register' | customer_register_link }}
     {% endif %}
   {% endif %} {% endcomment %}
-  {% include 'temp-nav' %}
+  {% include 'DesktopNav' %}
   {% include 'ProductDrawer' %}
   <main role="main">
     {{ content_for_layout }}
