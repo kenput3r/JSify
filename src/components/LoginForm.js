@@ -30,7 +30,6 @@ export default class LoginForm extends BaseClass {
   }
 
   init() {
-    console.log('LoginForm initialized');
     this.toggleForms();
   }
 }
