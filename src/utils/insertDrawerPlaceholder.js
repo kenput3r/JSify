@@ -1,3 +1,7 @@
+/**
+ * @function insertDrawerPlaceholder - Inserts the Drawer's placeholder markup
+ * @param {node} Drawer 
+ */
 function insertDrawerPlaceholder(Drawer) {
   const content = `<div class="ph-item">
   <div><i class="medium material-icons close-drawer">chevron_left</i></div>

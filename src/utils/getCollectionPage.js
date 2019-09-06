@@ -1,5 +1,5 @@
 /**
- * @method getCollectionPage
+ * @function getCollectionPage - Get a Shopify collection page.
  * @param {String} url The url of the collection to fetch
  * @param {object} promise Used for resolving or rejecting a Promise
  */

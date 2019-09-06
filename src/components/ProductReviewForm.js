@@ -1,8 +1,10 @@
 import BaseClass from '../system/BaseClass';
 
 /**
- * @class ProductReviewForm
- * Collects and submits YotPo reviews
+ * @class ProductReviewForm - Collects and submits YotPo reviews - Initializes
+ * a Materialize Modal. Interfaces with YotPo API.
+ * @see {@link https://materializecss.com/modals.html}
+ * @see {@link https://apidocs.yotpo.com/reference#creating-reviews-with-metadata}
  */
 export default class ProductReviewForm extends BaseClass {
   constructor(rootElement, args) {
@@ -22,8 +24,7 @@ export default class ProductReviewForm extends BaseClass {
   }
 
   /**
-   * @method handleStarSelect
-   * Sets the stars active class
+   * @method handleStarSelect - Sets the stars active class
    * and stores the star rating
    */
   handleStarSelect() {
@@ -37,8 +38,7 @@ export default class ProductReviewForm extends BaseClass {
   }
 
   /**
-   * @method handleStarMouseOver
-   * Lights up the stars on hover
+   * @method handleStarMouseOver - Lights up the stars on hover
    */
   handleStarMouseOver() {
     if(event.target.classList.contains('star')) {
@@ -50,8 +50,7 @@ export default class ProductReviewForm extends BaseClass {
   }
 
   /**
-   * @method handleStarMouseOut
-   * Reverts star ligting to current star rating selection
+   * @method handleStarMouseOut - Reverts star ligting to current star rating selection
    */
   handleStarMouseOut() {
     if(event.target.classList.contains('star')) {
@@ -62,6 +61,10 @@ export default class ProductReviewForm extends BaseClass {
     }
   }
 
+  /**
+   * @method onOpenStart - Populates product object
+   * and binds event listeners
+   */
   onOpenStart() {
     if(this.is_customer) {
       this.product = document.querySelector('[data-product-info]').dataset;
@@ -71,14 +74,15 @@ export default class ProductReviewForm extends BaseClass {
       this.rootElement.querySelector('.submit').addEventListener('click', this.submitReview);
     }
   }
-
+  /**
+   * @method onCloseEnd - Invokes destroy
+   */
   onCloseEnd() {
     this.destroy();
   }
 
   /**
-   * @method submitReview
-   * Post review to YotPo
+   * @method submitReview - Post review to YotPo
    */
   async submitReview() {
     const headers = new Headers({'content-type': 'application/json'});
@@ -116,6 +120,11 @@ export default class ProductReviewForm extends BaseClass {
     this.ReviewModal = M.Modal.init(this.rootElement, modal_options);
   }
 
+  /**
+   * @method destroy
+   * Depopulates the product object
+   * and removes event listeners
+   */
   destroy() {
     if(this.is_customer) {
       this.product = {}

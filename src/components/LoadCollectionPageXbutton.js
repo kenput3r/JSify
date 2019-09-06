@@ -3,8 +3,7 @@ import getCollectionPageX from '../utils/getCollectionPage';
 import ProductTile from '../components/ProductTile';
 
 /**
- * @class LoadCollectionPageXbutton
- * Fetches a collection page
+ * @class LoadCollectionPageXbutton - Fetches a collection page
  */
 export default class LoadCollectionPageXbutton extends BaseClass {
   constructor(rootElement, args) {

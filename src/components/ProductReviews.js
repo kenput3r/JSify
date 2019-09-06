@@ -1,5 +1,11 @@
 import BaseClass from '../system/BaseClass';
 
+/**
+ * @class ProductReviews - Fetch, display, and vote on YotPo product reviews.
+ * Interfaces with YotPo API.
+ * @see {@link https://apidocs.yotpo.com/reference#retrieve-reviews-for-a-specific-product}
+ * @see {@link https://apidocs.yotpo.com/reference#vote-on-reviews}
+ */
 export default class ProductReviews extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
@@ -12,16 +18,25 @@ export default class ProductReviews extends BaseClass {
     this.init();
   }
 
+  /**
+   * @method getReviews - Fetches a page of reviews (5) for a specific product
+   * @param {promise} promise - *Required - Pass in a new promise to enable awaiting
+   * @param {number} page - The number of the page to fetch
+   */
   async getReviews(promise, page) {
     if(!page) page = 1;
     const headers = new Headers({'Content-Type': 'application/json'});
     const url = `https://api.yotpo.com/v1/widget/${this.app_key}/products/${this.product_id}/reviews.json?page=${page}`;
     const data = await fetch(url, {headers: headers});
     const reviews = await data.json();
-    //console.log(reviews);
     return promise.resolve(reviews.response);
   }
 
+  /**
+   * @method generateStars - Outputs the review score as star icons
+   * @param {number} score - The numeric review score
+   * @returns html node
+   */
   generateStars(score) {
     const full_stars = Math.floor(score);
     const half_stars = Math.round(score % 1);
@@ -37,6 +52,10 @@ export default class ProductReviews extends BaseClass {
     return star_container;
   }
 
+  /**
+   * @method vote
+   * Increments the reviews upvote and/or downvote
+   */
   async vote() {
     const el = event.target;
     const thumb = el.dataset.vote;
@@ -47,6 +66,7 @@ export default class ProductReviews extends BaseClass {
     const results = await response.json();
     const count = parseInt(el.dataset.count) + 1;
     el.nextSibling.innerHTML = count;
+    //handle mind changers, only once per page life
     el.removeEventListener('click', this.vote);
     const previous_vote = el.parentElement.querySelector('[data-voted')
     if(previous_vote) {
@@ -57,6 +77,13 @@ export default class ProductReviews extends BaseClass {
     el.setAttribute('data-voted', true);
   }
 
+  /**
+   * @method generateCard - Generates the review card node
+   * @param {object} review - YotPo review boject
+   * @param {node} el_stars - An html node containing star icons
+   * @see generateStars
+   * @returns html node
+   */
   generateCard(review, el_stars) {
     const card = document.createElement('DIV');
     card.classList.add('row');
@@ -85,7 +112,12 @@ export default class ProductReviews extends BaseClass {
     return card;
   }
 
+  /**
+   * @method viewMoreButton - Dynamic button, invoked getReviews and displayReviews
+   * @param {number} next_page - The reviews page number to fetch
+   */
   viewMoreButton(next_page) {
+    //Build the button
     const button = document.createElement('DIV');
     button.classList.add('row', 'button-container');
     button.insertAdjacentHTML('beforeend', `<div class="row button-container">
@@ -93,13 +125,19 @@ export default class ProductReviews extends BaseClass {
         <button class="btn waves-effect waves-light background-s-red">View More</button>
       </div>
     </div>`);
+    //Bind event listener to get and display reviews
     button.querySelector('.btn').addEventListener('click', async()=> {
       const reviews = await new Promise((resolve, reject)=>this.getReviews({resolve:resolve, reject:reject}, next_page));
       this.displayReviews(reviews);
     })
+    //Insert the new button
     this.rootElement.appendChild(button);
   }
 
+  /**
+   * @method displayReviews - Inserts the newly fetched reviews into the DOM
+   * @param {object} yotpo - YotPo reviews object
+   */
   displayReviews(yotpo) {
     const total_reviews = yotpo.bottomline.total_review;
     const total_pages = Math.ceil(total_reviews / yotpo.pagination.per_page);
@@ -113,13 +151,14 @@ export default class ProductReviews extends BaseClass {
       });
       this.rootElement.appendChild(card);
     }
+    //Remove old button and add in new button
+    //if there are more reviews to fetch
     if(current_page < total_pages) {
       const next_page = current_page + 1;
       const old_button = this.rootElement.querySelector('.button-container');
       if(old_button) this.rootElement.removeChild(old_button);
       this.viewMoreButton(next_page);
-    }
-    if(current_page === total_pages) {
+    }else if(current_page === total_pages) {
       const old_button = this.rootElement.querySelector('.button-container');
       if(old_button) this.rootElement.removeChild(old_button);
     }

@@ -1,5 +1,9 @@
 import BaseClass from '../system/BaseClass';
 
+/**
+ * @class ProductSwiper - Initializes a new image Swiper
+ * @see {@link https://idangero.us/swiper/}
+ */
 export default class ProductSwiper extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);

@@ -7,9 +7,11 @@ import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
 
 /**
- * @class ProductDrawer
- * Instance of Materialize Sidenav, modified
- * to contain an asynchronously fetched product page
+ * @class ProductDrawer - Instance of Materialize Sidenav, modified
+ * to contain an asynchronously fetched product page. Also initializes
+ * and instance of Swiper.
+ * @see {@link https://materializecss.com/sidenav.html}
+ * @see {@link https://idangero.us/swiper/}
  */
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -26,6 +28,10 @@ export default class ProductDrawer extends BaseClass {
     this.init();
   }
 
+  /**
+   * @method onOpenStart - Populates instance variables and
+   * fetches and displays product data
+   */
   async onOpenStart() {
     const product_id = event.target.dataset.id;
     const product_url = event.target.dataset.url;
@@ -66,12 +72,20 @@ export default class ProductDrawer extends BaseClass {
     snpt_container.appendChild(snpt_script);
   }
 
+  /**
+   * @method onCloseStart - Changes cononical url and browser url
+   * ToDo: re-instate removal of event listener, or remove it.
+   */
   onCloseStart() {
-    window.removeEventListener('popstate', close);
+    //window.removeEventListener('popstate', close);
     document.getElementById('canonical').href = this.page_url;
     history.pushState(this.state, this.state.page_title, this.state.page_url);
   }
 
+  /**
+   * @method onCloseEnd - Replace drawer contents with placeholder,
+   * destroy the Swiper, and destroy the ProductForm
+   */
   onCloseEnd() {
     insertDrawerPlaceholder(this.rootElement);
     this.Swiper.destroy();

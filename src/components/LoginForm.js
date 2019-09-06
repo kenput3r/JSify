@@ -1,8 +1,7 @@
 import BaseClass from '../system/BaseClass';
 
 /**
- * @class LoginForm
- * The form for logging in to the store
+ * @class LoginForm - The form for logging in to the store
  */
 export default class LoginForm extends BaseClass {
   constructor(rootElement, args) {
@@ -11,8 +10,7 @@ export default class LoginForm extends BaseClass {
   }
 
   /**
-   * @method toggleForms
-   * Toggles visibility of the Login Form
+   * @method toggleForms - Toggles visibility of the Login Form
    * and the forgot password form
    */
   toggleForms() {

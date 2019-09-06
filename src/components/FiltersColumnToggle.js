@@ -1,8 +1,7 @@
 import BaseClass from '../system/BaseClass';
 /**
- * @class FiltersColumnToggle
- * Toggles column widths and X translation class
- * of the FiltersColumn
+ * @class FiltersColumnToggle - Toggles column widths and 
+ * X translation css class of the FiltersColumn
  */
 export default class FiltersColumnToggle extends BaseClass {
   constructor(rootElement, args) {

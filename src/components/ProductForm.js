@@ -1,9 +1,10 @@
 import BaseClass from '../system/BaseClass';
 
 /**
- * @class ProductForm
- * Methods pertaining to the product form found in the
- * ProductDrawer and on the Product page
+ * @class ProductForm - Methods pertaining to the product form found in the
+ * ProductDrawer and on the Product page. Uses Materialize
+ * Toasts.
+ * @see {@link https://materializecss.com/toasts.html}
  */
 export default class ProductForm extends BaseClass {
   constructor(rootElement, args) {
@@ -16,8 +17,7 @@ export default class ProductForm extends BaseClass {
   }
 
   /**
-   * @method changeImage
-   * Changes the image to the selected variant image
+   * @method changeImage - Changes the image to the selected variant image
    */
   changeImage() {
     if(this.ProductTile) {
@@ -39,10 +39,9 @@ export default class ProductForm extends BaseClass {
   }
 
   /**
-   * @method handleChange
-   * @param event event
-   * Updates state to selected variant data
+   * @method handleChange - Updates state to selected variant data
    * and invokes changeImage()
+   * @param event event
    */
   handleChange(event) {
     this.state = event.target.options[event.target.selectedIndex].dataset;
@@ -69,9 +68,8 @@ export default class ProductForm extends BaseClass {
     this.changeImage();
   }
   /**
-   * @method handleSubmit
+   * @method handleSubmit - Adds selected product and quantity to cart
    * @param {event} event 
-   * Adds selected product and quantity to cart
    */
   async handleSubmit(event) {
     event.preventDefault();

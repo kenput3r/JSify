@@ -1,3 +1,7 @@
+/**
+ * @function renderSnptScript - Creates and inserts the script to display the snapppt widget
+ * @param {string} vendor - The Shopify product vendor
+ */
 export default function renderSnptScript(vendor) {
   let src_url;
   if(vendor === 'suavecita') {

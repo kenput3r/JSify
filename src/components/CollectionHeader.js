@@ -1,13 +1,19 @@
 import BaseClass from '../system/BaseClass';
+
+/**
+ * @class CollectionHeader - Methods for children of the CollectionHeader.
+ * Initializes an instance of Materialize FormSelect.
+ * @see {@link https://materializecss.com/select.html}
+ */
 export default class CollectionHeader extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
     this.init();
   }
   /**
-   * Sorts collection of products using Shopify's sort methods
+   * @method filter - Sorts collection of products using Shopify's sort methods
    * e.g. Featured, A-Z, Z-A etc
-   * Appends query params to url and reloads page
+   * Appends query params to url and reloads page. Utilizes the global Shopify object.
    * @param {string} value 
    */
   filter(value) {

@@ -1,4 +1,9 @@
 import BaseClass from '../system/BaseClass';
+
+/**
+ * @class FiltersColumn - Change .inner-wrapper position from static to fixed, fixed to absolute,
+ * absolute to fixed, fixed to static.
+ */
 export default class FiltersColumn extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
@@ -11,7 +16,8 @@ export default class FiltersColumn extends BaseClass {
     this.init();
   }
   /**
-   * Returns true if invoked inside of a scroll event, when scrolling up
+   * @method scrollingUp - Returns true if invoked inside of a scroll event, when scrolling up
+   * @returns boolean
    */
   scrollingUp() {
     let scroll_top = pageYOffset;
@@ -25,7 +31,7 @@ export default class FiltersColumn extends BaseClass {
   }
 
   /**
-   * Returns an object containing el's top and left offset
+   * @method offset - Returns an object containing el's top and left offset
    * @param {element} el 
    */
   offset(el) {
@@ -36,7 +42,7 @@ export default class FiltersColumn extends BaseClass {
   }
 
   /**
-   * Dynamically fixes position and re-enables scrolling
+   * @method fixColumn - Dynamically fixes position and re-enables scrolling
    */
   fixColumn() {
     const column = this.rootElement.querySelector('.inner-wrapper');

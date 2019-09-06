@@ -1,5 +1,5 @@
 /**
- * @method getProduct
+ * @function getProduct - Get a Shopify product
  * @param {String} url The url of the product to fetch
  * @param {object} promise Used for resolving or rejecting a Promise
  */
