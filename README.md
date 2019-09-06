@@ -12,3 +12,4 @@ progressive image loading | optimize image sizes |
 handle accessability | handle accessability | 
 use of cookies notification | user data deletion request form 
 &nbsp; | user data uasage and privacy statement |
+review form validation | | 

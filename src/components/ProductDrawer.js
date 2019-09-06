@@ -6,6 +6,11 @@ import ProductReviews from '../components/ProductReviews';
 import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
 
+/**
+ * @class ProductDrawer
+ * Instance of Materialize Sidenav, modified
+ * to contain an asynchronously fetched product page
+ */
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
@@ -13,10 +18,10 @@ export default class ProductDrawer extends BaseClass {
       page_url: window.location.href,
       page_title: document.title
     };
-    this.Instance = {};
-    this.Swiper = {};
-    this.ProductForm = {};
-    this.ReviewModal = {};
+    this.Instance = {};//Used for storing reference to the Materialize Sidenav instance
+    this.Swiper = {};//Used for storing reference to the Swiper instance
+    this.ProductForm = {};//Used for storing reference to the ProductForm instance
+    this.ReviewModal = {};//Used for storing reference to the ReviewModal instance
     this.name = 'ProductDrawer';
     this.init();
   }
@@ -25,6 +30,8 @@ export default class ProductDrawer extends BaseClass {
     const product_id = event.target.dataset.id;
     const product_url = event.target.dataset.url;
     const page_title = event.target.dataset.pageTitle;
+    //Used as popstate callback to close the Drawer
+    //ToDo: stop browser from reloading, or abandon function and event listener
     const close = (event)=> {
       this.Instance.close();
       window.onbeforeunload = ()=> {
@@ -36,7 +43,7 @@ export default class ProductDrawer extends BaseClass {
     });
     history.pushState(this.state, page_title, product_url.replace('?view=stripped', ''));
     document.getElementById('canonical').href = product_url.replace('?view=stripped', '');
-    window.addEventListener('popstate', close);
+    //window.addEventListener('popstate', close);
     const swiper_options = {
       loop: true,
       navigation: {
@@ -69,7 +76,6 @@ export default class ProductDrawer extends BaseClass {
     insertDrawerPlaceholder(this.rootElement);
     this.Swiper.destroy();
     this.ProductForm.destroy();
-    //this.ReviewModal.destroy();
   }
 
   async init() {

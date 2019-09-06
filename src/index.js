@@ -8,6 +8,7 @@ import CollectionHeader from './components/CollectionHeader';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumnToggle from './components/FiltersColumnToggle';
 import FiltersColumn from './components/FiltersColumn';
+import LoginForm from './components/LoginForm';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -17,7 +18,8 @@ const classes = {
     CollectionHeader,
     FiltersDrawer,
     FiltersColumnToggle,
-    FiltersColumn
+    FiltersColumn,
+    LoginForm
 };
 
 const system = new System(classes);

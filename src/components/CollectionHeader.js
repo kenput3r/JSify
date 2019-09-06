@@ -4,7 +4,12 @@ export default class CollectionHeader extends BaseClass {
     super(rootElement, args);
     this.init();
   }
-
+  /**
+   * Sorts collection of products using Shopify's sort methods
+   * e.g. Featured, A-Z, Z-A etc
+   * Appends query params to url and reloads page
+   * @param {string} value 
+   */
   filter(value) {
     Shopify.queryParams = {};
     if (location.search.length) {
