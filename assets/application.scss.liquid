@@ -589,6 +589,13 @@ DesktopNav
   .brand-logo {
     padding: 5px;
   }
+  .dropdown-trigger {
+    transition: all ease 150ms;
+    &.active {
+      border-bottom: 2px solid;
+      margin-top: -4px;
+    }
+  }
   .dropdown-content {
     a {
       color: $s_red_compliment;
@@ -620,6 +627,9 @@ DesktopNav
   }
   .meganav {
     min-width: 100%;
+    .container {
+      height: 100%;
+    }
     ul.row {
       height: 100%;
     }

@@ -7,7 +7,24 @@ import BaseClass from '../system/BaseClass';
 export default class DesktopNav extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
+    this.active_trigger;
     this.init();
+  }
+
+  /**
+   * @method onOpenStart - Adds active class to trigger
+   * @param {EventTarget} trigger 
+   */
+  onOpenEnd(trigger) {
+    trigger.classList.add('active');
+  }
+
+  /**
+   * @method onCloseStart - Removes active class from trigger
+   * @param {EventTarget} trigger
+   */
+  onCloseStart(trigger) {
+    trigger.classList.remove('active');
   }
 
   init() {
@@ -15,7 +32,9 @@ export default class DesktopNav extends BaseClass {
     const dropdown_options = {
       constrainWidth: false,
       coverTrigger: false,
-      container: '.nav-wrapper'
+      container: '.nav-wrapper',
+      onOpenEnd: this.onOpenEnd,
+      onCloseStart: this.onCloseStart
     }
     const dropdowns = M.Dropdown.init(triggers, dropdown_options);
   }
