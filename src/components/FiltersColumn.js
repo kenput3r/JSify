@@ -54,14 +54,19 @@ export default class FiltersColumn extends BaseClass {
       window.addEventListener('scroll', (event) => {
         const column_offset = this.offset(column);
         const scrolling_up = this.scrollingUp();
+        console.log(this.fixed_top, window.pageYOffset, column_starting_offset.top)
         //Handle fixing to top
         if(!this.fixed_top && window.pageYOffset >= column_offset.top) {
           column.setAttribute('style', 'position:fixed; top:0');
           this.fixed_top = true;
         //Handle releasing fixed position
-        }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top && scrolling_up) {
+        }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top - this.desktop_nav_height) {
           column.setAttribute('style', '');
           this.fixed_top = false;
+        //Handle scrolling up with fixed navbar
+        }else if(scrolling_up && this.fixed_top){
+          column.setAttribute('style', `position:fixed; top:${this.desktop_nav_height}px`);
+          this.fixed_top = true;
         }
       });
     //Handles case when column is taller than sibling
@@ -115,7 +120,7 @@ export default class FiltersColumn extends BaseClass {
           this.fixed_bottom = false;
           this.scroll_change = false;
         //Release fixed top position
-        }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top) {
+        }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top - this.desktop_nav_height) {
           column.setAttribute('style', ``);
           this.fixed_top = false;
           this.absolute_top = false;
