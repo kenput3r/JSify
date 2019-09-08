@@ -590,10 +590,17 @@ DesktopNav
     padding: 5px;
   }
   .dropdown-trigger {
-    transition: all ease 150ms;
+    padding: 0 0;
     &.active {
-      border-bottom: 2px solid;
-      margin-top: -4px;
+      span {
+        border-bottom: 2px solid;
+        margin-top: -4px;
+      }
+    }
+    span {
+      display: block;
+      padding: 0 15px;
+      transition: all ease 150ms;
     }
   }
   .dropdown-content {

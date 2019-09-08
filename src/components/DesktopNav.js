@@ -15,7 +15,7 @@ export default class DesktopNav extends BaseClass {
    * @method onOpenEnd - Adds active class to trigger
    * @param {EventTarget} trigger 
    */
-  onOpenEnd(trigger) {
+  onOpenStart(trigger) {
     trigger.classList.add('active');
   }
 
@@ -33,7 +33,7 @@ export default class DesktopNav extends BaseClass {
       constrainWidth: false,
       coverTrigger: false,
       container: '.nav-wrapper',
-      onOpenEnd: this.onOpenEnd,
+      onOpenStart: this.onOpenStart,
       onCloseStart: this.onCloseStart
     }
     const dropdowns = M.Dropdown.init(triggers, dropdown_options);

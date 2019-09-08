@@ -8,7 +8,7 @@
         {% if link.links != blank %}
         {% assign dropdown_number = dropdown_number | plus: 1 %}
         <li>
-          <a href="{{ link.url }}" class="dropdown-trigger" data-target="Dropdown{{dropdown_number}}">{{ link.title }}</a>
+          <a href="{{ link.url }}" class="dropdown-trigger" data-target="Dropdown{{dropdown_number}}"><span>{{ link.title }}</span></a>
             <div id="Dropdown{{dropdown_number}}" class="dropdown-content{%if link.levels > 1%} meganav{% endif %}">
               <div class="container">
                 <ul class="row">
@@ -41,7 +41,7 @@
       {% endfor %}
       {% comment %}Harded items to take advantage of liquid{% endcomment %}
       <li>
-        <a href="#" class="dropdown-trigger" data-target="AccountDropdown"><i class="material-icons">person</i></a>
+        <a href="#" class="dropdown-trigger" data-target="AccountDropdown"><span><i class="material-icons">person</i></span></a>
         <ul id="AccountDropdown" class="dropdown-content">
           {% if customer %}
             <li><a href="/account/login">Sign Out</a></li>
