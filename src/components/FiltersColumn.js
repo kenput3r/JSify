@@ -13,6 +13,7 @@ export default class FiltersColumn extends BaseClass {
     this.last_scroll_top = window.pageYOffset;
     this.sibling = document.querySelector('[data-column-sibling]');
     this.scroll_change = false;
+    this.desktop_nav_height = document.querySelector('#DesktopNav') ? document.querySelector('#DesktopNav').offsetHeight : 0;
     this.init();
   }
   /**
@@ -91,7 +92,7 @@ export default class FiltersColumn extends BaseClass {
           //Initiates after change of 50 to handle rubberbanding
           if(Math.abs(this.scroll_change - window.pageYOffset > 50)) {
             const difference = column.offsetHeight - window.innerHeight;
-            const abs_pos = window.pageYOffset - difference;
+            const abs_pos = window.pageYOffset + this.desktop_nav_height - difference;
             column.setAttribute('style', `position:absolute; top:${abs_pos}px;`);
             this.absolute_top = true;
             this.fixed_bottom = false;
@@ -100,7 +101,7 @@ export default class FiltersColumn extends BaseClass {
         //Handle fixing position to top
         }else if(this.absolute_top && scrolling_up && !this.fixed_top 
           && window.pageYOffset <= column_offset.top) {
-          column.setAttribute('style', 'position:fixed; top:0');
+          column.setAttribute('style', `position:fixed; top:${this.desktop_nav_height}px`);
           this.fixed_top = true;
           this.absolute_top = false;
           this.fixed_bottom = false;
