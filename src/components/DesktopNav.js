@@ -12,7 +12,7 @@ export default class DesktopNav extends BaseClass {
   }
 
   /**
-   * @method onOpenStart - Adds active class to trigger
+   * @method onOpenEnd - Adds active class to trigger
    * @param {EventTarget} trigger 
    */
   onOpenEnd(trigger) {
