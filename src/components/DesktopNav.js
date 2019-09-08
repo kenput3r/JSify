@@ -50,7 +50,38 @@ export default class DesktopNav extends BaseClass {
     });
   }
 
+  /**
+   * @method isScrollingUp - Returns true if invoked inside of a scroll event, when scrolling up
+   * @returns boolean
+   */
+  isScrollingUp() {
+    let scroll_top = pageYOffset;
+    if(scroll_top > this.last_scroll_top) {
+      this.last_scroll_top = scroll_top <= 0 ? 0 : scroll_top;
+      return false;
+    }else{
+      this.last_scroll_top = scroll_top <= 0 ? 0 : scroll_top;
+      return true;
+    }
+  }
+
+  /**
+   * @method fixNav - Fixed the nav to the top of the screen
+   * when scrolling back up.
+   */
+  fixNav() {
+    window.addEventListener('scroll', () => {
+      const is_scrolling_up = this.isScrollingUp();
+      if(is_scrolling_up) {
+        this.rootElement.parentElement.classList.add('navbar-fixed');
+      }else if(!is_scrolling_up && this.rootElement.parentElement.classList.contains('navbar-fixed')) {
+        this.rootElement.parentElement.classList.remove('navbar-fixed')
+      }
+    })
+  }
+
   init() {
+    this.fixNav();
     this.searchRefocus();
     const triggers = this.rootElement.querySelectorAll('.dropdown-trigger');
     const dropdown_options = {
