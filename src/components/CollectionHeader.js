@@ -8,6 +8,7 @@ import BaseClass from '../system/BaseClass';
 export default class CollectionHeader extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
+    this.filters_visible = true;
     this.init();
   }
   /**
@@ -34,7 +35,31 @@ export default class CollectionHeader extends BaseClass {
     location.search = search_value;
   }
 
+  /**
+   * @method filtersColumnToggle - Toggles column widths and 
+   * X translation css class of the FiltersColumn
+   */
+  filtersColumnToggle() {
+    const Toggle = this.rootElement.querySelector('.filters-column-toggle');
+    const FiltersColumn = document.getElementById(Toggle.dataset.target);
+    const ProductsColumn = document.getElementById(Toggle.dataset.sibling);
+    Toggle.addEventListener('click', ()=> {
+      if(this.filters_visible) {
+        FiltersColumn.classList.remove('l3');
+        FiltersColumn.classList.add('l0', 'pull-left');
+        ProductsColumn.classList.remove('l9');
+        this.filters_visible = false;
+      }else{
+        FiltersColumn.classList.add('l3');
+        FiltersColumn.classList.remove('l0', 'pull-left');
+        ProductsColumn.classList.add('l9');
+        this.filters_visible = true;
+      }
+    });
+  }
+
   init() {
+    this.filtersColumnToggle();
     const select = this.rootElement.querySelector('select');
     select.addEventListener('change', (event)=> {
       this.filter(event.target.value);
