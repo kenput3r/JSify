@@ -1,0 +1,14 @@
+<div id="ReviewForm" class="modal" {%if customer%}data-is-customer="true"{%endif%}>
+  <div class="modal-content">
+    {% if customer %}
+      {% include 'ReviewForm' %}
+    {% else %}
+      <h6>You must be logged in to submit a review</h6>
+      {% include 'LoginForm' %}
+    {% endif %}
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat color-s-red">Nevermind, I have nothing to say!</a>
+    </div>
+  </div>
+</div>

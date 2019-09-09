@@ -1,0 +1,362 @@
+{% assign apparel_age_and_gender_tags = '' %}
+{% assign color_tags = '' %}
+{% assign apparel_tags = '' %}
+{% assign apparel_fit_tags = '' %}
+{% assign adult_size_tags = '' %}
+{% assign adult_plus_size_tags = '' %}
+{% assign youth_size_tags = '' %}
+{% assign toddler_size_tags = '' %}
+{% assign infant_size_tags = '' %}
+{% assign season_tags = '' %}
+{% assign brand_tags = '' %}
+{% assign collab_tags = '' %}
+{% assign grooming_tags = '' %}
+{% assign merch_tags = '' %}
+
+{% for tag in collection.tags %}
+  {% assign tag_ = tag | append: ',' %}
+  {% if settings.ApparelAgeGenderTags contains tag_ %}
+    {% assign apparel_age_and_gender_tags = apparel_age_and_gender_tags | append: tag_ %}
+  {% elsif settings.ColorTags contains tag_ %}
+    {% assign color_tags = color_tags | append: tag_ %}
+  {% elsif settings.ApparelTags contains tag_ %}
+    {% assign apparel_tags = apparel_tags | append: tag_ %}
+  {% elsif settings.ApparelFitTags contains tag_ %}
+    {% assign apparel_fit_tags = apparel_fit_tags | append: tag_ %}
+  {% elsif settings.AdultSizeTags contains tag_ %}
+    {% assign adult_size_tags = adult_size_tags | append: tag_ %}
+  {% elsif settings.AdultPlusSizeTags contains tag_ %}
+    {% assign adult_plus_size_tags = adult_plus_size_tags | append: tag_ %}
+  {% elsif settings.YouthSizeTags contains tag_ %}
+    {% assign youth_size_tags = youth_size_tags | append: tag_ %}
+  {% elsif settings.ToddlerSizeTags contains tag_ %}
+    {% assign toddler_size_tags = toddler_size_tags | append: tag_ %}
+  {% elsif settings.InfantSizeTags contains tag_ %}
+    {% assign infant_size_tags = infant_size_tags | append: tag_ %}
+  {% elsif settings.SeasonTags contains tag_ %}
+    {% assign season_tags = season_tags | append: tag_ %}
+  {% elsif settings.BrandTags contains tag_ %}
+    {% assign brand_tags = brand_tags | append: tag_ %}
+  {% elsif settings.CollabTags contains tag_ %}
+    {% assign collab_tags = collab_tags | append: tag_ %}
+  {% elsif settings.GroomingTags contains tag_ %}
+    {% assign grooming_tags = grooming_tags | append: tag_ %}
+  {% elsif settings.MerchTags contains tag_ %}
+    {% assign merch_tags = merch_tags | append: tag_ %}
+  {% endif %}
+{% endfor %}
+
+{% assign apparel_age_and_gender_tags = apparel_age_and_gender_tags | split: ',' %}
+{% assign color_tags = color_tags | split: ',' %}
+{% assign apparel_tags = apparel_tags | split: ',' %}
+{% assign apparel_fit_tags = apparel_fit_tags | split: ',' %}
+{% assign adult_size_tags = adult_size_tags | split: ',' %}
+{% assign adult_plus_size_tags = adult_plus_size_tags | split: ',' %}
+{% assign youth_size_tags = youth_size_tags | split: ',' %}
+{% assign toddler_size_tags = toddler_size_tags | split: ',' %}
+{% assign infant_size_tags = infant_size_tags | split: ',' %}
+{% assign season_tags = season_tags | split: ',' %}
+{% assign brand_tags = brand_tags | split: ',' %}
+{% assign collab_tags = collab_tags | split: ',' %}
+{% assign grooming_tags = grooming_tags | split: ',' %}
+{% assign merch_tags = merch_tags | split: ',' %}
+
+{% capture tags_list %}
+  {% if grooming_tags.size > 0 %}
+  <h5 class="first-of-type">Personal Care</h5>
+  <ul>
+    {% for tag in grooming_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if apparel_tags.size > 0 %}
+  <h5>Wears</h5>
+  <ul>
+    {% for tag in apparel_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if apparel_age_and_gender_tags.size > 0 %}
+  <h5>Age & Gender</h5>
+  <ul>
+    {% for tag in apparel_age_and_gender_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if color_tags.size > 0 %}
+  <h5>Color</h5>
+  <ul class="row colors">
+    {% for tag in color_tags %}
+      {% if current_tags contains tag %}
+        {% assign color = tag | downcase %}
+        {% if color == 'white' %}
+        {% assign html = '<i class="material-icons small">remove_circle_outline</i><br>' | append: tag %}
+        {% else %}
+        {% assign html = '<i class="material-icons small">remove_circle</i><br>' | append: tag %}
+        {% endif %}
+        <li class="col s4 {{color}}">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        {% assign color = tag | downcase %}
+        {% if color == 'white' %}
+        {% assign html = '<i class="material-icons small">panorama_fish_eye</i><br>' | append: tag %}
+        {% else %}
+        {% assign html = '<i class="material-icons small">brightness_1</i><br>' | append: tag %}
+        {% endif %}
+        <li class="col s4 {{color}}">{{ html | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+  
+  {% if adult_size_tags.size > 0 %}
+  <h5>Adult Size</h5>
+  <ul>
+    {% for tag in adult_size_tags %}
+      {% if tag == 'XS' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == 'S' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == 'M' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == 'L' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == 'XL' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == '2XL' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == '3XL' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == '4XL' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+    {% for tag in adult_size_tags %}
+      {% if tag == '5XL' %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+      {% break %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if adult_plus_size_tags.size > 0 %}
+  <h5>Adult Plus Size</h5>
+  <ul>
+    {% for tag in adult_plus_size_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if youth_size_tags.size > 0 %}
+  <h5>Youth Size</h5>
+  <ul>
+    {% for tag in youth_size_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if toddler_size_tags.size > 0 %}
+  <h5>Toddler Size</h5>
+  <ul>
+    {% for tag in toddler_size_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if infant_size_tags.size > 0 %}
+  <h5>Infant Size</h5>
+  <ul>
+    {% for tag in infant_size_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if apparel_fit_tags.size > 0 %}
+  <h5>Material Weight & Fit</h5>
+  <ul>
+    {% for tag in apparel_fit_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if season_tags.size > 0 %}
+  <h5>Seasonal Items</h5>
+  <ul>
+    {% for tag in season_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if collab_tags.size > 0 %}
+  <h5>Collabs</h5>
+  <ul>
+    {% for tag in collab_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if brand_tags.size > 0 %}
+  <h5>Brands</h5>
+  <ul>
+    {% for tag in brand_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if merch_tags.size > 0 %}
+  <h5>Merch & More</h5>
+  <ul>
+    {% for tag in merch_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% endcapture %}

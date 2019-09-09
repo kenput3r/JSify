@@ -1,0 +1,8 @@
+{%- layout none -%}
+{%- paginate collection.products by 24 -%}
+  {%- for product in collection.products -%}
+    {% include 'ProductTile' %}
+  {%- else -%}
+    <p>no matches</p>
+  {%- endfor -%}
+{%- endpaginate -%}

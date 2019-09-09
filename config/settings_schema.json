@@ -1,10 +1,110 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Themekit template theme",
+    "theme_name": "JSify",
     "theme_version": "1.0.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://github.com/Shopify/themekit",
-    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+    "theme_author": "kenput3r",
+    "theme_documentation_url": "https://github.com/kenput3r/JSify",
+    "theme_support_url": "https://github.com/kenput3r/JSify"
+  },
+  {
+    "name": "Logos",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "SuavecitoLogo",
+        "label": "Suavecito Logo",
+        "info": "png or svg"
+      }
+    ]
+  },
+  {
+    "name": "Collection Tags",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "ApparelAgeGenderTags",
+        "label": "Apparel Age & Gender Tags",
+        "info": "settings.ApparelAgeGenderTags"
+      },
+      {
+        "type": "textarea",
+        "id": "ColorTags",
+        "label": "Color Tags",
+        "info": "settings.ColorTags"
+      },
+      {
+        "type": "textarea",
+        "id": "ApparelTags",
+        "label": "Apparel Tags",
+        "info": "settings.ApparelTags"
+      },
+      {
+        "type": "textarea",
+        "id": "ApparelFitTags",
+        "label": "Apparel Fit Tags",
+        "info": "settings.ApparelFitTags"
+      },
+      {
+        "type": "textarea",
+        "id": "AdultSizeTags",
+        "label": "Adult Size Tags",
+        "info": "settings.AdultSizeTags"
+      },
+      {
+        "type": "textarea",
+        "id": "AdultPlusSizeTags",
+        "label": "Adult Plus Size Tags",
+        "info": "settings.AdultPlusSizeTags"
+      },
+      {
+        "type": "textarea",
+        "id": "InfantSizeTags",
+        "label": "Infant Size Tags",
+        "info": "settings.InfantSizeTags"
+      },
+      {
+        "type": "textarea",
+        "id": "ToddlerSizeTags",
+        "label": "Toddler Size Tags",
+        "info": "settings.ToddlerSizeTags"
+      },
+      {
+        "type": "textarea",
+        "id": "YouthSizeTags",
+        "label": "Youth Size Tags",
+        "info": "settings.YouthSizeTags"
+      },
+      {
+        "type": "textarea",
+        "id": "SeasonTags",
+        "label": "Season Tags",
+        "info": "settings.SeasonTags"
+      },
+      {
+        "type": "textarea",
+        "id": "BrandTags",
+        "label": "Brand Tags",
+        "info": "settings.SeasonTags"
+      },
+      {
+        "type": "textarea",
+        "id": "CollabTags",
+        "label": "Collab Tags",
+        "info": "settings.CollabTags"
+      },
+      {
+        "type": "textarea",
+        "id": "GroomingTags",
+        "label": "Grooming Tags",
+        "info": "settings.GroomingTags"
+      },
+      {
+        "type": "textarea",
+        "id": "MerchTags",
+        "label": "Merch & More Tags",
+        "info": "settings.MerchTags"
+      }
+    ]
   }
 ]

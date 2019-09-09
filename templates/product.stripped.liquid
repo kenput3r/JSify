@@ -1,0 +1,47 @@
+{% layout none %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+<div class="drawer-product" 
+data-product-info="true" 
+data-page-title="{{page_title}}" 
+data-id="{{product.id}}"
+data-url="https://{{shop.domain}}{{product.url}}"
+data-title="{{product.title}}"
+data-image="{{ product.featured_image.src | img_url: 'large' }}"
+>
+  <div class="row valign-wrapper">
+    <div class="col padding-none"><i class="medium material-icons btn waves-effect waves-light background-s-red close-drawer">chevron_left</i></div>
+    <div class="col padding-none"><h1>{{ product.title }}</h1></div>
+  </div>
+  {% include 'ProductSwiper' %}
+  {% include 'ProductForm' %}
+  <div class="row">
+    <div class="col padding-none">{{ product.description }}</div>
+  </div>
+  {% if product.title == 'Oil Based Pomade' or product.title == 'Firme Clay Pomade' or product.title == 'Suavecito Matte Pomade' or product.title == 'Original Hold Pomade' or product.title == 'Firme (Strong) Hold Pomade' or product.title == 'Light Hold Pomade' %}
+    <hr />
+    {% assign pomade = product.title %}
+    {% include 'ProductCompareChart' %}
+    <hr />
+  {% endif %}
+
+  <div class="snpt">
+    {% if product.vendor == 'Suavecita' %}
+    <div class='snpt-wdgt--ppg' data-vendor="suavecita">
+    </div>
+    {% else %}
+    <div class='snpt-wdgt--ppg' data-vendor="suavecito">
+    </div>
+    {% endif %}
+  </div>
+  {% assign review_count = product.metafields.yotpo['reviews_count'] | plus: 0 %}
+  {% if review_count > 0 %}
+  <h3>REVIEWS</h3>
+  {% else %}
+  <h3>LEAVE A REVIEW</h3>
+  {% endif %}
+  <div class="row">
+    <div class="col s12 center-align"><a href="#ReviewForm" class="modal-trigger color-s-red"><i class="material-icons">edit</i> WRITE REVIEW</a></div>
+  </div>
+  <div class="product-reviews"></div>
+</div>

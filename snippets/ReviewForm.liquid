@@ -1,0 +1,37 @@
+<h4>Review</h4>
+<div class="row">
+  <div class="col s12">
+    <div class="row">
+      <div class="input-field col s6">
+        {% assign first_name = customer.first_name %}
+        {% assign last_initial = customer.last_name | slice: 0 %}
+        <input id="name" type="text" readonly="readonly" value="{{first_name | append: ' ' | append: last_initial | append: '.'}}">
+        <label for="name">Name</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="email" type="email" readonly="readonly" value={{customer.email}}>
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="title" type="text" class="validate">
+        <label for="title">Review Title</label>
+      </div>
+      <div class="input-field col s6">
+        {% include 'StarRatingSelector' %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="review-content" class="materialize-textarea"></textarea>
+        <label for="review-content">Review</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 center-align">
+        <button class="btn waves-effect waves-light background-s-red submit">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+</div>
