@@ -9,6 +9,7 @@ export default class DesktopNav extends BaseClass {
     super(rootElement, args);
     this.active_trigger;
     this.search_hold_focus;
+    this.height = this.rootElement.offsetHeight;
     this.init();
   }
 
@@ -73,9 +74,9 @@ export default class DesktopNav extends BaseClass {
     window.addEventListener('scroll', () => {
       const is_scrolling_up = this.isScrollingUp();
       if(is_scrolling_up) {
-        this.rootElement.parentElement.classList.add('navbar-fixed');
+        this.rootElement.parentElement.style = 'position: fixed; transform: translateY(0);';
       }else if(!is_scrolling_up && this.rootElement.parentElement.classList.contains('navbar-fixed')) {
-        this.rootElement.parentElement.classList.remove('navbar-fixed')
+        this.rootElement.parentElement.style = `position: fixed; transform: translateY(-${this.height}px);`;
       }
     })
   }

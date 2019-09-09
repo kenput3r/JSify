@@ -1,13 +1,14 @@
 <div id="MobileMenu" class="sidenav mobile-menu-drawer" data-s-module="MobileMenu">
   <ul class="collapsible">
     <li>
-      <form class="search" action="/search">
+      <h6 class="valign-wrapper"><a href="#!" data-target="MobileMenu" class="sidenav-close color-s-red"><i class="material-icons">close</i></a><span>Main Menu</span></h6>
+      {% comment %} <form class="search" action="/search">
         <div class="input-field">
           <input type="hidden" name="type" value="product" />
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
           <input type="search" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
         </div>
-      </form>
+      </form> {% endcomment %}
     </li>
     {% if customer %}
       <li><a href="/account/login">Sign Out</a></li>
@@ -21,7 +22,7 @@
       {% assign dropdown_number = dropdown_number | plus: 1 %}
       <li>
         <div class="collapsible-header">
-          <span>{{ link.title }}</span> <i class="material-icons">arrow_drop_down</i>
+          <span>{{ link.title }}</span> <i class="material-icons color-s-red">arrow_drop_down</i>
         </div>
         <div id="Collapsible{{dropdown_number}}" class="collapsible-body">
           <ul {%if link.levels >= 2 %}class="collapsible"{%endif%}>
@@ -29,7 +30,7 @@
             {% if childlink.links != blank %}
               <li>
                 <div class="collapsible-header">
-                  <span>{{ childlink.title | escape }}</span> <i class="material-icons">arrow_drop_down</i>
+                  <span>{{ childlink.title | escape }}</span> <i class="material-icons color-s-red">arrow_drop_down</i>
                 </div>
                 <div class="collapsible-body">
                   <ul>

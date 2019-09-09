@@ -225,7 +225,6 @@ Cards
 Collection Header
 **************************************************/
 #CollectionHeader {
-  margin-top: 20px;
   h1 {
     margin: 0;
   }
@@ -358,8 +357,22 @@ Filters Drawer
       }
     }
   }
+  #FiltersDrawer {
+    padding-bottom: 125px;
+  }
 }
 
+.sidenav {
+  li:not(.active) {
+    a, .collapsible-header {
+      &:hover {
+        @media screen and(max-width: $medium){
+          background-color: rgba(255,255,255,1);
+        }
+      }
+    }
+  }
+}
 
 /**************************************************
 General
@@ -379,8 +392,12 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  main {
+   padding-top: 15px;
    @media screen and(max-width: 992px) {
-     margin-bottom: 100px;
+     margin-bottom: 30px;
+   }
+   @media screen and(min-width: $large) {
+     margin-top: 64px;
    }
  }
 
@@ -388,11 +405,20 @@ h1, h2, h3, h4, h5, h6 {
    background-color: $s_yellow !important;
  }
 
-
+/**************************************************
+Mobile Header
+**************************************************/
+#MobileHeader {
+  img {
+    max-height: 64px;
+  }
+}
 /**************************************************
 Mobile Menu
 **************************************************/
 #MobileMenu {
+  padding-bottom: 125px;
+  -webkit-overflow-scrolling: touch;
   z-index: 1000;
   .input-field {
     overflow: hidden;
@@ -426,6 +452,10 @@ Mobile Menu
 /**************************************************
 Mobile Nav
 **************************************************/
+.mobile-nav-container {
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
 .fixed-bottom {
   bottom: 0;
   position: fixed;
@@ -433,7 +463,6 @@ Mobile Nav
   z-index: 1001;
 }
 #MobileNav {
-  margin-bottom: 30px;
   .col {
     a {
       width: 100%;
@@ -651,6 +680,13 @@ Swiper
 /**************************************************
 DesktopNav
 **************************************************/
+.nav-fixed-wrapper {
+  position: fixed;
+  top: 0;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  width: 100%;
+}
 #DesktopNav {
   text-transform: uppercase;
   .brand-logo {
@@ -667,6 +703,7 @@ DesktopNav
     span {
       display: block;
       padding: 0 15px;
+      -webkit-transition: all ease 150ms;
       transition: all ease 150ms;
     }
   }
@@ -694,7 +731,8 @@ DesktopNav
         color: #fff;
         &:focus {
           border-bottom: 1px solid #fff;
-          box-shadow: 0 1px 0 0 #fff;
+          -webkit-box-shadow: 0 1px 0 0 #fff;
+                  box-shadow: 0 1px 0 0 #fff;
         }
       }
     }
