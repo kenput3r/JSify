@@ -41,10 +41,12 @@
     {% endif %}
   {% endif %} {% endcomment %}
   {% include 'DesktopNav' %}
-  {% include 'ProductDrawer' %}
   <main role="main">
     {{ content_for_layout }}
   </main>
+  {% include 'MobileNav' %}
+  {% include 'MobileMenu' %}
+  {% include 'ProductDrawer' %}
   {% if template == 'collection' %}
     {% include 'FiltersDrawer' %}
     {% include 'ReviewModal' %}

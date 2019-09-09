@@ -54,7 +54,6 @@ export default class FiltersColumn extends BaseClass {
       window.addEventListener('scroll', (event) => {
         const column_offset = this.offset(column);
         const scrolling_up = this.scrollingUp();
-        console.log(this.fixed_top, window.pageYOffset, column_starting_offset.top)
         //Handle fixing to top
         if(!this.fixed_top && window.pageYOffset >= column_offset.top) {
           column.setAttribute('style', 'position:fixed; top:0');

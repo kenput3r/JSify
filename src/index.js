@@ -10,6 +10,8 @@ import FiltersColumnToggle from './components/FiltersColumnToggle';
 import FiltersColumn from './components/FiltersColumn';
 import LoginForm from './components/LoginForm';
 import DesktopNav from './components/DesktopNav';
+import MobileNav from './components/MobileNav';
+import MobileMenu from './components/MobileMenu';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -21,7 +23,9 @@ const classes = {
     FiltersColumnToggle,
     FiltersColumn,
     LoginForm,
-    DesktopNav
+    DesktopNav,
+    MobileMenu,
+    MobileNav
 };
 
 const system = new System(classes);
