@@ -14,6 +14,7 @@ export default class FiltersColumn extends BaseClass {
     this.sibling = document.querySelector('[data-column-sibling]');
     this.scroll_change = false;
     this.desktop_nav_height = document.querySelector('#DesktopNav') ? document.querySelector('#DesktopNav').offsetHeight : 0;
+    this.column_width = this.rootElement.querySelector('.inner-wrapper').offsetWidth;
     this.init();
   }
   /**
@@ -56,7 +57,7 @@ export default class FiltersColumn extends BaseClass {
         const scrolling_up = this.scrollingUp();
         //Handle fixing to top
         if(!this.fixed_top && window.pageYOffset >= column_offset.top) {
-          column.setAttribute('style', 'position:fixed; top:0');
+          column.setAttribute('style', `position:fixed; top:0; width:${this.column_width}px;`);
           this.fixed_top = true;
         //Handle releasing fixed position
         }else if(this.fixed_top && window.pageYOffset <= column_starting_offset.top - this.desktop_nav_height) {
@@ -64,7 +65,7 @@ export default class FiltersColumn extends BaseClass {
           this.fixed_top = false;
         //Handle scrolling up with fixed navbar
         }else if(scrolling_up && this.fixed_top){
-          column.setAttribute('style', `position:fixed; top:${this.desktop_nav_height}px`);
+          column.setAttribute('style', `position:fixed; top:${this.desktop_nav_height}px; width:${this.column_width}px;`);
           this.fixed_top = true;
         }
       });
@@ -82,7 +83,7 @@ export default class FiltersColumn extends BaseClass {
         if(yPosition >= bottom_marker_offset.top 
           && !this.fixed_bottom && !scrolling_up
           && column.offsetHeight < this.sibling.offsetHeight) {
-          column.setAttribute('style', 'position:fixed; bottom:20px');
+          column.setAttribute('style', `position:fixed; bottom:20px; width:${this.column_width}px;`);
           this.fixed_bottom = true;
           this.fixed_top = false;
           this.absolute_top = false;
@@ -105,7 +106,7 @@ export default class FiltersColumn extends BaseClass {
         //Handle fixing position to top
         }else if(this.absolute_top && scrolling_up && !this.fixed_top 
           && window.pageYOffset <= column_offset.top) {
-          column.setAttribute('style', `position:fixed; top:${this.desktop_nav_height}px`);
+          column.setAttribute('style', `position:fixed; top:${this.desktop_nav_height}px; width:${this.column_width}px;`);
           this.fixed_top = true;
           this.absolute_top = false;
           this.fixed_bottom = false;
