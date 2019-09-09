@@ -228,6 +228,30 @@ Collection Header
   h1 {
     margin: 0;
   }
+  #CollectionMenu {
+    background-color: #fff;
+    &.z-depth-1 {
+      .select-dropdown {
+        border-bottom: 0;
+      }
+    }
+    .dropdown-content {
+      li {
+        span {
+          color: $s_red_compliment;
+        }
+      }
+    }
+    .row {
+      margin-bottom: 0;
+    }
+    .select-dropdown {
+      margin-bottom: 0;
+      &:focus {
+        border-bottom-color: $s_red_compliment;
+      }
+    }
+  }
   .active-tag {
     display: inline-block;
     a {
@@ -250,11 +274,23 @@ Collection Header
       }
     }
   }
-
   .filter-list-container {
-    height: 54px;
+    height: 46px;
+    label {
+      margin-right: 4px;
+    }
+    @media screen and(max-width: 718px) and(min-width: 601px) {
+      margin-right: 2px;
+    }
   }
-
+  .sorting-options {
+    @media screen and(max-width: 718px) and(min-width: 601px) {
+      width: 80%;
+    }
+  }
+  .sort-label-container {
+    padding: 0 0;
+  }
   .row {
     &.valign-wrapper {
       margin-bottom: 0;

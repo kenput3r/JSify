@@ -58,7 +58,43 @@ export default class CollectionHeader extends BaseClass {
     });
   }
 
+  /**
+   * @method isScrollingUp - Returns true if invoked inside of a scroll event, when scrolling up
+   * @returns boolean
+   */
+  isScrollingUp() {
+    let scroll_top = pageYOffset;
+    if(scroll_top > this.last_scroll_top) {
+      this.last_scroll_top = scroll_top <= 0 ? 0 : scroll_top;
+      return false;
+    }else{
+      this.last_scroll_top = scroll_top <= 0 ? 0 : scroll_top;
+      return true;
+    }
+  }
+
+  positionFixCollectionMenu() {
+    if(window.innerWidth < 601) {
+      const scrolling_up = this.isScrollingUp();
+      const Menu = this.rootElement.querySelector('#CollectionMenu');
+      const menu_offset_top = Menu.offsetTop;
+      let is_fixed = false;
+      window.addEventListener('scroll', () => {
+        if(!is_fixed && window.pageYOffset >= menu_offset_top) {
+          Menu.style = 'position: fixed; top: 0; width: 100%; z-index: 995;';
+          Menu.classList.add('z-depth-1');
+          is_fixed = true;
+        }else if(is_fixed && window.pageYOffset <= menu_offset_top) {
+          Menu.removeAttribute('style');
+          Menu.classList.remove('z-depth-1');
+          is_fixed = false;
+        }
+      });
+    }
+  }
+
   init() {
+    this.positionFixCollectionMenu();
     this.filtersColumnToggle();
     const select = this.rootElement.querySelector('select');
     select.addEventListener('change', (event)=> {
