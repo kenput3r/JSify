@@ -12,19 +12,21 @@ export default class MobileSearch extends BaseClass {
     this.init();
   }
 
+  /**
+   * @method onOpenEnd - Modifies body style props after the modal
+   * has finished opening. *Fix for mobile safari.
+   */
   onOpenEnd() {
-    // const algolia_dropdowns = Array.from(document.querySelectorAll('.algolia-autocomplete'));
-    // const max_height = window.innerHeight - this.rootElement.querySelector('.modal-content').offsetHeight;
-    // algolia_dropdowns.map(dropdown => {
-    //   dropdown.style.height = max_height;
-    //   dropdown.style.maxHeight = max_height;
-    // });
     document.body.style.position = 'fixed';
     document.body.style.height = '100vh';
     document.body.style.top = `-${this.scrollY}px`;
 
   }
 
+  /**
+   * @method onCloseStart - Modifies body props and sets window
+   * scroll position while the modal is closing. *Fix for mobile safari.
+   */
   onCloseStart() {
     const top = document.body.style.top;
     document.body.style.position = '';
@@ -32,6 +34,10 @@ export default class MobileSearch extends BaseClass {
     window.scrollTo(0, parseInt(top || '0') * -1);
   }
 
+  /**
+   * @method setScrollY - Sets the instance variable scrollY
+   * to the current pageYOffset.
+   */
   setScrollY() {
     window.addEventListener('scroll', () => {
       this.scrollY = window.pageYOffset;
