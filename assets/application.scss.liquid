@@ -509,6 +509,43 @@ Mobile Nav
   }
 }
 
+/**************************************************
+Mobile Search
+**************************************************/
+#MobileSearch {
+  background-color: #fff;
+  height: 100%;
+  max-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  .aa-input {
+    &:focus {
+      border-bottom-color: $s_red_compliment;
+    }
+  }
+}
+
+.search-container {
+  .mobile-autocomplete[style] {
+    @media screen and(max-width: $small) {
+      border: 0 !important;
+      display: block !important;
+      //overflow-y: scroll;
+      height: 200px;
+      overflow-y: scroll;
+      position: relative !important;
+      right: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+      .aa-left-column {
+        display: none;
+      }
+      .aa-dropdown-menu[style] {
+        display: block !important;
+      }
+    }
+  }
+}
+
 
 /**************************************************
 Product Drawer

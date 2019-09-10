@@ -11,6 +11,7 @@ import LoginForm from './components/LoginForm';
 import DesktopNav from './components/DesktopNav';
 import MobileNav from './components/MobileNav';
 import MobileMenu from './components/MobileMenu';
+import MobileSearch from './components/MobileSearch'
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -23,7 +24,8 @@ const classes = {
     LoginForm,
     DesktopNav,
     MobileMenu,
-    MobileNav
+    MobileNav,
+    MobileSearch
 };
 
 const system = new System(classes);
