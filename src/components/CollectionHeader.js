@@ -73,6 +73,10 @@ export default class CollectionHeader extends BaseClass {
     }
   }
 
+  /**
+   * @method positionFixCollectionMenu - Fix the filter toggle and sorting options
+   * to the top of the screen on mobile devices.
+   */
   positionFixCollectionMenu() {
     if(window.innerWidth < 601) {
       const scrolling_up = this.isScrollingUp();
