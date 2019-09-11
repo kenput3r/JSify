@@ -106,5 +106,49 @@
         "info": "settings.MerchTags"
       }
     ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "url",
+        "id": "instagram_profile_url",
+        "label": "The url to an Instagram profile",
+        "info": "https://instagram.com/suavecitopomade"
+      },
+      {
+        "type": "url",
+        "id": "facebook_profile_url",
+        "label": "The url to a Facebook profile",
+        "info": "https://facebook.com/suavecitopomade"
+      },
+      {
+        "type": "url",
+        "id": "twitter_profile_url",
+        "label": "The url to a Twitter profile",
+        "info": "https://twitter.com/suavecitopomade"
+      },
+      {
+        "type": "url",
+        "id": "youtube_profile_url",
+        "label": "The url to a YouTube channel",
+        "info": "https://youtube.com/suavecitopomade"
+      }
+    ]
+  },
+  {
+    "name": "Legal",
+    "settings": [
+      {
+        "type": "url",
+        "id": "terms_of_use_url",
+        "label": "The page with the Terms Of Use information"
+      },
+      {
+        "type": "url",
+        "id": "privacy_policy_url",
+        "label": "The page with the Privacy Policy information"
+      }
+    ]
   }
 ]

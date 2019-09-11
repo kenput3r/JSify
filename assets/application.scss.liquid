@@ -360,6 +360,11 @@ Filters Drawer
 }
 #FiltersColumn {
   position: relative;
+  .inner-wrapper {
+    @media screen and(min-width: $large) {
+      padding-bottom: 20px;
+    }
+  }
   h5.first-of-type {
     margin-top: 5px;
   }
@@ -410,12 +415,63 @@ Filters Drawer
   }
 }
 
+
+/**************************************************
+Footer
+**************************************************/
+.footer-nav {
+  @media screen and(min-width: $large) {
+    padding-top: 20px;
+  }
+  &.row {
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 0;
+  }
+  .col {
+    @media screen and(max-width: $small) {
+      margin-bottom: 10px;
+    }
+  }
+  a {
+    color: #000;
+    display: inline-block;
+    padding: 0 10px;
+    &:hover {
+      color: lighten(#000, 40%);
+      img {
+        opacity: 0.6;
+      }
+    }
+  }
+  .copyright {
+    @media screen and(max-width: $small) {
+      text-align: center;
+    }
+  }
+  .social {
+    text-align: center;
+    img {
+      max-height: 24px;
+    }
+  }
+  .legal {
+    @media screen and(max-width: $small) {
+      text-align: center;
+    }
+  }
+}
+
 /**************************************************
 General
 **************************************************/
 body {
+  display: flex;
+  flex-direction: column;
   font-family: $roboto;
   font-weight: $regular;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -428,6 +484,7 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  main {
+   flex: 1 0 auto;
    padding-top: 15px;
    @media screen and(max-width: 992px) {
      margin-bottom: 30px;
@@ -435,6 +492,12 @@ h1, h2, h3, h4, h5, h6 {
    @media screen and(min-width: $large) {
      margin-top: 64px;
    }
+ }
+
+ .page-footer {
+   background-color: #fff;
+   color: #000;
+   padding-top: 0;
  }
 
  .toast {

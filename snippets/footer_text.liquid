@@ -1,0 +1,23 @@
+<div class="page-footer"> 
+  <div class="row footer-nav">
+    <div class="col s12 m4 copyright">&copy; {{'now' | date: '%Y' }} Suavecito, Inc.</span></div>
+    <div class="col s12 m4 social">
+      <a href="{{settings.instagram_profile_url}}" title="Suavecito on Instagram">
+        {{'icon-instagram.png' | asset_img_url | img_tag: 'Instragram Icon'}}
+      </a>
+      <a href="{{settings.facebook_profile_url}}" title="Suavecito on Facebook">
+        {{'icon-facebook.png' | asset_img_url | img_tag: 'Facebook Icon'}}
+      </a>
+      <a href="{{settings.twitter_profile_url}}" title="Suavecito on Twitter">
+        {{'icon-twitter.png' | asset_img_url | img_tag: 'Twitter Icon'}}
+      </a>
+      <a href="{{settings.youtube_profile_url}}" title="Suavecito on YouTube">
+        {{'icon-youtube.png' | asset_img_url | img_tag: 'YouTube icon'}}
+      </a>
+    </div>
+    <div class="col s12 m4 legal right-align">
+      <span><a href="{{settings.terms_of_use_url}}" title="Terms of Use">Terms Of Use</a></span>
+      <span><a href="{{settings.privacy_policy_url}}" title="Privacy Policy">Privacy Policy</a></span>
+    </div>
+  </div>
+</div>
