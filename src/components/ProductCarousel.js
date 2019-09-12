@@ -58,8 +58,8 @@ import BaseClass from '../system/BaseClass';
       indicators: true
     }
     const carousel_container = this.rootElement.querySelector('.carousel');
-    const Carousel = M.Carousel.init(carousel_container, carousel_options);
-    this.setTriggers(Carousel);
+    this.MCarousel = M.Carousel.init(carousel_container, carousel_options);
+    this.setTriggers(this.MCarousel);
     if(window.innerWidth > 601) {
       const modal_container = this.rootElement.querySelector('#ProductImageModal');
       const modal_options = {

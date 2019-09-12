@@ -35,6 +35,13 @@ export default class ProductForm extends BaseClass {
           break;
         }
       }
+    }else if(this.Carousel) {
+      const images = Array.from(this.Carousel.querySelectorAll('.carousel-image'));
+      for(let i = 0; i < images.length; i++) {
+        if(images[i].dataset.src === this.state.image) {
+          this.Carousel.set(i);
+        }
+      }
     }else if(document.querySelector('#Product')) {
       const carousel_container = document.querySelector('.carousel-slider');
       const Carousel = M.Carousel.getInstance(carousel_container);

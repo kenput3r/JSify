@@ -5,13 +5,14 @@ import ProductForm from '../components/ProductForm';
 import ProductReviews from '../components/ProductReviews';
 import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
+import ProductCarousel from './ProductCarousel';
 
 /**
  * @class ProductDrawer - Instance of Materialize Sidenav, modified
  * to contain an asynchronously fetched product page. Also initializes
- * and instance of Swiper.
+ * and instance of Carousel.
  * @see {@link https://materializecss.com/sidenav.html}
- * @see {@link https://idangero.us/swiper/}
+ * @see {@link https://materializecss.com/carousel.html}
  */
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -21,7 +22,7 @@ export default class ProductDrawer extends BaseClass {
       page_title: document.title
     };
     this.Instance = {};//Used for storing reference to the Materialize Sidenav instance
-    this.Swiper = {};//Used for storing reference to the Swiper instance
+    this.Carousel = {};//Used for storing reference to the Carousel instance
     this.ProductForm = {};//Used for storing reference to the ProductForm instance
     this.ReviewModal = {};//Used for storing reference to the ReviewModal instance
     this.name = 'ProductDrawer';
@@ -65,9 +66,11 @@ export default class ProductDrawer extends BaseClass {
         dynamicBullets: true
       },
     }
-    this.Swiper = new Swiper('#ProductSwiper', swiper_options);
+    // this.Swiper = new Swiper('#ProductSwiper', swiper_options);
+    const carousel_container = this.rootElement.querySelector('.product-carousel');
+    this.Carousel = new ProductCarousel(carousel_container);
     const form = this.rootElement.getElementsByClassName('product-form')[0];
-    this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
+    this.ProductForm = new ProductForm(form, {Carousel: this.Carousel});
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
     const review_form_container = this.rootElement.querySelector('.review-form');
@@ -89,11 +92,11 @@ export default class ProductDrawer extends BaseClass {
 
   /**
    * @method onCloseEnd - Replace drawer contents with placeholder,
-   * destroy the Swiper, and destroy the ProductForm
+   * destroy the Carousel, and destroy the ProductForm
    */
   onCloseEnd() {
     insertDrawerPlaceholder(this.rootElement);
-    this.Swiper.destroy();
+    this.Carousel.MCarousel.destroy();
     this.ProductForm.destroy();
   }
 
