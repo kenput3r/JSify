@@ -3,6 +3,8 @@ import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
 import ProductSwiper from './components/ProductSwiper';
+import ProductForm from './components/ProductForm';
+import ProductCarousel from './components/ProductCarousel';
 import ProductTile from './components/ProductTile';
 import CollectionHeader from './components/CollectionHeader';
 import FiltersDrawer from './components/FiltersDrawer';
@@ -17,6 +19,8 @@ const classes = {
     LoadCollectionPageXbutton,
     ProductDrawer,
     ProductSwiper,
+    ProductForm,
+    ProductCarousel,
     ProductTile,
     CollectionHeader,
     FiltersDrawer,

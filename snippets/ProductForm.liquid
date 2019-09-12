@@ -1,4 +1,5 @@
 <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}}"
+data-s-module="ProductForm"
 data-id="{{ product.selected_or_first_available_variant.id }}" 
 data-price="{{ product.selected_or_first_available_variant.price | money_with_currency | strip_html }}"
 data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
@@ -52,7 +53,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     <div class="col s6 m3 center-align">
       <span class="product-price">{{ product.selected_or_first_available_variant.price | money }}</span>
     </div>
-    <div class="col s6">
+    <div class="col s6 xs12">
       {% if product.available %}
       <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">Add to cart</button>
       {% else %}

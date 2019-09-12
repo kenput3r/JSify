@@ -22,7 +22,7 @@
 /**************************************************
 Break points
 **************************************************/
-
+$xs: 320px;
 $small: 600px;
 $medium: 601px;
 $large: 993px;
@@ -210,6 +210,12 @@ Helpers
 
 .w100 {
   width: 100%;
+}
+
+.xs12 {
+  @media screen and(max-width: $xs) {
+    width: 100% !important;
+  }
 }
 
 /**************************************************
@@ -611,6 +617,43 @@ Mobile Search
 
 
 /**************************************************
+Product Carousel
+**************************************************/
+#ProductCarousel {
+  @media screen and(max-width: $small) {
+    margin-bottom: 0;
+  }
+  .carousel-image {
+    &:hover {
+      cursor: zoom-in;
+    }
+  }
+
+  .thumbnails {
+    img {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .modal[style] {
+    max-height: 85%;
+    top: 8% !important;
+    width: 60%;
+  }
+  .modal-image {
+    img {
+      width: 100%;
+
+      &.preview {
+        filter: blur(2vw);
+      }
+    }
+  }
+}
+
+/**************************************************
 Product Drawer
 **************************************************/
 #ProductDrawer {
@@ -688,6 +731,22 @@ Product Tile
     }
     @media screen and(min-width: $medium) {
       min-height: 169px;
+    }
+  }
+}
+/**************************************************
+Product Template
+**************************************************/
+#Product {
+  h1 {
+    @media screen and(max-width: $small) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .review-count {
+    @media screen and(max-width: $small) {
+      display: block;
     }
   }
 }
