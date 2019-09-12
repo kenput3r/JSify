@@ -34,7 +34,11 @@ export default class ProductDrawer extends BaseClass {
    */
   async onOpenStart() {
     const product_id = event.target.dataset.id;
-    const product_url = event.target.dataset.url;
+    let product_url = event.target.dataset.url;
+    if(product_url.includes('?pr_prod')) {
+      product_url = product_url.slice(0, product_url.indexOf('?'));
+      product_url = product_url + '?view=stripped';
+    }
     const page_title = event.target.dataset.pageTitle;
     //Used as popstate callback to close the Drawer
     //ToDo: stop browser from reloading, or abandon function and event listener
@@ -62,12 +66,13 @@ export default class ProductDrawer extends BaseClass {
       },
     }
     this.Swiper = new Swiper('#ProductSwiper', swiper_options);
-    const form = document.getElementById('ProductDrawer').getElementsByClassName('product-form')[0];
+    const form = this.rootElement.getElementsByClassName('product-form')[0];
     this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
-    this.ReviewModal = new ProductReviewForm(document.getElementById('ReviewForm'));
-    const snpt_container = document.querySelector('.snpt-wdgt--ppg');
+    const review_form_container = this.rootElement.querySelector('.review-form');
+    this.ReviewModal = new ProductReviewForm(review_form_container, {parent: this.rootElement});
+    const snpt_container = this.rootElement.querySelector('.snpt-wdgt--ppg');
     const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
     snpt_container.appendChild(snpt_script);
   }
