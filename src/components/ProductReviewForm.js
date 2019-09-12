@@ -67,7 +67,11 @@ export default class ProductReviewForm extends BaseClass {
    */
   onOpenStart() {
     if(this.is_customer) {
-      this.product = document.querySelector('[data-product-info]').dataset;
+      if(this.parent) {
+        this.product = this.parent.querySelector('[data-product-info]').dataset;
+      }else{
+        this.product = this.rootElement.dataset;
+      }
       this.rootElement.addEventListener('mouseover', this.handleStarMouseOver);
       this.rootElement.addEventListener('mouseout', this.handleStarMouseOut);
       this.rootElement.addEventListener('click', this.handleStarSelect);
