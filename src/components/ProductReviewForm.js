@@ -67,6 +67,7 @@ export default class ProductReviewForm extends BaseClass {
    */
   onOpenStart() {
     if(this.is_customer) {
+      //Handle form init from within a Drawer
       if(this.parent) {
         this.product = this.parent.querySelector('[data-product-info]').dataset;
       }else{
