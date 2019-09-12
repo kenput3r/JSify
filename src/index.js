@@ -6,6 +6,8 @@ import ProductSwiper from './components/ProductSwiper';
 import ProductForm from './components/ProductForm';
 import ProductCarousel from './components/ProductCarousel';
 import ProductTile from './components/ProductTile';
+import ProductReviews from './components/ProductReviews';
+import ProductReviewForm from './components/ProductReviewForm';
 import CollectionHeader from './components/CollectionHeader';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumn from './components/FiltersColumn';
@@ -22,6 +24,8 @@ const classes = {
     ProductForm,
     ProductCarousel,
     ProductTile,
+    ProductReviews,
+    ProductReviewForm,
     CollectionHeader,
     FiltersDrawer,
     FiltersColumn,
