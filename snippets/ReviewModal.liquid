@@ -1,4 +1,10 @@
-<div id="{{id}}" class="modal review-form" {%if customer%}data-is-customer="true"{%endif%} data-s-module="ProductReviewForm">
+<div id="{{id}}" class="modal review-form" {%if customer%}data-is-customer="true"{%endif%} 
+data-s-module="ProductReviewForm"
+data-page-title="{{page_title}}" 
+data-id="{{product.id}}"
+data-url="https://{{shop.domain}}{{product.url}}"
+data-title="{{product.title}}"
+data-image="{{ product.featured_image.src | img_url: 'large' }}">
   <div class="modal-content">
     {% if customer %}
       {% include 'ReviewForm' %}
