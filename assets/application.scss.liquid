@@ -486,7 +486,10 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  h1 {
-   font-size: 46px;
+   font-size: 3rem;
+   @media screen and(max-width: $small) {
+     font-size: 2rem;
+   }
  }
 
  main {
@@ -639,6 +642,7 @@ Product Carousel
 
   .modal[style] {
     max-height: 85%;
+    min-height: 50%;
     top: 8% !important;
     width: 60%;
   }
@@ -839,7 +843,7 @@ i.vote {
   }
 }
 
-#ReviewForm {
+.review-form {
   &.modal {
     @media screen and(max-width: $small) {
       max-height: 80%;
