@@ -21,7 +21,7 @@ import BaseClass from '../system/BaseClass';
     const fullSrc = event.target.dataset.fullSrc;
     const smallSrc = event.target.dataset.smallSrc;
     const alt = event.target.getAttribute('alt');
-    const div = this.rootElement.querySelector('.modal-image');
+    const div = document.querySelector('.modal-image');
     div.innerHTML = `<img src="${smallSrc} alt="${alt} class="responsive-img preview" />`;
     const fullImage = new Image();
     fullImage.src = fullSrc;
@@ -61,7 +61,7 @@ import BaseClass from '../system/BaseClass';
     this.MCarousel = M.Carousel.init(carousel_container, carousel_options);
     this.setTriggers(this.MCarousel);
     if(window.innerWidth > 601) {
-      const modal_container = this.rootElement.querySelector('#ProductImageModal');
+      const modal_container = document.querySelector('#ProductImageModal');
       const modal_options = {
         onOpenStart: this.modalOnOpenStart
       }
