@@ -15,6 +15,30 @@
         "id": "SuavecitoLogo",
         "label": "Suavecito Logo",
         "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "SuavecitaLogo",
+        "label": "Suavecita Logo",
+        "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "PremiumBlendsLogo",
+        "label": "Premium Blends Logo",
+        "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "FirmeClubLogo",
+        "label": "Firme Club Logo",
+        "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "SpeedShopLogo",
+        "label": "Speed Shop Logo",
+        "info": "png or svg"
       }
     ]
   },

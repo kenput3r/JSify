@@ -1,0 +1,17 @@
+{% if template.suffix == 'suavecita' or product.vendor == 'Suavecita' %}
+  {% assign setting_id = 'SuavecitaLogo' %}
+{% elsif template.suffix == 'premiumblends' or product.vendor == 'Premium Blends' %}
+  {% assign setting_id = 'PremiumBlendsLogo' %}
+{% elsif template.suffix == 'firmeclub' or product.vendor == 'Firme Club' %}
+  {% assign setting_id = 'FirmeClubLogo' %}
+{% elsif template.suffix == 'suavecitospeed' or product.vendor == 'Suavecito Speed' %}
+  {% assign setting_id = 'SpeedShopLogo' %}
+{% else %}
+  {% assign setting_id = 'SuavecitoLogo' %}
+{% endif %}
+
+{% if settings[setting_id] %}
+  {{ settings[setting_id].src | img_tag: settings[setting_id].alt, 'logo', 'medium' }}
+{% else %}
+  {{ settings['SuavecitoLogo'].src | img_tag: 'Suavecito Script Logo', 'logo', 'medium' }}
+{% endif %}

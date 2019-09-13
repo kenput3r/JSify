@@ -34,6 +34,7 @@ Colors
 $s_red: #822808;
 $s_yellow: #fab203;
 $s_red_compliment: #087c82;
+$s_pink: #f58577;
 $m_teal: #26a69a;
 $black: #000;
 $blue: #0000ff;
@@ -521,6 +522,15 @@ Mobile Header
     max-height: 64px;
   }
 }
+//vendor overrides
+body.premiumblends, body.firmeclub, body.suavecitospeed {
+  #MobileHeader {
+    img {
+      filter: invert(1);
+    }
+  }
+}
+
 /**************************************************
 Mobile Menu
 **************************************************/
@@ -856,25 +866,43 @@ i.vote {
 }
 
 /**************************************************
-Swiper
+Suavecita Overrides
 **************************************************/
-.swiper-button-next, .swiper-button-prev {
-  @media screen and(max-width: $small) {
-    display: none;
+body.suavecita {
+  .background-s-red {
+    background-color: $s_pink !important;
+    &:hover {
+      background-color: lighten($s_pink, 10%) !important;
+    }
+  }
+
+  .color-s-red {
+    color: $s_pink !important;
+    &:hover {
+      color: lighten($s_pink, 10%) !important;
+    }
   }
 }
+/**************************************************
+Swiper
+**************************************************/
+// .swiper-button-next, .swiper-button-prev {
+//   @media screen and(max-width: $small) {
+//     display: none;
+//   }
+// }
 
-.swiper-button-next {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23822808'%2F%3E%3C%2Fsvg%3E") !important;
-}
+// .swiper-button-next {
+//   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23822808'%2F%3E%3C%2Fsvg%3E") !important;
+// }
 
-.swiper-button-prev {
-  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23822808'%2F><%2Fsvg>") !important;
-}
+// .swiper-button-prev {
+//   background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23822808'%2F><%2Fsvg>") !important;
+// }
 
-.swiper-image {
-  max-width: 100%;
-}
+// .swiper-image {
+//   max-width: 100%;
+// }
 
 /**************************************************
 DesktopNav
