@@ -15,6 +15,7 @@
 
 {% paginate collection.products by 24 %}
   <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
+    {% section 'CollectionTemplateCarouselSuavecita' %}
     {% include 'CollectionHeader' %}
 
     {% include 'FiltersColumn' %}

@@ -1,0 +1,98 @@
+{% if section.blocks.size > 0 %}
+<div id="CollectionTemplateCarousel" class="carousel carousel-slider" data-s-module="CollectionTemplateCarousel">
+  <div class="carousel-fixed-item color-s-red">
+    <span class="left-trigger"><i class="large material-icons">chevron_left</i></span>
+    <span class="right-trigger"><i class="large material-icons">chevron_right</i></span>
+  </div>
+  {% for block in section.blocks %}
+    <div class="carousel-item">
+      <div class="alignment-container">
+        <img alt="{{block.settings.AltText}}" 
+        class="responsive-img {{block.settings.Valignment}}"
+        srcset="{{block.settings.SlideImage | img_url: '320x'}} 320w,
+                {{block.settings.SlideImage | img_url: '480x'}} 480w,
+                {{block.settings.SlideImage | img_url: '800x'}} 800w,
+                {{block.settings.SlideImage | img_url: '1024x'}} 1024w,
+                {{block.settings.SlideImage | img_url: '1920x'}} 1920w,
+                {{block.settings.SlideImage | img_url: '2048x'}} 2048w"
+        sizes="(max-width: 320px),
+                (max-width: 480px),
+                (max-width: 800px),
+                (max-width: 1024px),
+                (max-width: 1920px),
+                (max-width: 2048px)"
+        src="{{block.settings.SlideImage | img_url: '2048x'}}"  />
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Carousel",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "id": "SlideImage",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "Valignment",
+          "type": "select",
+          "label": "Vertical Alignment",
+          "options": [
+            { "value": "top", "label": "Top" },
+            { "value": "middle", "label": "Middle" },
+            { "value": "bottom", "label": "Bottom" }
+          ]
+        },
+        {
+          "id": "Halignment",
+          "type": "select",
+          "label": "Horizontal Alignment",
+          "options": [
+            { "value": "left", "label": "left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        },
+        {
+          "id": "AltText",
+          "type": "text",
+          "label": "Image Alt Text"
+        },
+        {
+          "id": "TextOverlay",
+          "type": "text",
+          "label": "Text Overlay"
+        },
+        {
+          "id": "TextValignment",
+          "type": "select",
+          "label": "Text Vertical Alignment",
+          "options": [
+            { "value": "top", "label": "Top" },
+            { "value": "middle", "label": "Middle" },
+            { "value": "bottom", "label": "Bottom" }
+          ]
+        },
+        {
+          "id": "TextHalignment",
+          "type": "select",
+          "label": " Text Horizontal Alignment",
+          "options": [
+            { "value": "left", "label": "left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
