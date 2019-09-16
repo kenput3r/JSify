@@ -360,11 +360,13 @@ Collection Template Carousel
   }
   .heading-wrapper {
     color: #fff;
-    padding: 0 10px 10px 10px;
     position: absolute;
     text-shadow: 0 0 2px #000;
     width: 100%;
     z-index: 1;
+    @media screen and(max-width: $small) {
+      padding: 0 10px 10px 10px;
+    }
     &.top {
       top: 0;
       left: 0;
