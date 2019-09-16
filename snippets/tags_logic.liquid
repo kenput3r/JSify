@@ -67,7 +67,7 @@
   <ul>
     {% for tag in grooming_tags %}
       {% if current_tags contains tag %}
-        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        {% assign html = '<i class="material-icons color-s-red">backspace</i> ' | append: tag %}
         <li class="active">{{ html | link_to_remove_tag: tag }}</li>
       {% else %}
         <li>{{ tag | link_to_add_tag: tag }}</li>
@@ -81,7 +81,7 @@
   <ul>
     {% for tag in apparel_tags %}
       {% if current_tags contains tag %}
-        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        {% assign html = '<i class="material-icons color-s-red">backspace</i> ' | append: tag %}
         <li class="active">{{ html | link_to_remove_tag: tag }}</li>
       {% else %}
         <li>{{ tag | link_to_add_tag: tag }}</li>
@@ -95,7 +95,7 @@
   <ul>
     {% for tag in apparel_age_and_gender_tags %}
       {% if current_tags contains tag %}
-        {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
+        {% assign html = '<i class="material-icons color-s-red">backspace</i> ' | append: tag %}
         <li class="active">{{ html | link_to_remove_tag: tag }}</li>
       {% else %}
         <li>{{ tag | link_to_add_tag: tag }}</li>

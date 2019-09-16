@@ -263,7 +263,6 @@ Collection Header
     display: inline-block;
     a {
       align-items: center;
-      background-color: $s_red;
       border-radius: 4px;
       color: #fff;
       display: -webkit-box;
@@ -985,6 +984,17 @@ body.suavecita {
     color: $s_pink !important;
     &:hover {
       color: lighten($s_pink, 10%) !important;
+    }
+  }
+
+  #CollectionHeader {
+    .select-wrapper {
+      .caret {
+        fill: $s_pink;
+      }
+    }
+    .select-dropdown {
+      color: $s_pink;
     }
   }
 }

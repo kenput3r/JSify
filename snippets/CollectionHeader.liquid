@@ -37,7 +37,7 @@
     {% for tag in current_tags %}
     {% assign html = '<i class="material-icons">backspace</i> ' | append: tag %}
       <span class="active-tag valign-wrapper">
-        {{ html | link_to_remove_tag: tag | replace: '<a', '<a class="btn waves-effect waves-light"'}}
+        {{ html | link_to_remove_tag: tag | replace: '<a', '<a class="btn waves-effect waves-light background-s-red"'}}
       </span>
     {% endfor %}
   </div>
