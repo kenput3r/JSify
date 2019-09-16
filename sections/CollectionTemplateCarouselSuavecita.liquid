@@ -7,6 +7,16 @@
   {% for block in section.blocks %}
     <div class="carousel-item">
       <div class="alignment-container">
+        {% if block.settings.TextOverlay %}
+          <div class="heading-wrapper {{block.settings.TextValignment}} {{block.settings.TextHalignment}}">
+            <h2 class="{{block.settings.TextValignment}} {{block.settings.TextHalignment}}">{{block.settings.TextOverlay}}</h2>
+            {% if block.settings.HREF %}
+            <a class="btn waves-effect waves-light background-s-red" href="{{block.settings.HREF}}">
+              {% if block.settings.ButtonText != empty %}{{block.settings.ButtonText}}{% else %}LEARN MORE{% endif %}
+            </a>
+            {% endif %}
+          </div>
+        {% endif %}
         <img alt="{{block.settings.AltText}}" 
         class="responsive-img {{block.settings.Valignment}}"
         srcset="{{block.settings.SlideImage | img_url: '320x'}} 320w,
@@ -52,16 +62,6 @@
           ]
         },
         {
-          "id": "Halignment",
-          "type": "select",
-          "label": "Horizontal Alignment",
-          "options": [
-            { "value": "left", "label": "left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
-        },
-        {
           "id": "AltText",
           "type": "text",
           "label": "Image Alt Text"
@@ -86,10 +86,21 @@
           "type": "select",
           "label": " Text Horizontal Alignment",
           "options": [
-            { "value": "left", "label": "left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
+            { "value": "left-align", "label": "Left" },
+            { "value": "center-align", "label": "Center" },
+            { "value": "right-align", "label": "Right" }
           ]
+        },
+        {
+          "id": "HREF",
+          "type": "url",
+          "label": "Link"
+        },
+        {
+          "id": "ButtonText",
+          "type": "text",
+          "label": "Button Text",
+          "info": "if left empty, will default to LEARN MORE"
         }
       ]
     }
