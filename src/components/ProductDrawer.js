@@ -44,17 +44,18 @@ export default class ProductDrawer extends BaseClass {
     //Used as popstate callback to close the Drawer
     //ToDo: stop browser from reloading, or abandon function and event listener
     const close = (event)=> {
-      this.Instance.close();
-      window.onbeforeunload = ()=> {
-        alert('the page is reloading');
-      }
+      // window.onbeforeunload = ()=> {
+      //   this.Instance.close();
+      //   window.stop();
+      //   window.stopPropagation();
+      // }
     }
     await new Promise((resolve, reject)=> {
       insertDrawerContent(this.rootElement, product_url, {resolve: resolve, reject: reject});
     });
     history.pushState(this.state, page_title, product_url.replace('?view=stripped', ''));
     document.getElementById('canonical').href = product_url.replace('?view=stripped', '');
-    //window.addEventListener('popstate', close);
+    window.addEventListener('popstate', close);
     const swiper_options = {
       loop: true,
       navigation: {

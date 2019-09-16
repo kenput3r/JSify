@@ -32,6 +32,9 @@
       </div>
       {% if paginate.pages > 1 %}
         <div class="col s12 center-align">
+          <div class="loading-more-products hide">
+              {% include 'preloader' %}
+          </div>
           <button class="waves-effect waves-light btn background-s-red" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2">LOAD MORE</button>
         </div>
       {% endif %}
