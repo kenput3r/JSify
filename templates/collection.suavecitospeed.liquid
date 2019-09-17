@@ -16,7 +16,7 @@
 {% paginate collection.products by 24 %}
   <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
     {% unless paginate.current_page > 1 or current_tags.size > 0 %}
-    {% section 'CollectionTemplateCarouselSuavecita' %}
+    {% section 'CollectionTemplateCarouselSuavecitoSpeed' %}
     {% endunless%}
     {% include 'CollectionHeader' %}
 
