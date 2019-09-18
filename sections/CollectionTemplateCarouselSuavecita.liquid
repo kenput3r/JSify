@@ -5,7 +5,7 @@
     <span class="right-trigger"><i class="large material-icons">chevron_right</i></span>
   </div>
   {% for block in section.blocks %}
-    <div class="carousel-item">
+    <div id="{{block.id}}" class="carousel-item" data-collection-carousel="true" data-index="{{forloop.index | minus: 1}}" {{block.shopify_attributes}}>
       <div class="alignment-container">
         {% if block.settings.TextOverlay %}
           <div class="heading-wrapper {{block.settings.TextValignment}} {{block.settings.TextHalignment}}">
