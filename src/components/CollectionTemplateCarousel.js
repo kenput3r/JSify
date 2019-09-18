@@ -18,22 +18,18 @@ export default class CollectionTemplateCarousel extends BaseClass {
     const left_trigger = container.querySelector('.left-trigger');
     const right_trigger = container.querySelector('.right-trigger');
     left_trigger.addEventListener('click', () => this.Carousel.prev());
-    right_trigger.addEventListener('click', () => {
-      this.Carousel.next()
-      console.log('clicked right trigger');
-    });
+    right_trigger.addEventListener('click', () => this.Carousel.next());
   }
 
   init() {
     this.initializeCarousel();
     window.addEventListener('shopify:block:select', (event) => {
-      if(event.target.dataset.collectionCarousel) {
+      if(event.detail.sectionId.includes('CollectionTemplateCarousel')) {
         const index = new Number(event.target.dataset.index);
         this.Carousel.set(index);
       }
     });
     window.addEventListener('shopify:section:unload', (event) => {
-      console.log(event);
       if(event.detail.sectionId.includes('CollectionTemplateCarousel')) {
         this.Carousel.destroy();
         this.Carousel = null;
