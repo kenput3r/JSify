@@ -591,9 +591,6 @@ h1, h2, h3, h4, h5, h6 {
    @media screen and(max-width: 992px) {
      margin-bottom: 30px;
    }
-   @media screen and(min-width: $large) {
-     margin-top: 64px;
-   }
  }
 
  .page-footer {
@@ -1026,8 +1023,30 @@ Swiper
 /**************************************************
 DesktopNav
 **************************************************/
+#HeaderExtras {
+  .row {
+    margin-bottom: 0;
+  }
+  nav {
+    box-shadow: none;
+    color: $s_red;
+    background-color: transparent;
+    float: right;
+    height: auto;
+    line-height: 1.5;
+    width: auto;
+    a {
+      color: $s_red;
+      font-weight: bold;
+      text-transform: uppercase;
+      &:hover {
+        background-color: transparent;
+        color: lighten($s_red, 10%);
+      }
+    }
+  }
+}
 .nav-fixed-wrapper {
-  position: fixed;
   top: 0;
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;

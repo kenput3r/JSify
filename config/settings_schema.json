@@ -8,6 +8,23 @@
     "theme_support_url": "https://github.com/kenput3r/JSify"
   },
   {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "SpecialMessage",
+        "label": "Special Message",
+        "info": "Used for messages like 'Free shipping over 25'"
+      },
+      {
+        "type": "link_list",
+        "id": "SpecialNav",
+        "label": "Special Navigation Items",
+        "info": "Used for Brand tabs"
+      }
+    ]
+  },
+  {
     "name": "Logos",
     "settings": [
       {
