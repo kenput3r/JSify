@@ -17,7 +17,7 @@
 </head>
 <body class="template-{{template.name}} {{ template.suffix }} {{ product.vendor | downcase | strip }}">
   <header role="header">
-    {% include 'header_extras' %}
+    {%comment%}{% include 'header_extras' %}{%endcomment%}
     {% include 'DesktopNav' %}
     {% include 'MobileHeader' %}
   </header>

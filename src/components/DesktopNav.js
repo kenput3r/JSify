@@ -9,9 +9,6 @@ export default class DesktopNav extends BaseClass {
     super(rootElement, args);
     this.active_trigger;
     this.search_hold_focus;
-    this.offset_top = this.rootElement.offsetTop;
-    this.bottom_pos = this.rootElement.offsetTop + this.rootElement.offsetHeight;
-    this.height = this.rootElement.offsetHeight;
     this.init();
   }
 
@@ -75,15 +72,11 @@ export default class DesktopNav extends BaseClass {
   fixNav() {
     window.addEventListener('scroll', () => {
       const is_scrolling_up = this.isScrollingUp();
+      const el_height = this.rootElement.parentElement.offsetHeight;
       if(is_scrolling_up) {
-        //Bring the nav back into view
-        this.rootElement.parentElement.style = 'position: fixed; top: 0; transform: translateY(0);';
-        //Reset position to static when back at top of page
-        if(window.pageYOffset <= this.offset_top) {
-          this.rootElement.parentElement.style = `position: fixed; top: ${this.offset_top}px`;
-        }
-      }else if(!is_scrolling_up && this.rootElement.parentElement.style.position === 'fixed') {
-        this.rootElement.parentElement.style = `position: fixed; top: 0; transform: translateY(-${this.height}px);`;
+        this.rootElement.parentElement.style = 'transform: translateY(0);';
+      }else if(!is_scrolling_up && window.pageYOffset >= el_height) {
+        this.rootElement.parentElement.style = `transform: translateY(-${el_height}px);`;
       }
     });
   }
