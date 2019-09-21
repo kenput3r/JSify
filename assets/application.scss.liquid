@@ -1,3 +1,8 @@
+//ToDo remove this temp style
+div#smile-ui-container {
+  display: none;
+}
+
 @mixin color_drop($color) {
   &:hover {
     a {
@@ -588,6 +593,7 @@ h1, h2, h3, h4, h5, h6 {
  main {
    flex: 1 0 auto;
    padding-top: 15px;
+   position: relative;
    @media screen and(max-width: 992px) {
      margin-bottom: 30px;
    }
@@ -1035,12 +1041,11 @@ DesktopNav
     box-shadow: none;
     color: $s_red;
     background-color: transparent;
-    float: right;
     height: auto;
     line-height: 1.5;
+    right: 0;
     width: auto;
     a {
-      color: $s_red;
       font-weight: bold;
       text-transform: uppercase;
       &:hover {
