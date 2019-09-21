@@ -17,13 +17,13 @@ export default class LoginForm extends BaseClass {
     this.rootElement.addEventListener('click', (event) => {
       if(event.target.dataset.form === 'customer_login') {
         event.preventDefault();
-        this.rootElement.querySelector('#customer_login').classList.add('hide');
-        this.rootElement.querySelector('#RecoverPassword').classList.remove('hide');
+        this.rootElement.querySelector('.customer-login').classList.add('hide');
+        this.rootElement.querySelector('.recover-password').classList.remove('hide');
         this.rootElement.querySelector('.form-title').innerHTML = 'Recover Password'
       }else if(event.target.dataset.form === 'recover_password') {
         event.preventDefault();
-        this.rootElement.querySelector('#customer_login').classList.remove('hide');
-        this.rootElement.querySelector('#RecoverPassword').classList.add('hide');
+        this.rootElement.querySelector('.customer-login').classList.remove('hide');
+        this.rootElement.querySelector('.recover-password').classList.add('hide');
         this.rootElement.querySelector('.form-title').innerHTML = 'Sign In'
       }
     });

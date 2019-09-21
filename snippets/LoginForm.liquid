@@ -1,6 +1,6 @@
 <div class="login-form" data-s-module="LoginForm">
   <h4 class="form-title">Sign In</h4>
-  <form method="post" action="/account/login" accept-charset="UTF-8">
+  <form class="customer-login" method="post" action="/account/login" accept-charset="UTF-8">
   <input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
 
   {{ form.errors | default_errors }}
@@ -15,7 +15,7 @@
   <button class="btn-flat waves-effect waves-light" data-form="customer_login">Forgot your password?</button>
   </form>
 
-  <div id="RecoverPassword" class="hide">
+  <div id="RecoverPassword" class="hide recover-password">
     {% form 'recover_customer_password' %}
 
     {{ form.errors | default_errors }}
