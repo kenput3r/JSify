@@ -24,17 +24,6 @@ export default class ProductForm extends BaseClass {
       if(this.state.image !== 'no-image') {
         this.ProductTile.querySelector('.product-image').src = this.state.image;
       }
-    }else if(this.Swiper) {
-      const el = document.getElementById(this.Swiper.$el[0].id);
-      const images = Array.from(el.getElementsByClassName('swiper-image'));
-      for(let i = 0; i < images.length; i++) {
-        let image = images[i];
-        if(image.dataset.src === this.state.image) {
-          let index = parseInt(image.dataset.index);
-          this.Swiper.slideTo(index);
-          break;
-        }
-      }
     }else if(this.Carousel) {
       const images = Array.from(this.Carousel.querySelectorAll('.carousel-image'));
       for(let i = 0; i < images.length; i++) {
@@ -81,6 +70,7 @@ export default class ProductForm extends BaseClass {
       }
     }
     this.rootElement.querySelector('.product-price').innerHTML = this.state.price;
+    this.rootElement.querySelector('.compare-price').innerHTML = this.state.comparePrice;
     this.changeImage();
   }
   /**

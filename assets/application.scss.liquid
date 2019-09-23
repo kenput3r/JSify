@@ -837,6 +837,12 @@ select.product-option {
   font-weight: bold;
 }
 
+.product-form {
+  .product-star-rating {
+    margin-right: 0;
+  }
+}
+
 /**************************************************
 Product Tile
 **************************************************/
@@ -850,9 +856,6 @@ Product Tile
   }
   .product-form {
     @media screen and(max-width: 1645px) {
-      .product-price, .star-rating-container {
-        width: 100% !important;
-      }
       .product-star-rating {
         margin: 0 !important;
       }
@@ -860,6 +863,17 @@ Product Tile
     @media screen and(min-width: $medium) {
       min-height: 169px;
     }
+  }
+}
+.compare-price {
+  font-size: 1.5em;
+  font-weight: bold;
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+.star-rating-container {
+  .margins-auto {
+    margin-left: 0;
   }
 }
 /**************************************************
