@@ -60,7 +60,7 @@ function insertDrawerPlaceholder(Drawer) {
   </div>
 </div>`;
 
-Drawer.innerHTML = content;
+Drawer.querySelector('.content').innerHTML = content;
 Drawer.getElementsByClassName('close-drawer')[0].onclick = ()=>M.Sidenav.getInstance(Drawer).close();
 }
 

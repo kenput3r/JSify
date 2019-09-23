@@ -1,0 +1,16 @@
+<div id="MobileSearch" class="modal bottom-sheet" data-s-module="MobileSearch">
+  <div class="modal-content">
+    <form class="search mobile-search" action="/search">
+      <h4>
+        <button class="btn-flat color-s-red"><i class="material-icons" style="font-size:24px;">search</i></button> 
+        <a href="#!?" class="modal-close color-s-red" style="float:right;">
+          <i class="material-icons">close</i>
+        </a>
+      </h4>
+      <input type="hidden" name="type" value="product" />
+      <input type="text" placeholder="Search" name="q" data-uid="mobile-autocomplete" value="{{ search.terms | escape }}"  />
+      <input class="hide" type="submit" value="Search" />
+    </form>
+    <div class="search-container"></div>
+  </div>
+</div>

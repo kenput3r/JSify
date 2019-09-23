@@ -13,7 +13,7 @@ export default class FiltersColumn extends BaseClass {
     this.last_scroll_top = window.pageYOffset;
     this.sibling = document.querySelector('[data-column-sibling]');
     this.scroll_change = false;
-    this.desktop_nav_height = document.querySelector('#DesktopNav') ? document.querySelector('#DesktopNav').offsetHeight : 0;
+    this.desktop_nav_height = document.querySelector('header .navbar-fixed') ? document.querySelector('header .navbar-fixed').offsetHeight : 0;
     this.column_width = this.rootElement.querySelector('.inner-wrapper').offsetWidth;
     this.init();
   }

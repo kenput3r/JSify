@@ -10,6 +10,11 @@ export default class FiltersDrawer extends BaseClass {
   }
 
   init() {
-    const Drawer = M.Sidenav.init(this.rootElement);
+    const options = {
+      edge: 'left',
+      draggable: 'false',
+      preventScrolling: 'true'
+    }
+    const Drawer = M.Sidenav.init(this.rootElement, options);
   }
 }

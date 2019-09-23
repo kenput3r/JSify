@@ -1,0 +1,24 @@
+{% if settings.SpecialMessage != empty or settings.SpecialNav != empty %}
+  <div id="HeaderExtras" class="hide-on-med-and-down">
+    <div class="row">
+      <div class="col s6">
+        {% if settings.SpecialMessage != empty %}
+          {{ settings.SpecialMessage }}
+        {% endif %}
+      </div>
+      <div class="col s6">
+        {% if settings.SpecialNav != empty %}
+          <nav role="navigation" ari-label="Brand Navigation">
+            <ul>
+              {% for link in linklists[settings.SpecialNav].links %}
+                <li>
+                  <a href="{{link.url}}" class="color-s-red">{{link.title}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}

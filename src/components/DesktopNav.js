@@ -72,12 +72,13 @@ export default class DesktopNav extends BaseClass {
   fixNav() {
     window.addEventListener('scroll', () => {
       const is_scrolling_up = this.isScrollingUp();
+      const el_height = this.rootElement.parentElement.offsetHeight;
       if(is_scrolling_up) {
-        this.rootElement.parentElement.classList.add('navbar-fixed');
-      }else if(!is_scrolling_up && this.rootElement.parentElement.classList.contains('navbar-fixed')) {
-        this.rootElement.parentElement.classList.remove('navbar-fixed')
+        this.rootElement.parentElement.style = 'transform: translateY(0);';
+      }else if(!is_scrolling_up && window.pageYOffset >= el_height) {
+        this.rootElement.parentElement.style = `transform: translateY(-${el_height}px);`;
       }
-    })
+    });
   }
 
   init() {

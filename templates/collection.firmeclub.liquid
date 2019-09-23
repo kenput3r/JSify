@@ -1,0 +1,44 @@
+{% include 'tags_logic' %}
+{% assign url_with_tags = shop.domain | append: collection.url %}
+
+{% if current_tags.size > 0 %}
+  {% assign tags_url = '/' %}
+  {% for tag in current_tags %}
+    {% if forloop.last %}
+      {% assign tags_url = tags_url | append: tag %}
+    {% else %}
+      {% assign tags_url = tags_url | append: tag | append: '+' %}
+    {% endif %}
+  {% endfor %}
+  {% assign url_with_tags = url_with_tags | append: tags_url %}
+{% endif %}
+
+{% paginate collection.products by 24 %}
+  <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
+    {% unless paginate.current_page > 1 or current_tags.size > 0 %}
+    {% section 'CollectionTemplateCarouselFirmeClub' %}
+    {% endunless%}
+    {% include 'CollectionHeader' %}
+
+    {% include 'FiltersColumn' %}
+
+    <div id="Products" class="col m12 l9 transition-width" data-column-sibling="FiltersColumn">
+      <div class="tile-container row">
+        {% for product in collection.products %}
+          {% include 'ProductTile' %}
+        {% else %}
+          <p>no matches</p>
+        {% endfor %}
+      </div>
+      {% if paginate.pages > 1 %}
+        <div class="col s12 center-align">
+          <div class="loading-more-products hide">
+              {% include 'preloader' %}
+          </div>
+          <button class="waves-effect waves-light btn background-s-red" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2">LOAD MORE</button>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endpaginate %}
+{% include 'FiltersDrawer' %}

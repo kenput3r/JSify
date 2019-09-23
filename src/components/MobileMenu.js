@@ -36,7 +36,9 @@ export default class MobileMenu extends BaseClass {
     const collapsibles = this.rootElement.querySelectorAll('.collapsible');
     const collapsible_instances = M.Collapsible.init(collapsibles, collapsible_options);
     const menu_options = {
-      edge: 'right'
+      edge: 'right',
+      draggable: 'false',
+      preventScrolling: 'true'
     }
     const menu = M.Sidenav.init(this.rootElement, menu_options);
   }

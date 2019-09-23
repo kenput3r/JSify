@@ -5,13 +5,14 @@ import ProductForm from '../components/ProductForm';
 import ProductReviews from '../components/ProductReviews';
 import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
+import ProductCarousel from './ProductCarousel';
 
 /**
  * @class ProductDrawer - Instance of Materialize Sidenav, modified
  * to contain an asynchronously fetched product page. Also initializes
- * and instance of Swiper.
+ * and instance of Carousel.
  * @see {@link https://materializecss.com/sidenav.html}
- * @see {@link https://idangero.us/swiper/}
+ * @see {@link https://materializecss.com/carousel.html}
  */
 export default class ProductDrawer extends BaseClass {
   constructor(rootElement, args) {
@@ -21,7 +22,7 @@ export default class ProductDrawer extends BaseClass {
       page_title: document.title
     };
     this.Instance = {};//Used for storing reference to the Materialize Sidenav instance
-    this.Swiper = {};//Used for storing reference to the Swiper instance
+    this.Carousel = {};//Used for storing reference to the Carousel instance
     this.ProductForm = {};//Used for storing reference to the ProductForm instance
     this.ReviewModal = {};//Used for storing reference to the ReviewModal instance
     this.name = 'ProductDrawer';
@@ -34,22 +35,27 @@ export default class ProductDrawer extends BaseClass {
    */
   async onOpenStart() {
     const product_id = event.target.dataset.id;
-    const product_url = event.target.dataset.url;
+    let product_url = event.target.dataset.url;
+    if(product_url.includes('?pr_prod')) {
+      product_url = product_url.slice(0, product_url.indexOf('?'));
+      product_url = product_url + '?view=stripped';
+    }
     const page_title = event.target.dataset.pageTitle;
     //Used as popstate callback to close the Drawer
     //ToDo: stop browser from reloading, or abandon function and event listener
     const close = (event)=> {
-      this.Instance.close();
-      window.onbeforeunload = ()=> {
-        alert('the page is reloading');
-      }
+      // window.onbeforeunload = ()=> {
+      //   this.Instance.close();
+      //   window.stop();
+      //   window.stopPropagation();
+      // }
     }
     await new Promise((resolve, reject)=> {
       insertDrawerContent(this.rootElement, product_url, {resolve: resolve, reject: reject});
     });
     history.pushState(this.state, page_title, product_url.replace('?view=stripped', ''));
     document.getElementById('canonical').href = product_url.replace('?view=stripped', '');
-    //window.addEventListener('popstate', close);
+    window.addEventListener('popstate', close);
     const swiper_options = {
       loop: true,
       navigation: {
@@ -61,13 +67,16 @@ export default class ProductDrawer extends BaseClass {
         dynamicBullets: true
       },
     }
-    this.Swiper = new Swiper('#ProductSwiper', swiper_options);
-    const form = document.getElementById('ProductDrawer').getElementsByClassName('product-form')[0];
-    this.ProductForm = new ProductForm(form, {Swiper: this.Swiper});
+    // this.Swiper = new Swiper('#ProductSwiper', swiper_options);
+    const carousel_container = this.rootElement.querySelector('.product-carousel');
+    this.Carousel = new ProductCarousel(carousel_container);
+    const form = this.rootElement.getElementsByClassName('product-form')[0];
+    this.ProductForm = new ProductForm(form, {Carousel: this.Carousel});
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
-    this.ReviewModal = new ProductReviewForm(document.getElementById('ReviewForm'));
-    const snpt_container = document.querySelector('.snpt-wdgt--ppg');
+    const review_form_container = this.rootElement.querySelector('.review-form');
+    this.ReviewModal = new ProductReviewForm(review_form_container, {parent: this.rootElement});
+    const snpt_container = this.rootElement.querySelector('.snpt-wdgt--ppg');
     const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
     snpt_container.appendChild(snpt_script);
   }
@@ -84,11 +93,11 @@ export default class ProductDrawer extends BaseClass {
 
   /**
    * @method onCloseEnd - Replace drawer contents with placeholder,
-   * destroy the Swiper, and destroy the ProductForm
+   * destroy the Carousel, and destroy the ProductForm
    */
   onCloseEnd() {
     insertDrawerPlaceholder(this.rootElement);
-    this.Swiper.destroy();
+    this.Carousel.MCarousel.destroy();
     this.ProductForm.destroy();
   }
 

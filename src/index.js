@@ -3,29 +3,39 @@ import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
 import ProductSwiper from './components/ProductSwiper';
+import ProductForm from './components/ProductForm';
+import ProductCarousel from './components/ProductCarousel';
 import ProductTile from './components/ProductTile';
+import ProductReviews from './components/ProductReviews';
+import ProductReviewForm from './components/ProductReviewForm';
 import CollectionHeader from './components/CollectionHeader';
+import CollectionTemplateCarousel from './components/CollectionTemplateCarousel';
 import FiltersDrawer from './components/FiltersDrawer';
-import FiltersColumnToggle from './components/FiltersColumnToggle';
 import FiltersColumn from './components/FiltersColumn';
 import LoginForm from './components/LoginForm';
 import DesktopNav from './components/DesktopNav';
 import MobileNav from './components/MobileNav';
 import MobileMenu from './components/MobileMenu';
+import MobileSearch from './components/MobileSearch'
 
 const classes = {
     LoadCollectionPageXbutton,
     ProductDrawer,
     ProductSwiper,
+    ProductForm,
+    ProductCarousel,
     ProductTile,
+    ProductReviews,
+    ProductReviewForm,
     CollectionHeader,
+    CollectionTemplateCarousel,
     FiltersDrawer,
-    FiltersColumnToggle,
     FiltersColumn,
     LoginForm,
     DesktopNav,
     MobileMenu,
-    MobileNav
+    MobileNav,
+    MobileSearch
 };
 
 const system = new System(classes);

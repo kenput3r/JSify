@@ -10,7 +10,7 @@ async function insertDrawerContent(Drawer, url, promise) {
     getProduct(url, {resolve: resolve, reject: reject});
   });
 
-  Drawer.innerHTML = content;
+  Drawer.querySelector('.content').innerHTML = content;
   Drawer.getElementsByClassName('close-drawer')[0].onclick = ()=>M.Sidenav.getInstance(Drawer).close();
 
   return promise.resolve();
