@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card general-info">
+      <div class="card-content general-inquiries">
+        <span class="card-title">General Inquiries</span>
+        <p class="flex-middle"><i class="material-icons">phone</i>{{section.settings.general_phone}}</p>
+        <p class="flex-middle"><i class="material-icons">email</i><a href="mailto:{{section.settings.general_email}}">{{section.settings.general_email}}</a></p>
+        <br>
+        <p class="flex-middle"><i class="material-icons">today</i>{{section.settings.general_hours}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12">
+    <div class="card hq-store">
+      <div class="card-content">
+        <span class="card-title">HQ Store</span>
+        <p class="flex-middle"><i class="material-icons">phone</i>{{section.settings.store_phone}}</p>
+        <br>
+        <p class="flex-middle"><i class="material-icons">my_location</i>{{section.settings.street_address}}, {{section.settings.city}}, {{section.settings.state}} {{section.settings.zip}}</p>
+        <br>
+        <p class="flex-middle"><i class="material-icons">today</i>{{section.settings.store_hours}}</p>
+        <div>
+          {{section.settings.map_embed}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Address",
+  "settings": [
+    {
+      "id": "general_email",
+      "type": "text",
+      "label": "General Email Address",
+      "info": "Defaults to info@suavecito.com",
+      "default": "info@suavecito.com"
+    },
+    {
+      "id": "general_phone",
+      "type": "text",
+      "label": "General Phone Number",
+      "info": "Defaults to 714.388.6920",
+      "default": "714.388.6920"
+    },
+    {
+      "id": "general_hours",
+      "type": "text",
+      "label": "General Hours",
+      "info": "Defaults to Monday - Friday: 8am - 5pm, Saturday - Sunday: Closed",
+      "default": "Monday - Friday: 8am - 5pm <br>Saturday - Sunday: Closed"
+    },
+    {
+      "id": "street_address",
+      "type": "text",
+      "label": "Street Address",
+      "info": "Defaults to 2831 W 1st St",
+      "default": "2831 W 1st St"
+    },
+    {
+      "id": "city",
+      "type": "text",
+      "label": "City",
+      "info": "Defaults to Santa Ana",
+      "default": "Santa Ana"
+    },
+    {
+      "id": "state",
+      "type": "text",
+      "label": "State",
+      "info": "Defaults to CA",
+      "default": "CA"
+    },
+    {
+      "id": "zip",
+      "type": "text",
+      "label": "Zip Code",
+      "info": "Defaults to 92703",
+      "default": "92703"
+    },
+    {
+      "id": "store_phone",
+      "type": "text",
+      "label": "HQ Store Phone Number",
+      "info": "Defaults to 714.831.1419",
+      "default": "714.831.1419"
+    },
+    {
+      "id": "store_hours",
+      "type": "text",
+      "label": "Store Hours",
+      "info": "Defaults to Monday - Friday: 8am - 7pm, Saturday: 9am - 5pm, Sunday: Closed",
+      "default": "Monday - Friday: 8am - 7pm <br>Saturday: 9am - 5pm <br>Sunday: Closed"
+    },
+    {
+      "id": "map_embed",
+      "type": "textarea",
+      "label": "Map embed code",
+      "info": "Defaults to Suavecito Pomade. * https://developers.google.com/maps/documentation/embed/start",
+      "default": "<iframe width='600' height='450' frameborder='0' style='border:0; max-width:100%' src='https://www.google.com/maps/embed/v1/place?q=place_id:ChIJNSATPWTY3IARtfjh4gCTKes&key=AIzaSyBuXfsU01ICm35mcWnLqdry0j4DjCBAXQY' allowfullscreen></iframe>"
+    }
+  ]
+}
+{% endschema %}
