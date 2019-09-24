@@ -1,5 +1,6 @@
 import BaseClass from '../system/BaseClass';
 import getCollectionPageX from '../utils/getCollectionPage';
+import ProductTile from './ProductTile';
 
 /**
  * @class LoadCollectionPageXbutton - Fetches a collection page
@@ -32,8 +33,8 @@ export default class LoadCollectionPageXbutton extends BaseClass {
         next_page = parseInt(this.collection.currentPage) + 1;
       }
     }
-
-    let collection_url = 'https://'+this.collection.url+'?view=products&page='+next_page;
+    const template = this.rootElement.dataset.template ? this.rootElement.dataset.template : 'products';
+    let collection_url = `https://${this.collection.url}?view=${template}&page=${next_page}`;
 
     //Fetch collection page and insert it into the tile container
     try {
@@ -44,6 +45,11 @@ export default class LoadCollectionPageXbutton extends BaseClass {
       document.getElementById('Products').querySelector('.tile-container').insertAdjacentHTML('beforeend', elements);
       this.collection.currentPage = next_page;
       loader.classList.add('hide');
+      //Initialize the new elements as ProductTiles
+      const new_tiles = document.querySelectorAll(`.product-tile-page-${this.collection.currentPage}`);
+      for(let tile of new_tiles) {
+        new ProductTile(tile);
+      }
       //Hide the button if there are no more pages to fetch
       if(parseInt(this.collection.currentPage) !== parseInt(this.ending_page)) {
         window.addEventListener('scroll', this.observeAndLoad);
