@@ -47,8 +47,11 @@ export default class LoadCollectionPageXbutton extends BaseClass {
       loader.classList.add('hide');
       //Initialize the new elements as ProductTiles
       const new_tiles = document.querySelectorAll(`.product-tile-page-${this.collection.currentPage}`);
-      for(let tile of new_tiles) {
-        new ProductTile(tile);
+      //Only run if template is products
+      if(template === 'products') {
+        for(let tile of new_tiles) {
+          new ProductTile(tile);
+        }
       }
       //Hide the button if there are no more pages to fetch
       if(parseInt(this.collection.currentPage) !== parseInt(this.ending_page)) {
