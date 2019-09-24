@@ -2,11 +2,13 @@
 data-s-module="ProductForm"
 data-id="{{ product.selected_or_first_available_variant.id }}" 
 data-price="{{ product.selected_or_first_available_variant.price | money_with_currency | strip_html }}"
+data-compare-price="{{ product.selected_or_first_available_variant.compare_at_price | money_with_currency | strip_html }}"
 data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
 data-image="{{ product.selected_or_first_available_variant.image }}"
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
   <div class="row">
+    <div class="col s12">{% include 'ProductStarRating' %}</div>
     <div class="input-field col s12 m6">
       {% unless product.variants.size == 1 %}
       <select class="product-option variant-selector">
@@ -20,6 +22,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
             <option value="{{ variant.id }}"
             data-id="{{ variant.id }}" 
             data-price="{{ variant.price | money_with_currency | strip_html }}"
+            data-compare-price="{{ variant.compare_at_price | money_with_currency | strip_html }}"
             data-inventory-quantity="{{ variant.inventory_quantity }}"
             data-image="{{ variant_image }}">
               {{ variant.title }}
@@ -47,13 +50,17 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       </select>
       {% endif %}
     </div>
-    <div class="col s6 m3 right-align">
-      {% include 'ProductStarRating' %}
+    <div class="col s6 m3 right-align compare-price">
+      {%- assign compare_price = product.selected_or_first_available_variant.compare_at_price -%}
+      {%- assign product_price = product.selected_or_first_available_variant.price -%}
+      {% if compare_price and compare_price != product_price %}
+        {{ compare_price | money }}
+      {% endif %}
     </div>
     <div class="col s6 m3 center-align">
       <span class="product-price">{{ product.selected_or_first_available_variant.price | money }}</span>
     </div>
-    <div class="col s6 xs12">
+    <div class="col s6 xs12 offset-s6">
       {% if product.available %}
       <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">Add to cart</button>
       {% else %}
