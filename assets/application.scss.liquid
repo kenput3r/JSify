@@ -1171,19 +1171,38 @@ div#smile-ui-container[style] {
 }
 
 /**************************************************
-  ProductTileLifestyle
+  Lifestyle Collection & Product Tile
 **************************************************/
 .template-collection.lifestyle {
   .product-tile {
-    position: relative;
-    .card-image {
-      &:hover > .content {
-        opacity: 1;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem;
+    .frame {
+      flex: 0 0 auto;
+      position: relative;
+      width: 100%;
+      padding-top: 80%;
+      @media only screen and (min-width: 1200px) {
+        &:hover > .content {
+          opacity: 1;
+        }
+      }
+      img {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
       }
       .content {
         opacity: 0;
         transition: opacity .1s;
-        background-color: #000;
+        background-color: rgba(0, 0, 0, 0.9);
         position: absolute;
         top: 0;
         left: 0;
@@ -1191,6 +1210,11 @@ div#smile-ui-container[style] {
         bottom: 0;
         width: 100%;
         height: 100%;
+        display: none;
+        padding: 15px;
+        @media only screen and (min-width: 1200px) {
+          display: block;
+        }
         .centered-content {
           color: #fff;
           position: relative;
