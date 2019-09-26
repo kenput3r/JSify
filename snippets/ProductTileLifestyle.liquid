@@ -3,7 +3,7 @@
 {% endunless %}
 {%- assign product_price = product.selected_or_first_available_variant.price -%}
 {%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
-<div class="product-tile product-tile-page-{{paginate.current_page}} col {{grid_sizes}}">
+<div class="product-tile-lifestyle product-tile-page-{{paginate.current_page}} col {{grid_sizes}}">
   <div class="frame hoverable z-depth-2">
     <img class="sidenav-trigger product-image"  src="{{ product.images.last | img_url: 'large' }}" alt="{{ product.images.last.alt| escape }}" data-target="ProductDrawer" data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}">
     <div class="content">
