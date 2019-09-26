@@ -434,6 +434,11 @@ Contact Pages
     content: '';
   }
 }
+#contact_form {
+  label {
+    text-transform: uppercase;
+  }
+}
 /**************************************************
 Filters Drawer
 **************************************************/
@@ -624,6 +629,10 @@ h1, h2, h3, h4, h5, h6 {
    background-color: #fff;
    color: #000;
    padding-top: 0;
+ }
+
+ strong {
+   font-weight: 700;
  }
 
  .toast {
@@ -874,6 +883,9 @@ Product Tile
     }
     @media screen and(min-width: $medium) {
       min-height: 169px;
+    }
+    .row {
+      margin-bottom: 0;
     }
   }
 }

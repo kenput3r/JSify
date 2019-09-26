@@ -1,0 +1,20 @@
+{% assign grid_sizes = 's6' %}
+<div class="row">
+  {% if section.settings.featuredCollection != empty %}
+    {% for product in collections[section.settings.featuredCollection].products limit: 12 %}
+      {% include 'ProductTileLifestyle' %}
+    {% endfor %}
+  {% endif %}
+</div>
+  {% schema %}
+  {
+    "name": "Article Sidebar",
+    "settings": [
+      {
+        "id": "featuredCollection",
+        "type": "collection",
+        "label": "Featured Collection"
+      }
+    ]
+  }
+  {% endschema %}
