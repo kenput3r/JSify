@@ -10,12 +10,12 @@
       <div class="container centered-content">
         <div class="row">
           <div class="col s12">
-            <a href="#" class="btn-floating waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}" class="material-icons">visibility</i></a>
+            <a href="#" class="btn-view waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}" class="material-icons">visibility</i></a>
           </div>
         </div>
         <div class="row">
           <div class="col s12">
-            <span class="title"><a href="{{ product.url | within: collection }}" class="text-s-red-compliment">{{ product.title }}</a></span>
+            <span class="title"><a href="{{ product.url | within: collection }}" class="text-s-red-compliment" title="{{ product.title }}">{{ product.title | truncate: 40 }}</a></span>
           </div>
         </div>
         <div class="row">
