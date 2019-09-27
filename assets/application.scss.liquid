@@ -214,6 +214,18 @@ Helpers
   align-items: center !important;
 }
 
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
 .w100 {
   width: 100%;
 }
@@ -224,6 +236,33 @@ Helpers
   }
 }
 
+/**************************************************
+Article Template
+**************************************************/
+.template-article {
+  article {
+    @media screen and(min-width: 601px) {
+      border-right: 1px solid #f1f1f1;
+      padding: 0 20px;
+    }
+    img {
+      max-width: 100%;
+      width: 100%;
+      &.emojioneemoji {
+        width: auto;
+      }
+    }
+  }
+  .pagination {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+#shopify-section-article-sidebar {
+  h3 {
+    margin-top: 2.8rem;
+  }
+}
 /**************************************************
 Cards
 **************************************************/
@@ -623,6 +662,11 @@ h1, h2, h3, h4, h5, h6 {
    @media screen and(min-width: 993px) {
      margin-top: 86px;
    }
+ }
+
+ a {
+   color: $s_red_compliment;
+   font-weight: bold;
  }
 
  .page-footer {
