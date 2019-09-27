@@ -1,3 +1,7 @@
+{% if customer %}
+  {% assign name = customer.name %}
+  {% assign email = customer.email %}
+{% endif %}
 {% assign number_of_comments = article.comments_count %}
 {% if comment and comment.created_at %}
   {% assign number_of_comments = article.comments_count %}
@@ -21,30 +25,37 @@
         <h2>{{ number_of_comments }} comments</h2>
         {% paginate article.comments by 5 %}
           {% for comment in article.comments %}
-            <div>
-              <div>{{ comment.content }}</div>
-              {{ comment.author }} @ {{ comment.created_at }}
+            <div class="card">
+              <div class="card-title" style="padding: 10px; line-height: 1;">
+                  <i class="material-icons">person_outline</i> {{ comment.author }}
+                  <br><small style="font-size:0.8rem; padding-left: 10px">{{ comment.created_at }}</small>
+              </div>
+              <div class="card-content">{{ comment.content }}</div>
             </div>
           {% endfor %}
-          {% if paginate.pages > 1 %}
-            {{ paginate | default_pagination }}
-          {% endif %}
+          {% include 'pagination' %}
         {% endpaginate %}
   
-        <div>
-          {% form 'new_comment', article %}
-            {{ form.errors | default_errors }}
-            <label for="CommentAuthor">name</label>
-            <input type="text" name="comment[author]" id="CommentAuthor" placeholder="name" value="{{ form.author }}" autocapitalize="words">
-  
-            <label for="CommentEmail">email</label>
-            <input type="email" name="comment[email]" id="CommentEmail" placeholder="email" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
-  
-            <label for="CommentBody">message</label>
-            <textarea name="comment[body]" id="CommentBody" placeholder="message">{{ form.body }}</textarea>
-  
-            <input type="submit" value="post">
-          {% endform %}
+        <div class="card">
+          <div class="card-title" style="padding:10px;">Leave A Comment</div>
+          <div class="card-content">
+            {% form 'new_comment', article %}
+              {{ form.errors | default_errors }}
+              <div class="input-field">
+                <input type="text" name="comment[author]" id="CommentAuthor" value="{%if name%}{{ name }}{%else%}{{form.author}}{%endif%}" autocapitalize="words">
+                <label for="CommentAuthor">NAME</label>
+              </div>
+              <div class="input-field">
+                <input type="email" name="comment[email]" id="CommentEmail" value="{%if email%}{{ email }}{%else%}{{form.email}}{%endif%}" autocorrect="off" autocapitalize="off">
+                <label for="CommentEmail">EMAIL</label>
+              </div>
+              <div class="input-field">
+                <textarea name="comment[body]" id="CommentBody" class="materialize-textarea">{{ form.body }}</textarea>
+                <label for="CommentBody">COMMENT</label>
+              </div>
+              <input class="btn background-s-red" type="submit" value="post">
+            {% endform %}
+          </div>
         </div>
       </aside>
       {% endif %}

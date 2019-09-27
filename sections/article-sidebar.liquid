@@ -1,7 +1,15 @@
-{% assign grid_sizes = 's6' %}
 <div class="row">
   {% if section.settings.featuredCollection != empty %}
+    <div class="col s12">
+      <h3>New Stuff</h3>
+    </div>
     {% for product in collections[section.settings.featuredCollection].products limit: 12 %}
+      {% assign remainder = forloop.index | modulo: 3 %}
+      {% if remainder == 0 %}
+        {% assign grid_sizes = 's12' %}
+      {% else %}
+        {% assign grid_sizes = 's6' %}
+      {% endif %}
       {% include 'ProductTileLifestyle' %}
     {% endfor %}
   {% endif %}

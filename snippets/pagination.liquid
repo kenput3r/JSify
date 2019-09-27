@@ -1,0 +1,55 @@
+{%- if paginate.pages > 1 -%}
+<div role="navigation">
+  <ul class="pagination center-align">
+    {%- if paginate.previous-%}
+      <li>
+        <a href="{{ paginate.previous.url }}">
+          <span aria-hidden="true"><i class="material-icons">chevron_left</i></span>
+          <span class="visuallyhidden">Previous page</span>
+        </a>
+      </li>
+    {%- else -%}
+      <li class="disabled">
+        <span aria-hidden="true"><i class="material-icons">chevron_left</i></span>
+        <span class="visuallyhidden">Previous page</span>
+      </li>
+    {%- endif -%}
+
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+        <li>
+          <a href="{{ part.url }}">
+            <span class="visuallyhidden">page</span> {{ part.title }}
+          </a>
+        </li>
+      {%- else -%}
+        {%- if part.title == paginate.current_page -%}
+          <li class="active" aria-current="page">
+            <span class="visuallyhidden">page</span> 
+            <a href="#!">{{ part.title }}</a>
+          </li>
+        {%- else -%}
+          <li>
+            <span class="visuallyhidden">page</span> 
+            <a href="#!">{{ part.title }}</a>
+          </li>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if paginate.next -%}
+      <li>
+        <a href="{{ paginate.next.url }}">
+          <span class="visuallyhidden">Next page</span>
+          <span aria-hidden="true"><i class="material-icons">chevron_right</i></span>
+        </a>
+      </li>
+    {%- else -%}
+      <li class="disabled">
+        <span class="visuallyhidden">Next page</span>
+        <span aria-hidden="true"><i class="material-icons">chevron_right</i></span>
+      </li>
+    {%- endif -%}
+  </ul>
+</div>
+{%- endif -%}
