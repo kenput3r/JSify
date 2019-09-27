@@ -923,6 +923,30 @@ select.product-option {
 }
 
 /**************************************************
+Product List Item
+**************************************************/
+.collection {
+  .collection-item {
+    &.avatar {
+      padding-right: 60px;
+      @media screen and(min-width: $large) {
+        padding-left: 114px;
+      }
+    }
+  }
+}
+.square {
+  position: absolute;
+  width: 42px;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  @media screen and(min-width: $large) {
+    width: 84px;
+  }
+}
+
+/**************************************************
 Product Tile
 **************************************************/
 .product-tile {
