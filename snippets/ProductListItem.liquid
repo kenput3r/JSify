@@ -1,0 +1,9 @@
+{%- assign product_price = product.selected_or_first_available_variant.price -%}
+{%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
+<li class="collection-item avatar">
+    <img class="sidenav-trigger product-image square" data-target="ProductDrawer" data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id={{product.id}} src="{{ product.featured_image.src | img_url: 'small' }}" alt="{{ product.featured_image.alt | escape }}">
+    <span class="title">{{product.title}}</span>
+    <p>{{product_price | money_with_currency}} {%if product_compare_price%}<span style="text-decoration: line-through;opacity:0.5;">{{product_compare_price | money_with_currency}}</span>{%endif%}<br>
+    {% include 'ProductStarRating' %}</p>
+    <a href="#!" class="secondary-content btn-floating halfway-fab waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}" class="material-icons">visibility</i></a>
+</li>
