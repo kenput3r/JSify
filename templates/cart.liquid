@@ -57,9 +57,10 @@
         {% for item in cart.items %}
           {% if item.variant.compare_at_price %}
             {% assign difference = item.variant.compare_at_price | minus: item.variant.price %}
+            {% assign difference = difference | times: item.quantity %}
             {% assign compare_at_discounts = compare_at_discounts | plus: difference %}
           {% endif %}
-          <div class="row" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%}>
+          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}{%endif%}">
             <div class="col s3">
               <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
             </div>
@@ -67,10 +68,10 @@
               <div class="row">
                 <div class="col s9">
                   {{ item.product.title }}
-                  <br>${{item.final_price | money_without_currency}} {%if item.variant.compare_at_price%}<span style="text-decoration: line-through; opacity:0.5;">${{item.variant.compare_at_price | money_without_currency}}</span>{%endif%} {%if item.original_price != item.final_price %}<span style="text-decoration: line-through; opacity:0.5;">${{item.original_price | money_without_currency}}</span>{% endif %}
+                  <br><span class="final-price">${{item.final_price | money_without_currency}}</span> {%if item.variant.compare_at_price%}<span class="compare-at-price" style="text-decoration: line-through; opacity:0.5;">${{item.variant.compare_at_price | money_without_currency}}</span>{%endif%} {%if item.original_price != item.final_price %}<span style="text-decoration: line-through; opacity:0.5;">${{item.original_price | money_without_currency}}</span>{% endif %}
                   <br><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="color-s-red">Remove</a>
                 </div>
-                <div class="col s3">
+                <div class="col s3 final-line-price">
                   {{ item.final_line_price | money_with_currency }}
                 </div>
               </div>
@@ -86,15 +87,26 @@
                         {% assign variant_image = 'no-image' %}
                       {% endif %}
                       {% if variant.available %}
-                        <option value="{{ variant.id }}"
-                        data-id="{{ variant.id }}" 
-                        data-price="{{ variant.price | money_with_currency | strip_html }}"
-                        data-compare-price="{{ variant.compare_at_price | money_with_currency | strip_html }}"
-                        data-inventory-quantity="{{ variant.inventory_quantity }}"
-                        data-image="{{ variant_image }}"
-                        {% if item.variant.title == variant.title %} selected="true"{%endif%}>
-                          {{ variant.title }}
-                        </option>
+                        {% if variant.inventory_quantity < item.quantity and variant.inventory_quantity > 0%}
+                          <option disabled="disabled"
+                          data-id="{{ variant.id }}"
+                          data-price="{{ variant.price }}"
+                          {%if variant.compare_at_price%}data-compare-at-price="{{ variant.compare_at_price }}"{%endif%}
+                          data-inventory-quantity="{{ variant.inventory_quantity }}"
+                          data-image="{{ variant_image }}">
+                            {{ variant.title }} - only {{variant.inventory_quantity}} available
+                          </option>
+                        {% else %}
+                          <option value="{{ variant.id }}"
+                          data-id="{{ variant.id }}"
+                          data-price="{{ variant.price }}"
+                          {%if variant.compare_at_price%}data-compare-at-price="{{ variant.compare_at_price }}"{%endif%}
+                          data-inventory-quantity="{{ variant.inventory_quantity }}"
+                          data-image="{{ variant_image }}"
+                          {% if item.variant.title == variant.title %} selected="true"{%endif%}>
+                            {{ variant.title }}
+                          </option>
+                        {% endif %}
                       {% else %}
                         <option disabled="disabled">
                           {{ variant.title }} - sold out
@@ -135,19 +147,19 @@
                 <div class="col s6">
                   Original Total
                 </div>
-                <div class="col s6 right-align">
+                <div class="col s6 right-align original-total-price">
                     {{ cart.original_total_price | plus: compare_at_discounts | money }}
                 </div>
                 <div class="col s6">
                   Discounts
                 </div>
-                <div class="col s6 right-align">
-                  -{{ cart.total_discount | plus: compare_at_discounts | money | prepend: '-' }}
+                <div class="col s6 right-align total-discounts">
+                  {{ cart.total_discount | plus: compare_at_discounts | money | prepend: '-' }}
                 </div>
                 <div class="col s6">
                   Subtotal
                 </div>
-                <div class="col s6 right-align">
+                <div class="col s6 right-align cart-total-price">
                   {{ cart.total_price | money }}
                 </div>
               </div>
