@@ -46,98 +46,119 @@
 {% endif %} -->
 
 {% if cart.item_count > 0 %}
-<div class="container">
-  <h1>Cart</h1>
-  <div class="row">
-    <div class="col s12 l8">
-      {% for item in cart.items %}
-        <div class="row" style="border-bottom:1px solid #f1f1f1">
-          <div class="col s3">
-            <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
-          </div>
-          <div class="col s9">
-            <div class="row">
-              <div class="col s9">
-                {{ item.product.title }}
-                <br>${{item.price | money_without_currency}}
-              </div>
-              <div class="col s3">
-                {{ item.final_line_price | money_with_currency }}
-              </div>
+  {% if cart.discount_applications.size > 0 %}
+  {% assign has_discounts = true %}
+  {% endif %}
+  <div class="container">
+    <h1>Cart</h1>
+    <div class="row">
+      <div class="col s12 l8">
+        {% assign compare_at_discounts = 0 %}
+        {% for item in cart.items %}
+          {% if item.variant.compare_at_price %}
+            {% assign difference = item.variant.compare_at_price | minus: item.variant.price %}
+            {% assign compare_at_discounts = compare_at_discounts | plus: difference %}
+          {% endif %}
+          <div class="row" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%}>
+            <div class="col s3">
+              <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
             </div>
-            <div class="row">
-              <div class="col s9">
-                {% assign product = item.product %}
-                {% unless product.variants.size == 1 %}
-                <select class="product-option variant-selector">
-                  {% for variant in product.variants %}
-                    {% if variant.image.product_id %}
-                      {% assign variant_image = variant.image | img_url: 'large' %}
-                    {% else %}
-                      {% assign variant_image = 'no-image' %}
-                    {% endif %}
-                    {% if variant.available %}
-                      <option value="{{ variant.id }}"
-                      data-id="{{ variant.id }}" 
-                      data-price="{{ variant.price | money_with_currency | strip_html }}"
-                      data-compare-price="{{ variant.compare_at_price | money_with_currency | strip_html }}"
-                      data-inventory-quantity="{{ variant.inventory_quantity }}"
-                      data-image="{{ variant_image }}"
-                      {% if item.variant.title == variant.title %} selected="true"{%endif%}>
-                        {{ variant.title }}
-                      </option>
-                    {% else %}
-                      <option disabled="disabled">
-                        {{ variant.title }} - sold out
-                      </option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-                {% endunless %}
+            <div class="col s9">
+              <div class="row">
+                <div class="col s9">
+                  {{ item.product.title }}
+                  <br>${{item.final_price | money_without_currency}} {%if item.variant.compare_at_price%}<span style="text-decoration: line-through; opacity:0.5;">${{item.variant.compare_at_price | money_without_currency}}</span>{%endif%} {%if item.original_price != item.final_price %}<span style="text-decoration: line-through; opacity:0.5;">${{item.original_price | money_without_currency}}</span>{% endif %}
+                  <br><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="color-s-red">Remove</a>
+                </div>
+                <div class="col s3">
+                  {{ item.final_line_price | money_with_currency }}
+                </div>
               </div>
-              <div class="col s3">
-                {% if product.available %}
-                <select class="product-option quantity-selector">
-                  {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}
-                    {% assign x = product.selected_or_first_available_variant.inventory_quantity %}
-                  {% else %}
-                    {% assign x = 30 %}
+              <div class="row">
+                <div class="col s9">
+                  {% assign product = item.product %}
+                  {% unless product.variants.size == 1 %}
+                  <select class="product-option variant-selector">
+                    {% for variant in product.variants %}
+                      {% if variant.image.product_id %}
+                        {% assign variant_image = variant.image | img_url: 'large' %}
+                      {% else %}
+                        {% assign variant_image = 'no-image' %}
+                      {% endif %}
+                      {% if variant.available %}
+                        <option value="{{ variant.id }}"
+                        data-id="{{ variant.id }}" 
+                        data-price="{{ variant.price | money_with_currency | strip_html }}"
+                        data-compare-price="{{ variant.compare_at_price | money_with_currency | strip_html }}"
+                        data-inventory-quantity="{{ variant.inventory_quantity }}"
+                        data-image="{{ variant_image }}"
+                        {% if item.variant.title == variant.title %} selected="true"{%endif%}>
+                          {{ variant.title }}
+                        </option>
+                      {% else %}
+                        <option disabled="disabled">
+                          {{ variant.title }} - sold out
+                        </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                  {% endunless %}
+                </div>
+                <div class="col s3">
+                  {% if product.available %}
+                  <select class="product-option quantity-selector">
+                    {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}
+                      {% assign x = product.selected_or_first_available_variant.inventory_quantity %}
+                    {% else %}
+                      {% assign x = 30 %}
+                    {% endif %}
+                    {% for i in (1..x) %}
+                    <option value="{{i}}" {%if i == item.quantity%} selected="true"{%endif%}>
+                      {{i}}
+                    </option>
+                    {% endfor %}
+                  </select>
                   {% endif %}
-                  {% for i in (1..x) %}
-                  <option value="{{i}}" {%if i == item.quantity%} selected="true"{%endif%}>
-                    {{i}}
-                  </option>
-                  {% endfor %}
-                </select>
-                {% endif %}
-              </div>
-            </div> 
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-    <div class="col s12 l4">
-      <div class="card grey darken-3">
-          <div class="card-content white-text">
-            <div class="row">
-              <div class="col s12 card-title">
-                Summary
-              </div>
-              <div class="col s6">
-                Subtotal
-              </div>
-              <div class="col s6 right-align">
-                  {{ cart.original_total_price | money }}
-              </div>
+                </div>
+              </div> 
             </div>
           </div>
-          <div class="card-action">
-            <a href="/checkout" class="btn background-s-red">CHECKOUT</a>
+        {% endfor %}
+      </div>
+      <div class="col s12 l4">
+        <div class="card grey darken-3">
+            <div class="card-content white-text">
+              <div class="row">
+                <div class="col s12 card-title">
+                  Summary
+                </div>
+                <div class="col s6">
+                  Original Total
+                </div>
+                <div class="col s6 right-align">
+                    {{ cart.original_total_price | plus: compare_at_discounts | money }}
+                </div>
+                <div class="col s6">
+                  Discounts
+                </div>
+                <div class="col s6 right-align">
+                  -{{ cart.total_discount | plus: compare_at_discounts | money | prepend: '-' }}
+                </div>
+                <div class="col s6">
+                  Subtotal
+                </div>
+                <div class="col s6 right-align">
+                  {{ cart.total_price | money }}
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <a href="/checkout" class="btn background-s-red">CHECKOUT</a>
+            </div>
           </div>
-        </div>
+      </div>
     </div>
   </div>
-</div>
 {% else %}
   <h1>Cart</h1>
   <p>Your cart is empty.</p>

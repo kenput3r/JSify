@@ -12,6 +12,7 @@ import CollectionHeader from './components/CollectionHeader';
 import CollectionTemplateCarousel from './components/CollectionTemplateCarousel';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumn from './components/FiltersColumn';
+import LineItem from './components/LineItem';
 import LoginForm from './components/LoginForm';
 import DesktopNav from './components/DesktopNav';
 import MobileNav from './components/MobileNav';
@@ -33,6 +34,7 @@ const classes = {
     FiltersDrawer,
     FiltersColumn,
     LoginForm,
+    LineItem,
     DesktopNav,
     MobileMenu,
     MobileNav,
