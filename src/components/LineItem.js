@@ -7,37 +7,70 @@ export default class LineItem extends BaseClass {
     this.init();
   }
 
+  /**
+   * @method money - Returns a decimal value with a precision of 2 ($9.99)
+   * @param {Number} number - The integer to be converted to a currency
+   * @param {string} sign - Dollar sign or empty string for positive, - or -$ for negative
+   * @param {*} currency - USD, CA etc or empty string
+   */
   money(number, sign, currency) {
     number = number / 100;
     number = number.toFixed(2);
     return `${sign}${number} ${currency}`;
   }
 
+  /**
+   * @method updateQuantitySelector - Adds or removes quantity select options
+   * @param {Number} inventory_quantity - The variants availible inventory quantity
+   * @param {Element} quantity_selector - The Select element
+   */
+  updateQuantitySelector(inventory_quantity, quantity_selector) {
+    inventory_quantity = parseInt(inventory_quantity);
+    const options = quantity_selector.querySelectorAll('option');
+    //Removes options with a value greater than the available inventory
+    if(inventory_quantity < 30 && options.length > inventory_quantity) {
+      options.forEach(option=> {
+        if(parseInt(option.value) > inventory_quantity) {
+          quantity_selector.removeChild(option);
+        }
+      })
+    //Adds options with inventory values up to 30
+    }else if(options.length < inventory_quantity && options.length < 30) {
+      for(let i = options.length+1; i <= inventory_quantity && i <= 30; i++) {
+        const new_option = document.createElement('option');
+        new_option.value = i;
+        new_option.innerHTML = i;
+        quantity_selector.appendChild(new_option);
+      }
+    }
+  }
+
+  /**
+   * @method update - Updates the cart object and displayed Summary
+   * @param {object} updates - {updates: key/id: qty}
+   */
   async update(updates) {
     const headers = new Headers({'Content-Type': 'application/json'});
-    // const updates = {
-    //   updates: {
-    //     [key]: qty
-    //   }
-    // }
     try {
+      //post updates to cart and retreive response
       const data = await fetch('/cart/update.js', {method: 'POST', headers: headers, body:JSON.stringify(updates)});
       const response = await data.json();
+      
+      //Throw error if errors
       if(response.message === 'Cart Error') {
         throw new error(response);
+      //Update Summary, instance variables, and DOM data attributes
       }else{
-        console.log(response);
         let original_total_price = parseInt(response.original_total_price);
         let total_discount = parseInt(response.total_discount);
-        console.log(original_total_price, total_discount);
         for(let item in response.items) {
           const line_item = response.items[item];
           const dom_line_item = document.querySelector(`.line-item[data-key="${line_item.key}"`);
-          console.log(dom_line_item)
+          //Select .line-item by variant id because the key is no longer valid
           if(!dom_line_item) {
-            console.log('setting alternate method')
             dom_line_item = document.querySelector(`.line-item[data-id="${line_item.variant_id}"`);
-            console.log(dom_line_item)
+            this.key = line_item.key;
+            dom_line_item.dataset.key = line_item.key;
           }
 
           //Update DOM Line Item pricing and quantity
@@ -87,8 +120,8 @@ export default class LineItem extends BaseClass {
             [option.id]: quantity.value
           }
         }
-        console.log(updates);
         this.rootElement.dataset.id = option.id;
+        this.updateQuantitySelector(option.inventoryQuantity, this.rootElement.querySelector('.quantity-selector'));
         this.update(updates);
       })
     }
