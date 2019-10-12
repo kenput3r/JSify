@@ -8,6 +8,7 @@ import ProductCarousel from './components/ProductCarousel';
 import ProductTile from './components/ProductTile';
 import ProductReviews from './components/ProductReviews';
 import ProductReviewForm from './components/ProductReviewForm';
+import Cart from './components/Cart';
 import CollectionHeader from './components/CollectionHeader';
 import CollectionTemplateCarousel from './components/CollectionTemplateCarousel';
 import FiltersDrawer from './components/FiltersDrawer';
@@ -29,6 +30,7 @@ const classes = {
     ProductTile,
     ProductReviews,
     ProductReviewForm,
+    Cart,
     CollectionHeader,
     CollectionTemplateCarousel,
     FiltersDrawer,

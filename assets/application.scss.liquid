@@ -689,12 +689,36 @@ h1, h2, h3, h4, h5, h6 {
    padding-top: 0;
  }
 
+ .small-margin-bottom {
+   @media screen and(max-width: $small) {
+     margin-bottom: 20px;
+   }
+ }
+
  strong {
    font-weight: 700;
  }
 
+ .summary-sticky {
+   position: sticky;
+   position: -webkit-sticky;
+   top: 86px;
+ }
+
+ .tiny-remove-padding {
+   @media screen and(max-width: 350px) {
+     padding: 0 !important;
+   }
+ }
+
  .toast {
    background-color: $s_yellow !important;
+ }
+
+ .tooltipped {
+   &:hover {
+     cursor: pointer;
+   }
  }
 
 /**************************************************
