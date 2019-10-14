@@ -1,1 +1,70 @@
 <!-- /templates/customers/account.liquid -->
+<div class="container">
+  <div class="row">
+    <div class="col s12 l4 summary-sticky">
+      <div class="row">
+        <div class="col s12">
+          <div class="card grey darken-3">
+            <div class="card-content white-text">
+              {%- assign address = customer.default_address -%}
+              <span class="card-title" style="line-height: 0.8;">{{customer.name}}<br><small style="font-size:12px;">{{customer.email}}</small>{%-if address.phone -%}<br><small style="font-size:12px;">{{address.phone}}</small>{%-endif-%}</span>
+              {%- if address.company -%}
+              <p>{{address.company}}</p>
+              {%-endif-%}
+              <p>{{address.address1}}</p>
+              {%- if address.address2 -%}
+              <p>{{address.address2}}</p>
+              {%-endif-%}
+              <p>{{address.city}}, {{address.province}} {{address.zip}}</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l8">
+      <h1 style="margin-top:0">Order History</h1>
+      <div class="divider"></div>
+      {% for order in customer.orders %}
+        <div class="row section">
+          <div class="col s6">
+            <div>
+              {{ order.name | link_to: order.customer_url }}
+            </div>
+            <div>
+              {{ order.created_at | date: format: 'abbreviated_date' }}
+            </div>
+            <div>
+              {{ order.fulfillment_status_label }}
+            </div>
+          </div>
+          <div class="col s6 right-align">
+              <a class="btn background-s-red" href="{{order.customer_url}}">VIEW</a>
+          </div>
+          <div class="col s12">
+            <div class="row" style="margin-top:20px">
+              {% for line_item in order.line_items | limit: 4 %}
+              {% unless forloop.last and order.line_items.size > 4 %}
+                <div class="col s3">
+                  {{ line_item.image | img_tag: line_item.title }}
+                </div>
+              {% else %}
+                <div class="col s3 relative">
+                  {{ line_item.image | img_tag: line_item.title, 'faded' }}
+                  <div class="count-overlay">+ {{order.line_items.size | minus: 3}}</div>
+                </div>
+              {% endunless %}
+              {% endfor %}
+            </div>
+          </div>  
+        </div>
+        <div class="divider"></div>
+      {% else %}
+        <p>No orders to display.</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
