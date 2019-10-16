@@ -1,1 +1,16 @@
 <!-- /templates/customers/addresses.liquid -->
+<div class="container">
+  <h1>Addresses</h1>
+  {%- for address in customer.addresses reversed -%}
+    {%- assign form_address = address -%}
+    <div class="row">
+      <div class="col s12">
+        <div class="card grey-lighten-5">
+          <div class="card-content">
+            {%- include 'AddressForm' -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

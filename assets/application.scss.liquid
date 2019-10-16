@@ -1,6 +1,6 @@
 //ToDo remove this temp style
 div#smile-ui-container {
-  //display: none;
+  display: none;
 }
 
 @mixin color_drop($color) {
@@ -262,6 +262,12 @@ img.faded {
 
 .relative {
   position: relative;
+}
+
+#EditCustomer {
+  .row {
+    margin-bottom: 0;
+  }
 }
 
 /**************************************************
@@ -728,9 +734,11 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  .summary-sticky {
-   position: sticky;
-   position: -webkit-sticky;
-   top: 86px;
+   @media screen and(min-width: $large) {
+     position: sticky;
+     position: -webkit-sticky;
+     top: 86px;
+   }
  }
 
  .tiny-remove-padding {

@@ -1,6 +1,6 @@
 <!-- /templates/customers/account.liquid -->
 {% include 'secrets' %}
-<div id="Account" data-s-module="Account" data-customer-id="{{customer.id}}" data-secret-id="{{customer.id | hmac_sha256: hmac_sha256_secret}}">
+<div id="Account" data-s-module="Account" data-customer="{{customer.id}}" data-secret="{{customer.id | hmac_sha256: hmac_sha256_secret}}" data-address-id="{{customer.default_address.id}}">
   <div class="container">
     <div class="row">
       <div class="col s12 l4 summary-sticky">
@@ -24,6 +24,9 @@
                 {%-else-%}
                 <p class="small" style="margin-top:5px; font-weight: 300;">* not signed up for sale newsletter</p>
                 {%-endif-%}
+                {% if customer.addresses_count > 1 %}
+                <p><a href="/account/addresses" class="btn-flat" style="color:#fff;">manage addresses({{customer.addresses_count}})</a></p>
+                {% endif %}
               </div>
               <div class="card-action">
                 <a href="#">REQUEST/DELETE DATA</a>
@@ -56,11 +59,11 @@
                 {% for line_item in order.line_items | limit: 4 %}
                 {% unless forloop.last and order.line_items.size > 4 %}
                   <div class="col s3">
-                    {{ line_item.image | img_tag: line_item.title }}
+                    {{ line_item.image | img_tag: line_item.title, 'responsive-img', 'small' }}
                   </div>
                 {% else %}
                   <div class="col s3 relative">
-                    {{ line_item.image | img_tag: line_item.title, 'faded' }}
+                    {{ line_item.image | img_tag: line_item.title, 'faded responsive-img', 'small' }}
                     <div class="count-overlay">+ {{order.line_items.size | minus: 3}}</div>
                   </div>
                 {% endunless %}
@@ -77,8 +80,10 @@
   </div>
   <div id="EditCustomer" class="modal">
     <div class="modal-content">
+      <span class="right"><button class="btn-flat close-edit-customer"><i class="material-icons">close</i></button></span>
+      <h5>Primary Address</h5>
       <div class="row">
-        <form class="col s12">
+        <form class="col s12 customer" data-address-id="{{customer.default_address.id}}">
           <div class="row">
             <div class="col s6 input-field">
               <input id="first_name" class="first-name validate" type="text" value="{{customer.first_name}}" />
@@ -91,17 +96,17 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input id="email" type="email" class="validate" value="{{customer.email}}">
+              <input id="email" type="email" class="email validate" value="{{customer.email}}">
               <label for="email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="phone" type="tel" class="validate" value="{{customer.phone}}">
+              <input id="phone" type="tel" class="phone validate" value="{{customer.phone}}">
               <label for="phone">Phone Number</label>
             </div>
             <div class="input-field col s6">
-              <input id="company" type="text" class="validate" value="{{customer.default_address.company}}">
+              <input id="company" type="text" class="company validate" value="{{customer.default_address.company}}">
               <label for="company">Company</label>
               </div>
           </div>
@@ -132,21 +137,16 @@
             </div>
           </div>
           <div class="row">
-            <div class="col s12">
+            <div class="col s12 l6">
               <label>
-                <input type="checkbox" class="filled-in" {% if customer.accepts_marketing %}checked="checked"{% endif %} />
+                <input type="checkbox" class="filled-in accepts-marketing" {% if customer.accepts_marketing %}checked="checked"{% endif %} />
                 <span>signed up for sale newsletters</span>
               </label>
             </div>
+            <div class="col s12 l6 right-align"><button class="btn background-s-red update-customer">UPDATE</button></div>
           </div>
         </form>
       </div>
     </div>
-  
-    <div class="modal-footer">
-      <button class="btn background-s-red">SAVE</button>
-    </div>
-  
   </div>
-
 </div>
