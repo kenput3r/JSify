@@ -20,6 +20,7 @@ import MobileNav from './components/MobileNav';
 import MobileMenu from './components/MobileMenu';
 import MobileSearch from './components/MobileSearch';
 import OrdersHelp from './components/OrdersHelp';
+import Account from './components/Account';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -41,7 +42,8 @@ const classes = {
     MobileMenu,
     MobileNav,
     MobileSearch,
-    OrdersHelp
+    OrdersHelp,
+    Account
 };
 
 const system = new System(classes);
