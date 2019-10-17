@@ -3,22 +3,26 @@
 <div id="Account" data-s-module="Account" data-customer="{{customer.id}}" data-secret="{{customer.id | hmac_sha256: hmac_sha256_secret}}" data-address-id="{{customer.default_address.id}}">
   <div class="container">
     <div class="row">
-      <div class="col s12 l4 summary-sticky">
+      <div class="col s12 l4 customer-info summary-sticky">
         <div class="row">
           <div class="col s12">
             <div class="card grey darken-3">
               <div class="card-content white-text" style="padding-top:12px;">
                 {%- assign address = customer.default_address -%}
                 <span style="display: block; text-align: right;"><a href="#EditCustomer" class="modal-trigger" style="color:#fff"><i class="material-icons">create</i></a></span>
-                <span class="card-title" style="line-height: 0.8;">{{customer.name}}<br><small>{{customer.email}}</small>{%-if address.phone -%}<br><small>{{address.phone}}</small>{%-endif-%}</span>
+                <span class="card-title" style="line-height: 0.8;"><span class="name">{{customer.name}}</span><br><small class="email">{{customer.email}}</small><br><small class="phone">{{address.phone}}</small></span>
                 {%- if address.company -%}
-                <p>{{address.company}}</p>
+                <p class="company">{{address.company}}</p>
+                {%- else -%}
+                <p class="company hide">{{address.company}}</p>
                 {%-endif-%}
-                <p>{{address.address1}}</p>
+                <p class="address1">{{address.address1}}</p>
                 {%- if address.address2 -%}
-                <p>{{address.address2}}</p>
+                <p class="address2">{{address.address2}}</p>
+                {%- else -%}
+                <p class="address2 hide">{{address.address2}}</p>
                 {%-endif-%}
-                <p>{{address.city}}, {{address.province}} {{address.zip}}</p>
+                <p class="city-state-zip">{{address.city}}, {{address.province}} {{address.zip}}</p>
                 {%- if customer.accepts_marketing -%}
                 <p class="small relative" style="margin-top:5px; font-weight: 300;"><i class="material-icons tiny">check_box</i> <span style="position: absolute; top:-2px; padding-left:2px;">signed up for sale newsletter</span></p>
                 {%-else-%}

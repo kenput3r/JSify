@@ -7,7 +7,7 @@ export default class Account extends BaseClass {
     this.init();
   }
 
-  async update() {
+  async update(modal) {
     const el = this.rootElement.querySelector('form.customer');
     const data = {
       customer: {
@@ -40,15 +40,38 @@ export default class Account extends BaseClass {
     }
     const url = 'https://api.suavecito.com/api/shopify/retail/customer/update';
     const headers = new Headers({'Content-Type': 'application/json', 'secret': this.secret, 'customer': this.customer});
-
-    //console.log(headers.get('secret'));
     const response = await fetch(url, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(data)
     });
-    console.log(response);
-    //console.log(data);
+    const res_json = await response.json();
+    const customer = res_json.customer;
+    if(response.status == 200) {
+      modal.close();
+      M.toast({html: 'Successfully updated info'});
+      const customer_info = this.rootElement.querySelector('.customer-info');
+      customer_info.querySelector('.name').innerHTML = customer.first_name + ' ' + customer.last_name;
+      customer_info.querySelector('.email').innerHTML = customer.email;
+      customer_info.querySelector('.phone').innerHTML = customer.phone;
+      if(customer.default_address.company && customer.default_address.company !== '') {
+        customer_info.querySelector('.company').classList.remove('hide');
+      }else{
+        customer_info.querySelector('.company').classList.add('hide');
+      }
+      customer_info.querySelector('.company').innerHTML = customer.default_address.company;
+      customer_info.querySelector('.address1').innerHTML = customer.default_address.address1;
+      customer_info.querySelector('.address2').innerHTML = customer.default_address.address2;
+      if(customer.default_address.address2 && customer.default_address.address2 !== '') {
+        customer_info.querySelector('.address2').classList.remove('hide');
+      }else{
+        customer_info.querySelector('.address2').classList.add('hide');
+      }
+      customer_info.querySelector('.city-state-zip').innerHTML = customer.default_address.city + ', ' + customer.default_address.province + ' ' + customer.default_address.zip;
+    }else{
+      console.log(error);
+      M.toast({html: 'ERROR SAVING CHANGES'});
+    }
   }
 
   init() {
@@ -59,7 +82,7 @@ export default class Account extends BaseClass {
     });
     this.rootElement.querySelector('.update-customer').addEventListener('click', (event) => {
       event.preventDefault();
-      this.update();
+      this.update(edit_customer);
     })
   }
 }
