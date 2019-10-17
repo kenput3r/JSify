@@ -31,11 +31,15 @@ export default class Account extends BaseClass {
       }
     }
     const accepts_marketing = el.querySelector('.accepts-marketing');
+    const date = new Date();
+    const date_time = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()}T${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}-${date.getTimezoneOffset()/60}:00`;
     if(accepts_marketing.checked) {
-      const date = new Date();
-      const date_time = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDay()}T${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}-${date.getTimezoneOffset()/60}:00`;
       data.customer.accepts_marketing = true;
       data.customer.marketing_opt_in_level = 'confirmed_opt_in';
+      data.customer.accepts_marketing_updated_at = date_time;
+    }else{
+      data.customer.accepts_marketing = false;
+      data.customer.marketing_opt_in_level = null;
       data.customer.accepts_marketing_updated_at = date_time;
     }
     const url = 'https://api.suavecito.com/api/shopify/retail/customer/update';
@@ -68,6 +72,13 @@ export default class Account extends BaseClass {
         customer_info.querySelector('.address2').classList.add('hide');
       }
       customer_info.querySelector('.city-state-zip').innerHTML = customer.default_address.city + ', ' + customer.default_address.province + ' ' + customer.default_address.zip;
+      if(customer.accepts_marketing) {
+        customer_info.querySelector('.accepts-true').classList.remove('hide');
+        customer_info.querySelector('.accepts-false').classList.add('hide');
+      }else{
+        customer_info.querySelector('.accepts-true').classList.add('hide');
+        customer_info.querySelector('.accepts-false').classList.remove('hide');
+      }
     }else{
       console.log(error);
       M.toast({html: 'ERROR SAVING CHANGES'});

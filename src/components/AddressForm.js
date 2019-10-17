@@ -16,7 +16,20 @@ export default class AddressForm extends BaseClass {
       headers: headers,
       body: JSON.stringify({id: this.addressId, customer: this.customer})
     });
-    console.log(response);
+    if(response.status === 200) {
+      this.rootElement.closest('.form-container').style = "overflow: hidden";
+      this.rootElement.closest('.form-container').classList.add('scale-out');
+      M.toast({html: 'SUCCESSFULLY DELETED'});
+      let current_height = this.rootElement.closest('.form-container').offsetHeight;
+      while(current_height > 0) {
+        current_height = current_height - 1;
+        setTimeout(() => {
+          this.rootElement.closest('.form-container').style.height = `${current_height}px`
+        }, 100);
+      }
+    }else{
+      M.toast({html: 'ERROR SAVING CHANGES'});
+    }
   }
 
   async makeDefault() {
@@ -27,7 +40,11 @@ export default class AddressForm extends BaseClass {
       headers: headers,
       body: JSON.stringify({id: this.addressId, customer: this.customer})
     });
-    console.log(response);
+    if(response.status === 200) {
+      window.location.reload();
+    }else{
+      M.toast({html: 'ERROR SAVING CHANGES'});
+    }
   }
 
   async update() {
@@ -56,7 +73,11 @@ export default class AddressForm extends BaseClass {
       headers: headers,
       body: JSON.stringify(data)
     });
-    console.log(response);
+    if(response.status === 200) {
+      M.toast({html: 'SUCCESSFULLY UPDATED'});
+    }else{
+      M.toast({html: 'ERROR SAVING CHANGES'});
+    }
   }
 
   init() {
