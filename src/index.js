@@ -22,6 +22,7 @@ import MobileSearch from './components/MobileSearch';
 import OrdersHelp from './components/OrdersHelp';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
+import DataRequest from './components/DataRequest';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -45,7 +46,8 @@ const classes = {
     MobileSearch,
     OrdersHelp,
     Account,
-    AddressForm
+    AddressForm,
+    DataRequest
 };
 
 const system = new System(classes);
