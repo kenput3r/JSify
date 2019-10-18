@@ -94,6 +94,7 @@ export default class Account extends BaseClass {
     this.rootElement.querySelector('.update-customer').addEventListener('click', (event) => {
       event.preventDefault();
       this.update(edit_customer);
-    })
+    });
+    this.rootElement.querySelector('.redeem-points').addEventListener('click', () => SmileUI.openPanel());
   }
 }
