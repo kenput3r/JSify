@@ -1,0 +1,76 @@
+{% if customer %}
+  {% assign name = customer.name %}
+  {% assign email = customer.email %}
+  {% assign phone = customer.phone %}
+  {% assign id = customer.id %}
+{% endif %}
+<div class="container" data-s-module="OrdersHelp">
+  <div class="row">
+    <div class="col s12">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <div class="col s12 l6">
+      <div class="card">
+        <div class="card-content">
+          {% form 'contact' %}
+            <div class="row">
+              {% if form.posted_successfully? or form.errors %}
+                <div class="col s12">
+                  {% if form.posted_successfully? %}
+                    <p>Thank you for contacting us. We typically reply within 1 business day. If this is an urgent matter, please call 714.388.6920 during our business hours.</p>
+                  {% endif %}
+                  {{ form.errors | default_errors }}
+                </div>
+              {% else %}
+                <div class="col s12"><span class="card-title">What can we do for you?</span></div>
+                <div class="input-field col s12">
+                  <label placeholder="placeholder" for="ContactFormName">name</label>
+                  <input type="text" id="ContactFormName" name="contact[name]" value="{{name}}" class="validate" required="true">
+                </div>
+                <div class="input-field col s12">
+                  <label placeholder="placeholder" for="ContactFormEmail">email</label>
+                  <input type="email" id="ContactFormEmail" name="contact[email]" value="{{email}}" class="validate" required="true">
+                </div>
+                <div class="input-field col s8">
+                  <label placeholder="placeholder" for="ContactFormPhone">phone</label>
+                  <input type="tel" id="ContactFormPhone" name="contact[phone]" value="{{phone}}" class="validate" required="true">
+                </div>
+                <div class="input-field col s4">
+                  <label placeholder="placeholder" for="ContactFormId">id</label>
+                  <input type="text" id="ContactFormId" name="contact[id]" value="{{id}}" class="validate" disabled="true" required="true">
+                </div>
+                {% if orders.size > 0 %}
+                <div class="input-field col s12">
+                  <select id="ContactFormOrderNumber" name="contact[order_number]" class="validate" required="true">
+                    {% for order in orders | limit: 5 %}
+                      <option value="{{order.name}}">{{order.name}} - {{order.created_at | date: "%a, %b %d, %Y"}}</option>
+                    {% endfor %}
+                  </select>
+                  <label for="ContactFormOrderNumber">order number</label>
+                </div>
+                {% else %}
+                <div class="input-field col s12">
+                  <label placeholder="placeholder" for="ContactFormOrderNumber">order number</label>
+                  <input type="text" id="ContactFormOrderNumber" name="contact[order_number]" class="validate" required="true">
+                </div>
+                {% endif %}
+                <div class="input-field col s12">
+                  <label placeholder="placeholder" for="ContactFormMessage">message</label>
+                  <textarea class="materialize-textarea" rows="10" id="ContactFormMessage" name="contact[body]" class="validate" required="true"></textarea>
+                </div>
+                <div class="col s12 right-align">
+                  <div class="card-action">
+                    <input class="btn background-s-red" type="submit" value="send">
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l6">
+      {% section 'contact-sidebar' %}
+    </div>
+  </div>
+</div>
