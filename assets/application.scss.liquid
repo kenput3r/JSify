@@ -719,7 +719,8 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  a {
-   color: $s_red_compliment;
+   //color: $s_red_compliment;
+   color: $s_red;
    font-weight: bold;
  }
 
@@ -767,6 +768,7 @@ h1, h2, h3, h4, h5, h6 {
 Mobile Header
 **************************************************/
 #MobileHeader {
+  padding-top: 10px;
   img {
     max-height: 64px;
   }
@@ -876,8 +878,19 @@ Mobile Search
     }
   }
 }
-
-
+/**************************************************
+Order
+**************************************************/
+.summary-sticky {
+  .collapsible {
+    border: 0 !important;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+  .collapsible-header {
+    border-bottom: 0;
+  }
+}
 /**************************************************
 Product Carousel
 **************************************************/
@@ -1270,8 +1283,19 @@ DesktopNav
     }
   }
   .dropdown-content {
+    li {
+      min-height: 0;
+      &:hover {
+        background-color: transparent;
+      }
+    }
     a {
-      color: $s_red_compliment;
+      color: $s_red;
+      font-size: 14px;
+      padding: 10px;
+      &:hover {
+        background-color: transparent;
+      }
     }
     .col {
       clear: none;

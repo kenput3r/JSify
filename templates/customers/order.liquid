@@ -1,1 +1,103 @@
 <!-- /templates/customers/order.liquid -->
+<div class="container" data-s-module="Order">
+  <div class="row">
+    <div class="col s12 l4 summary-sticky">
+      <div class="row" style="text-transform: uppercase;">
+        <div class="col s12">
+          <div class="card grey darken-3">
+            <div class="card-content white-text" style="padding-top:12px;">
+              <p class="card-title">Order {{order.name}}</p>
+              <p style="margin-bottom:10px;">{{order.created_at | date: "%a, %b %d, %Y"}}</p>
+              <p><small>Status: {{order.financial_status}} | {{order.fulfillment_status}}</small></p>
+              {%- for transaction in order.transactions -%}
+              {%- if transaction.status == 'success' and transaction.kind != 'refund' -%}
+              <p><small>{{transaction.amount | money_with_currency}}</small> <br><small>{{transaction.payment_details.credit_card_company}} {{transaction.payment_details.credit_card_number}}</small></p>
+              {%- endif -%}
+              {%- endfor -%}
+              {%- if order.total_refunded_amount > 0 -%}
+              <p><small>Refunded {{order.total_refunded_amount | money_with_currency}}</small></p>
+              {%- endif -%}
+              <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header grey darken-3"><i class="material-icons">arrow_drop_down</i> SHIPPING ADDRESS</div>
+                  <div class="collapsible-body grey darken-3">
+                    {%- assign address = order.shipping_address -%}
+                    <p>{{address.name}}</p>
+                    <p>{{address.address1}}</p>
+                    {%- if address.address2-%}
+                    <p>{{address.address2}}</p>
+                    {%- endif -%}
+                    <p>{{address.city}}, {{address.province_code}} {{address.zip}}</p>
+                    <p>{{address.country}}</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header grey darken-3"><i class="material-icons">arrow_drop_down</i> BILLING ADDRESS</div>
+                  <div class="collapsible-body grey darken-3">
+                    {%- assign address = order.billing_address -%}
+                    <p>{{address.name}}</p>
+                    <p>{{address.address1}}</p>
+                    {%- if address.address2-%}
+                    <p>{{address.address2}}</p>
+                    {%- endif -%}
+                    <p>{{address.city}}, {{address.province_code}} {{address.zip}}</p>
+                    <p>{{address.country}}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <small>{{'TRACKING & ADDITIONAL INFO' | link_to: order.order_status_url, 'Additional order information'}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l8" style="text-transform: uppercase; margin-top:0.5rem;">
+      {%- for line_item in order.line_items -%}
+      <div class="row valign-wrapper">
+        <div class="col s4">
+            <a href="{{line_item.product.url}}">{{ line_item.image | img_url: '200x200' | img_tag: line_item.title, 'responsive-img' }}</a>
+        </div>
+        <div class="col s4">
+          <p><a href="{{line_item.product.url}}">{{line_item.title}}</a></p>
+          <p>{%- if line_item.original_price > line_item.final_price -%}
+          <small><span style="text-decoration: line-through;">${{line_item.original_price |money_without_currency}}</span></small><br>
+          {%- endif -%}
+          ${{line_item.final_price | money_without_currency}} X {{line_item.quantity}}</p>
+        </div>
+        <div class="col s4 right-align">
+          ${{line_item.final_line_price | money_without_currency}}
+        </div>
+      </div>
+      <div class="divider" style="margin-bottom:20px;"></div>
+      {%- endfor -%}
+      <table class="striped">
+        <tbody>
+          <tr>
+            <td>Subtotal</td>
+            <td>${{order.line_items_subtotal_price | money_without_currency}}</td>
+          </tr>
+          {%- if order.total_discounts > 0 -%}
+          <tr>
+            <td>Discounts</td>
+            <td>${{order.total_discounts | money_without_currency}}</td>
+          </tr>
+          {%- endif -%}
+          <tr>
+            <td>Taxes</td>
+            <td>${{order.tax_price | money_without_currency}}</td>
+          </tr>
+          <tr>
+            <td>Shipping & Handling</td>
+            <td>${{order.shipping_price | money_without_currency}}</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>${{order.total_price | money_without_currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
