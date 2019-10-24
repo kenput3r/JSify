@@ -21,6 +21,7 @@ import MobileMenu from './components/MobileMenu';
 import MobileSearch from './components/MobileSearch';
 import OrdersHelp from './components/OrdersHelp';
 import Order from './components/Order';
+import SideScroll from './components/SideScroll';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
@@ -47,6 +48,7 @@ const classes = {
     MobileSearch,
     OrdersHelp,
     Order,
+    SideScroll,
     Account,
     AddressForm,
     DataRequest
