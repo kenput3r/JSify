@@ -1179,6 +1179,33 @@ i.vote {
 }
 
 /**************************************************
+Side Scroll
+**************************************************/
+
+.side-scroll-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.side-scroll-card {
+  flex: 0 0 auto;
+  max-width: 80vw;
+
+  @media screen and(min-width: $large) {
+    max-width: 30vw;
+  }
+
+  @media screen and(max-width: $small) {
+    .card-title {
+      line-height: 1.2 !important;
+      font-size: 24px;
+    }
+  }
+}
+
+/**************************************************
 Suavecita Overrides
 **************************************************/
 body.suavecita {
