@@ -65,14 +65,14 @@ export default class LoadCollectionPageXbutton extends BaseClass {
   }
 
   /**
-   * @method observeAndLoad - invokes loadPage once 800px from bottom
-   * of document
+   * @method observeAndLoad - invokes loadPage once rootElement is
+   * 800px from bottom of document
    */
   observeAndLoad() {
     const body_height = document.body.offsetHeight;
     const window_height = window.innerHeight;
     const scrollY = window.pageYOffset;
-    const trigger = scrollY >= body_height - window_height - 800;
+    const trigger = scrollY >= this.rootElement.offsetTop - window_height - 800;
     if(document.readyState === 'complete' && trigger && !this.loading) {
       this.loading = true;
       window.removeEventListener('scroll', this.observeAndLoad, true);

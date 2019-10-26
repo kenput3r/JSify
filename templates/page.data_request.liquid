@@ -2,9 +2,9 @@
   {% assign name = customer.name %}
   {% assign email = customer.email %}
   {% assign phone = customer.phone %}
-  {% assign orders = customer.orders %}
+  {% assign id = customer.id %}
 {% endif %}
-<div class="container" data-s-module="OrdersHelp">
+<div class="container" data-s-module="DataRequest">
   <div class="row">
     <div class="col s12">
       <h1>{{ page.title }}</h1>
@@ -35,34 +35,28 @@
                   <label placeholder="placeholder" for="ContactFormPhone">phone</label>
                   <input type="tel" id="ContactFormPhone" name="contact[phone]" value="{{phone}}" class="validate" required="true">
                 </div>
-              {% endif %}
 
-              {% if orders.size > 0 %}
-                <script>console.log('{{orders.size}}')</script>
+                <input type="hidden" id="ContactFormId" name="contact[Customer ID]" value="{{id}}" required="true">
+
                 <div class="input-field col s12">
-                  <select id="ContactFormOrderNumber" name="contact[Order Number]" class="validate" required="true">
-                    {% for order in orders | limit: 5 %}
-                      <option>{{order.name}} - {{order.created_at | date: "%a, %b %d, %Y"}}</option>
-                    {% endfor %}
+                  <select id="ContactFormRequestType" name="contact[Request Type]" class="validate" required="true">
+                    <option value="Receive a copy of my data">Receive a copy of my data</option>
+                    <option value="Have all of my data deleted">Have all of my data deleted</option>
                   </select>
-                  <label for="ContactFormOrderNumber">order number</label>
+                  <label for="ContactFormRequestType">I would like to:</label>
                 </div>
-              {% else %}
+
                 <div class="input-field col s12">
-                  <label placeholder="placeholder" for="ContactFormOrderNumberManual">order number</label>
-                  <input type="text" id="ContactFormOrderNumberManual" name="contact[Order Number]" class="validate" required="true">
+                  <label placeholder="placeholder" for="ContactFormMessage">message</label>
+                  <textarea class="materialize-textarea" rows="10" id="ContactFormMessage" name="contact[body]" class="validate" required="true"></textarea>
+                </div>
+                <div class="col s12 right-align">
+                  <div class="card-action">
+                    <input class="btn background-s-red" type="submit" value="send">
+                  </div>
                 </div>
               {% endif %}
 
-              <div class="input-field col s12">
-                <label placeholder="placeholder" for="ContactFormMessage">message</label>
-                <textarea class="materialize-textarea" rows="10" id="ContactFormMessage" name="contact[body]" class="validate" required="true"></textarea>
-              </div>
-              <div class="col s12 right-align">
-                <div class="card-action">
-                  <input class="btn background-s-red" type="submit" value="send">
-                </div>
-              </div>
             </div>
           {% endform %}
         </div>

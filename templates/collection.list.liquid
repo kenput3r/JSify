@@ -1,17 +1,41 @@
-{% paginate collection.products by 2 %}
-  <h1>{{ collection.title }}</h1>
-  {% for product in collection.products %}
-    <div>
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-      {{ product.price | money }}
-      {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
-      <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-      </a>
-    </div>
-  {% else %}
-    <p>no matches</p>
-  {% endfor %}
-  {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
-{% endpaginate %}
+{% include 'tags_logic' %}
+{% assign url_with_tags = shop.domain | append: collection.url %}
 
+{% if current_tags.size > 0 %}
+  {% assign tags_url = '/' %}
+  {% for tag in current_tags %}
+    {% if forloop.last %}
+      {% assign tags_url = tags_url | append: tag %}
+    {% else %}
+      {% assign tags_url = tags_url | append: tag | append: '+' %}
+    {% endif %}
+  {% endfor %}
+  {% assign url_with_tags = url_with_tags | append: tags_url %}
+{% endif %}
+
+{% paginate collection.products by 48 %}
+  <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
+    {% include 'CollectionHeader' %}
+
+    {% include 'FiltersColumn' %}
+
+    <div id="Products" class="col m12 l9 transition-width" data-column-sibling="FiltersColumn">
+      <ul class="collection tile-container">
+        {% for product in collection.products %}
+          {% include 'ProductListItem' %}
+        {% else %}
+          <li class="collection-item">no matches</li>
+        {% endfor %}
+      </ul>
+      {% if paginate.pages > 1 %}
+        <div class="col s12 center-align">
+          <div class="loading-more-products hide">
+              {% include 'preloader' %}
+          </div>
+          <button class="waves-effect waves-light btn background-s-red" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2" data-template="products_list">LOAD MORE</button>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endpaginate %}
+{% include 'FiltersDrawer' %}

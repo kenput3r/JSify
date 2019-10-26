@@ -1,1 +1,28 @@
 <!-- /templates/customers/addresses.liquid -->
+<div class="container">
+  <h1>Addresses</h1>
+  {%- assign form_address = customer.default_address -%}
+  <div class="row form-container scale-transition">
+    <div class="col s12">
+      <div class="card grey-lighten-5">
+        <div class="card-content">
+          {%- include 'AddressForm' -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- for address in customer.addresses reversed -%}
+    {%- unless address.id == customer.default_address.id -%}
+      {%- assign form_address = address -%}
+      <div class="row form-container scale-transition">
+        <div class="col s12">
+          <div class="card grey-lighten-5">
+            <div class="card-content">
+              {%- include 'AddressForm' -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endunless -%}
+  {%- endfor -%}
+</div>

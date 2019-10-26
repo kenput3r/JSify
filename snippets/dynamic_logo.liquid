@@ -1,10 +1,10 @@
-{% if template.suffix == 'suavecita' or product.vendor == 'Suavecita' %}
+{% if template.suffix == 'suavecita' or template == product and product.vendor == 'Suavecita' %}
   {% assign setting_id = 'SuavecitaLogo' %}
-{% elsif template.suffix == 'premiumblends' or product.vendor == 'Premium Blends' %}
+{% elsif template.suffix == 'premiumblends' or template == product and product.vendor == 'Premium Blends' %}
   {% assign setting_id = 'PremiumBlendsLogo' %}
-{% elsif template.suffix == 'firmeclub' or product.vendor == 'Firme Club' %}
+{% elsif template.suffix == 'firmeclub' or template == product and product.vendor == 'Firme Club' %}
   {% assign setting_id = 'FirmeClubLogo' %}
-{% elsif template.suffix == 'suavecitospeed' or product.vendor == 'Suavecito Speed' %}
+{% elsif template.suffix == 'suavecitospeed' or template == product and product.vendor == 'Suavecito Speed' %}
   {% assign setting_id = 'SpeedShopLogo' %}
 {% else %}
   {% assign setting_id = 'SuavecitoLogo' %}

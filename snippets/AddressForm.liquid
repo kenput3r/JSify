@@ -1,0 +1,64 @@
+{%- include 'secrets' -%}
+{%- if forloop.index -%}
+  {%- assign i = forloop.index -%}
+{%- endif -%}
+{%- unless form_address -%}
+  {%- assign form_address = customer.default_address -%}
+{%- endunless -%}
+<form data-s-module="AddressForm" data-address-id="{{form_address.id}}" data-customer="{{customer.id}}" data-secret="{{customer.id | hmac_sha256: hmac_sha256_secret}}">
+  <div class="row">
+    <div class="col s6 input-field">
+      <input id="first_name{{i}}" class="first-name validate" type="text" value="{{form_address.first_name}}" />
+      <label for="first_name{{i}}">First Name</label>
+    </div>
+    <div class="col s6 input-field">
+        <input id="last_name{{i}}" class="last-name validate" type="text" value="{{form_address.last_name}}" />
+        <label for="last_name{{i}}">Last Name</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s6">
+      <input id="phone{{i}}" type="tel" class="phone validate" value="{{form_address.phone}}">
+      <label for="phone{{i}}">Phone Number</label>
+    </div>
+    <div class="input-field col s6">
+      <input id="company{{i}}" type="text" class=" company validate" value="{{form_address.company}}">
+      <label for="company{{i}}">Company</label>
+      </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="address1{{i}}" class="address1 validate" type="text" value="{{form_address.address1}}" />
+      <label for="address1{{i}}">Address Line 1</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="address2{{i}}" class="address2 validate" type="text" value="{{form_address.address2}}" />
+      <label for="address2{{i}}">Address Line 2</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12 l4">
+      <input id="city{{i}}" class="city validate" type="text" value="{{form_address.city}}" />
+      <label for="city{{i}}">City</label>
+    </div>
+    <div class="input-field col s6 l4">
+      <input id="state{{i}}" class="state validate" type="text" value="{{form_address.province}}" />
+      <label for="state{{i}}">State</label>
+    </div>
+    <div class="input-field col s6 l4">
+      <input id="zip{{i}}" class="zip validate" type="text" value="{{form_address.zip}}" />
+      <label for="zip{{i}}">Zip Code</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 right-align">
+      {%- unless form_address.id == customer.default_address.id -%}
+      <button class="btn-flat color-s-red make-default">MAKE DEFAULT</button> | 
+      {%- endunless -%}
+      <button class="btn-flat color-s-red delete">DELETE</button>
+      <button class="btn background-s-red update">UPDATE</button>
+    </div>
+  </div>
+</form>

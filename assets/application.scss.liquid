@@ -1,6 +1,6 @@
 //ToDo remove this temp style
 div#smile-ui-container {
-  display: none;
+  //display: none;
 }
 
 @mixin color_drop($color) {
@@ -233,6 +233,40 @@ Helpers
 .xs12 {
   @media screen and(max-width: $xs) {
     width: 100% !important;
+  }
+}
+
+/*------------------------------------------------------------------------------
+Account Template
+------------------------------------------------------------------------------*/
+.card {
+  small, .small {
+    font-size: 12px;
+  }
+}
+
+.count-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 1000;
+  font-size: 1.4em;
+  color: #000;
+  -webkit-text-stroke-width: 1px;
+}
+
+img.faded {
+  opacity: 0.5;
+}
+
+.relative {
+  position: relative;
+}
+
+#EditCustomer {
+  .row {
+    margin-bottom: 0;
   }
 }
 
@@ -478,6 +512,12 @@ Contact Pages
     text-transform: uppercase;
   }
 }
+.shopify-challenge__button.btn {
+  background-color: $s_red;
+  &:hover {
+    background-color: lighten($s_red, 10%) !important;
+  }
+}
 /**************************************************
 Filters Drawer
 **************************************************/
@@ -652,6 +692,20 @@ h1, h2, h3, h4, h5, h6 {
    }
  }
 
+ h2 {
+   font-size: 2.8rem;
+   @media screen and(max-width: $small) {
+    font-size: 1.8rem;
+  }
+ }
+
+ h3 {
+  font-size: 2.6rem;
+  @media screen and(max-width: $small) {
+   font-size: 1.6rem;
+ }
+}
+
  main {
    flex: 1 0 auto;
    padding-top: 15px;
@@ -665,7 +719,8 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  a {
-   color: $s_red_compliment;
+   //color: $s_red_compliment;
+   color: $s_red;
    font-weight: bold;
  }
 
@@ -675,18 +730,45 @@ h1, h2, h3, h4, h5, h6 {
    padding-top: 0;
  }
 
+ .small-margin-bottom {
+   @media screen and(max-width: $small) {
+     margin-bottom: 20px;
+   }
+ }
+
  strong {
    font-weight: 700;
+ }
+
+ .summary-sticky {
+   @media screen and(min-width: $large) {
+     position: sticky;
+     position: -webkit-sticky;
+     top: 86px;
+   }
+ }
+
+ .tiny-remove-padding {
+   @media screen and(max-width: 350px) {
+     padding: 0 !important;
+   }
  }
 
  .toast {
    background-color: $s_yellow !important;
  }
 
+ .tooltipped {
+   &:hover {
+     cursor: pointer;
+   }
+ }
+
 /**************************************************
 Mobile Header
 **************************************************/
 #MobileHeader {
+  padding-top: 10px;
   img {
     max-height: 64px;
   }
@@ -796,8 +878,19 @@ Mobile Search
     }
   }
 }
-
-
+/**************************************************
+Order
+**************************************************/
+.summary-sticky {
+  .collapsible {
+    border: 0 !important;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+  .collapsible-header {
+    border-bottom: 0;
+  }
+}
 /**************************************************
 Product Carousel
 **************************************************/
@@ -905,6 +998,30 @@ select.product-option {
 .product-form {
   .product-star-rating {
     margin-right: 0;
+  }
+}
+
+/**************************************************
+Product List Item
+**************************************************/
+.collection {
+  .collection-item {
+    &.avatar {
+      padding-right: 60px;
+      @media screen and(min-width: $large) {
+        padding-left: 114px;
+      }
+    }
+  }
+}
+.square {
+  position: absolute;
+  width: 42px;
+  left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  @media screen and(min-width: $large) {
+    width: 84px;
   }
 }
 
@@ -1166,8 +1283,19 @@ DesktopNav
     }
   }
   .dropdown-content {
+    li {
+      min-height: 0;
+      &:hover {
+        background-color: transparent;
+      }
+    }
     a {
-      color: $s_red_compliment;
+      color: $s_red;
+      font-size: 14px;
+      padding: 10px;
+      &:hover {
+        background-color: transparent;
+      }
     }
     .col {
       clear: none;
@@ -1311,5 +1439,18 @@ div#smile-ui-container[style] {
         }
       }
     }
+  }
+}
+
+/**************************************************
+  Search Page
+**************************************************/
+.template-search {
+  .ais-search-box--input {
+    border-bottom: 0 !important;
+    &:focus-within, &:focus {
+      box-shadow: none !important;
+      height: 3rem !important;
+    } 
   }
 }

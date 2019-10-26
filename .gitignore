@@ -5,6 +5,7 @@ config.yml
 /assets/materializeCss.css.map
 /assets/materializeCss.js
 /assets/materializeCss.js.map
+/snippets/secrets.liquid
 /src/node_modules
 
 # General

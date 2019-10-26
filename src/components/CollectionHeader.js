@@ -105,5 +105,9 @@ export default class CollectionHeader extends BaseClass {
       this.filter(event.target.value);
     })
     const materialize_select = M.FormSelect.init(select, {classes: 'sort-by-select'});
+    const dropdown_trigger = this.rootElement.querySelector('.dropdown-trigger');
+    const dropdown_options = {constrainWidth: false, coverTrigger: false, closeOnClick: false};
+    const dropdown = M.Dropdown.init(dropdown_trigger, dropdown_options);
+
   }
 }
