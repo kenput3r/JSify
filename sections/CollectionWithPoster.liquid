@@ -1,0 +1,69 @@
+{% assign collection_handle = section.settings.Collection %}
+{% assign product_limit = section.settings.Limit %}
+{% assign grid_sizes = section.settings.Grid_Sizes %}
+
+<div class="row poster-collection" data-s-module="PosterCollection">
+    <div class="poster col s12 m3">
+        <div class="slider">
+            <ul class="slides">
+              {% for block in section.blocks %}
+                {% assign slider_item_img = block.settings.Slider_Item_Img | img_url: 'large' %}
+                {% assign slider_item_alt = block.settings.Slider_Item_Alt %}
+                <li>
+                  <img src="{{slider_item_img}}" alt="{{slider_item_alt}}"/>
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="products col s12 m9">
+      {% include 'PosterCollection' %}
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collection With Poster",
+    "settings": [
+      {
+        "id": "Collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "id": "Limit",
+        "type": "number",
+        "label": "Product Limit"
+      },
+      {
+        "id": "Grid_Sizes",
+        "type": "text",
+        "label": "Grid Sizes"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image_picker",
+        "name": "Slider Item",
+        "settings": [
+          {
+            "id": "Slider_Item_Img",
+            "type": "image_picker",
+            "label": "Slider Item Img"
+          },
+          {
+            "id": "Slider_Item_Alt",
+            "type": "text",
+            "label": "Slider Item Alt"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection With Poster",
+        "category": "Poster Collection"
+      }
+    ]
+  }
+{% endschema %}

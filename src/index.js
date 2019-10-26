@@ -1,6 +1,7 @@
 import './node_modules/materialize-css/dist/js/materialize.min.js';
 import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
+import PosterCollection from './components/PosterCollection';
 import ProductDrawer from './components/ProductDrawer';
 import ProductSwiper from './components/ProductSwiper';
 import ProductForm from './components/ProductForm';
@@ -28,6 +29,7 @@ import DataRequest from './components/DataRequest';
 
 const classes = {
     LoadCollectionPageXbutton,
+    PosterCollection,
     ProductDrawer,
     ProductSwiper,
     ProductForm,

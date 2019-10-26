@@ -1,0 +1,13 @@
+{%- unless collection_handle -%}
+  {%- assign collection_handle = 'all' -%}
+{%- endunless -%}
+{%- unless product_limit != '' -%}
+  {%- assign product_limit = 6 -%}
+{%- endunless -%}
+{%- unless grid_sizes != '' -%}
+    {%- assign grid_sizes = 's6 m4 l4' -%}
+{%- endunless -%}
+
+{%- for product in collections[collection_handle].all_products limit: product_limit -%}
+    {% include 'ProductTileLifestyle' %}
+{%- endfor -%}
