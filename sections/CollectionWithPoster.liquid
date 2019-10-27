@@ -9,7 +9,7 @@
               {% for block in section.blocks %}
                 {% assign slider_item_img_small = block.settings.Slider_Item_Img | img_url: '50x' %}
                 {% assign slider_item_img_large = block.settings.Slider_Item_Img | img_url: '400x' %}
-                {% assign slider_item_alt = block.settings.Slider_Item_Alt %}
+                {% assign slider_item_img_alt = block.settings.Slider_Item_Img_Alt %}
                 {% assign slider_item_tagline = block.settings.Slider_Item_Tagline %}
                 {% assign slider_item_text = block.settings.Slider_Item_Text | truncate: 40 %}
                 {% assign slider_item_link = block.settings.Slider_Item_Link %}
@@ -21,7 +21,7 @@
                     class="lazy-image lazy-poster"
                     src="{{ slider_item_img_small }}" 
                     data-src="{{ slider_item_img_large }}" 
-                    alt="{{ slider_item_alt }}"
+                    alt="{{ slider_item_img_alt }}"
                     data-s-module="LazyImage"
                   />
                   <div class="caption flow-text {{ slider_item_text_color }}-text {{ slider_item_text_align }}">
@@ -81,7 +81,7 @@
             "label": "Image"
           },
           {
-            "id": "Slider_Item_Alt",
+            "id": "Slider_Item_Img_Alt",
             "type": "text",
             "label": "Image Alt"
           },
