@@ -1,7 +1,6 @@
 import './node_modules/materialize-css/dist/js/materialize.min.js';
 import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
-import PosterCollection from './components/PosterCollection';
 import ProductDrawer from './components/ProductDrawer';
 import ProductSwiper from './components/ProductSwiper';
 import ProductForm from './components/ProductForm';
@@ -26,10 +25,11 @@ import SideScroll from './components/SideScroll';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
+import PosterCollection from './components/PosterCollection';
+import LazyImage from './components/LazyImage';
 
 const classes = {
     LoadCollectionPageXbutton,
-    PosterCollection,
     ProductDrawer,
     ProductSwiper,
     ProductForm,
@@ -53,7 +53,9 @@ const classes = {
     SideScroll,
     Account,
     AddressForm,
-    DataRequest
+    DataRequest,
+    PosterCollection,
+    LazyImage
 };
 
 const system = new System(classes);

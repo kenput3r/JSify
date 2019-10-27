@@ -9,11 +9,15 @@ import BaseClass from '../system/BaseClass';
 export default class PosterCollection extends BaseClass {
     constructor(rootElement, args) {
         super(rootElement, args);
+        this.setHeight = this.setHeight.bind(this);
         this.init();
     }
 
-    setHeight(slider, slides, products) {
-        const height = products.clientHeight;
+    setHeight() {
+        const slider = this.rootElement.querySelector('.slider');
+        const slides = this.rootElement.querySelector('.slides');
+        const products = this.rootElement.querySelector('.products');
+        const height = products.clientHeight - 12;
         slider.style.height = height + 'px';
         slides.style.height = height + 'px';
     }
@@ -26,10 +30,8 @@ export default class PosterCollection extends BaseClass {
             interval: 6000
         }
         const slider = this.rootElement.querySelector('.slider');
-        const slides = this.rootElement.querySelector('.slides');
-        const products = this.rootElement.querySelector('.products');
         this.MSlider = M.Slider.init(slider, slider_options);
-        this.setHeight(slider, slides, products);
-        window.onresize = () => this.setHeight(slider, slides, products);
+        this.setHeight();
+        window.addEventListener("resize", this.setHeight);
     }
 }

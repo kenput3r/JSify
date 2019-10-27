@@ -4,13 +4,42 @@
 
 <div class="row poster-collection" data-s-module="PosterCollection">
     <div class="poster col s12 m3">
-        <div class="slider">
+        <div class="slider z-depth-2">
             <ul class="slides">
               {% for block in section.blocks %}
-                {% assign slider_item_img = block.settings.Slider_Item_Img | img_url: 'large' %}
+                {% assign slider_item_img_small = block.settings.Slider_Item_Img | img_url: '50x' %}
+                {% assign slider_item_img_large = block.settings.Slider_Item_Img | img_url: '400x' %}
                 {% assign slider_item_alt = block.settings.Slider_Item_Alt %}
+                {% assign slider_item_tagline = block.settings.Slider_Item_Tagline %}
+                {% assign slider_item_text = block.settings.Slider_Item_Text | truncate: 40 %}
+                {% assign slider_item_link = block.settings.Slider_Item_Link %}
+                {% assign slider_item_link_text = block.settings.Slider_Item_Link_Text %}
+                {% assign slider_item_text_align = block.settings.Slider_Item_Text_Align %}
+                {% assign slider_item_text_color = block.settings.Slider_Item_Text_Color %}
                 <li>
-                  <img src="{{slider_item_img}}" alt="{{slider_item_alt}}"/>
+                  <img 
+                    class="lazy-image lazy-poster"
+                    src="{{ slider_item_img_small }}" 
+                    data-src="{{ slider_item_img_large }}" 
+                    alt="{{ slider_item_alt }}"
+                    data-s-module="LazyImage"
+                  />
+                  <div class="caption flow-text {{ slider_item_text_color }}-text {{ slider_item_text_align }}">
+                    {% unless slider_item_tagline == '' %}
+                    <h4>{{ slider_item_tagline }}</h4>
+                    {% endunless %}
+                    {% unless slider_item_text == '' %}
+                    <h6>{{ slider_item_text }}</h6>
+                    {% endunless %}
+                    {% unless slider_item_link == '' or slider_item_link_text == '' %}
+                    <a 
+                      class="btn waves-effect waves-light background-s-red" 
+                      href="{{ slider_item_link }}"
+                    >
+                      {{ slider_item_link_text }}
+                    </a>
+                    {% endunless %}
+                  </div>
                 </li>
               {% endfor %}
             </ul>
@@ -49,12 +78,74 @@
           {
             "id": "Slider_Item_Img",
             "type": "image_picker",
-            "label": "Slider Item Img"
+            "label": "Image"
           },
           {
             "id": "Slider_Item_Alt",
             "type": "text",
-            "label": "Slider Item Alt"
+            "label": "Image Alt"
+          },
+          {
+            "id": "Slider_Item_Tagline",
+            "type": "text",
+            "label": "Tagline"
+          },
+          {
+            "id": "Slider_Item_Text",
+            "type": "text",
+            "label": "Text"
+          },
+          {
+            "id": "Slider_Item_Link",
+            "type": "text",
+            "label": "Button Link"
+          },
+          {
+            "id": "Slider_Item_Link_Text",
+            "type": "text",
+            "label": "Button Text"
+          },
+          {
+            "type": "select",
+            "id": "Slider_Item_Text_Align",
+            "label": "Text Align",
+            "options": [
+              {
+                "value": "left-align",
+                "label": "Left"
+              },
+              {
+                "value": "center-align",
+                "label": "Center"
+              },
+              {
+                "value": "right-align",
+                "label": "Right"
+              } 
+            ],
+            "default": "center-align",
+            "info": "Default is Center."
+          },
+          {
+            "type": "select",
+            "id": "Slider_Item_Text_Color",
+            "label": "Text Color",
+            "options": [
+              {
+                "value": "white",
+                "label": "White"
+              },
+              {
+                "value": "black",
+                "label": "Black"
+              },
+              {
+                "value": "grey",
+                "label": "Grey"
+              } 
+            ],
+            "default": "white",
+            "info": "Default is White."
           }
         ]
       }
