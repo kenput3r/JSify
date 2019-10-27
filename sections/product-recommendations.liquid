@@ -1,12 +1,17 @@
 {% comment %}
   Borrowed from https://help.shopify.com/en/themes/development/recommended-products/using-liquid
 {% endcomment %}
-<div class="product-recommendations" data-product-id="{{ product.id }}" data-limit="4">
+<div class="product-recommendations" data-product-id="{{ product.id }}" data-limit="6">
   {%- if recommendations.products_count > 0 -%}
     <h3>You may also like</h3>
-    <div class="row">
-      {%- for product in recommendations.products limit: 3 -%}
-      {% include 'ProductTile' %}
+    <div class="side-scroll-wrapper">
+      {%- for product in recommendations.products limit: 6 -%}
+      <div class="side-scroll-card">
+        <div class="row">
+          {% assign grid_sizes = 's12' %}
+          {% include 'ProductTile' %}
+        </div>
+      </div>
       {%- endfor -%}
     </div>
   {%- endif -%}
