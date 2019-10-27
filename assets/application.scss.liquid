@@ -48,6 +48,7 @@ $burgundy: #800020;
 $cream: #fffdd0;
 $green: #008000;
 $grey: #808080;
+$grey_lighten_4: #f5f5f5;
 $orange: #ffa500;
 $pink: #ffc0cb;
 $purple: #800080;
@@ -135,6 +136,12 @@ Helpers
 .sblock {
   @media screen and(max-width: $small) {
     display: block !important;
+  }
+}
+
+.small-only-left-50 {
+  @media screen and(min-width: $xs) and(max-width: $small) {
+    margin-left: 50% !important;
   }
 }
 
@@ -307,14 +314,19 @@ Cards
 }
 
 /**************************************************
-Collection Header
+Collection
 **************************************************/
+.template-collection {
+  main {
+    background-color: $grey_lighten_4;
+  }
+}
 #CollectionHeader {
   h1 {
     margin: 0;
   }
   #CollectionMenu {
-    background-color: #fff;
+    background-color: $grey_lighten_4;
     &.z-depth-1 {
       .select-dropdown {
         border-bottom: 0;
@@ -524,7 +536,7 @@ Filters Drawer
 #FiltersDrawer, #FiltersColumn {
   -webkit-overflow-scrolling: touch;
   h5 {
-    border-top: 1px solid #f1efef;
+    border-top: 1px solid #e2dede;
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 10px;

@@ -60,7 +60,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     <div class="col s6 m3 center-align">
       <span class="product-price">{{ product.selected_or_first_available_variant.price | money }}</span>
     </div>
-    <div class="col s6 xs12 offset-s6">
+    <div class="col s6 xs12 small-only-left-50">
       {% if product.available %}
       <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">Add to cart</button>
       {% else %}

@@ -4,17 +4,23 @@
 {%- unless product_limit -%}
   {%- assign product_limit = 6 -%}
 {%- endunless -%}
+{%- unless section_title -%}
+  {%- assign section_title = 'Featured Products' -%}
+{%- endunless -%}
 
 {%- assign collection_url = 'https://' | append: shop.domain | append: '/collections/' | append: collection_handle -%}
 {%- assign pages = collections[collection_handle].all_products_count | divided_by: 24 -%}
 
-<div class="side-scroll-wrapper" data-s-module="SideScroll" data-url="{{collection_url}}" data-pages="{{pages}}">
-  {%- for product in collections[collection_handle].all_products limit: product_limit -%}
-  <div class="side-scroll-card">
-    <div class="row">
-      {% assign grid_sizes = 's12' %}
-      {% include 'ProductTile' %}
+<div class="grey lighten-4" style="padding:20px 0;">
+  <h3 class="center-align">{{section_title}}</h3>
+  <div class="side-scroll-wrapper" data-s-module="SideScroll" data-url="{{collection_url}}" data-pages="{{pages}}">
+    {%- for product in collections[collection_handle].all_products limit: product_limit -%}
+    <div class="side-scroll-card">
+      <div class="row">
+        {% assign grid_sizes = 's12' %}
+        {% include 'ProductTile' %}
+      </div>
     </div>
+    {%- endfor -%}
   </div>
-  {%- endfor -%}
 </div>

@@ -3,7 +3,7 @@
 {% endcomment %}
 <div class="product-recommendations" data-product-id="{{ product.id }}" data-limit="6">
   {%- if recommendations.products_count > 0 -%}
-    <h3>You may also like</h3>
+    <h3 class="center-align">You may also like</h3>
     <div class="side-scroll-wrapper">
       {%- for product in recommendations.products limit: 6 -%}
       <div class="side-scroll-card">
