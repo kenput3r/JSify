@@ -1,6 +1,6 @@
 //ToDo remove this temp style
 div#smile-ui-container {
-  //display: none;
+  display: none;
 }
 
 @mixin color_drop($color) {
@@ -798,6 +798,34 @@ body.premiumblends, body.firmeclub, body.suavecitospeed {
   #MobileHeader {
     img {
       filter: invert(1);
+    }
+  }
+}
+#MobileBrandCarousel {
+  height: 100px;
+  .carousel-item {
+    text-align: center;
+    height: auto;
+    min-height: 0;
+    &.active {
+      .action {
+        opacity: 1;
+      }
+    }
+  }
+  img {
+    max-height: 64px;
+    width: auto;
+    &.darken {
+      filter: invert(1);
+      -webkit-filter: invert(1);
+    }
+  }
+  .action {
+    opacity: 0;
+    a {
+      margin-top: -30px;
+      padding-left: 80px;
     }
   }
 }
