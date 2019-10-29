@@ -16,6 +16,7 @@ import FiltersColumn from './components/FiltersColumn';
 import LineItem from './components/LineItem';
 import LoginForm from './components/LoginForm';
 import DesktopNav from './components/DesktopNav';
+import MobileBrandCarousel from './components/MobileBrandCarousel';
 import MobileNav from './components/MobileNav';
 import MobileMenu from './components/MobileMenu';
 import MobileSearch from './components/MobileSearch';
@@ -43,6 +44,7 @@ const classes = {
     LoginForm,
     LineItem,
     DesktopNav,
+    MobileBrandCarousel,
     MobileMenu,
     MobileNav,
     MobileSearch,

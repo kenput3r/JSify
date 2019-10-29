@@ -2,9 +2,9 @@
   {% assign grid_sizes = 's12 m6 l6 xl4' %}
 {% endunless %}
 <div class="product-tile product-tile-page-{{paginate.current_page}} col {{grid_sizes}}" data-s-module="ProductTile">
-  <div class="card hoverable">
+  <div class="card">
     <div class="card-image">
-      <img class="sidenav-trigger product-image" data-target="ProductDrawer" data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id={{product.id}} src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+      <img class="sidenav-trigger product-image" data-target="ProductDrawer" data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id={{product.id}} src="{{ product.featured_image.src | img_url: '400x' }}" alt="{{ product.featured_image.alt | escape }}">
       <a href="#" class="btn-floating halfway-fab waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}" class="material-icons">visibility</i></a>
     </div>
     <div class="card-content">

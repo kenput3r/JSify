@@ -1,5 +1,6 @@
-{% assign collection_handle = section.settings.collection %}
-{% assign product_limit = section.settings.limit %}
+{% assign collection_handle = section.settings.Collection %}
+{% assign section_title = section.settings.SectionTitle %}
+
 {% include 'SideScroll' %}
 
 {% schema %}
@@ -12,15 +13,17 @@
         "label": "Collection"
       },
       {
-        "id": "Limit",
-        "type": "number",
-        "label": "Product Limit"
+        "id": "SectionTitle",
+        "type": "text",
+        "label": "Section Title",
+        "info": "Defaults to 'Featured Collection'",
+        "default": "Featured Collection"
       }
     ],
     "presets": [
       {
         "name": "Collection",
-        "category": "SSS"
+        "category": "Side Scroll Collections"
       }
     ]
   }

@@ -18,7 +18,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       {% endif %}
     </div>
     <div class="col s12 padding-none star-rating-container">{%include 'ProductStarRating'%}</div>
-    <div class="input-field col s12 m8">
+    <div class="input-field col s8">
       {% unless product.variants.size == 1 %}
       <select class="product-option variant-selector">
         {% for variant in product.variants %}
@@ -45,7 +45,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       </select>
       {% endunless %}
     </div>
-    <div class="input-field col s12 m4">
+    <div class="input-field col s4">
       {% if product.available %}
       <select class="product-option quantity-selector">
         {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}

@@ -1,6 +1,6 @@
 //ToDo remove this temp style
 div#smile-ui-container {
-  //display: none;
+  display: none;
 }
 
 @mixin color_drop($color) {
@@ -48,6 +48,7 @@ $burgundy: #800020;
 $cream: #fffdd0;
 $green: #008000;
 $grey: #808080;
+$grey_lighten_4: #f5f5f5;
 $orange: #ffa500;
 $pink: #ffc0cb;
 $purple: #800080;
@@ -135,6 +136,12 @@ Helpers
 .sblock {
   @media screen and(max-width: $small) {
     display: block !important;
+  }
+}
+
+.small-only-left-50 {
+  @media screen and(min-width: $xs) and(max-width: $small) {
+    margin-left: 50% !important;
   }
 }
 
@@ -307,14 +314,19 @@ Cards
 }
 
 /**************************************************
-Collection Header
+Collection
 **************************************************/
+.template-collection {
+  main {
+    background-color: $grey_lighten_4;
+  }
+}
 #CollectionHeader {
   h1 {
     margin: 0;
   }
   #CollectionMenu {
-    background-color: #fff;
+    background-color: $grey_lighten_4;
     &.z-depth-1 {
       .select-dropdown {
         border-bottom: 0;
@@ -524,7 +536,7 @@ Filters Drawer
 #FiltersDrawer, #FiltersColumn {
   -webkit-overflow-scrolling: touch;
   h5 {
-    border-top: 1px solid #f1efef;
+    border-top: 1px solid #e2dede;
     margin-left: 10px;
     margin-right: 10px;
     padding-top: 10px;
@@ -730,6 +742,14 @@ h1, h2, h3, h4, h5, h6 {
    padding-top: 0;
  }
 
+ //chrome user agent styles
+ select {
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(166, 166, 166);
+}
+
  .small-margin-bottom {
    @media screen and(max-width: $small) {
      margin-bottom: 20px;
@@ -765,6 +785,14 @@ h1, h2, h3, h4, h5, h6 {
  }
 
 /**************************************************
+Index Template
+**************************************************/
+.template-index {
+  main {
+    padding-top: 0;
+  }
+}
+/**************************************************
 Mobile Header
 **************************************************/
 #MobileHeader {
@@ -778,6 +806,34 @@ body.premiumblends, body.firmeclub, body.suavecitospeed {
   #MobileHeader {
     img {
       filter: invert(1);
+    }
+  }
+}
+#MobileBrandCarousel {
+  height: 100px;
+  .carousel-item {
+    text-align: center;
+    height: auto;
+    min-height: 0;
+    &.active {
+      .action {
+        opacity: 1;
+      }
+    }
+  }
+  img {
+    max-height: 64px;
+    width: auto;
+    &.darken {
+      filter: invert(1);
+      -webkit-filter: invert(1);
+    }
+  }
+  .action {
+    opacity: 0;
+    a {
+      margin-top: -30px;
+      padding-left: 80px;
     }
   }
 }
@@ -1174,6 +1230,37 @@ i.vote {
       .modal-content {
         padding: 12px;
       }
+    }
+  }
+}
+
+/**************************************************
+Side Scroll
+**************************************************/
+
+.side-scroll-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.side-scroll-card {
+  flex: 0 0 auto;
+  max-width: 80vw;
+
+  @media screen and(min-width: $large) {
+    max-width: 30vw;
+  }
+
+  @media screen and(max-width: $small) {
+    .card-title {
+      line-height: 1.2 !important;
+      min-height: 38px;
+      font-size: 16px;
+    }
+    .product-form {
+      min-height: 161px;
     }
   }
 }
