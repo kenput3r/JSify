@@ -1469,3 +1469,47 @@ div#smile-ui-container[style] {
     }
   }
 }
+
+/**************************************************
+  404 Page
+**************************************************/
+.template-404 {
+  background-color: #371e12;
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  main {
+    padding-top: 0;
+    .container-404 {
+      display: flex;
+      flex-wrap: wrap;
+      .frame {
+        flex: 0 0 auto;
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        img {
+          bottom: 0;
+          height: 100%;
+          left: 0;
+          object-fit: cover;
+          object-position: center;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+  footer {
+    .footer-nav {
+      background-color: #371e12;
+    }
+  }
+}
