@@ -789,7 +789,9 @@ Index Template
 **************************************************/
 .template-index {
   main {
-    padding-top: 0;
+    @media screen and(max-width: 992px) {
+      padding-top: 0;
+    }
   }
 }
 /**************************************************
@@ -1546,6 +1548,17 @@ div#smile-ui-container[style] {
   Poster Collection
 **************************************************/
 .poster-collection {
+
+  .slider[style] {
+    @media screen and(max-width: 992px) {
+      height: 412px !important;
+
+      .slides {
+        height: 412px !important;
+      }
+    }
+    
+  }
   .poster {
     padding: 6px .75rem;
     @media only screen and (min-width: 992px) {
