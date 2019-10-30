@@ -1,0 +1,42 @@
+<div class="parallax-container" data-s-module="Parallax">
+  <div class="parallax">
+    <img alt="{{section.settings.AltText}}" 
+    srcset="{{section.settings.Image | img_url: '320x'}} 320w,
+            {{section.settings.Image | img_url: '480x'}} 480w,
+            {{section.settings.Image | img_url: '800x'}} 800w,
+            {{section.settings.Image | img_url: '1024x'}} 1024w,
+            {{section.settings.Image | img_url: '1920x'}} 1920w,
+            {{section.settings.Image | img_url: '2048x'}} 2048w"
+    sizes="(max-width: 320px),
+            (max-width: 480px),
+            (max-width: 800px),
+            (max-width: 1024px),
+            (max-width: 1920px),
+            (max-width: 2048px)"
+    src="{{section.settings.Image | img_url: '2048x'}}"  />
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Parallax Section Settings",
+    "settings": [
+      {
+        "id": "Image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "SectionTitle",
+        "type": "text",
+        "label": "Section Title"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Parallax",
+        "category": "Parallax Section"
+      }
+    ]
+  }
+{% endschema %}

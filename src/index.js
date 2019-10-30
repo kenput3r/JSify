@@ -22,6 +22,7 @@ import MobileMenu from './components/MobileMenu';
 import MobileSearch from './components/MobileSearch';
 import OrdersHelp from './components/OrdersHelp';
 import Order from './components/Order';
+import Parallax from './components/Parallax';
 import SideScroll from './components/SideScroll';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
@@ -52,6 +53,7 @@ const classes = {
     MobileSearch,
     OrdersHelp,
     Order,
+    Parallax,
     SideScroll,
     Account,
     AddressForm,
