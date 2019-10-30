@@ -26,6 +26,8 @@ import SideScroll from './components/SideScroll';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
+import PosterCollection from './components/PosterCollection';
+import LazyImage from './components/LazyImage';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -53,7 +55,9 @@ const classes = {
     SideScroll,
     Account,
     AddressForm,
-    DataRequest
+    DataRequest,
+    PosterCollection,
+    LazyImage
 };
 
 const system = new System(classes);
