@@ -7,7 +7,6 @@ export default class MobileBrandCarousel extends BaseClass {
   }
 
   init() {
-    console.log('MobileBrandCarousel init')
     const options = {
       dist: -200, 
       numVisible: 5, 
