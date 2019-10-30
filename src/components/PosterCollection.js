@@ -17,7 +17,14 @@ export default class PosterCollection extends BaseClass {
         const slider = this.rootElement.querySelector('.slider');
         const slides = this.rootElement.querySelector('.slides');
         const products = this.rootElement.querySelector('.products');
-        const height = products.clientHeight - 12;
+        let height;
+        if (window.innerWidth > 992) {
+            // height = products container height - padding
+            height = products.clientHeight - 12;
+        } else {
+            height = window.innerHeight;
+        }
+
         slider.style.height = height + 'px';
         slides.style.height = height + 'px';
     }

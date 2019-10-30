@@ -1460,11 +1460,68 @@ div#smile-ui-container[style] {
 **************************************************/
 .poster-collection {
   .poster {
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding: 6px .75rem;
+    @media only screen and (min-width: 992px) {
+      padding-right: 0;
+    }
+    .spacer {
+      padding: 0 6px;
+      @media only screen and (min-width: 992px) {
+        padding: 0;
+        padding-left: 6px;
+      }
+      .caption {
+        width: 80%;
+        &.top-left {
+          top: 10%;
+          left: 10%;
+          text-align: left;
+        }
+        &.top-center {
+          top: 10%;
+          left: 0;
+          right: 0;
+          text-align: center;
+          margin: auto;
+        }
+        &.top-right {
+          top: 10%;
+          right: 10%;
+          left: unset !important;
+          text-align: right;
+        }
+        &.bottom-left {
+          top: unset;
+          bottom: 10%;
+          left: 10%;
+          text-align: left;
+        }
+        &.bottom-center {
+          top: unset !important;
+          left: 0;
+          right: 0;
+          bottom: 10%;
+          text-align: center;
+          margin: auto;
+        }
+        &.bottom-right {
+          top: unset !important;
+          bottom: 10%;
+          right: 10%;
+          left: unset !important;
+          text-align: right;
+        }
+        .tagline {
+          margin-top: 0;
+        }
+      }
+    }
   }
   .products {
-    .product-tile-lifestyle.col {
+    @media only screen and (min-width: 992px) {
+      padding-left: 6px;
+    }
+    .product-tile-lifestyle {
       padding: 6px;
     }
   }

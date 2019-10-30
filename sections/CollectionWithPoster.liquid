@@ -3,7 +3,8 @@
 {% assign grid_sizes = section.settings.Grid_Sizes %}
 
 <div class="row poster-collection" data-s-module="PosterCollection">
-    <div class="poster col s12 m3">
+    <div class="poster col s12 l3">
+      <div class="spacer">
         <div class="slider z-depth-2">
             <ul class="slides">
               {% for block in section.blocks %}
@@ -14,7 +15,7 @@
                 {% assign slider_item_text = block.settings.Slider_Item_Text | truncate: 40 %}
                 {% assign slider_item_link = block.settings.Slider_Item_Link %}
                 {% assign slider_item_link_text = block.settings.Slider_Item_Link_Text %}
-                {% assign slider_item_text_align = block.settings.Slider_Item_Text_Align %}
+                {% assign slider_item_text_position = block.settings.Slider_Item_Text_Position %}
                 {% assign slider_item_text_color = block.settings.Slider_Item_Text_Color %}
                 <li>
                   <img 
@@ -24,12 +25,12 @@
                     alt="{{ slider_item_img_alt }}"
                     data-s-module="LazyImage"
                   />
-                  <div class="caption flow-text {{ slider_item_text_color }}-text {{ slider_item_text_align }}">
+                  <div class="caption flow-text {{ slider_item_text_color }}-text {{ slider_item_text_position }}">
                     {% unless slider_item_tagline == '' %}
-                    <h4>{{ slider_item_tagline }}</h4>
+                    <h2 class="tagline">{{ slider_item_tagline }}</h2>
                     {% endunless %}
                     {% unless slider_item_text == '' %}
-                    <h6>{{ slider_item_text }}</h6>
+                    <h6 class="text">{{ slider_item_text }}</h6>
                     {% endunless %}
                     {% unless slider_item_link == '' or slider_item_link_text == '' %}
                     <a 
@@ -44,8 +45,9 @@
               {% endfor %}
             </ul>
         </div>
+      </div>
     </div>
-    <div class="products col s12 m9">
+    <div class="products col s12 l9">
       {% include 'PosterCollection' %}
     </div>
 </div>
@@ -107,24 +109,36 @@
           },
           {
             "type": "select",
-            "id": "Slider_Item_Text_Align",
-            "label": "Text Align",
+            "id": "Slider_Item_Text_Position",
+            "label": "Text Position",
             "options": [
               {
-                "value": "left-align",
-                "label": "Left"
+                "value": "top-left",
+                "label": "Top Left"
               },
               {
-                "value": "center-align",
-                "label": "Center"
+                "value": "top-center",
+                "label": "Top Center"
               },
               {
-                "value": "right-align",
-                "label": "Right"
-              } 
+                "value": "top-right",
+                "label": "Top Right"
+              },
+              {
+                "value": "bottom-left",
+                "label": "Bottom Left"
+              },
+              {
+                "value": "bottom-center",
+                "label": "Bottom Center"
+              },
+              {
+                "value": "bottom-right",
+                "label": "Bottom Right"
+              }
             ],
-            "default": "center-align",
-            "info": "Default is Center."
+            "default": "top-left",
+            "info": "Default is Top Left."
           },
           {
             "type": "select",
