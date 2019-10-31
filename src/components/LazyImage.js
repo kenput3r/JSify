@@ -19,6 +19,7 @@ export default class LazyImage extends BaseClass {
                 if ((lazyImage.getBoundingClientRect().top <= window.innerHeight
                     && lazyImage.getBoundingClientRect().bottom >= 0)
                     && getComputedStyle(lazyImage).display !== "none") {
+                        
                     let poster = lazyImage.classList.contains('lazy-poster');
                     if (poster) {
                         lazyImage.style.backgroundImage = 'url(' + lazyImage.dataset.src + ')';
@@ -40,5 +41,6 @@ export default class LazyImage extends BaseClass {
         document.addEventListener("scroll", this.lazyLoad);
         window.addEventListener("resize", this.lazyLoad);
         window.addEventListener("orientationchange", this.lazyLoad);
+        this.lazyLoad();
     }
 }

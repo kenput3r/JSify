@@ -3,8 +3,8 @@
         "theme_name": "JSify",
         "theme_version": "1.0.0",
         "theme_author": "kenput3r",
-        "theme_documentation_url": "https://github.com/kenput3r/JSify",
-        "theme_support_url": "https://github.com/kenput3r/JSify"
+        "theme_documentation_url": "https:\/\/github.com\/kenput3r\/JSify",
+        "theme_support_url": "https:\/\/github.com\/kenput3r\/JSify"
     },
     {
         "name": "Header",
@@ -150,25 +150,25 @@
                 "type": "url",
                 "id": "instagram_profile_url",
                 "label": "The url to an Instagram profile",
-                "info": "https://instagram.com/suavecitopomade"
+                "info": "https:\/\/instagram.com\/suavecitopomade"
             },
             {
                 "type": "url",
                 "id": "facebook_profile_url",
                 "label": "The url to a Facebook profile",
-                "info": "https://facebook.com/suavecitopomade"
+                "info": "https:\/\/facebook.com\/suavecitopomade"
             },
             {
                 "type": "url",
                 "id": "twitter_profile_url",
                 "label": "The url to a Twitter profile",
-                "info": "https://twitter.com/suavecitopomade"
+                "info": "https:\/\/twitter.com\/suavecitopomade"
             },
             {
                 "type": "url",
                 "id": "youtube_profile_url",
                 "label": "The url to a YouTube channel",
-                "info": "https://youtube.com/suavecitopomade"
+                "info": "https:\/\/youtube.com\/suavecitopomade"
             }
         ]
     },
