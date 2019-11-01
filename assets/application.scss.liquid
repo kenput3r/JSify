@@ -2009,6 +2009,7 @@ div#smile-ui-container[style] {
   .text-content {
     grid-column: 3 / span 6;
     grid-row: 3 / span 6;
+    z-index: 10;
     margin: 3%;
     @media only screen and (min-width: $medium) {
       grid-row: 4 / span 4;
@@ -2042,10 +2043,13 @@ div#smile-ui-container[style] {
   img.image_1 {
     grid-column: 4 /span 4;
     grid-row: 2 / span 4;
+    z-index: 9;
   }
   img.image_2 {
     grid-column: 7 / span 4;
-    grid-row: 1 / span 4;
+    grid-row: 2 / span 4;
+    transform: rotate(18deg);
+    z-index: 8;
   }
   img.image_3 {
     grid-column: 6 / span 5;
@@ -2054,18 +2058,22 @@ div#smile-ui-container[style] {
   img.image_4 {
     grid-column: 7 / span 4;
     grid-row: 7 / span 5;
+    transform: rotate(-15deg);
   }
   img.image_5 {
     grid-column: 2 / span 4;
     grid-row: 7 / span 4;
+    transform: rotate(15deg);
   }
   img.image_6 {
     grid-column: 1 / span 4;
     grid-row: 5 / span 4;
+    transform: rotate(-20deg);
   }
   img.image_7 {
     grid-column: 1 / span 4;
     grid-row: 1 / span 4;
+    transform: rotate(-1deg);
   }
 }
 /**************************************************
