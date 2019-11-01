@@ -1828,9 +1828,10 @@ div#smile-ui-container[style] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    @media only screen and (max-width: $large) {
-      width: 80%;
-      height: auto;
+    width: 80%;
+    height: auto;
+    @media only screen and (min-width: $large) {
+      width: 400px;
     }
   }
 }
@@ -1852,6 +1853,35 @@ div#smile-ui-container[style] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+/**************************************************
+  Page Break With Float (section)
+**************************************************/
+.page-break-float {
+  position: relative;
+  background-color: $black;
+  .background-img {
+    width: 100%;
+    height: 50vw;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.35;
+    @media only screen and (min-width: $large) {
+      height: 25vw;
+    }
+  }
+  .floating-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 60%;
+    height: auto;
+    @media only screen and (min-width: $large) {
+      width: 30%;
+    }
   }
 }
 /**************************************************
@@ -2036,5 +2066,63 @@ div#smile-ui-container[style] {
   img.image_7 {
     grid-column: 1 / span 4;
     grid-row: 1 / span 4;
+  }
+}
+/**************************************************
+  Firme Club Who We Are (section)
+**************************************************/
+.fc-who-we-are {
+  position: relative;
+  margin-bottom: 0;
+  @media only screen and (min-width: $large) {
+    height: 30vw;
+  }
+  .statement {
+    height: 100%;
+    position: relative;
+  }
+  .content {
+    padding: 15px;
+    @media only screen and (min-width: $large) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      padding-right: 30%;
+    }
+    .title {
+      font-size: 3em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $orange;
+      @media only screen and (max-width: $large) {
+        text-align: center;
+      }
+    }
+  }
+  .floating-image {
+    height: 40vw;
+    position: relative;
+    padding: 0;
+    @media only screen and (min-width: $large) {
+      height: 100%;
+    }
+    img {
+      height: auto;
+      width: 70%;
+      float: left;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      transform: translate(0, -20%);
+      @media only screen and (min-width: $large) {
+        transform: translate(0, -50%);
+        top: 50%;
+        width: 50vw;
+        
+      }
+    }
   }
 }

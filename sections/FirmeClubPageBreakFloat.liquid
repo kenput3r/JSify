@@ -1,0 +1,46 @@
+<div class="page-break-float">
+  <img 
+    class="responsive-img background-img"
+    src="{{ section.settings.Background_Img | img_url: '400x' }}"
+    data-src="{{ section.settings.Background_Img | img_url: '1000x' }}"
+    alt="{{ section.settings.Background_Img_Alt }}"
+    data-s-module="LazyImage" 
+  />
+  {% unless section.settings.Banner_Logo == '' %}
+  <img 
+    class="floating-img"
+    src="{{ section.settings.Floating_Img | img_url: '100x' }}"
+    data-src="{{ section.settings.Floating_Img | img_url: '400x' }}"
+    alt="{{ section.settings.Floating_Img_Alt }}"
+    data-s-module="LazyImage" 
+  />
+  {% endunless %}
+</div>
+
+{% schema %}
+  {
+    "name": "Firme Club PB Float",
+    "settings": [
+      {
+        "id": "Background_Img",
+        "type": "image_picker",
+        "label": "Background Image"
+      },
+      {
+        "id": "Background_Img_Alt",
+        "type": "text",
+        "label": "Background Image Alt"
+      },
+      {
+        "id": "Floating_Img",
+        "type": "image_picker",
+        "label": "Floating Image Logo"
+      },
+      {
+        "id": "Floating_Img_Alt",
+        "type": "text",
+        "label": "Floating Image Logo Alt"
+      }
+    ]
+  }
+{% endschema %}
