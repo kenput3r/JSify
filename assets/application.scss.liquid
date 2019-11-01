@@ -1828,6 +1828,10 @@ div#smile-ui-container[style] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    @media only screen and (max-width: $large) {
+      width: 80%;
+      height: auto;
+    }
   }
 }
 /**************************************************
@@ -1918,6 +1922,9 @@ div#smile-ui-container[style] {
       width: 100%;
       opacity: 0.75;
     }
+    .tagline {
+      text-shadow: 3px 3px 5px $black;
+    }
     .title {
       color: $orange;
       font-size: 3rem;
@@ -1952,5 +1959,82 @@ div#smile-ui-container[style] {
     padding: 15px;
     color: $white;
     margin-bottom: 0;
+  }
+}
+/**************************************************
+  Overlapping Images (section)
+**************************************************/
+.overlapping-images {
+  width: 80%;
+  margin: 50px auto 50px auto;
+  .images {
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(10, 10%);
+    img {
+      width: 100%;
+      transition: all .5s;
+    }
+  }
+  .text-content {
+    grid-column: 3 / span 6;
+    grid-row: 3 / span 6;
+    margin: 3%;
+    @media only screen and (min-width: $medium) {
+      grid-row: 4 / span 4;
+    }
+    @media only screen and (min-width: $large) {
+      grid-column: 3 / span 6;
+      grid-row: 4 / span 3;
+      margin: 10%;
+    }
+    position: relative;
+    background-color: $white;
+    .content-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      padding: 15px;
+      transform: translate(-50%, -50%);
+      .title {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .divider {
+    height: 3px;
+    border-top: 3px solid $black;
+    width: 80%;
+    margin: auto;
+  }
+  img.image_1 {
+    grid-column: 4 /span 4;
+    grid-row: 2 / span 4;
+  }
+  img.image_2 {
+    grid-column: 7 / span 4;
+    grid-row: 1 / span 4;
+  }
+  img.image_3 {
+    grid-column: 6 / span 5;
+    grid-row: 4 / span 4;
+  }
+  img.image_4 {
+    grid-column: 7 / span 4;
+    grid-row: 7 / span 5;
+  }
+  img.image_5 {
+    grid-column: 2 / span 4;
+    grid-row: 7 / span 4;
+  }
+  img.image_6 {
+    grid-column: 1 / span 4;
+    grid-row: 5 / span 4;
+  }
+  img.image_7 {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 4;
   }
 }
