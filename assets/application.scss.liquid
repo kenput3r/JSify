@@ -1685,15 +1685,20 @@ div#smile-ui-container[style] {
 }
 
 /**************************************************
-  Premium Blends Page
+  Brand Page Reset
 **************************************************/
-.template-page.premiumblends {
-  .row {
-    padding: 15px;
-  }
+.template-page.premiumblends,
+.template-page.suavecitospeed,
+.template-page.firmeclub {
   main {
     padding-top: 0;
   }
+}
+
+/**************************************************
+  Premium Blends About (section)
+**************************************************/
+.premiumblends-about {
   .banner {
     img {
       width: 100%;
@@ -1707,51 +1712,60 @@ div#smile-ui-container[style] {
       width: 100%;
     }
   }
-  .category-container {
-    margin-top: 15px;
-    .category {
-      height: 400px;
+}
+
+/**************************************************
+  About Category (section)
+**************************************************/
+.category-container {
+  @media only screen and (min-width: 992px) {
+    margin: 15px 0;
+  }
+  .category {
+    height: 400px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 0;
+    .title {
+      position: relative;
+      height: 50%;
+      @media only screen and (min-width: 992px) {
+        height: 100%;
+      }
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        text-transform: uppercase;
+      }
+    }
+    img {
+      height: 100%;
       width: 100%;
-      padding: 15px;
-      margin-bottom: 0;
-      .title {
-        position: relative;
-        height: 100%;
-        span {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 5rem;
-          text-transform: uppercase;
-        }
-      }
-      img {
-        height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+    .content {
+      position: relative;
+      height: 100%;
+      padding: 0;
+      .inner-row {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-      }
-      .content {
-        position: relative;
         height: 100%;
+        margin: auto;
         padding: 0;
-        .inner-row {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
+        .col {
+          background-color: rgba(211, 211, 211, 0.60);
+          color: #000;
+          padding: 5px 20px;
           height: 100%;
-          margin: auto;
-          padding: 0;
-          .col {
-            background-color: rgba(211, 211, 211, 0.60);
-            color: #000;
-            padding: 5px 20px;
-            height: 100%;
-          }
         }
       }
     }
@@ -1770,6 +1784,7 @@ div#smile-ui-container[style] {
   Photo Grid (section)
 **************************************************/
 .photo-grid {
+  padding: 0 15px;
   .col {
     padding: 0;
   }
@@ -1789,5 +1804,153 @@ div#smile-ui-container[style] {
       top: 0;
       width: 100%;
     }
+  }
+}
+
+/**************************************************
+  Suavecito Speed (section)
+**************************************************/
+
+/**************************************************
+  Banner (section)
+**************************************************/
+.banner-with-logo {
+  position: relative;
+  background-color: $black;
+  .banner-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  .banner-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+/**************************************************
+  Page Break (section)
+**************************************************/
+.page-break {
+  position: relative;
+  background-color: $black;
+  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.85;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+/**************************************************
+  Mission Statement (section)
+**************************************************/
+.mission-statement {
+  position: relative;
+  @media only screen and (min-width: $large) {
+    height: 30vw;
+  }
+  .statement {
+    height: 100%;
+  }
+  .content {
+    padding: 15px;
+    @media only screen and (min-width: $large) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      padding-left: 30%;
+    }
+    .title {
+      font-size: 3em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $orange;
+      @media only screen and (max-width: $large) {
+        text-align: center;
+      }
+    }
+  }
+  .floating-image {
+    height: 40vw;
+    position: relative;
+    padding: 0;
+    @media only screen and (min-width: $large) {
+      height: 100%;
+    }
+    img {
+      height: auto;
+      width: 70%;
+      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      transform: translate(0, -20%);
+      @media only screen and (min-width: $large) {
+        transform: translate(0, -50%);
+        top: 50%;
+        width: 50vw;
+        
+      }
+    }
+  }
+}
+/**************************************************
+  Who We Are (section)
+**************************************************/
+.who-we-are {
+  .main-content {
+    position: relative;
+    height: 100%;
+    background-color: $black;
+    img {
+      width: 100%;
+      opacity: 0.85;
+    }
+    .title {
+      color: $orange;
+      font-size: 3rem;
+    }
+    .content-grid {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .content-container {
+        height: 50%;
+        position: relative;
+        .content-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          padding: 15px;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .about {
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+  .mobile-about {
+    background-color: #000;
+    padding: 15px;
+    color: $white;
+    margin-bottom: 0;
   }
 }

@@ -7,10 +7,10 @@
     {% assign category_text = block.settings.Category_Text %}
     {% assign is_even = forloop.index | modulo: 2 %}
     <div class="category row">
-      <div class="title col s12{% unless is_even != 0 %} push-m8{% endunless %} m4">
+      <div class="title col s12{% unless is_even != 0 %} push-l8{% endunless %} l4">
         <span>{{ category_title }}<p class="double-underline"></p></span>
       </div>
-      <div class="content col s12{% unless is_even != 0 %} pull-m4{% endunless %} m8">
+      <div class="content col s12{% unless is_even != 0 %} pull-l4{% endunless %} l8">
         <img 
           src="{{ sm_category_img }}"
           data-src="{{ lg_category_img }}"
@@ -18,7 +18,7 @@
           alt="{{ category_img_alt }}"
         />
         <div class="row inner-row">
-          <div class="col s12{% unless is_even != 0 %} offset-m6{% endunless %} m6">
+          <div class="col s12{% unless is_even != 0 %} offset-l6{% endunless %} l6">
             <p>{{ category_text }}</p>
           </div>
         </div>

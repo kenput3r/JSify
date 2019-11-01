@@ -1,0 +1,44 @@
+  <div class="banner-with-logo">
+    <img 
+      class="responsive-img banner-img"
+      src="{{ section.settings.Banner_Img | img_url: '400x' }}"
+      data-src="{{ section.settings.Banner_Img | img_url: '1000x' }}"
+      alt="{{ section.settings.Banner_Img_Alt }}"
+      data-s-module="LazyImage" 
+    />
+    <img 
+      class="banner-logo"
+      src="{{ section.settings.Banner_Logo | img_url: '100x' }}"
+      data-src="{{ section.settings.Banner_Logo | img_url: '400x' }}"
+      alt="{{ section.settings.Banner_Logo_Alt }}"
+      data-s-module="LazyImage" 
+    />
+  </div>
+
+  {% schema %}
+    {
+      "name": "Banner",
+      "settings": [
+        {
+          "id": "Banner_Img",
+          "type": "image_picker",
+          "label": "Banner Image"
+        },
+        {
+          "id": "Banner_Img_Alt",
+          "type": "text",
+          "label": "Banner Image Alt"
+        },
+        {
+          "id": "Banner_Logo",
+          "type": "image_picker",
+          "label": "Banner Logo"
+        },
+        {
+          "id": "Banner_Logo_Alt",
+          "type": "text",
+          "label": "Banner Logo Alt"
+        }
+      ]
+    }
+  {% endschema %}
