@@ -9,7 +9,7 @@
             <ul class="slides">
               {% for block in section.blocks %}
                 {% assign slider_item_img_small = block.settings.Slider_Item_Img | img_url: '50x' %}
-                {% assign slider_item_img_large = block.settings.Slider_Item_Img | img_url: '400x' %}
+                {% assign slider_item_img_large = block.settings.Slider_Item_Img | img_url: '800x' %}
                 {% assign slider_item_img_alt = block.settings.Slider_Item_Img_Alt %}
                 {% assign slider_item_tagline = block.settings.Slider_Item_Tagline %}
                 {% assign slider_item_text = block.settings.Slider_Item_Text | truncate: 40 %}

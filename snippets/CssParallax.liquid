@@ -1,0 +1,36 @@
+{% comment %}
+  Required variables: image_src & image_alt
+  Optional variables: title, text, button_link, button_text
+{% endcomment %}
+
+{% unless button_text %}
+  {% assign button_text = "LEARN MORE" %}
+{% endunless %}
+
+{% unless text_color %}
+  {% assign text_color = "#000" %}
+{% endunless %}
+
+{% unless section_theme %}
+  {% assign section_theme = 'suavecito-section' %}
+{% endunless %}
+
+<div class="css-parallax {{section_theme}}" style="background-image:url({{image_src}});"
+role="img" aria-label="{{image_alt}}">
+  <div class="row  css-parallax-details">
+    <div class="col s12 l4 push-l1" style="color:{{text_color}};">
+      {% if title %}
+      <h3 style="font-weight: bold !important;">{{title}}</h3>
+      {% endif %}
+
+      {% if text %}
+      <p>{{text}}</p>
+      {% endif %}
+
+      {% if button_link %}
+      <a class="btn background-s-red" href="{{button_link}}">{{button_text}}</a>
+      {% endif %}
+    </div>
+  </div>
+  <img src="{{image_src}}" alt="{{image_alt}}" class="sr-only" />
+</div>

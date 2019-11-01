@@ -7,13 +7,17 @@
 {%- unless section_title -%}
   {%- assign section_title = 'Featured Products' -%}
 {%- endunless -%}
+{%- unless section_theme -%}
+  {%- assign section_theme = 'section-suavecito' -%}
+{%- endunless -%}
 
 {%- assign collection_url = 'https://' | append: shop.domain | append: '/collections/' | append: collection_handle -%}
 {%- assign pages = collections[collection_handle].all_products_count | divided_by: 24 -%}
+{%- assign total_products = collections[collection_handle].all_products_count -%}
 
-<div class="grey lighten-4" style="padding:20px 0;">
+<div class="grey lighten-4 {{section_theme}}" style="padding:20px 0;">
   <h3 class="center-align">{{section_title}}</h3>
-  <div class="side-scroll-wrapper" data-s-module="SideScroll" data-url="{{collection_url}}" data-pages="{{pages}}">
+  <div class="side-scroll-wrapper" data-s-module="SideScroll" data-url="{{collection_url}}" data-pages="{{pages}}" data-total-products="{{total_products}}">
     {%- for product in collections[collection_handle].all_products limit: product_limit -%}
     <div class="side-scroll-card">
       <div class="row">
