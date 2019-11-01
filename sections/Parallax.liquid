@@ -1,12 +1,4 @@
 <div class="parallax-container" data-s-module="Parallax">
-  {% if section.settings.Title != blank %}
-  <div class="section-title">
-    <h3>{{section.settings.Title}}</h3>
-    {% if section.settings.HREF %}
-    <a class="btn background-s-red" href="{{section.HREF}}">{{section.settings.ButtonText}}</a>
-    {% endif %}
-  </div>
-  {% endif %}
   <div class="parallax">
     <img alt="{{section.settings.AltText}}" 
     srcset="{{section.settings.Image | img_url: '320x'}} 320w,
@@ -35,22 +27,9 @@
         "label": "Image"
       },
       {
-        "id": "Title",
+        "id": "SectionTitle",
         "type": "text",
-        "label": "Overlay Text"
-      },
-      {
-        "id": "HREF",
-        "type": "url",
-        "label": "Button Link",
-        "info": "Optional: Leave blank to not display button"
-      },
-      {
-        "id": "ButtonText",
-        "type": "text",
-        "label": "Button Text",
-        "info": "Defaults to 'SHOP NOW'",
-        "default": "SHOP NOW"
+        "label": "Section Title"
       }
     ],
     "presets": [
