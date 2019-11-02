@@ -636,15 +636,247 @@
                     "Content": "",
                     "Content_Text_Color": "white"
                 }
+
             }
+          },
+          "1568410739083": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/premium-blends-slide-2.jpg",
+              "Valignment": "middle",
+              "AltText": "Premium Blends Hair Pomade and comb",
+              "TextOverlay": "Water + Oil",
+              "TextValignment": "middle",
+              "TextHalignment": "center-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568417626048": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/premium-blends-slide-3.jpg",
+              "Valignment": "middle",
+              "AltText": "Premium Blends Whiskey Bar Shave Cream",
+              "TextOverlay": "New Whiskey Bar Shave Cream",
+              "TextValignment": "middle",
+              "TextHalignment": "left",
+              "HREF": "shopify:\/\/products\/whiskey-bar-shaving-creme",
+              "ButtonText": ""
+            }
+          }
         },
-        "content_for_index": [
-            "1572359569477",
-            "1572440616889",
-            "1571960029114"
-        ]
+        "block_order": [
+          "1568410276768",
+          "1568410739083",
+          "1568417626048"
+        ],
+        "settings": {}
+      },
+      "CollectionTemplateCarouselSuavecita": {
+        "type": "CollectionTemplateCarouselSuavecita",
+        "blocks": {
+          "1568658750118": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecita-eyes.jpg",
+              "Valignment": "bottom",
+              "AltText": "Suavecita Eye Brow Pomade and Brushes",
+              "TextOverlay": "New Brow Pomade",
+              "TextValignment": "top",
+              "TextHalignment": "right-align",
+              "HREF": "shopify:\/\/products\/brow-pomade",
+              "ButtonText": "SHOP"
+            }
+          },
+          "1568658900427": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecita-shampoo-and-conditioner.jpg",
+              "Valignment": "bottom",
+              "AltText": "Suavecita Shampoo & Conditioner",
+              "TextOverlay": "Hydrating Hair Care",
+              "TextValignment": "top",
+              "TextHalignment": "right-align",
+              "HREF": "shopify:\/\/products\/hydrating-shampoo-conditioner-set",
+              "ButtonText": "SHOP"
+            }
+          },
+          "1568659013817": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecita-lip-grips.jpg",
+              "Valignment": "middle",
+              "AltText": "Suavecita Lip Grip Collection",
+              "TextOverlay": "Lip Grip Collection",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "shopify:\/\/products\/lipgrips-matte-liquid-lipstick",
+              "ButtonText": "SHOP"
+            }
+          }
+        },
+        "block_order": [
+          "1568658750118",
+          "1568658900427",
+          "1568659013817"
+        ],
+        "settings": {}
+      },
+      "CollectionTemplateCarouselFirmeClub": {
+        "type": "CollectionTemplateCarouselFirmeClub",
+        "blocks": {
+          "1568738856246": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/firme_club_slide_1_8f9a1beb-6d93-415e-8722-05bb3b3d5324.jpg",
+              "Valignment": "top",
+              "AltText": "",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568750044236": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/firme_club_slide_2_72f84dad-5f8d-4090-bc2c-c90124af8a83.jpg",
+              "Valignment": "middle",
+              "AltText": "",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568762842770": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/firme_club_slide_3_d387f140-aea7-480c-833f-5e8e07490ad8.jpg",
+              "Valignment": "bottom",
+              "AltText": "",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          }
+        },
+        "block_order": [
+          "1568738856246",
+          "1568750044236",
+          "1568762842770"
+        ],
+        "settings": {}
+      },
+      "CollectionTemplateCarouselSuavecitoSpeed": {
+        "type": "CollectionTemplateCarouselSuavecitoSpeed",
+        "blocks": {
+          "1568846336807": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/Untitled-1_5d9bd1ab-0f50-4c5e-a271-15b65e39c272.jpg",
+              "Valignment": "middle",
+              "AltText": "You man sitting on motor cycle wearing a Suavecito shirt",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568846725863": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecito-speed-bug_0632ea9c-5fdd-45d3-af2a-f434eb941938.jpg",
+              "Valignment": "middle",
+              "AltText": "Suavecito sponsored VW Bug racing in Baja Mexico",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568846752605": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suave-ranger_605592c0-665b-40db-806f-447b9a9b80db.jpg",
+              "Valignment": "middle",
+              "AltText": "Suavecito sponsored monster truck kicking up dirt",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          }
+        },
+        "block_order": [
+          "1568846336807",
+          "1568846725863",
+          "1568846752605"
+        ],
+        "settings": {}
+      },
+      "CollectionTemplateCarouselSuavecito": {
+        "type": "CollectionTemplateCarouselSuavecito",
+        "blocks": {
+          "1568848496084": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecito-slide.jpg",
+              "Valignment": "middle",
+              "AltText": "",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568848520131": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecito-slide-3.jpg",
+              "Valignment": "middle",
+              "AltText": "",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          },
+          "1568848541064": {
+            "type": "slide",
+            "settings": {
+              "SlideImage": "shopify:\/\/shop_images\/suavecito-slide-2.jpg",
+              "Valignment": "middle",
+              "AltText": "",
+              "TextOverlay": "",
+              "TextValignment": "top",
+              "TextHalignment": "left-align",
+              "HREF": "",
+              "ButtonText": ""
+            }
+          }
+        },
+        "block_order": [
+          "1568848496084",
+          "1568848520131",
+          "1568848541064"
+        ],
+        "settings": {}
+      }
     },
-    "presets": {
-        "Default": {}
-    }
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {}
+  }
 }
