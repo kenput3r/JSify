@@ -1,0 +1,53 @@
+{% assign grid_sizes = section.settings.Grid_Sizes %}
+{% if grid_sizes == '' %}
+  {% assign grid_sizes = 's12 m4' %}
+{% endif %}
+
+<div class="photo-grid row">
+  {% for block in section.blocks %}
+    {% assign sm_img = block.settings.Img | img_url: '100x' %}
+    {% assign lg_img = block.settings.Img | img_url: '600x' %}
+    {% assign img_alt = block.settings.Img_Alt %}
+    <div class="col {{ grid_sizes }}">
+      <div class="frame">
+        <img 
+          src="{{ sm_img }}"
+          data-src="{{ lg_img }}"
+          data-s-module="LazyImage" 
+          alt="{{ img_alt }}"
+        />
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Photo Grid",
+    "settings": [
+      {
+        "id": "Grid_Sizes",
+        "type": "text",
+        "label": "Grid Sizes"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "photo",
+        "name": "Photo",
+        "settings": [
+          {
+            "id": "Img",
+            "type": "image_picker",
+            "label": "Image"
+          },
+          {
+            "id": "Img_Alt",
+            "type": "text",
+            "label": "Image Alt"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
