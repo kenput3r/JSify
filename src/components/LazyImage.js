@@ -37,6 +37,7 @@ export default class LazyImage extends BaseClass {
     }
 
     init() {
+        this.lazyLoad();
         document.addEventListener("scroll", this.lazyLoad);
         window.addEventListener("resize", this.lazyLoad);
         window.addEventListener("orientationchange", this.lazyLoad);
