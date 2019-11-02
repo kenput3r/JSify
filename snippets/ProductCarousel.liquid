@@ -4,7 +4,16 @@
       <div class="carousel-fixed-item center"></div>
       {% for image in product.images %}
         <div class="carousel-item center-align">
-          <img class="carousel-image responsive-img modal-trigger" src="{{ image.src | img_url: 'large' }}" data-src="{{ image.src | img_url: 'large' }}" data-small-src="{{ image.src | img_url: 'small' }}" data-full-src="{{ image.src | img_url: '2048x' }}"  alt="{{ image.alt | escape }}" data-index="{{ forloop.index }}" data-target="ProductImageModal">
+          <img class="carousel-image responsive-img modal-trigger"
+          alt="{{ image.alt | escape }}"
+          data-index="{{ forloop.index }}"
+          data-target="ProductImageModal" 
+          data-src="{{ image.src | img_url: 'large' }}" 
+          data-small-src="{{ image.src | img_url: '50x' }}" 
+          data-full-src="{{ image.src | img_url: '2048x' }}"
+          srcset="{{ image.src | img_url: '320x' }} 320w, {{ image.src | img_url: '480x' }} 480w, {{ image.src | img_url: '480x' }} 800w, {{ image.src | img_url: '480x' }} 1024w, {{ image.src | img_url: '480x' }} 1920w, {{ image.src | img_url: '800x' }} 2048w"
+          sizes="(max-width: 320px), (max-width: 480px), (max-width: 800px), (max-width: 1024px), (max-width: 1920px), (max-width: 2048px)"
+          src="{{ image.src | img_url: '480x' }}"/>
         </div>
       {% endfor %}
     </div>
@@ -13,7 +22,7 @@
     <div class="thumbnails row">
       {% for image in product.images %}
         <div class="col s4">
-          <img class="responsive-img" data-trigger="true" src="{{ image.src | img_url: 'small' }}"  alt="{{ image.alt | escape }}" data-src="{{ image.src | img_url: 'large' }}" data-index="{{ forloop.index | minus: 1 }}">
+          <img class="responsive-img" data-trigger="true" src="{{ image.src | img_url: '100x' }}"  alt="{{ image.alt | escape }}" data-src="{{ image.src | img_url: 'large' }}" data-index="{{ forloop.index | minus: 1 }}">
         </div>
       {% endfor %}
     </div>
