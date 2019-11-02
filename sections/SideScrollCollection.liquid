@@ -1,6 +1,5 @@
 {% assign collection_handle = section.settings.Collection %}
 {% assign section_title = section.settings.SectionTitle %}
-{% assign section_theme = section.settings.SectionTheme %}
 
 {% include 'SideScroll' %}
 
@@ -8,17 +7,6 @@
   {
     "name": "Side Scroll Collection",
     "settings": [
-      {
-        "type": "radio",
-        "id": "SectionTheme",
-        "label": "Section Theme",
-        "options": [
-          { "value": "section-suavecito", "label": "Suavecito" },
-          { "value": "section-suavecita", "label": "Suavecita" }
-        ],
-        "default": "section-suavecito",
-        "info": "The brand color theme"
-      },
       {
         "id": "Collection",
         "type": "collection",
