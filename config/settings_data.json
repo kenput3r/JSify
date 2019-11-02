@@ -301,8 +301,9 @@
             "1571960029114": {
                 "type": "SideScrollCollection",
                 "settings": {
-                    "Collection": "featured-items",
-                    "SectionTitle": "New Stuff"
+                    "SectionTheme": "section-suavecito",
+                    "Collection": "new-mens-grooming",
+                    "SectionTitle": "New Stuff For Men"
                 }
             },
             "1572359569477": {
@@ -366,6 +367,19 @@
             "1572440616889": {
                 "type": "PosterCollection",
                 "blocks": {
+                    "1572441154937": {
+                        "type": "image_picker",
+                        "settings": {
+                            "Slider_Item_Img": "shopify:\/\/shop_images\/monster-poster-poster.jpg",
+                            "Slider_Item_Img_Alt": "Suavecito X Monsters Shirts",
+                            "Slider_Item_Tagline": "Suavecito X Monsters Shirts",
+                            "Slider_Item_Text": "",
+                            "Slider_Item_Link": "https:\/\/www.suavecito.com\/collections\/apparel\/universal-monsters",
+                            "Slider_Item_Link_Text": "Shop Now",
+                            "Slider_Item_Text_Position": "top-left",
+                            "Slider_Item_Text_Color": "white"
+                        }
+                    },
                     "1572440987277": {
                         "type": "image_picker",
                         "settings": {
@@ -378,270 +392,135 @@
                             "Slider_Item_Text_Position": "top-left",
                             "Slider_Item_Text_Color": "white"
                         }
-                    },
-                    "1572441154937": {
-                        "type": "image_picker",
-                        "settings": {
-                            "Slider_Item_Img": "shopify:\/\/shop_images\/ms2mjs_72709300_552546668821499_8471820249199286322_n.jpg",
-                            "Slider_Item_Img_Alt": "Suavecito X Monsters Shirts",
-                            "Slider_Item_Tagline": "Suavecito X Monsters Shirts",
-                            "Slider_Item_Text": "",
-                            "Slider_Item_Link": "https:\/\/www.suavecito.com\/collections\/apparel\/universal-monsters",
-                            "Slider_Item_Link_Text": "Shop Now",
-                            "Slider_Item_Text_Position": "top-left",
-                            "Slider_Item_Text_Color": "white"
-                        }
                     }
                 },
                 "block_order": [
-                    "1572440987277",
-                    "1572441154937"
+                    "1572441154937",
+                    "1572440987277"
                 ],
                 "settings": {
                     "Collection": "featured-items",
                     "Limit": 6,
-                    "Grid_Sizes": ""
+                    "Grid_Sizes": "s6"
+                }
+            },
+            "1572625672134": {
+                "type": "CssParallax",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Image": "shopify:\/\/shop_images\/monster-section.jpg",
+                    "AltText": "Suavecito X Universal Monsters: Suavecito Mummy Logo, Suavecito Wolfman Logo, Suavecito Creature From The Black Lagoon Logo, Suavecito Frankenstein Logo, Suavecito Invisible Man Logo, Suavecito Dracula Logo",
+                    "Title": "SHOP THE MONSTERS COLLECTION",
+                    "Text": "",
+                    "TextColor": "#ffffff",
+                    "HREF": "shopify:\/\/collections\/all",
+                    "ButtonText": "SHOP NOW"
+                }
+            },
+            "1572637516105": {
+                "type": "CssParallax",
+                "settings": {
+                    "SectionTheme": "section-suavecita",
+                    "Image": "shopify:\/\/shop_images\/suavecita-section.jpg",
+                    "AltText": "Suavecita Liquid Lipsticks, Eyeliner Pen, and Eye Lashes",
+                    "Title": "SHOP THE SUAVECITA COLLECTION",
+                    "Text": "",
+                    "TextColor": "#ffffff",
+                    "HREF": "shopify:\/\/collections\/suavecita",
+                    "ButtonText": "SHOP NOW"
+                }
+            },
+            "1572637662153": {
+                "type": "SideScrollCollection",
+                "settings": {
+                    "SectionTheme": "section-suavecita",
+                    "Collection": "new-womens-beauty",
+                    "SectionTitle": "New Stuff For Women"
+                }
+            },
+            "1572644611322": {
+                "type": "CssParallax",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Image": "shopify:\/\/shop_images\/section-premium-blends.jpg",
+                    "AltText": "Barber holding Premium Blends Beard Oil",
+                    "Title": "SHOP THE PREMIUM BLENDS COLLECTION",
+                    "Text": "",
+                    "TextColor": "#ffffff",
+                    "HREF": "shopify:\/\/collections\/premium-blends",
+                    "ButtonText": "SHOP NOW"
+                }
+            },
+            "1572644694270": {
+                "type": "SideScrollCollection",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Collection": "premium-blends",
+                    "SectionTitle": "Popular Stuff From Premium Blends"
+                }
+            },
+            "1572645166556": {
+                "type": "CssParallax",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Image": "shopify:\/\/shop_images\/section-firme-club.jpg",
+                    "AltText": "Man wearing Firme Club shirt in gym doing weighted squats",
+                    "Title": "SHOP THE FIRME CLUB COLLECTION",
+                    "Text": "",
+                    "TextColor": "#ffffff",
+                    "HREF": "shopify:\/\/collections\/firme-club",
+                    "ButtonText": "SHOP NOW"
+                }
+            },
+            "1572645367364": {
+                "type": "SideScrollCollection",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Collection": "firme-club",
+                    "SectionTitle": "Popular Stuff By Firme Club"
+                }
+            },
+            "1572646314621": {
+                "type": "CssParallax",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Image": "shopify:\/\/shop_images\/speed-section.jpg",
+                    "AltText": "Man wearing Suavecito Speed shirt leaning on a motor cycle in an alley",
+                    "Title": "SHOP THE SPEED COLLECTION",
+                    "Text": "",
+                    "TextColor": "#ffffff",
+                    "HREF": "shopify:\/\/collections\/suavecito-speed",
+                    "ButtonText": "SHOP NOW"
+                }
+            },
+            "1572646437349": {
+                "type": "SideScrollCollection",
+                "settings": {
+                    "SectionTheme": "section-suavecito",
+                    "Collection": "suavecito-speed",
+                    "SectionTitle": "Popular Stuff By Suavecito Speed"
                 }
             },
             "Parallax": {
                 "type": "Parallax",
                 "settings": {
-                    "Image": "shopify:\/\/shop_images\/suavecito-premium-blends-vintage-tools.jpg",
-                    "SectionTitle": "Premium Blends"
-                }
-            },
-            "AboutCategory": {
-                "type": "AboutCategory",
-                "blocks": {
-                    "1572465351268": {
-                        "type": "category",
-                        "settings": {
-                            "Category_Img": "shopify:\/\/shop_images\/suavecito-premium-blends-hair.jpg",
-                            "Category_Img_Alt": "Premium Blends - Hair",
-                            "Category_Title": "Hair",
-                            "Category_Text": "<p>Our Premium products were formulated with the same attention to detail as our heritage line, but with an emphasis on working with the most natural ingredients. We took the absolute best qualities of both a water based and oil based pomade to create a hybrid pomade that will keep your hair styling and profiling. Our Premium styling and washing products are a great option for even the most sensitive skin and hair.<\/p>"
-                        }
-                    },
-                    "1572465940408": {
-                        "type": "category",
-                        "settings": {
-                            "Category_Img": "shopify:\/\/shop_images\/suavecito-premium-blends-shave.jpg",
-                            "Category_Img_Alt": "Premium Blends - Shave",
-                            "Category_Title": "Shave",
-                            "Category_Text": "<p>Our priority is to keep your face looking clean and fresh. By focusing on working only with the finest natural and nourishing ingredients in our shave line, we wanted to ensure a healthy shave and post-shave experience that will protect your skin. Prepare for the most effortless and premium shave experience on the market today.<\/p>"
-                        }
-                    },
-                    "1572470613818": {
-                        "type": "category",
-                        "settings": {
-                            "Category_Img": "shopify:\/\/shop_images\/suavecito-premium-blends-beard.jpg",
-                            "Category_Img_Alt": "Premium Blends - Beard",
-                            "Category_Title": "Beard",
-                            "Category_Text": "<p>Carefully researched and made with organic argan oil, our beard oils are sure to help maintain a healthy beard with no flaking or dryness. With over 7 great scents, our Premium Beard Oils are guaranteed to take your beard game to the next level.<\/p>"
-                        }
-                    },
-                    "1572470641032": {
-                        "type": "category",
-                        "settings": {
-                            "Category_Img": "shopify:\/\/shop_images\/suavecito-premium-blends-apparel.jpg",
-                            "Category_Img_Alt": "Premium Blends - Apparel",
-                            "Category_Title": "Apparel",
-                            "Category_Text": "<p>Clothes are not just about the design or color, it's about the fit and feel. That is why our Premium Blends tees are made to fit exceptionally well and feel comfortable all day long. When a good shirt fits well, you are going to look good as well.<\/p>"
-                        }
-                    }
-                },
-                "block_order": [
-                    "1572465351268",
-                    "1572465940408",
-                    "1572470613818",
-                    "1572470641032"
-                ],
-                "settings": {}
-            },
-            "PhotoGrid": {
-                "type": "PhotoGrid",
-                "blocks": {
-                    "1572481519308": {
-                        "type": "photo",
-                        "settings": {
-                            "Img": "shopify:\/\/shop_images\/5X0A5631.jpg",
-                            "Img_Alt": "Premium Blends Hair Products"
-                        }
-                    },
-                    "1572481536419": {
-                        "type": "photo",
-                        "settings": {
-                            "Img": "shopify:\/\/shop_images\/5X0A5706.jpg",
-                            "Img_Alt": "Premium Blends Shave Products"
-                        }
-                    },
-                    "1572481566760": {
-                        "type": "photo",
-                        "settings": {
-                            "Img": "shopify:\/\/shop_images\/suavecito-premium-blends-beard_3a3fb809-d679-4d72-998e-d3a9933a9a14.jpg",
-                            "Img_Alt": "Premium Blends Beard Products"
-                        }
-                    }
-                },
-                "block_order": [
-                    "1572481519308",
-                    "1572481536419",
-                    "1572481566760"
-                ],
-                "settings": {
-                    "Grid_Sizes": "s12 m4"
-                }
-            },
-            "PremiumBlendsAbout": {
-                "type": "PremiumBlendsAbout",
-                "settings": {
-                    "Banner_Img": "shopify:\/\/shop_images\/premium-blends-barber-chair.jpg",
-                    "Tagline": "Some traditions were never meant to die",
-                    "Text_1": "<p>While retaining the same set of values of our original products we introduced a 'premium' line of products which was geared toward high end salons and clothing stores. These products are priced to be competitive with other leading men's grooming products available on the market today.<\/p>",
-                    "Image_1": "shopify:\/\/shop_images\/suavecito-premium-blends-scorpius-tee.jpg",
-                    "Image_1_Alt": "Premium Blends Scorpius Tee",
-                    "Text_2": "<p>Althought our products are priced reasonably, they do not sacrifice value, quality or appeal. Again using the same principles as our original line such as pricing incentives, it was easy for new retailers to take on the product and in turn the consumer as well.<\/p>",
-                    "Image_2": "shopify:\/\/shop_images\/suavecito-premium-blends-roadster.jpg",
-                    "Image_2_Alt": "Premium Blends Roadster Vector"
-                }
-            },
-            "OverlappingImages": {
-                "type": "OverlappingImages",
-                "settings": {
-                    "Tagline": "HOW WE CONNECT",
-                    "Text": "Like minded gear heads",
-                    "Img_1": "shopify:\/\/shop_images\/suavecito-speed-girl.jpg",
-                    "Img_1_Alt": "Girl",
-                    "Img_2": "shopify:\/\/shop_images\/suavecito-speed-metro-van-roadster.jpg",
-                    "Img_2_Alt": "Roadster & Metro Van",
-                    "Img_3": "shopify:\/\/shop_images\/suavecito-speed-vw-bug.jpg",
-                    "Img_3_Alt": "Suavecito Speed VW Bug",
-                    "Img_4": "shopify:\/\/shop_images\/suavecito-speed-motorcycles.jpg",
-                    "Img_4_Alt": "Dirt Bikes",
-                    "Img_5": "shopify:\/\/shop_images\/suavecito-speed-andrew-motorcycle.jpg",
-                    "Img_5_Alt": "Andrew on Motorcycle",
-                    "Img_6": "shopify:\/\/shop_images\/suavecito-metro-van.jpg",
-                    "Img_6_Alt": "Metro Van",
-                    "Img_7": "shopify:\/\/shop_images\/suavecito-speed-kid-on-truck.jpg",
-                    "Img_7_Alt": "Kid on Trophy Truck"
-                }
-            },
-            "FirmeClubBanner": {
-                "type": "FirmeClubBanner",
-                "settings": {
-                    "Banner_Img": "shopify:\/\/shop_images\/firme-club-banner-ardo.jpg",
-                    "Banner_Img_Alt": "Ardo Lifting",
-                    "Banner_Logo": "shopify:\/\/shop_images\/firme-club-script-logo.png",
-                    "Banner_Logo_Alt": "Firme Club"
-                }
-            },
-            "FirmeClubPageBreak1": {
-                "type": "FirmeClubPageBreak1",
-                "settings": {
-                    "Background_Img": "shopify:\/\/shop_images\/concrete-floor.jpg",
-                    "Background_Img_Alt": "",
-                    "Content": "<p><i>THE FIRST RULE OF THE FIRME CLUB:<\/i><\/p>\n<h3>GET FIRME.<\/h3>",
-                    "Content_Text_Color": "white"
-                }
-            },
-            "FirmeClubMissionStatement": {
-                "type": "FirmeClubMissionStatement",
-                "settings": {
-                    "Title": "WHY WE ARE",
-                    "Text": "<p>Welcome to <i>Firme Club<\/i>, where a strong grip isn't just in your pomade.<\/p><p><i>Firme Club<\/i> was brought together by a federation of fitness enthusiasts here at Suavecito with one specific goal in mind to keep our community looking and feeling good.<\/p><p>Having spent the better part of a decade keeping the world properly groomed, we felt it was a natural progression to look beyond the barber chair.<\/p>",
-                    "Img": "shopify:\/\/shop_images\/firme-club-hand.png",
-                    "Img_Alt": "Firme Club Barbel Logo"
-                }
-            },
-            "FirmeClubPageBreak2": {
-                "type": "FirmeClubPageBreak2",
-                "settings": {
-                    "Background_Img": "shopify:\/\/shop_images\/concrete-wallpaper-dark.jpg",
-                    "Background_Img_Alt": "Concrete Texture",
-                    "Content": "<h3><i>\"FOR THOSE WHO TREAT THEIR WORKOUTS LIKE A FUNERAL FOR THEIR WEAKNESS.\"<\/i><\/h3><p>- FIRME CLUB<\/p>",
-                    "Content_Text_Color": "white"
-                }
-            },
-            "FirmeClubWhoWeAre": {
-                "type": "FirmeClubWhoWeAre",
-                "settings": {
-                    "Title": "WHO WE ARE",
-                    "Text": "<p>We are real people in search of real results.<\/p>\n<p>We come to work everyday with the goal of enriching lives, not egos.<\/p>\n<p>Our content is rooted in the principles we feel will help our community reach their goals and live longer and healthier lives.<\/p>",
-                    "Img": "shopify:\/\/shop_images\/firme-club-fc-logo.png",
-                    "Img_Alt": "Firme Club - FC Logo"
-                }
-            },
-            "FirmeClubPageBreakFloat": {
-                "type": "FirmeClubPageBreakFloat",
-                "settings": {
-                    "Background_Img": "shopify:\/\/shop_images\/concrete-wallpaper-dark.jpg",
-                    "Background_Img_Alt": "Concrete",
-                    "Floating_Img": "shopify:\/\/shop_images\/firme-club-45-plate.png",
-                    "Floating_Img_Alt": "Firme Club 45 Plate"
-                }
-            },
-            "FirmeClubPageBreak3": {
-                "type": "FirmeClubPageBreak3",
-                "settings": {
-                    "Background_Img": "shopify:\/\/shop_images\/firme-club-pb-nik.jpg",
-                    "Background_Img_Alt": "Firme Club - Nik",
-                    "Content": "<h3><i>\"PUT YOUR HEAD DOWN, BLOCK OUT THE NOISE, AND WORK TOWARDS YOUR GOALS ONE REP AT A TIME.\"<\/i><\/h3>\n<p>- FIRME CLUB<\/p>",
-                    "Content_Text_Color": "white"
-                }
-            },
-            "SuavecitoSpeedBanner": {
-                "type": "SuavecitoSpeedBanner",
-                "settings": {
-                    "Banner_Img": "shopify:\/\/shop_images\/suavecito-speed-apparel.jpg",
-                    "Banner_Img_Alt": "Suavecito Speed",
-                    "Banner_Logo": "shopify:\/\/shop_images\/suavecito-speed-logo.png",
-                    "Banner_Logo_Alt": "Suavecito Speed Logo"
-                }
-            },
-            "SuavecitoSpeedPageBreak1": {
-                "type": "SuavecitoSpeedPageBreak1",
-                "settings": {
-                    "Background_Img": "shopify:\/\/shop_images\/suavecito_speed_ranger.jpg",
-                    "Background_Img_Alt": "Suavecito Speed Truck Desert Run",
-                    "Content": "<h5>WE ARE SUAVECITO SPEED<\/h5>\n<h3>CLASSIC CARS. MOTORCYCLE AND OFF-ROAD<\/h3>",
-                    "Content_Text_Color": "white"
-                }
-            },
-            "SuavecitoSpeedMissionStatement": {
-                "type": "SuavecitoSpeedMissionStatement",
-                "settings": {
-                    "Title": "Our Mission",
-                    "Text": "<p>We are gearheads with a passion fueled for off-road racing.<\/p>\n<p>Suavecito Speed is for the people that want to be a part of something awesome and represent it whether it's wearing a shirt, putting product on their hair or blasting a sticker on their ride.<\/p>\n<p>We get it Hombre!<\/p>",
-                    "Img": "shopify:\/\/shop_images\/suavecito-trophy-truck-24.png",
-                    "Img_Alt": "Suavecito Speed Trophy Truck"
-                }
-            },
-            "SuavecitoSpeedWhoWeAre": {
-                "type": "SuavecitoSpeedWhoWeAre",
-                "settings": {
-                    "Img": "shopify:\/\/shop_images\/suavecito-speed-who-we-are-block.jpg",
-                    "Img_Alt": "Motorcycle and Andrew",
-                    "Tagline": "<h3><i>\"We are real people doing what we love, supported by an army of like-minded individuals.\"<\/i><\/h3>\n<p>- SUAVECITO SPEED<\/p>",
-                    "Tagline_Color": "white",
-                    "Title": "Who We Are",
-                    "Text": "<p>Driving our classic rides to car shows, riding motorcycles on weekends and racing off-road gave birth to Suavecito Speed.<\/p>\n<p>Attending car shows and vending at them was a big factor in the success of the company so we knew we wanted to incorporate the automotive and motorcycle industry into our brand. We were caught up in that world already and only made sense.<\/p>",
-                    "Content_Text_Color": "white"
-                }
-            },
-            "SuavecitoSpeedPageBreak2": {
-                "type": "SuavecitoSpeedPageBreak2",
-                "settings": {
-                    "Background_Img": "shopify:\/\/shop_images\/suavecito-speed-welding.jpg",
-                    "Background_Img_Alt": "Speed Shop Tee",
-                    "Content": "<h3><i>\"We are more than just a brand. This is what we live and breathe.\"<\/i><\/h3>\n<p>- SUAVECITO SPEED<\/p>",
-                    "Content_Text_Color": "white"
+                    "Image": "shopify:\/\/shop_images\/suavecito-premium-blends-vintage-tools.jpg"
                 }
             }
         },
         "content_for_index": [
             "1572359569477",
             "1572440616889",
-            "1571960029114"
+            "1572625672134",
+            "1571960029114",
+            "1572637516105",
+            "1572637662153",
+            "1572644611322",
+            "1572644694270",
+            "1572645166556",
+            "1572645367364",
+            "1572646314621",
+            "1572646437349"
         ]
     },
     "presets": {
