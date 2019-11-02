@@ -671,8 +671,7 @@
           "1568410739083",
           "1568417626048"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselSuavecita": {
         "type": "CollectionTemplateCarouselSuavecita",
@@ -722,8 +721,7 @@
           "1568658900427",
           "1568659013817"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselFirmeClub": {
         "type": "CollectionTemplateCarouselFirmeClub",
@@ -773,8 +771,7 @@
           "1568750044236",
           "1568762842770"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselSuavecitoSpeed": {
         "type": "CollectionTemplateCarouselSuavecitoSpeed",
@@ -824,8 +821,7 @@
           "1568846725863",
           "1568846752605"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselSuavecito": {
         "type": "CollectionTemplateCarouselSuavecito",
@@ -875,237 +871,12 @@
           "1568848520131",
           "1568848541064"
         ],
-        "settings": {
-        }
-      },
-      "article-sidebar": {
-        "type": "article-sidebar",
-        "settings": {
-          "featuredCollection": "featured-items"
-        }
-      },
-      "1571960029114": {
-        "type": "SideScrollCollection",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Collection": "new-mens-grooming",
-          "SectionTitle": "New Stuff For Men"
-        }
-      },
-      "1572359569477": {
-        "type": "MobileBrandCarousel",
-        "blocks": {
-          "1572359589480": {
-            "type": "slide",
-            "settings": {
-              "SlideImage": "shopify:\/\/shop_images\/suavecito-logo-full.png",
-              "Class": "",
-              "AltText": "Suavecito",
-              "HREF": ""
-            }
-          },
-          "1572359668544": {
-            "type": "slide",
-            "settings": {
-              "SlideImage": "shopify:\/\/shop_images\/suavecita-script-logo.png",
-              "Class": "",
-              "AltText": "Suavecita",
-              "HREF": "https:\/\/www.suavecito.com\/collections\/suavecita"
-            }
-          },
-          "1572359718036": {
-            "type": "slide",
-            "settings": {
-              "SlideImage": "shopify:\/\/shop_images\/premium-blends-logo.png",
-              "Class": "darken",
-              "AltText": "Suavecito Premium Blends",
-              "HREF": "https:\/\/www.suavecito.com\/collections\/premium-blends"
-            }
-          },
-          "1572359810341": {
-            "type": "slide",
-            "settings": {
-              "SlideImage": "shopify:\/\/shop_images\/firme-club.png",
-              "Class": "darken",
-              "AltText": "Firme Club",
-              "HREF": "https:\/\/www.suavecito.com\/collections\/firme-club"
-            }
-          },
-          "1572359865170": {
-            "type": "slide",
-            "settings": {
-              "SlideImage": "shopify:\/\/shop_images\/speed-shop.png",
-              "Class": "darken",
-              "AltText": "Suavecito Speed",
-              "HREF": "https:\/\/www.suavecito.com\/collections\/suavecito-speed"
-            }
-          }
-        },
-        "block_order": [
-          "1572359589480",
-          "1572359668544",
-          "1572359718036",
-          "1572359810341",
-          "1572359865170"
-        ],
-        "settings": {
-        }
-      },
-      "1572440616889": {
-        "type": "PosterCollection",
-        "blocks": {
-          "1572441154937": {
-            "type": "image_picker",
-            "settings": {
-              "Slider_Item_Img": "shopify:\/\/shop_images\/monster-poster-poster.jpg",
-              "Slider_Item_Img_Alt": "Suavecito X Monsters Shirts",
-              "Slider_Item_Tagline": "Suavecito X Monsters Shirts",
-              "Slider_Item_Text": "",
-              "Slider_Item_Link": "https:\/\/www.suavecito.com\/collections\/apparel\/universal-monsters",
-              "Slider_Item_Link_Text": "Shop Now",
-              "Slider_Item_Text_Position": "top-left",
-              "Slider_Item_Text_Color": "white"
-            }
-          },
-          "1572440987277": {
-            "type": "image_picker",
-            "settings": {
-              "Slider_Item_Img": "shopify:\/\/shop_images\/Invisible_Man_Combs.jpg",
-              "Slider_Item_Img_Alt": "Suavecito X The Invisible Man",
-              "Slider_Item_Tagline": "Suavecito X The Invisible Man",
-              "Slider_Item_Text": "",
-              "Slider_Item_Link": "https:\/\/www.suavecito.com\/collections\/featured-items\/products\/suavecito-x-the-invisible-man-folding-comb",
-              "Slider_Item_Link_Text": "Show Now",
-              "Slider_Item_Text_Position": "top-left",
-              "Slider_Item_Text_Color": "white"
-            }
-          }
-        },
-        "block_order": [
-          "1572441154937",
-          "1572440987277"
-        ],
-        "settings": {
-          "Collection": "featured-items",
-          "Limit": 6,
-          "Grid_Sizes": "s6"
-        }
-      },
-      "1572625672134": {
-        "type": "CssParallax",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Image": "shopify:\/\/shop_images\/monster-section.jpg",
-          "AltText": "Suavecito X Universal Monsters: Suavecito Mummy Logo, Suavecito Wolfman Logo, Suavecito Creature From The Black Lagoon Logo, Suavecito Frankenstein Logo, Suavecito Invisible Man Logo, Suavecito Dracula Logo",
-          "Title": "SHOP THE MONSTERS COLLECTION",
-          "Text": "",
-          "TextColor": "#ffffff",
-          "HREF": "shopify:\/\/collections\/all",
-          "ButtonText": "SHOP NOW"
-        }
-      },
-      "1572637516105": {
-        "type": "CssParallax",
-        "settings": {
-          "SectionTheme": "section-suavecita",
-          "Image": "shopify:\/\/shop_images\/suavecita-section.jpg",
-          "AltText": "Suavecita Liquid Lipsticks, Eyeliner Pen, and Eye Lashes",
-          "Title": "SHOP THE SUAVECITA COLLECTION",
-          "Text": "",
-          "TextColor": "#ffffff",
-          "HREF": "shopify:\/\/collections\/suavecita",
-          "ButtonText": "SHOP NOW"
-        }
-      },
-      "1572637662153": {
-        "type": "SideScrollCollection",
-        "settings": {
-          "SectionTheme": "section-suavecita",
-          "Collection": "new-womens-beauty",
-          "SectionTitle": "New Stuff For Women"
-        }
-      },
-      "1572644611322": {
-        "type": "CssParallax",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Image": "shopify:\/\/shop_images\/section-premium-blends.jpg",
-          "AltText": "Barber holding Premium Blends Beard Oil",
-          "Title": "SHOP THE PREMIUM BLENDS COLLECTION",
-          "Text": "",
-          "TextColor": "#ffffff",
-          "HREF": "shopify:\/\/collections\/premium-blends",
-          "ButtonText": "SHOP NOW"
-        }
-      },
-      "1572644694270": {
-        "type": "SideScrollCollection",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Collection": "premium-blends",
-          "SectionTitle": "Popular Stuff From Premium Blends"
-        }
-      },
-      "1572645166556": {
-        "type": "CssParallax",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Image": "shopify:\/\/shop_images\/section-firme-club.jpg",
-          "AltText": "Man wearing Firme Club shirt in gym doing weighted squats",
-          "Title": "SHOP THE FIRME CLUB COLLECTION",
-          "Text": "",
-          "TextColor": "#ffffff",
-          "HREF": "shopify:\/\/collections\/firme-club",
-          "ButtonText": "SHOP NOW"
-        }
-      },
-      "1572645367364": {
-        "type": "SideScrollCollection",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Collection": "firme-club",
-          "SectionTitle": "Popular Stuff By Firme Club"
-        }
-      },
-      "1572646314621": {
-        "type": "CssParallax",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Image": "shopify:\/\/shop_images\/speed-section.jpg",
-          "AltText": "Man wearing Suavecito Speed shirt leaning on a motor cycle in an alley",
-          "Title": "SHOP THE SPEED COLLECTION",
-          "Text": "",
-          "TextColor": "#ffffff",
-          "HREF": "shopify:\/\/collections\/suavecito-speed",
-          "ButtonText": "SHOP NOW"
-        }
-      },
-      "1572646437349": {
-        "type": "SideScrollCollection",
-        "settings": {
-          "SectionTheme": "section-suavecito",
-          "Collection": "suavecito-speed",
-          "SectionTitle": "Popular Stuff By Suavecito Speed"
-        }
+        "settings": {}
       }
     },
-    "content_for_index": [
-      "1572359569477",
-      "1572440616889",
-      "1572625672134",
-      "1571960029114",
-      "1572637516105",
-      "1572637662153",
-      "1572644611322",
-      "1572644694270",
-      "1572645166556",
-      "1572645367364",
-      "1572646314621",
-      "1572646437349"
-    ]
+    "content_for_index": []
   },
   "presets": {
-    "Default": {
-    }
+    "Default": {}
   }
 }
