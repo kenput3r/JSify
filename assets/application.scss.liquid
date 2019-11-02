@@ -64,185 +64,6 @@ $roboto: 'Roboto', sans-serif;
 $thin: 100 !important;
 $regular: 400 !important;
 
-/**************************************************
-Helpers
-**************************************************/
-.background-s-red {
-  background-color: $s_red !important;
-  &:hover {
-    background-color: lighten($s_red, 10%) !important;
-  }
-  input[type="submit"] {
-    color: #fff;
-  }
-}
-
-.background-s-yellow {
-  background-color: $s_yellow !important;
-  &:hover {
-    background-color: lighten($s_yellow, 10%) !important;
-  }
-}
-
-.bold {
-  font-weight: bold !important;
-}
-
-.clear-fix {
-  overflow: auto;
-}
-
-.color-s-red {
-  color: $s_red !important;
-}
-
-.color-s-yellow {
-  color: $s_yellow !important;
-}
-
-.h100 {
-  height: 100%;
-  img {
-    max-height: 100%;
-  }
-}
-
-.l0 {
-  width: 0px;
-  overflow: hidden;
-  padding: 0 !important;
-}
-
-.margins-auto {
-  margin: auto;
-}
-
-.margin-bottom-none {
-  margin-bottom: 0 !important;
-}
-
-.margin-top {
-  margin-top: 30px;
-
-  @media screen and(max-width: 480px) {
-    margin-top: 15px;
-  }
-}
-
-.padding-none {
-  padding: 0 !important;
-}
-
-.sblock {
-  @media screen and(max-width: $small) {
-    display: block !important;
-  }
-}
-
-.small-only-left-50 {
-  @media screen and(min-width: $xs) and(max-width: $small) {
-    margin-left: 50% !important;
-  }
-}
-
-.videoWrapper, .video-wrapper {
-  float: none;
-  clear: both;
-  width: 100%;
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.padding-none {
-  padding: 0 !important;
-}
-
-.padding-left-none {
-  padding-left: 0 !important;
-}
-
-.position-relative {
-  position: relative !important;
-}
-
-.pull-left {
-  -webkit-transform: translateX(-296px);
-  transform: translateX(-296px);
-  -webkit-transition: all 300ms linear;
-  transition: all 300ms linear;
-}
-
-.table {
-  display: table;
-}
-
-.table-cell {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.text-m-teal {
-  color: $m_teal !important;
-}
-
-.text-s-red {
-  color: $s_red !important;
-}
-
-.text-s-red-compliment {
-  color: $s_red_compliment;
-}
-
-.transition-margin {
-  -webkit-transition: all linear 300ms;
-  transition: all linear 300ms;
-}
-
-.transition-width {
-  -webkit-transition: width linear 300ms;
-  transition: width linear 300ms;
-}
-
-.valign-wrapper_important {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
-  display: flex !important;
-  -webkit-box-align: center !important;
-  -ms-flex-align: center !important;
-  align-items: center !important;
-}
-
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap;
-}
-
-.w100 {
-  width: 100%;
-}
-
-.xs12 {
-  @media screen and(max-width: $xs) {
-    width: 100% !important;
-  }
-}
-
 /*------------------------------------------------------------------------------
 Account Template
 ------------------------------------------------------------------------------*/
@@ -785,6 +606,204 @@ h1, h2, h3, h4, h5, h6 {
  }
 
 /**************************************************
+Helpers
+**************************************************/
+.background-s-red {
+  background-color: $s_red !important;
+  &:hover {
+    background-color: lighten($s_red, 10%) !important;
+  }
+  input[type="submit"] {
+    color: #fff;
+  }
+}
+
+.background-s-pink {
+  background-color: $s_pink !important;
+  &:hover {
+    background-color: lighten($s_pink, 10%) !important;
+  }
+}
+
+.background-s-yellow {
+  background-color: $s_yellow !important;
+  &:hover {
+    background-color: lighten($s_yellow, 10%) !important;
+  }
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.clear-fix {
+  overflow: auto;
+}
+
+.color-s-red {
+  color: $s_red !important;
+}
+
+.color-s-yellow {
+  color: $s_yellow !important;
+}
+
+.h100 {
+  height: 100%;
+  img {
+    max-height: 100%;
+  }
+}
+
+.l0 {
+  width: 0px;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.margins-auto {
+  margin: auto;
+}
+
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+
+.margin-top {
+  margin-top: 30px;
+
+  @media screen and(max-width: 480px) {
+    margin-top: 15px;
+  }
+}
+
+.padding-none {
+  padding: 0 !important;
+}
+
+.sblock {
+  @media screen and(max-width: $small) {
+    display: block !important;
+  }
+}
+
+.small-only-left-50 {
+  @media screen and(min-width: $xs) and(max-width: $small) {
+    margin-left: 50% !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.videoWrapper, .video-wrapper {
+  float: none;
+  clear: both;
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.padding-none {
+  padding: 0 !important;
+}
+
+.padding-left-none {
+  padding-left: 0 !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.pull-left {
+  -webkit-transform: translateX(-296px);
+  transform: translateX(-296px);
+  -webkit-transition: all 300ms linear;
+  transition: all 300ms linear;
+}
+
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.text-m-teal {
+  color: $m_teal !important;
+}
+
+.text-s-red {
+  color: $s_red !important;
+}
+
+.text-s-red-compliment {
+  color: $s_red_compliment;
+}
+
+.transition-margin {
+  -webkit-transition: all linear 300ms;
+  transition: all linear 300ms;
+}
+
+.transition-width {
+  -webkit-transition: width linear 300ms;
+  transition: width linear 300ms;
+}
+
+.valign-wrapper_important {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.xs12 {
+  @media screen and(max-width: $xs) {
+    width: 100% !important;
+  }
+}
+
+
+/**************************************************
 Index Template
 **************************************************/
 .template-index {
@@ -957,6 +976,45 @@ Order
   }
   .collapsible-header {
     border-bottom: 0;
+  }
+}
+/**************************************************
+Parallax
+**************************************************/
+.parallax-container {
+  @media screen and(min-width: $large) {
+    height: 900px;
+  }
+}
+
+.css-parallax {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 900px;
+  padding-top: 86px;
+
+  @media screen and(max-width: 992px) {
+    height: 500px;
+  }
+
+  @media screen and(max-width: $medium) {
+    background-attachment: scroll;
+  }
+}
+
+.css-parallax-details {
+  font-weight: bold;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 86px;
+  
+  h3, p {
+    text-shadow: #000 0px 0px 10px;
+  }
+
+  p {
+    font-size: 1.5rem;
   }
 }
 /**************************************************
@@ -1306,6 +1364,21 @@ body.suavecita {
     }
   }
 }
+.section-suavecita {
+  .background-s-red {
+    background-color: $s_pink !important;
+    &:hover {
+      background-color: lighten($s_pink, 10%) !important;
+    }
+  }
+
+  .color-s-red {
+    color: $s_pink !important;
+    &:hover {
+      color: lighten($s_pink, 10%) !important;
+    }
+  }
+}
 /**************************************************
 Swiper
 **************************************************/
@@ -1642,6 +1715,7 @@ div#smile-ui-container[style] {
 **************************************************/
 .template-404 {
   background-color: #371e12;
+  height: 100vh;
   header {
     position: absolute;
     top: 0;
@@ -1655,11 +1729,11 @@ div#smile-ui-container[style] {
     .container-404 {
       display: flex;
       flex-wrap: wrap;
+      height: 100%;
       .frame {
         flex: 0 0 auto;
         position: relative;
         width: 100%;
-        height: 100vh;
         img {
           bottom: 0;
           height: 100%;
@@ -1671,12 +1745,476 @@ div#smile-ui-container[style] {
           top: 0;
           width: 100%;
         }
+        .text-content {
+          position: absolute;
+          bottom: 100px;
+          left: 0;
+          right: 0;
+          text-align: center;
+        }
       }
     }
   }
   footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
     .footer-nav {
       background-color: #371e12;
+    }
+  }
+}
+
+/**************************************************
+  Brand Page Reset
+**************************************************/
+.template-page.premiumblends,
+.template-page.suavecitospeed,
+.template-page.firmeclub {
+  main {
+    padding-top: 0;
+  }
+}
+
+/**************************************************
+  Premium Blends About (section)
+**************************************************/
+.premiumblends-about {
+  .banner {
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+  .about {
+    img {
+      width: 100%;
+    }
+  }
+}
+
+/**************************************************
+  About Category (section)
+**************************************************/
+.category-container {
+  @media only screen and (min-width: 992px) {
+    margin: 15px 0;
+  }
+  .category {
+    height: 400px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 0;
+    .title {
+      position: relative;
+      height: 50%;
+      @media only screen and (min-width: 992px) {
+        height: 100%;
+      }
+      span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+        text-transform: uppercase;
+      }
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+    .content {
+      position: relative;
+      height: 100%;
+      padding: 0;
+      .inner-row {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        padding: 0;
+        .col {
+          background-color: rgba(211, 211, 211, 0.60);
+          color: #000;
+          padding: 5px 20px;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .double-underline {
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    height: 15px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/**************************************************
+  Photo Grid (section)
+**************************************************/
+.photo-grid {
+  padding: 0 15px;
+  .col {
+    padding: 0;
+  }
+  .frame {
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+    padding-top: 80%;
+    img {
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+}
+
+/**************************************************
+  Suavecito Speed (section)
+**************************************************/
+
+/**************************************************
+  Banner (section)
+**************************************************/
+.banner-with-logo {
+  position: relative;
+  background-color: $black;
+  .banner-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  .banner-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: auto;
+    @media only screen and (min-width: $large) {
+      width: 400px;
+    }
+  }
+}
+/**************************************************
+  Page Break (section)
+**************************************************/
+.page-break {
+  position: relative;
+  background-color: $black;
+  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.35;
+  }
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+/**************************************************
+  Page Break With Float (section)
+**************************************************/
+.page-break-float {
+  position: relative;
+  background-color: $black;
+  .background-img {
+    width: 100%;
+    height: 50vw;
+    object-fit: cover;
+    object-position: 50% 50%;
+    opacity: 0.35;
+    @media only screen and (min-width: $large) {
+      height: 25vw;
+    }
+  }
+  .floating-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    width: 60%;
+    height: auto;
+    @media only screen and (min-width: $large) {
+      width: 30%;
+    }
+  }
+}
+/**************************************************
+  Mission Statement (section)
+**************************************************/
+.mission-statement {
+  position: relative;
+  @media only screen and (min-width: $large) {
+    height: 30vw;
+  }
+  .statement {
+    height: 100%;
+  }
+  .content {
+    padding: 15px;
+    @media only screen and (min-width: $large) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      padding-left: 30%;
+    }
+    .title {
+      font-size: 3em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $orange;
+      @media only screen and (max-width: $large) {
+        text-align: center;
+      }
+    }
+  }
+  .floating-image {
+    height: 40vw;
+    position: relative;
+    padding: 0;
+    @media only screen and (min-width: $large) {
+      height: 100%;
+    }
+    img {
+      height: auto;
+      width: 70%;
+      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 100;
+      transform: translate(0, -20%);
+      @media only screen and (min-width: $large) {
+        transform: translate(0, -50%);
+        top: 50%;
+        width: 50vw;
+        
+      }
+    }
+  }
+}
+/**************************************************
+  Who We Are (section)
+**************************************************/
+.who-we-are {
+  .main-content {
+    position: relative;
+    height: 100%;
+    background-color: $black;
+    img {
+      width: 100%;
+      opacity: 0.75;
+    }
+    .tagline {
+      text-shadow: 3px 3px 5px $black;
+    }
+    .title {
+      color: $orange;
+      font-size: 3rem;
+    }
+    .content-grid {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .content-container {
+        height: 50%;
+        position: relative;
+        .content-center {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          padding: 15px;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .about {
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+  .mobile-about {
+    background-color: #000;
+    padding: 15px;
+    color: $white;
+    margin-bottom: 0;
+  }
+}
+/**************************************************
+  Overlapping Images (section)
+**************************************************/
+.overlapping-images {
+  width: 80%;
+  margin: 50px auto 50px auto;
+  .images {
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(10, 10%);
+    img {
+      width: 100%;
+      transition: all .5s;
+    }
+  }
+  .text-content {
+    grid-column: 3 / span 6;
+    grid-row: 3 / span 6;
+    z-index: 10;
+    margin: 3%;
+    @media only screen and (min-width: $medium) {
+      grid-row: 4 / span 4;
+    }
+    @media only screen and (min-width: $large) {
+      grid-column: 3 / span 6;
+      grid-row: 4 / span 3;
+      margin: 10%;
+    }
+    position: relative;
+    background-color: $white;
+    .content-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      padding: 15px;
+      transform: translate(-50%, -50%);
+      .title {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .divider {
+    height: 3px;
+    border-top: 3px solid $black;
+    width: 80%;
+    margin: auto;
+  }
+  img.image_1 {
+    grid-column: 4 /span 4;
+    grid-row: 2 / span 4;
+    z-index: 9;
+  }
+  img.image_2 {
+    grid-column: 7 / span 4;
+    grid-row: 2 / span 4;
+    transform: rotate(18deg);
+    z-index: 8;
+  }
+  img.image_3 {
+    grid-column: 6 / span 5;
+    grid-row: 4 / span 4;
+  }
+  img.image_4 {
+    grid-column: 7 / span 4;
+    grid-row: 7 / span 5;
+    transform: rotate(-15deg);
+  }
+  img.image_5 {
+    grid-column: 2 / span 4;
+    grid-row: 7 / span 4;
+    transform: rotate(15deg);
+  }
+  img.image_6 {
+    grid-column: 1 / span 4;
+    grid-row: 5 / span 4;
+    transform: rotate(-20deg);
+  }
+  img.image_7 {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 4;
+    transform: rotate(-1deg);
+  }
+}
+/**************************************************
+  Firme Club Who We Are (section)
+**************************************************/
+.fc-who-we-are {
+  position: relative;
+  margin-bottom: 0;
+  @media only screen and (min-width: $large) {
+    height: 30vw;
+  }
+  .statement {
+    height: 100%;
+    position: relative;
+  }
+  .content {
+    padding: 15px;
+    @media only screen and (min-width: $large) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, -50%);
+      padding-right: 30%;
+    }
+    .title {
+      font-size: 3em;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $orange;
+      @media only screen and (max-width: $large) {
+        text-align: center;
+      }
+    }
+  }
+  .floating-image {
+    height: 40vw;
+    position: relative;
+    padding: 0;
+    @media only screen and (min-width: $large) {
+      height: 100%;
+    }
+    img {
+      height: auto;
+      width: 70%;
+      float: left;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      transform: translate(0, -20%);
+      @media only screen and (min-width: $large) {
+        transform: translate(0, -50%);
+        top: 50%;
+        width: 50vw;
+        
+      }
     }
   }
 }
