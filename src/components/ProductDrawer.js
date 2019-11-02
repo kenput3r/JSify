@@ -3,7 +3,7 @@ import insertDrawerContent from '../utils/insertDrawerContent';
 import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
 import ProductReviews from '../components/ProductReviews';
-import renderSnptScript from '../utils/renderSnptScript';
+//import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
 import ProductCarousel from './ProductCarousel';
 
@@ -76,9 +76,9 @@ export default class ProductDrawer extends BaseClass {
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
     const review_form_container = this.rootElement.querySelector('.review-form');
     this.ReviewModal = new ProductReviewForm(review_form_container, {parent: this.rootElement});
-    const snpt_container = this.rootElement.querySelector('.snpt-wdgt--ppg');
-    const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
-    snpt_container.appendChild(snpt_script);
+    // const snpt_container = this.rootElement.querySelector('.snpt-wdgt--ppg');
+    // const snpt_script = renderSnptScript(snpt_container.dataset.vendor);
+    // snpt_container.appendChild(snpt_script);
   }
 
   /**
