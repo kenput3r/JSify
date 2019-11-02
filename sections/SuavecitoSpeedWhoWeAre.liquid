@@ -1,0 +1,108 @@
+<div class="who-we-are">
+  <div class="main-content">
+    <img 
+      class="responsive-img"
+      src="{{ section.settings.Img | img_url: '400x' }}"
+      data-src="{{ section.settings.Img | img_url: '1000x' }}"
+      alt="{{ section.settings.Img_Alt }}"
+      data-s-module="LazyImage" 
+    />
+    <div class="row content-grid">
+      <div class="col s12 tagline center-align {{ section.settings.Tagline_Color }}-text content-container">
+        <div class="content-center hide-on-med-and-down">
+          {{ section.settings.Tagline }}
+        </div>
+        <div class="content-center show-on-medium-and-down hide-on-large-only">
+          <h2 class="title center-aligned">{{ section.settings.Title }}</h2>
+        </div>
+      </div>
+      <div class="col s12 l6 offset-l6 about {{ section.settings.Content_Text_Color }}-text content-container hide-on-med-and-down">
+        <div class="content-center">
+          <h2 class="title center-aligned">{{ section.settings.Title }}</h2>
+          <p>{{ section.settings.Text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mobile-about show-on-medium-and-down hide-on-large-only">
+    <div class="col s12">
+      <p>{{ section.settings.Text }}</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Speed Who We Are",
+    "settings": [
+      {
+        "id": "Img",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "Img_Alt",
+        "type": "text",
+        "label": "Image Alt"
+      },
+      {
+        "id": "Tagline",
+        "type": "html",
+        "label": "Tagline (html)"
+      },
+      {
+        "type": "select",
+        "id": "Tagline_Color",
+        "label": "Tagline Color",
+        "options": [
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "grey",
+            "label": "Grey"
+          } 
+        ],
+        "default": "white",
+        "info": "Default is White."
+      },
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "Text",
+        "type": "html",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "Content_Text_Color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "grey",
+            "label": "Grey"
+          } 
+        ],
+        "default": "white",
+        "info": "Default is White."
+      }
+    ]
+  }
+{% endschema %}

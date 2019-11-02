@@ -1,0 +1,61 @@
+<div class="category-container">
+  {% for block in section.blocks %}
+    {% assign sm_category_img = block.settings.Category_Img | img_url: '100x' %}
+    {% assign lg_category_img = block.settings.Category_Img | img_url: '800x' %}
+    {% assign category_img_alt = block.settings.Category_Img_Alt %}
+    {% assign category_title = block.settings.Category_Title %}
+    {% assign category_text = block.settings.Category_Text %}
+    {% assign is_even = forloop.index | modulo: 2 %}
+    <div class="category row">
+      <div class="title col s12{% unless is_even != 0 %} push-l8{% endunless %} l4">
+        <span>{{ category_title }}<p class="double-underline"></p></span>
+      </div>
+      <div class="content col s12{% unless is_even != 0 %} pull-l4{% endunless %} l8">
+        <img 
+          src="{{ sm_category_img }}"
+          data-src="{{ lg_category_img }}"
+          data-s-module="LazyImage"
+          alt="{{ category_img_alt }}"
+        />
+        <div class="row inner-row">
+          <div class="col s12{% unless is_even != 0 %} offset-l6{% endunless %} l6">
+            <p>{{ category_text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "blocks": [
+      {
+        "type": "category",
+        "name": "Category",
+        "settings": [
+          {
+            "id": "Category_Img",
+            "type": "image_picker",
+            "label": "Image"
+          },
+          {
+            "id": "Category_Img_Alt",
+            "type": "text",
+            "label": "Image Alt"
+          },
+          {
+            "id": "Category_Title",
+            "type": "text",
+            "label": "Category Title"
+          },
+          {
+            "id": "Category_Text",
+            "type": "richtext",
+            "label": "Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
