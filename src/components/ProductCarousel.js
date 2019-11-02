@@ -53,11 +53,22 @@ import BaseClass from '../system/BaseClass';
   }
 
   init() {
+    const featured_image = this.rootElement.querySelector('.carousel-image');
+    const carousel_container = this.rootElement.querySelector('.carousel');
+    featured_image.addEventListener('load', (event) => {
+      console.log('image loaded');
+      console.log(carousel_container.style);
+      if(!carousel_container.style.height) {
+        console.log('set height');
+        console.log(featured_image.offsetHeight)
+        carousel_container.style.height = featured_image.offsetHeight+'px';
+        console.log('Container height: ', carousel_container.style.height)
+      }
+    })
     const carousel_options = {
       fullWidth: true,
       indicators: true
     }
-    const carousel_container = this.rootElement.querySelector('.carousel');
     this.MCarousel = M.Carousel.init(carousel_container, carousel_options);
     this.setTriggers(this.MCarousel);
     if(window.innerWidth > 601) {
