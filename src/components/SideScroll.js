@@ -44,7 +44,6 @@ export default class SideScroll extends BaseClass {
   init() {
     this.pages = parseInt(this.pages);
     this.totalProducts = parseInt(this.totalProducts);
-    console.log('Pages: ' + this.pages, 'Products: ' + this.totalProducts, 'Products > 6: ' + this.totalProducts > 6, 'Pages === 0: ' + this.pages === 0)
     if(this.totalProducts > 6 && this.pages === 0) {
       this.pages = 1;
     }
