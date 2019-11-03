@@ -29,6 +29,7 @@ import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
 import PosterCollection from './components/PosterCollection';
 import LazyImage from './components/LazyImage';
+import LazyBackgroundImage from './components/LazyBackgroundImage';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -59,7 +60,8 @@ const classes = {
     AddressForm,
     DataRequest,
     PosterCollection,
-    LazyImage
+    LazyImage,
+    LazyBackgroundImage
 };
 
 const system = new System(classes);
