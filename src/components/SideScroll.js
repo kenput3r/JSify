@@ -1,6 +1,7 @@
 import BaseClass from '../system/BaseClass';
 import getCollectionPage from '../utils/getCollectionPage';
 import ProductTile from './ProductTile';
+import LazyImage from './LazyImage';
 
 export default class SideScroll extends BaseClass {
   constructor(rootElement, args) {
@@ -59,6 +60,8 @@ export default class SideScroll extends BaseClass {
           this.rootElement.insertAdjacentHTML('beforeend', elements);
           const new_tiles = document.querySelectorAll(`.product-tile-page-${this.page}`);
           for(let tile of new_tiles) {
+            const lazy_image = tile.querySelector('.product-image');
+            new LazyImage(lazy_image);
             new ProductTile(tile);
           }
           this.page = this.page + 1;
