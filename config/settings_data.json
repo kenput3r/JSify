@@ -28,7 +28,7 @@
     "terms_of_use_url": "shopify:\/\/pages\/terms-and-conditions",
     "privacy_policy_url": "shopify:\/\/pages\/terms-and-conditions",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/suavecito-logo-full.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
@@ -38,8 +38,8 @@
     "checkout_sidebar_background_color": "#fafafa",
     "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_accent_color": "#197bbd",
-    "checkout_button_color": "#197bbd",
+    "checkout_accent_color": "#822808",
+    "checkout_button_color": "#822808",
     "checkout_error_color": "#e32c2b",
     "sections": {
       "CollectionTemplateCarousel": {
@@ -90,8 +90,7 @@
           "1568410739083",
           "1568417626048"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselSuavecita": {
         "type": "CollectionTemplateCarouselSuavecita",
@@ -141,8 +140,7 @@
           "1568658900427",
           "1568659013817"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselFirmeClub": {
         "type": "CollectionTemplateCarouselFirmeClub",
@@ -192,8 +190,7 @@
           "1568750044236",
           "1568762842770"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselSuavecitoSpeed": {
         "type": "CollectionTemplateCarouselSuavecitoSpeed",
@@ -243,8 +240,7 @@
           "1568846725863",
           "1568846752605"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "CollectionTemplateCarouselSuavecito": {
         "type": "CollectionTemplateCarouselSuavecito",
@@ -294,8 +290,7 @@
           "1568848520131",
           "1568848541064"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "article-sidebar": {
         "type": "article-sidebar",
@@ -367,8 +362,7 @@
           "1572359810341",
           "1572359865170"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "1572440616889": {
         "type": "PosterCollection",
@@ -414,7 +408,7 @@
         "type": "CssParallax",
         "settings": {
           "SectionTheme": "section-suavecito",
-          "Image": "shopify:\/\/shop_images\/monster-section.jpg",
+          "Image": "shopify:\/\/shop_images\/monster-collection.jpg",
           "AltText": "Suavecito X Universal Monsters: Suavecito Mummy Logo, Suavecito Wolfman Logo, Suavecito Creature From The Black Lagoon Logo, Suavecito Frankenstein Logo, Suavecito Invisible Man Logo, Suavecito Dracula Logo",
           "Title": "SHOP THE MONSTERS COLLECTION",
           "Text": "",
@@ -483,7 +477,7 @@
         "settings": {
           "SectionTheme": "section-suavecito",
           "Collection": "firme-club",
-          "SectionTitle": "Popular Stuff By Firme Club"
+          "SectionTitle": "Popular Stuff From Firme Club"
         }
       },
       "1572646314621": {
@@ -504,7 +498,7 @@
         "settings": {
           "SectionTheme": "section-suavecito",
           "Collection": "suavecito-speed",
-          "SectionTitle": "Popular Stuff By Suavecito Speed"
+          "SectionTitle": "Popular Stuff From Suavecito Speed"
         }
       },
       "Parallax": {
@@ -560,8 +554,7 @@
           "1572470613818",
           "1572470641032"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "PhotoGrid": {
         "type": "PhotoGrid",
@@ -759,7 +752,6 @@
     ]
   },
   "presets": {
-    "Default": {
-    }
+    "Default": {}
   }
 }
