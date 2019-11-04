@@ -1,6 +1,7 @@
 import BaseClass from '../system/BaseClass';
 import getCollectionPageX from '../utils/getCollectionPage';
 import ProductTile from './ProductTile';
+import LazyImage from './LazyImage';
 
 /**
  * @class LoadCollectionPageXbutton - Fetches a collection page
@@ -50,6 +51,8 @@ export default class LoadCollectionPageXbutton extends BaseClass {
       //Only run if template is products
       if(template === 'products') {
         for(let tile of new_tiles) {
+          const image = tile.querySelector('.product-image');
+          new LazyImage(image);
           new ProductTile(tile);
         }
       }
