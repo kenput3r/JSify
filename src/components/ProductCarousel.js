@@ -1,4 +1,5 @@
 import BaseClass from '../system/BaseClass';
+import LazyImage from './LazyImage';
 
 /**
  * @class ProductCarousel - Initializes a new instance of ProductCarousel,
@@ -53,13 +54,23 @@ import BaseClass from '../system/BaseClass';
   }
 
   init() {
+    const featured_image = this.rootElement.querySelector('.carousel-image');
+    const carousel_container = this.rootElement.querySelector('.carousel');
+    featured_image.addEventListener('load', (event) => {
+      if(!carousel_container.style.height) {
+        carousel_container.style.height = featured_image.offsetHeight+'px';
+      }
+    });
     const carousel_options = {
       fullWidth: true,
       indicators: true
     }
-    const carousel_container = this.rootElement.querySelector('.carousel');
     this.MCarousel = M.Carousel.init(carousel_container, carousel_options);
     this.setTriggers(this.MCarousel);
+    const images = this.rootElement.querySelectorAll('.carousel-image');
+    images.forEach((image) => {
+      new LazyImage(image);
+    });
     if(window.innerWidth > 601) {
       const modal_container = document.querySelector('#ProductImageModal');
       const modal_options = {

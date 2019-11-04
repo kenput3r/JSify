@@ -560,116 +560,110 @@ General
 **************************************************/
 
 body {
-    display: flex;
-    flex-direction: column;
-    font-family: $roboto;
-    font-weight: $regular;
-    min-height: 100vh;
-    min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  font-family: $roboto;
+  font-weight: $regular;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $roboto;
-    font-weight: $thin;
+h1, h2, h3, h4, h5, h6 {
+  font-family: $roboto;
+  font-weight: $thin;
+ }
+
+ h1 {
+   font-size: 3rem;
+   @media screen and(max-width: $small) {
+     font-size: 2rem;
+   }
+ }
+
+ h2 {
+   font-size: 2.8rem;
+   @media screen and(max-width: $small) {
+    font-size: 1.8rem;
+  }
+ }
+
+ h3 {
+  font-size: 2.6rem;
+  @media screen and(max-width: $small) {
+   font-size: 1.6rem;
+ }
 }
 
-h1 {
-    font-size: 3rem;
-    @media screen and(max-width: $small) {
-        font-size: 2rem;
-    }
+ main {
+   flex: 1 0 auto;
+   padding-top: 15px;
+   position: relative;
+   @media screen and(max-width: 992px) {
+     margin-bottom: 30px;
+   }
+   @media screen and(min-width: 993px) {
+     margin-top: 86px;
+   }
+   @media screen and(min-width: 2048px) {
+      max-width: 2048px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+ }
+
+ a {
+   //color: $s_red_compliment;
+   color: $s_red;
+   font-weight: bold;
+ }
+
+ .page-footer {
+   background-color: #fff;
+   color: #000;
+   padding-top: 0;
+ }
+
+ //chrome user agent styles
+ select {
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(166, 166, 166);
 }
 
-h2 {
-    font-size: 2.8rem;
-    @media screen and(max-width: $small) {
-        font-size: 1.8rem;
-    }
-}
+ .small-margin-bottom {
+   @media screen and(max-width: $small) {
+     margin-bottom: 20px;
+   }
+ }
 
-h3 {
-    font-size: 2.6rem;
-    @media screen and(max-width: $small) {
-        font-size: 1.6rem;
-    }
-}
+ strong {
+   font-weight: 700;
+ }
 
-main {
-    flex: 1 0 auto;
-    padding-top: 15px;
-    position: relative;
-    @media screen and(max-width: 992px) {
-        margin-bottom: 30px;
-    }
-    @media screen and(min-width: 993px) {
-        margin-top: 86px;
-    }
-    @media screen and(min-width: 2048px) {
-        max-width: 2048px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+ .summary-sticky {
+   @media screen and(min-width: $large) {
+     position: sticky;
+     position: -webkit-sticky;
+     top: 86px;
+   }
+ }
 
-a {
-    //color: $s_red_compliment;
-    color: $s_red;
-    font-weight: bold;
-}
+ .tiny-remove-padding {
+   @media screen and(max-width: 350px) {
+     padding: 0 !important;
+   }
+ }
 
-.page-footer {
-    background-color: #fff;
-    color: #000;
-    padding-top: 0;
-}
+ .toast {
+   background-color: $s_yellow !important;
+ }
 
-//chrome user agent styles
-select {
-    border-radius: 5px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(166, 166, 166);
-}
-
-.small-margin-bottom {
-    @media screen and(max-width: $small) {
-        margin-bottom: 20px;
-    }
-}
-
-strong {
-    font-weight: 700;
-}
-
-.summary-sticky {
-    @media screen and(min-width: $large) {
-        position: sticky;
-        position: -webkit-sticky;
-        top: 86px;
-    }
-}
-
-.tiny-remove-padding {
-    @media screen and(max-width: 350px) {
-        padding: 0 !important;
-    }
-}
-
-.toast {
-    background-color: $s_yellow !important;
-}
-
-.tooltipped {
-    &:hover {
-        cursor: pointer;
-    }
-}
-
+ .tooltipped {
+   &:hover {
+     cursor: pointer;
+   }
+ }
 
 /**************************************************
 Helpers
@@ -1548,6 +1542,15 @@ DesktopNav
             -webkit-transition: all ease 150ms;
             transition: all ease 150ms;
         }
+      }
+    }
+  }
+  .meganav {
+    box-sizing: content-box;
+    min-width: 100%;
+    padding-bottom: 20px;
+    .container {
+      height: 100%;
     }
     .dropdown-content {
         li {
@@ -1590,30 +1593,15 @@ DesktopNav
             }
         }
     }
-    .meganav {
-        min-width: 100%;
-        .container {
-            height: 100%;
-        }
-        ul.row {
-            height: 100%;
-        }
-        h6 {
-            font-weight: bold;
-        }
-        li.col {
-            height: 100%;
-            padding: 0 0 0 0.75rem;
-        }
-        ul.clear-fix {
-            height: 80%;
-            max-height: 100%;
-            border-right: 1px solid #f1efef;
-            padding: 0 0.75rem 0 0;
-            &.no-border {
-                border-right: 0;
-            }
-        }
+
+    ul.clear-fix {
+      height: 100%;
+      max-height: 100%;
+      border-right: 1px solid #f1efef;
+      padding: 0 0.75rem 0 0;
+      &.no-border {
+        border-right: 0;
+      }
     }
 }
 
