@@ -1,6 +1,7 @@
 import BaseClass from '../system/BaseClass';
 import getCollectionPage from '../utils/getCollectionPage';
 import ProductTile from './ProductTile';
+import LazyImage from './LazyImage';
 
 export default class SideScroll extends BaseClass {
   constructor(rootElement, args) {
@@ -44,7 +45,6 @@ export default class SideScroll extends BaseClass {
   init() {
     this.pages = parseInt(this.pages);
     this.totalProducts = parseInt(this.totalProducts);
-    console.log('Pages: ' + this.pages, 'Products: ' + this.totalProducts, 'Products > 6: ' + this.totalProducts > 6, 'Pages === 0: ' + this.pages === 0)
     if(this.totalProducts > 6 && this.pages === 0) {
       this.pages = 1;
     }
@@ -60,6 +60,8 @@ export default class SideScroll extends BaseClass {
           this.rootElement.insertAdjacentHTML('beforeend', elements);
           const new_tiles = document.querySelectorAll(`.product-tile-page-${this.page}`);
           for(let tile of new_tiles) {
+            const lazy_image = tile.querySelector('.product-image');
+            new LazyImage(lazy_image);
             new ProductTile(tile);
           }
           this.page = this.page + 1;

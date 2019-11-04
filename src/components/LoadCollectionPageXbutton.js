@@ -1,6 +1,7 @@
 import BaseClass from '../system/BaseClass';
 import getCollectionPageX from '../utils/getCollectionPage';
 import ProductTile from './ProductTile';
+import LazyImage from './LazyImage';
 
 /**
  * @class LoadCollectionPageXbutton - Fetches a collection page
@@ -47,9 +48,10 @@ export default class LoadCollectionPageXbutton extends BaseClass {
       loader.classList.add('hide');
       //Initialize the new elements as ProductTiles
       const new_tiles = document.querySelectorAll(`.product-tile-page-${this.collection.currentPage}`);
-      //Only run if template is products
-      if(template === 'products') {
-        for(let tile of new_tiles) {
+      for(let tile of new_tiles) {
+        const image = tile.querySelector('.product-image');
+        new LazyImage(image);
+        if(template === 'products') {
           new ProductTile(tile);
         }
       }

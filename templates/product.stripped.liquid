@@ -25,6 +25,7 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
     <hr />
   {% endif %}
 
+  {% comment %}
   <div class="snpt">
     {% if product.vendor == 'Suavecita' %}
     <div class='snpt-wdgt--ppg' data-vendor="suavecita">
@@ -34,6 +35,8 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
     </div>
     {% endif %}
   </div>
+  {% endcomment %}
+
   {% assign review_count = product.metafields.yotpo['reviews_count'] | plus: 0 %}
   {% if review_count > 0 %}
   <h3>REVIEWS</h3>
