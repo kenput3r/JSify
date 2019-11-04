@@ -1,4 +1,5 @@
 config.yml
+/config/settings_data.json
 /assets/main.js
 /assets/main.js.map
 /assets/materializeCss.css
