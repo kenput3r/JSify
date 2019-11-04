@@ -1,4 +1,5 @@
 import BaseClass from '../system/BaseClass';
+import LazyImage from './LazyImage';
 
 /**
  * @class ProductCarousel - Initializes a new instance of ProductCarousel,
@@ -66,6 +67,10 @@ import BaseClass from '../system/BaseClass';
     }
     this.MCarousel = M.Carousel.init(carousel_container, carousel_options);
     this.setTriggers(this.MCarousel);
+    const images = this.rootElement.querySelectorAll('.carousel-image');
+    images.forEach((image) => {
+      new LazyImage(image);
+    });
     if(window.innerWidth > 601) {
       const modal_container = document.querySelector('#ProductImageModal');
       const modal_options = {
