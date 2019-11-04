@@ -1,0 +1,122 @@
+{% assign grid_sizes = section.settings.Grid_Sizes %}
+{% if grid_sizes == '' %}
+  {% assign grid_sizes = 's12 m4' %}
+{% endif %}
+
+<div class="suavecito-categories row">
+  <div class="col {{ grid_sizes }}">
+    <div class="frame">
+      <img 
+        src="{{ section.settings.Img_1 | img_url: '100x' }}"
+        data-src="{{ section.settings.Img_1 | img_url: '600x' }}"
+        data-s-module="LazyImage" 
+        alt="{{ section.settings.Img_1_Alt }}"
+      />
+    </div>
+    <div class="content">
+      <h3 class="center-align">{{ section.settings.Title_1 }}</h3>
+      <p>{{ section.settings.Description_1 }}</p>
+    </div>
+  </div>
+  <div class="col {{ grid_sizes }}">
+    <div class="frame">
+      <img 
+        src="{{ section.settings.Img_2 | img_url: '100x' }}"
+        data-src="{{ section.settings.Img_2 | img_url: '600x' }}"
+        data-s-module="LazyImage" 
+        alt="{{ section.settings.Img_2_Alt }}"
+      />
+    </div>
+    <div class="content">
+      <h3 class="center-align">{{ section.settings.Title_2 }}</h3>
+      <p>{{ section.settings.Description_2 }}</p>
+    </div>
+  </div>
+  <div class="col {{ grid_sizes }}">
+    <div class="frame">
+      <img 
+        src="{{ section.settings.Img_3 | img_url: '100x' }}"
+        data-src="{{ section.settings.Img_3 | img_url: '600x' }}"
+        data-s-module="LazyImage" 
+        alt="{{ section.settings.Img_3_Alt }}"
+      />
+    </div>
+    <div class="content">
+      <h3 class="center-align">{{ section.settings.Title_3 }}</h3>
+      <p>{{ section.settings.Description_3 }}</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Suavecito Categories",
+    "settings": [
+      {
+        "id": "Grid_Sizes",
+        "type": "text",
+        "label": "Grid Sizes"
+      },
+      {
+        "id": "Img_1",
+        "type": "image_picker",
+        "label": "Image 1"
+      },
+      {
+        "id": "Img_1_Alt",
+        "type": "text",
+        "label": "Image 1 Alt"
+      },
+      {
+        "id": "Title_1",
+        "type": "text",
+        "label": "Category 1 Title"
+      },
+      {
+        "id": "Description_1",
+        "type": "textarea",
+        "label": "Category 1 Description"
+      },
+      {
+        "id": "Img_2",
+        "type": "image_picker",
+        "label": "Image 2"
+      },
+      {
+        "id": "Img_2_Alt",
+        "type": "text",
+        "label": "Image 2 Alt"
+      },
+      {
+        "id": "Title_2",
+        "type": "text",
+        "label": "Category 2 Title"
+      },
+      {
+        "id": "Description_2",
+        "type": "textarea",
+        "label": "Category 2 Description"
+      },
+      {
+        "id": "Img_3",
+        "type": "image_picker",
+        "label": "Image 3"
+      },
+      {
+        "id": "Img_3_Alt",
+        "type": "text",
+        "label": "Image 3 Alt"
+      },
+      {
+        "id": "Title_3",
+        "type": "text",
+        "label": "Category 3 Title"
+      },
+      {
+        "id": "Description_3",
+        "type": "textarea",
+        "label": "Category 3 Description"
+      }
+    ]
+  }
+{% endschema %}

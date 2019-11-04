@@ -1,0 +1,16 @@
+<div class="banner-with-logo">
+  <img 
+    class="responsive-img banner-img"
+    src="{{ banner_img | img_url: '400x' }}"
+    data-src="{{ banner_img | img_url: '1000x' }}"
+    alt="{{ banner_img_alt }}"
+    data-s-module="LazyImage" 
+  />
+  <img 
+    class="banner-logo"
+    src="{{ banner_logo | img_url: '100x' }}"
+    data-src="{{ banner_logo | img_url: '400x' }}"
+    alt="{{ banner_logo_alt }}"
+    data-s-module="LazyImage" 
+  />
+</div>

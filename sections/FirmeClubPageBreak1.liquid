@@ -1,15 +1,8 @@
-  <div class="page-break">
-    <img 
-      class="responsive-img"
-      src="{{ section.settings.Background_Img | img_url: '400x' }}"
-      data-src="{{ section.settings.Background_Img | img_url: '1024x' }}"
-      alt="{{ section.settings.Background_Img_Alt }}"
-      data-s-module="LazyImage" 
-    />
-    <div class="content center-align {{ section.settings.Content_Text_Color }}-text">
-      {{ section.settings.Content }}
-    </div>
-  </div>
+{% assign background_img = section.settings.Background_Img %}
+{% assign background_img_alt = section.settings.Background_Img_alt %}
+{% assign content_text_color = section.settings.Content_Text_Color %}
+
+{% include 'PageBreak' %}
 
   {% schema %}
     {

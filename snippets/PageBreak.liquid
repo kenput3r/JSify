@@ -1,0 +1,16 @@
+{% unless content_text_color %}
+  {% assign content_text_color = 'white' %}
+{% endunless %}
+
+<div class="page-break">
+  <img 
+    class="responsive-img"
+    src="{{ background_img | img_url: '400x' }}"
+    data-src="{{ background_img | img_url: '1024x' }}"
+    alt="{{ background_img_alt }}"
+    data-s-module="LazyImage" 
+  />
+  <div class="content center-align {{ content_text_color }}-text">
+    {{ section.settings.Content }}
+  </div>
+</div>
