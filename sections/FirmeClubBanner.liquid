@@ -1,21 +1,9 @@
-<div class="banner-with-logo">
-  <img 
-    class="responsive-img banner-img"
-    src="{{ section.settings.Banner_Img | img_url: '400x' }}"
-    data-src="{{ section.settings.Banner_Img | img_url: '1000x' }}"
-    alt="{{ section.settings.Banner_Img_Alt }}"
-    data-s-module="LazyImage" 
-  />
-  {% unless section.settings.Banner_Logo == '' %}
-  <img 
-    class="banner-logo"
-    src="{{ section.settings.Banner_Logo | img_url: '100x' }}"
-    data-src="{{ section.settings.Banner_Logo | img_url: '400x' }}"
-    alt="{{ section.settings.Banner_Logo_Alt }}"
-    data-s-module="LazyImage" 
-  />
-  {% endunless %}
-</div>
+{% assign banner_img = section.settings.Banner_Img %}
+{% assign banner_img_alt = section.settings.Banner_Img_Alt %}
+{% assign banner_logo = section.settings.Banner_Logo %}
+{% assign banner_logo_alt = section.settings.Banner_Logo_Alt %}
+
+{% include 'BannerWithLogo' %}
 
 {% schema %}
   {

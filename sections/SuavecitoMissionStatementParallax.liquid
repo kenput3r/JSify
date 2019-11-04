@@ -1,0 +1,74 @@
+{% assign image_src_lazy = section.settings.Image | img_url: '100x' %}
+{% assign image_src = section.settings.Image | img_url: '2048x' %}
+{% assign image_alt = section.settings.AltText %}
+{% assign title = section.settings.Title %}
+{% assign text = section.settings.Text %}
+{% assign button_link = section.settings.HREF %}
+{% assign button_text = section.settings.ButtonText %}
+{% assign text_color = section.settings.TextColor %}
+{% assign section_theme = section.settings.SectionTheme %}
+{% include 'CssParallax' %}
+
+{% schema %}
+  {
+    "name": "Suavecito MS Parallax",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "SectionTheme",
+        "label": "Section Theme",
+        "options": [
+          { "value": "section-suavecito", "label": "Suavecito" },
+          { "value": "section-suavecita", "label": "Suavecita" }
+        ],
+        "default": "section-suavecito",
+        "info": "The brand color theme"
+      },
+      {
+        "id": "Image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "AltText",
+        "type": "text",
+        "label": "Alt Text"
+      },
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Text Title"
+      },
+      {
+        "id": "Text",
+        "type": "textarea",
+        "label": "Text Caption"
+      },
+      {
+        "id": "TextColor",
+        "type": "color",
+        "label": "Text Color",
+        "default": "#000"
+      },
+      {
+        "id": "HREF",
+        "type": "url",
+        "label": "Button Link",
+        "info": "Optional: Leave blank to not display button"
+      },
+      {
+        "id": "ButtonText",
+        "type": "text",
+        "label": "Button Text",
+        "info": "Defaults to 'SHOP NOW'",
+        "default": "SHOP NOW"
+      }
+    ],
+    "presets": [
+      {
+        "name": "CSS Parallax",
+        "category": "Parallax Section"
+      }
+    ]
+  }
+{% endschema %}

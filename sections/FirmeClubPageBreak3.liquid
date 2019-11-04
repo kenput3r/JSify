@@ -1,56 +1,49 @@
-  <div class="page-break">
-    <img 
-      class="responsive-img"
-      src="{{ section.settings.Background_Img | img_url: '400x' }}"
-      data-src="{{ section.settings.Background_Img | img_url: '1024x' }}"
-      alt="{{ section.settings.Background_Img_Alt }}"
-      data-s-module="LazyImage" 
-    />
-    <div class="content center-align {{ section.settings.Content_Text_Color }}-text">
-      {{ section.settings.Content }}
-    </div>
-  </div>
+{% assign background_img = section.settings.Background_Img %}
+{% assign background_img_alt = section.settings.Background_Img_alt %}
+{% assign content_text_color = section.settings.Content_Text_Color %}
 
-  {% schema %}
-    {
-      "name": "Firme Club Page Break 3",
-      "settings": [
-        {
-          "id": "Background_Img",
-          "type": "image_picker",
-          "label": "Background Image"
-        },
-        {
-          "id": "Background_Img_Alt",
-          "type": "text",
-          "label": "Background Image Alt"
-        },
-        {
-          "id": "Content",
-          "type": "html",
-          "label": "Content (html)"
-        },
-        {
-          "type": "select",
-          "id": "Content_Text_Color",
-          "label": "Text Color",
-          "options": [
-            {
-              "value": "white",
-              "label": "White"
-            },
-            {
-              "value": "black",
-              "label": "Black"
-            },
-            {
-              "value": "grey",
-              "label": "Grey"
-            } 
-          ],
-          "default": "white",
-          "info": "Default is White."
-        }
-      ]
-    }
-  {% endschema %}
+{% include 'PageBreak' %}
+
+{% schema %}
+  {
+    "name": "Firme Club Page Break 3",
+    "settings": [
+      {
+        "id": "Background_Img",
+        "type": "image_picker",
+        "label": "Background Image"
+      },
+      {
+        "id": "Background_Img_Alt",
+        "type": "text",
+        "label": "Background Image Alt"
+      },
+      {
+        "id": "Content",
+        "type": "html",
+        "label": "Content (html)"
+      },
+      {
+        "type": "select",
+        "id": "Content_Text_Color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "grey",
+            "label": "Grey"
+          } 
+        ],
+        "default": "white",
+        "info": "Default is White."
+      }
+    ]
+  }
+{% endschema %}
