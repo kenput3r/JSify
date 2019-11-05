@@ -1,0 +1,61 @@
+<div class="suavecito-image-scroll grey lighten-4">
+  <div class="side-scroll-wrapper" data-s-module="SideScroll">
+    {% for block in section.blocks %}
+    <div class="side-scroll-card">
+      <div class="row">
+        {% assign grid_sizes = 's12' %}
+        <div class="col {{ grid_sizes }}">
+          <img 
+            src="{{ block.settings.Seasonal_Img | img_url: '100x' }}"
+            data-src="{{ block.settings.Seasonal_Img | img_url: '600x' }}"
+            data-s-module="LazyImage" 
+            alt="{{ block.settings.Seasonal_Img_Alt }}"
+          />
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="col s12 l8 offset-l2 description">
+      <h3 class="center-align">{{section.settings.Title}}</h3>
+      <p>{{section.settings.Description}}</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Suavecito Seasonal",
+    "settings": [
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "Description",
+        "type": "textarea",
+        "label": "Description"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Seasonal",
+        "settings": [
+          {
+            "id": "Seasonal_Img",
+            "type": "image_picker",
+            "label": "Image"
+          },
+          {
+            "id": "Seasonal_Img_Alt",
+            "type": "text",
+            "label": "Image Alt"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
