@@ -1792,6 +1792,8 @@ div#smile-ui-container[style] {
 /**************************************************
   Brand Page Reset
 **************************************************/
+.template-page.suavecito,
+.template-page.suavecita,
 .template-page.premiumblends,
 .template-page.suavecitospeed,
 .template-page.firmeclub {
@@ -2280,9 +2282,9 @@ div#smile-ui-container[style] {
 .suavecito-image-scroll {
   padding: 15px;
   .side-scroll-card {
-    max-width: 100%;
+    max-width: 80%;
     @media only screen and (min-width: $large) {
-      max-width: 25vw;
+      max-width: 30vw;
     }
   }
   img {
@@ -2363,5 +2365,36 @@ div#smile-ui-container[style] {
   }
   .outter-col {
     padding: 0 0.75rem;
+  }
+}
+
+/**************************************************
+  Suavecita (page)
+**************************************************/
+.template-page.suavecita {
+  .row {
+    margin-bottom: 0;
+  }
+}
+
+/**************************************************
+  Suavecita Poster (section)
+**************************************************/
+@media only screen and (min-width: $large) {
+  .suavecita-sticky-poster {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.suavecita-about {
+  img {
+    width: 100%;
+  }
+}
+
+.suavecita-categories {
+  img {
+    width: 100%;
   }
 }

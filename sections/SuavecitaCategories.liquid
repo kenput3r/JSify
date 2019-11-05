@@ -1,0 +1,58 @@
+<div class="suavecita-categories">
+  {% for block in section.blocks %}
+    {% assign category_title = block.settings.Category_Title %}
+    {% assign category_description = block.settings.Category_Description %}
+    {% assign category_img = block.settings.Category_Img  | img_url: '50x' %}
+    {% assign category_img_lg = block.settings.Category_Img  | img_url: '800x' %}
+    {% assign category_img_alt = block.settings.Category_Img_Alt %}
+    {% assign is_even = forloop.index | modulo: 2 %}
+    <div class="row category">
+      <h3 class="center-align">{{ category_title }}</h3>
+      <div class="col s12 m6{% unless is_even != 0 %} push-m6{% endunless %} m6">
+        <img 
+          class="lazy-image"
+          src="{{ category_img }}" 
+          data-src="{{ category_img_lg }}" 
+          alt="{{ category_img_alt }}"
+          data-s-module="LazyImage"
+        />
+      </div>
+      <div class="col s12 m6{% unless is_even != 0 %} pull-m6{% endunless %} m6">
+        <p>{{ category_description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "blocks": [
+      {
+        "type": "Category",
+        "name": "Suavecita Category",
+        "settings": [
+          {
+            "id": "Category_Img",
+            "type": "image_picker",
+            "label": "Category Image"
+          },
+          {
+            "id": "Category_Img_Alt",
+            "type": "text",
+            "label": "Category Image Alt"
+          },
+          {
+            "id": "Category_Title",
+            "type": "text",
+            "label": "Category Title"
+          },
+          {
+            "id": "Category_Description",
+            "type": "html",
+            "label": "Category Description (html)"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

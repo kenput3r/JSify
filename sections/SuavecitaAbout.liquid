@@ -1,0 +1,41 @@
+<div class="suavecita-about row">
+  <div class="col s12">
+    <h1 class="center-align">{{ section.settings.Title }}</h1>
+    <img 
+      class="lazy-image"
+      src="{{ section.settings.Image | img_url: '50x' }}" 
+      data-src="{{ section.settings.Image | img_url: '800x' }}" 
+      alt="{{ section.settings.Image_Alt }}"
+      data-s-module="LazyImage"
+    />
+    <p>{{ section.settings.Description }}</p>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Suavecita About",
+    "settings": [
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "Image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "Image_Alt",
+        "type": "text",
+        "label": "Image Alt"
+      },
+      {
+        "id": "Description",
+        "type": "html",
+        "label": "Description (html)"
+      }
+    ]
+  }
+{% endschema %}
