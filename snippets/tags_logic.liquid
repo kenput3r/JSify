@@ -118,11 +118,7 @@
         <li class="col s4 {{color}}">{{ html | link_to_remove_tag: tag }}</li>
       {% else %}
         {% assign color = tag | downcase %}
-        {% if color == 'white' %}
-        {% assign html = '<i class="material-icons small">panorama_fish_eye</i><br>' | append: tag %}
-        {% else %}
         {% assign html = '<i class="material-icons small">brightness_1</i><br>' | append: tag %}
-        {% endif %}
         <li class="col s4 {{color}}">{{ html | link_to_add_tag: tag }}</li>
       {% endif %}
     {% endfor %}
