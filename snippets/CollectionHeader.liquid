@@ -1,3 +1,20 @@
+{% comment %}
+  Create collection url with tags
+{% endcomment %}
+{%- if current_tags.size > 0 -%}
+  {%- assign collection_url_with_tags = collection.url | append: '/' -%}
+  {%- for tag in current_tags -%}
+    {% assign tag_handle = tag | handleize %}
+    {%- unless forloop.last -%}
+      {%- assign collection_url_with_tags = collection_url_with_tags | append: tag_handle | append: '+' -%}
+    {%- else -%}
+      {%- assign collection_url_with_tags = collection_url_with_tags | append: tag_handle -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- assign collection_url_with_tags = collection.url -%}
+{%- endif -%}
+
 <section id="CollectionHeader" class="row" data-s-module="CollectionHeader">
   <div class="col s12 m7">
     <h1>{{ collection.title }}</h1>
@@ -12,9 +29,9 @@
         <label for="view-list" style="margin-left:10px;">View</label>
         <a href="#" class="color-s-red dropdown-trigger" data-target="ViewList"><i class="material-icons">dashboard</i></a>
         <ul id="ViewList" class="dropdown-content">
-          <li class="valign-wrapper"><a class="color-s-red" href="{{collection.url}}"><i class="material-icons">view_column</i> CARDS</a></li>
-          <li class="valign-wrapper"><a class="color-s-red" href="{{collection.url}}?view=lifestyle"><i class="material-icons">view_module</i> LIFESTYLE</a></li>
-          <li class="valign-wrapper"><a class="color-s-red" href="{{collection.url}}?view=list"><i class="material-icons">view_list</i> LIST</a></li>
+          <li class="valign-wrapper"><a class="color-s-red" href="{{collection_url_with_tags}}"><i class="material-icons">view_column</i> CARDS</a></li>
+          <li class="valign-wrapper"><a class="color-s-red" href="{{collection_url_with_tags}}?view=lifestyle"><i class="material-icons">view_module</i> LIFESTYLE</a></li>
+          <li class="valign-wrapper"><a class="color-s-red" href="{{collection_url_with_tags}}?view=list"><i class="material-icons">view_list</i> LIST</a></li>
         </ul>
       </div>
       <div class="col s8 m9 sorting-options">

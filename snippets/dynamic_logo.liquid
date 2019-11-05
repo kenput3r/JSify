@@ -1,13 +1,39 @@
-{% if template.suffix == 'suavecita' or template == product and product.vendor == 'Suavecita' %}
-  {% assign setting_id = 'SuavecitaLogo' %}
-{% elsif template.suffix == 'premiumblends' or template == product and product.vendor == 'Premium Blends' %}
-  {% assign setting_id = 'PremiumBlendsLogo' %}
-{% elsif template.suffix == 'firmeclub' or template == product and product.vendor == 'Firme Club' %}
-  {% assign setting_id = 'FirmeClubLogo' %}
-{% elsif template.suffix == 'suavecitospeed' or template == product and product.vendor == 'Suavecito Speed' %}
-  {% assign setting_id = 'SpeedShopLogo' %}
+{% if template.name == 'collection' %}
+  {% if collection.handle contains 'suavecita' or collection.handle contains 'beauty' or collection.handle contains 'women' %}
+    {% assign setting_id = 'SuavecitaLogo' %} 
+  {% elsif collection.handle contains 'premium-blends' %}
+    {% assign setting_id = 'PremiumBlendsLogo' %}
+  {% elsif collection.handle contains 'firme-club' %}
+    {% assign setting_id = 'FirmeClubLogo' %}
+  {% elsif collection.handle contains 'suavecito-speed' %}
+    {% assign setting_id = 'SpeedShopLogo' %}
+  {% else %}
+   {% assign setting_id = 'SuavecitoLogo' %}
+  {% endif %}
+{% elsif template.name == 'product' %}
+  {% if product.vendor == 'Suavecita' %}
+    {% assign setting_id = 'SuavecitaLogo' %}
+  {% elsif product.vendor == 'Premium Blends' %}
+   {% assign setting_id = 'PremiumBlendsLogo' %}
+  {% elsif product.vendor == 'Firme Club' %}
+    {% assign setting_id = 'FirmeClubLogo' %}
+  {% elsif product.vendor == 'Suavecito Speed' %}
+    {% assign setting_id = 'SpeedShopLogo' %}
+  {% else %}
+    {% assign setting_id = 'SuavecitoLogo' %}
+  {% endif %}
 {% else %}
-  {% assign setting_id = 'SuavecitoLogo' %}
+  {% if template.suffix == 'suavecita' %}
+    {% assign setting_id = 'SuavecitaLogo' %}
+  {% elsif template.suffix == 'premiumblends' %}
+    {% assign setting_id = 'PremiumBlendsLogo' %}
+  {% elsif template.suffix == 'firmeclub' %}
+    {% assign setting_id = 'FirmeClubLogo' %}
+  {% elsif template.suffix == 'suavecitospeed' %}
+    {% assign setting_id = 'SpeedShopLogo' %}
+  {% else %}
+    {% assign setting_id = 'SuavecitoLogo' %}
+  {% endif %}
 {% endif %}
 
 {% if settings[setting_id] %}
