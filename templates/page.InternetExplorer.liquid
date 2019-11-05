@@ -1,0 +1,45 @@
+{% layout 'InternetExplorer' %}
+<div class="container">
+  <h1 class="center-align">{{ page.title }}</h1>
+  <div>{{ page.content }}</div>
+  <div class="row">
+    <div class="col s12 m4 center-align">
+      <img src="{{ 'internet-explorer-icon.png' | asset_img_url: '200x' }}" alt="Internet Explorer Logo" />
+    </div>
+    <div class="col s12 m8">
+      <p>Most versions of <a href="https://support.microsoft.com/en-us/help/17454/lifecycle-faq-internet-explorer" target="_blank">Microsoft Internet Explorer have reached end of life</a>. Internet Explorer 11 is meant to be used for backwards compatibility for viewing old legacy websites. Microsft recommends upgrading your experience to <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">Microsoft Edge</a>.
+      </p>
+      <p>See below for alternate supported browsers. We recommend using <a href="https://www.google.com/chrome/">Google Chrome</a> on desktop and Android environments, and either Safari or Google Chrome on iOS devices.</p>
+    </div>
+  </div>
+</div>
+<div class="grey lighten-4" style="padding-top: 40px; padding-bottom: 80px;">
+  <div class="container">
+    <h2 class="center-align">Supported Browsers</h2>
+    <div class="row">
+      <div class="col s12 m3 center-align">
+        <p><a href="https://support.microsoft.com/en-us/help/17454/lifecycle-faq-internet-explorer"><img src="{{ 'google-chrome-icon.png' | asset_img_url: '100x' }}" alt="Google Chrome Logo" /></a></p>
+        <p>Google Chrome</p>
+      </div>
+      <div class="col s12 m3 center-align">
+        <p><a href="https://www.mozilla.org/en-US/firefox/new/"><img src="{{ 'firefox-icon.png' | asset_img_url: '100x' }}" alt="Mozilla Firefox Logo" /></a></p>
+        <p>Mozilla Firefox</p>
+      </div>
+      <div class="col s12 m3 center-align">
+        <p><a href="https://www.apple.com/safari/"><img src="{{ 'safari-icon.png' | asset_img_url: '100x' }}" alt="Apple Safari Logo" /></a></p>
+        <p>Apple Safari</p>
+      </div>
+      <div class="col s12 m3 center-align">
+        <p><a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><img src="{{ 'edge-icon.png' | asset_img_url: '100x' }}" alt="Microsoft Edge Logo" /></a></p>
+        <p>Microsoft Edge</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" style="margin-top:80px;">
+  <div class="row">
+    <div class="col s12 center-align">
+      Questions? Email customer service at <a href="mailto:info@suavecito.com">info@suavecito.com</a>
+    </div>
+  </div>
+</div>
