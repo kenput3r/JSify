@@ -1,0 +1,41 @@
+{% assign image_src_lazy = section.settings.Image | img_url: '100x' %}
+{% assign image_src = section.settings.Image | img_url: '2048x' %}
+{% assign image_alt = section.settings.AltText %}
+{% assign title = section.settings.Title %}
+{% assign text = section.settings.Text %}
+{% assign text_color = section.settings.TextColor %}
+{% include 'CssParallax' %}
+
+{% schema %}
+  {
+    "name": "Parallax Page Break",
+    "settings": [
+      {
+        "id": "Image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "AltText",
+        "type": "text",
+        "label": "Alt Text"
+      },
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Text Title"
+      },
+      {
+        "id": "Text",
+        "type": "text",
+        "label": "Text Caption"
+      },
+      {
+        "id": "TextColor",
+        "type": "color",
+        "label": "Text Color",
+        "default": "#000"
+      }
+    ]
+  }
+{% endschema %}

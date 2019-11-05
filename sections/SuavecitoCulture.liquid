@@ -1,7 +1,7 @@
 <div class="suavecito-culture">
 
   <div class="row">
-    <div class="col s12 push-l6 l6">
+    <div class="col s12 push-l6 l6 outter-col">
       <div class="row">
         <div class="col s6">
           <div class="frame frame-100">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="col s12 pull-l6 l6">
+    <div class="col s12 pull-l6 l6 outter-col">
       <div class="row">
         <div class="col s12">
           <div class="frame frame-50">
@@ -42,19 +42,22 @@
   </div>
 
   <div class="row">
-    <div class="col s12 push-l6 l6">
-      <div class="content">
-        <div class="content-center">
-          <h3 class="center-align">{{ section.settings.Title }}</h3>
-          <p>{{ section.settings.Description }}</p>
+    <div class="col s12 l12 push-xl6 xl6 outter-col">
+      <div class="row">
+        <div class="col s12">
+          <div class="content">
+            <div class="content-center">
+              <h3 class="center-align">{{ section.settings.Title }}</h3>
+              <p>{{ section.settings.Description }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col s12 pull-l6 l6">
-
+    <div class="col s12 l12 pull-xl6 xl6 outter-col">
       <div class="row">
         <div class="col s6">
-          <div class="frame frame-100">
+          <div class="frame frame-150">
             <img
               src="{{ section.settings.Image_4 | img_url: '100x' }}"
               data-src="{{ section.settings.Image_4 | img_url: '600x' }}"
@@ -64,7 +67,7 @@
           </div>
         </div>
         <div class="col s6">
-          <div class="frame frame-100">
+          <div class="frame frame-150">
             <img
               src="{{ section.settings.Image_5 | img_url: '100x' }}"
               data-src="{{ section.settings.Image_5 | img_url: '600x' }}"
@@ -74,13 +77,22 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <div class="row">
-    <div class="col s12 push-l6 l6">
+    <div class="col s12 push-l6 l6 outter-col">
       <div class="row">
+        <div class="col s6">
+          <div class="frame frame-100">
+            <img
+              src="{{ section.settings.Image_8 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_8 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_8_Alt }}" 
+            />
+          </div>
+        </div>
         <div class="col s6">
           <div class="frame frame-100">
             <img
@@ -91,27 +103,17 @@
             />
           </div>
         </div>
-        <div class="col s6">
-          <div class="frame frame-100">
-            <img
-              src="{{ section.settings.Image_7 | img_url: '100x' }}"
-              data-src="{{ section.settings.Image_7 | img_url: '600x' }}"
-              data-s-module="LazyImage" 
-              alt="{{ section.settings.Image_7_Alt }}" 
-            />
-          </div>
-        </div>
       </div>
     </div>
-    <div class="col s12 pull-l6 l6">
+    <div class="col s12 pull-l6 l6 outter-col">
       <div class="row">
         <div class="col s12">
           <div class="frame frame-50">
             <img 
-              src="{{ section.settings.Image_8 | img_url: '100x' }}"
-              data-src="{{ section.settings.Image_8 | img_url: '600x' }}"
+              src="{{ section.settings.Image_7 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_7 | img_url: '600x' }}"
               data-s-module="LazyImage" 
-              alt="{{ section.settings.Image_8_Alt }}" 
+              alt="{{ section.settings.Image_7_Alt }}" 
             />
           </div>
         </div>

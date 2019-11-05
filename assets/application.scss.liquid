@@ -2291,10 +2291,20 @@ div#smile-ui-container[style] {
 /**************************************************
   Suavecito Culture (section)
 **************************************************/
+
 .suavecito-culture {
   padding: 15px;
   .row {
     margin-bottom: 0;
+  }
+  .col {
+    padding: 0.50rem;
+    @media only screen and (min-width: $large) {
+      padding: 0.75rem;
+    }
+  }
+  h3 {
+    margin: 0;
   }
   .frame {
     flex: 0 0 auto;
@@ -2312,21 +2322,12 @@ div#smile-ui-container[style] {
       width: 100%;
     }
   }
-  .frame-100 {
-    padding-top: 100%;
-  }
-  .frame-50 {
-    padding-top: 49%;
-  }
-  .item {
-    padding: 0.75rem;
-  }
-  @media only screen and (min-width: $large) {
+  @media only screen and (min-width: $xlarge) {
     .content {
       flex: 0 0 auto;
       position: relative;
       width: 100%;
-      padding-top: 50%;
+      padding-top: 72%;
     }
     .content-center {
       position: absolute;
@@ -2334,6 +2335,19 @@ div#smile-ui-container[style] {
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
+      padding: 0.75rem;
     }
+  }
+  .frame-150 {
+    padding-top: 150%;
+  }
+  .frame-100 {
+    padding-top: 100%;
+  }
+  .frame-50 {
+    padding-top: 49%;
+  }
+  .outter-col {
+    padding: 0 0.75rem;
   }
 }
