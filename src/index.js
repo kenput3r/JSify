@@ -28,6 +28,7 @@ import Account from './components/Account';
 import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
 import PosterCollection from './components/PosterCollection';
+import Poster from './components/Poster';
 import LazyImage from './components/LazyImage';
 
 const classes = {
@@ -59,6 +60,7 @@ const classes = {
     AddressForm,
     DataRequest,
     PosterCollection,
+    Poster,
     LazyImage
 };
 
