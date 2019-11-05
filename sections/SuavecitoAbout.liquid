@@ -1,0 +1,66 @@
+{% assign image_src_lazy = section.settings.Image | img_url: '100x' %}
+{% assign image_src = section.settings.Image | img_url: '2048x' %}
+{% assign image_alt = section.settings.AltText %}
+{% assign title = section.settings.Title %}
+{% assign text = section.settings.Text %}
+{% assign text_color = section.settings.TextColor %}
+
+<div class="css-parallax {{section_theme}} lazy-poster" data-src="{{image_src}}" style="background-image:url({{image_src_lazy}});"
+role="img" aria-label="{{image_alt}}" data-s-module="LazyImage">
+  <div class="row  css-parallax-details">
+    <div class="col s12 l4 push-l6 hide-on-med-and-down" style="color:{{text_color}};">
+      {% if title %}
+      <h3 style="font-weight: bold !important;">{{title}}</h3>
+      {% endif %}
+
+      {% if text %}
+      <p>{{text}}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="row suavecito-about-details show-on-medium-and-down hide-on-large-only">
+  <div class="col s12">
+    {% if title %}
+    <h3 style="font-weight: bold !important;">{{title}}</h3>
+    {% endif %}
+
+    {% if text %}
+    <p>{{text}}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Suavecito About",
+    "settings": [
+      {
+        "id": "Image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "AltText",
+        "type": "text",
+        "label": "Alt Text"
+      },
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Text Title"
+      },
+      {
+        "id": "Text",
+        "type": "textarea",
+        "label": "Text Caption"
+      },
+      {
+        "id": "TextColor",
+        "type": "color",
+        "label": "Text Color",
+        "default": "#000"
+      }
+    ]
+  }
+{% endschema %}

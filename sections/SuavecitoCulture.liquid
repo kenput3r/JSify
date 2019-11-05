@@ -1,0 +1,222 @@
+<div class="suavecito-culture">
+
+  <div class="row">
+    <div class="col s12 push-l6 l6 outter-col">
+      <div class="row">
+        <div class="col s6">
+          <div class="frame frame-100">
+            <img
+              src="{{ section.settings.Image_1 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_1 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_1_Alt }}" 
+            />
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="frame frame-100">
+            <img
+              src="{{ section.settings.Image_2 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_2 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_2_Alt }}" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 pull-l6 l6 outter-col">
+      <div class="row">
+        <div class="col s12">
+          <div class="frame frame-50">
+            <img 
+              src="{{ section.settings.Image_3 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_3 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_3_Alt }}" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 l12 push-xl6 xl6 outter-col">
+      <div class="row">
+        <div class="col s12">
+          <div class="content">
+            <div class="content-center">
+              <h3 class="center-align">{{ section.settings.Title }}</h3>
+              <p>{{ section.settings.Description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l12 pull-xl6 xl6 outter-col">
+      <div class="row">
+        <div class="col s6">
+          <div class="frame frame-150">
+            <img
+              src="{{ section.settings.Image_4 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_4 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_4_Alt }}" 
+            />
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="frame frame-150">
+            <img
+              src="{{ section.settings.Image_5 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_5 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_5_Alt }}" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12 push-l6 l6 outter-col">
+      <div class="row">
+        <div class="col s6">
+          <div class="frame frame-100">
+            <img
+              src="{{ section.settings.Image_8 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_8 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_8_Alt }}" 
+            />
+          </div>
+        </div>
+        <div class="col s6">
+          <div class="frame frame-100">
+            <img
+              src="{{ section.settings.Image_6 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_6 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_6_Alt }}" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 pull-l6 l6 outter-col">
+      <div class="row">
+        <div class="col s12">
+          <div class="frame frame-50">
+            <img 
+              src="{{ section.settings.Image_7 | img_url: '100x' }}"
+              data-src="{{ section.settings.Image_7 | img_url: '600x' }}"
+              data-s-module="LazyImage" 
+              alt="{{ section.settings.Image_7_Alt }}" 
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Suavecito Culture",
+    "settings": [
+      {
+        "id": "Title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "Description",
+        "type": "html",
+        "label": "Description (html)"
+      },
+      {
+        "id": "Image_1",
+        "type": "image_picker",
+        "label": "Image 1"
+      },
+      {
+        "id": "Image_1_Alt",
+        "type": "text",
+        "label": "Image 1 Alt"
+      },
+      {
+        "id": "Image_2",
+        "type": "image_picker",
+        "label": "Image 2"
+      },
+      {
+        "id": "Image_2_Alt",
+        "type": "text",
+        "label": "Image 2 Alt"
+      },
+      {
+        "id": "Image_3",
+        "type": "image_picker",
+        "label": "Image 3"
+      },
+      {
+        "id": "Image_3_Alt",
+        "type": "text",
+        "label": "Image 3 Alt"
+      },
+      {
+        "id": "Image_4",
+        "type": "image_picker",
+        "label": "Image 4"
+      },
+      {
+        "id": "Image_4_Alt",
+        "type": "text",
+        "label": "Image 4 Alt"
+      },
+      {
+        "id": "Image_5",
+        "type": "image_picker",
+        "label": "Image 5"
+      },
+      {
+        "id": "Image_5_Alt",
+        "type": "text",
+        "label": "Image 5 Alt"
+      },
+      {
+        "id": "Image_6",
+        "type": "image_picker",
+        "label": "Image 6"
+      },
+      {
+        "id": "Image_6_Alt",
+        "type": "text",
+        "label": "Image 6 Alt"
+      },
+      {
+        "id": "Image_7",
+        "type": "image_picker",
+        "label": "Image 7"
+      },
+      {
+        "id": "Image_7_Alt",
+        "type": "text",
+        "label": "Image 7 Alt"
+      },
+      {
+        "id": "Image_8",
+        "type": "image_picker",
+        "label": "Image 8"
+      },
+      {
+        "id": "Image_8_Alt",
+        "type": "text",
+        "label": "Image 8 Alt"
+      }
+    ]
+  }
+{% endschema %}

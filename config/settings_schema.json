@@ -1,195 +1,189 @@
-[
-  {
-    "name": "theme_info",
-    "theme_name": "JSify",
-    "theme_version": "1.0.0",
-    "theme_author": "kenput3r",
-    "theme_documentation_url": "https:\/\/github.com\/kenput3r\/JSify",
-    "theme_support_url": "https:\/\/github.com\/kenput3r\/JSify"
-  },
-  {
-    "name": "Header",
-    "settings": [
-      {
-        "type": "text",
-        "id": "SpecialMessage",
-        "label": "Special Message",
-        "info": "Used for messages like 'Free shipping over 25'"
-      },
-      {
-        "type": "link_list",
-        "id": "SpecialNav",
-        "label": "Special Navigation Items",
-        "info": "Used for Brand tabs"
-      }
-    ]
-  },
-  {
-    "name": "Logos",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "SuavecitoLogo",
-        "label": "Suavecito Logo",
-        "info": "png or svg"
-      },
-      {
-        "type": "image_picker",
-        "id": "SuavecitaLogo",
-        "label": "Suavecita Logo",
-        "info": "png or svg"
-      },
-      {
-        "type": "image_picker",
-        "id": "PremiumBlendsLogo",
-        "label": "Premium Blends Logo",
-        "info": "png or svg"
-      },
-      {
-        "type": "image_picker",
-        "id": "FirmeClubLogo",
-        "label": "Firme Club Logo",
-        "info": "png or svg"
-      },
-      {
-        "type": "image_picker",
-        "id": "SpeedShopLogo",
-        "label": "Speed Shop Logo",
-        "info": "png or svg"
-      }
-    ]
-  },
-  {
-    "name": "Collection Tags",
-    "settings": [
-      {
-        "type": "textarea",
-        "id": "ApparelAgeGenderTags",
-        "label": "Apparel Age & Gender Tags",
-        "info": "settings.ApparelAgeGenderTags"
-      },
-      {
-        "type": "textarea",
-        "id": "ColorTags",
-        "label": "Color Tags",
-        "info": "settings.ColorTags"
-      },
-      {
-        "type": "textarea",
-        "id": "ApparelTags",
-        "label": "Apparel Tags",
-        "info": "settings.ApparelTags"
-      },
-      {
-        "type": "textarea",
-        "id": "ApparelFitTags",
-        "label": "Apparel Fit Tags",
-        "info": "settings.ApparelFitTags"
-      },
-      {
-        "type": "textarea",
-        "id": "AdultSizeTags",
-        "label": "Adult Size Tags",
-        "info": "settings.AdultSizeTags"
-      },
-      {
-        "type": "textarea",
-        "id": "AdultPlusSizeTags",
-        "label": "Adult Plus Size Tags",
-        "info": "settings.AdultPlusSizeTags"
-      },
-      {
-        "type": "textarea",
-        "id": "InfantSizeTags",
-        "label": "Infant Size Tags",
-        "info": "settings.InfantSizeTags"
-      },
-      {
-        "type": "textarea",
-        "id": "ToddlerSizeTags",
-        "label": "Toddler Size Tags",
-        "info": "settings.ToddlerSizeTags"
-      },
-      {
-        "type": "textarea",
-        "id": "YouthSizeTags",
-        "label": "Youth Size Tags",
-        "info": "settings.YouthSizeTags"
-      },
-      {
-        "type": "textarea",
-        "id": "SeasonTags",
-        "label": "Season Tags",
-        "info": "settings.SeasonTags"
-      },
-      {
-        "type": "textarea",
-        "id": "BrandTags",
-        "label": "Brand Tags",
-        "info": "settings.SeasonTags"
-      },
-      {
-        "type": "textarea",
-        "id": "CollabTags",
-        "label": "Collab Tags",
-        "info": "settings.CollabTags"
-      },
-      {
-        "type": "textarea",
-        "id": "GroomingTags",
-        "label": "Grooming Tags",
-        "info": "settings.GroomingTags"
-      },
-      {
-        "type": "textarea",
-        "id": "MerchTags",
-        "label": "Merch & More Tags",
-        "info": "settings.MerchTags"
-      }
-    ]
-  },
-  {
-    "name": "Social",
-    "settings": [
-      {
-        "type": "url",
-        "id": "instagram_profile_url",
-        "label": "The url to an Instagram profile",
-        "info": "https:\/\/instagram.com\/suavecitopomade"
-      },
-      {
-        "type": "url",
-        "id": "facebook_profile_url",
-        "label": "The url to a Facebook profile",
-        "info": "https:\/\/facebook.com\/suavecitopomade"
-      },
-      {
-        "type": "url",
-        "id": "twitter_profile_url",
-        "label": "The url to a Twitter profile",
-        "info": "https:\/\/twitter.com\/suavecitopomade"
-      },
-      {
-        "type": "url",
-        "id": "youtube_profile_url",
-        "label": "The url to a YouTube channel",
-        "info": "https:\/\/youtube.com\/suavecitopomade"
-      }
-    ]
-  },
-  {
-    "name": "Legal",
-    "settings": [
-      {
-        "type": "url",
-        "id": "terms_of_use_url",
-        "label": "The page with the Terms Of Use information"
-      },
-      {
-        "type": "url",
-        "id": "privacy_policy_url",
-        "label": "The page with the Privacy Policy information"
-      }
-    ]
-  }
+[{
+        "name": "theme_info",
+        "theme_name": "JSify",
+        "theme_version": "1.0.0",
+        "theme_author": "kenput3r",
+        "theme_documentation_url": "https://github.com/kenput3r/JSify",
+        "theme_support_url": "https://github.com/kenput3r/JSify"
+    },
+    {
+        "name": "Header",
+        "settings": [{
+                "type": "text",
+                "id": "SpecialMessage",
+                "label": "Special Message",
+                "info": "Used for messages like 'Free shipping over 25'"
+            },
+            {
+                "type": "link_list",
+                "id": "SpecialNav",
+                "label": "Special Navigation Items",
+                "info": "Used for Brand tabs"
+            }
+        ]
+    },
+    {
+        "name": "Logos",
+        "settings": [{
+                "type": "image_picker",
+                "id": "SuavecitoLogo",
+                "label": "Suavecito Logo",
+                "info": "png or svg"
+            },
+            {
+                "type": "image_picker",
+                "id": "SuavecitaLogo",
+                "label": "Suavecita Logo",
+                "info": "png or svg"
+            },
+            {
+                "type": "image_picker",
+                "id": "PremiumBlendsLogo",
+                "label": "Premium Blends Logo",
+                "info": "png or svg"
+            },
+            {
+                "type": "image_picker",
+                "id": "FirmeClubLogo",
+                "label": "Firme Club Logo",
+                "info": "png or svg"
+            },
+            {
+                "type": "image_picker",
+                "id": "SpeedShopLogo",
+                "label": "Speed Shop Logo",
+                "info": "png or svg"
+            }
+        ]
+    },
+    {
+        "name": "Collection Tags",
+        "settings": [{
+                "type": "textarea",
+                "id": "ApparelAgeGenderTags",
+                "label": "Apparel Age & Gender Tags",
+                "info": "settings.ApparelAgeGenderTags"
+            },
+            {
+                "type": "textarea",
+                "id": "ColorTags",
+                "label": "Color Tags",
+                "info": "settings.ColorTags"
+            },
+            {
+                "type": "textarea",
+                "id": "ApparelTags",
+                "label": "Apparel Tags",
+                "info": "settings.ApparelTags"
+            },
+            {
+                "type": "textarea",
+                "id": "ApparelFitTags",
+                "label": "Apparel Fit Tags",
+                "info": "settings.ApparelFitTags"
+            },
+            {
+                "type": "textarea",
+                "id": "AdultSizeTags",
+                "label": "Adult Size Tags",
+                "info": "settings.AdultSizeTags"
+            },
+            {
+                "type": "textarea",
+                "id": "AdultPlusSizeTags",
+                "label": "Adult Plus Size Tags",
+                "info": "settings.AdultPlusSizeTags"
+            },
+            {
+                "type": "textarea",
+                "id": "InfantSizeTags",
+                "label": "Infant Size Tags",
+                "info": "settings.InfantSizeTags"
+            },
+            {
+                "type": "textarea",
+                "id": "ToddlerSizeTags",
+                "label": "Toddler Size Tags",
+                "info": "settings.ToddlerSizeTags"
+            },
+            {
+                "type": "textarea",
+                "id": "YouthSizeTags",
+                "label": "Youth Size Tags",
+                "info": "settings.YouthSizeTags"
+            },
+            {
+                "type": "textarea",
+                "id": "SeasonTags",
+                "label": "Season Tags",
+                "info": "settings.SeasonTags"
+            },
+            {
+                "type": "textarea",
+                "id": "BrandTags",
+                "label": "Brand Tags",
+                "info": "settings.SeasonTags"
+            },
+            {
+                "type": "textarea",
+                "id": "CollabTags",
+                "label": "Collab Tags",
+                "info": "settings.CollabTags"
+            },
+            {
+                "type": "textarea",
+                "id": "GroomingTags",
+                "label": "Grooming Tags",
+                "info": "settings.GroomingTags"
+            },
+            {
+                "type": "textarea",
+                "id": "MerchTags",
+                "label": "Merch & More Tags",
+                "info": "settings.MerchTags"
+            }
+        ]
+    },
+    {
+        "name": "Social",
+        "settings": [{
+                "type": "url",
+                "id": "instagram_profile_url",
+                "label": "The url to an Instagram profile",
+                "info": "https://instagram.com/suavecitopomade"
+            },
+            {
+                "type": "url",
+                "id": "facebook_profile_url",
+                "label": "The url to a Facebook profile",
+                "info": "https://facebook.com/suavecitopomade"
+            },
+            {
+                "type": "url",
+                "id": "twitter_profile_url",
+                "label": "The url to a Twitter profile",
+                "info": "https://twitter.com/suavecitopomade"
+            },
+            {
+                "type": "url",
+                "id": "youtube_profile_url",
+                "label": "The url to a YouTube channel",
+                "info": "https://youtube.com/suavecitopomade"
+            }
+        ]
+    },
+    {
+        "name": "Legal",
+        "settings": [{
+                "type": "url",
+                "id": "terms_of_use_url",
+                "label": "The page with the Terms Of Use information"
+            },
+            {
+                "type": "url",
+                "id": "privacy_policy_url",
+                "label": "The page with the Privacy Policy information"
+            }
+        ]
+    }
 ]
