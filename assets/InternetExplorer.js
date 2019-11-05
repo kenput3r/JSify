@@ -6,6 +6,4 @@ function isIE() {
 
 if (isIE()){
   window.location = 'https://suavecito.com/pages/internet-explorer?view=InternetExplorer';
-}else{
-  window.location = 'https://suavecito.com/pages/internet-explorer?view=InternetExplorer';
 }
