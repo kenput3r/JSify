@@ -25,9 +25,7 @@ export default class ProductForm extends BaseClass {
         this.ProductTile.querySelector('.product-image').src = this.state.image;
       }
     }else if(this.Carousel) {
-      console.log(this.Carousel);
       const images = Array.from(this.Carousel.rootElement.querySelectorAll('.carousel-image'));
-      console.log(images);
       for(let i = 0; i < images.length; i++) {
         if(images[i].dataset.src === this.state.image) {
           this.Carousel.set(i);
