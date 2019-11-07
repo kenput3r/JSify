@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="en">
 <head>
   <title>{{ page_title }} - {{ shop.name }}</title>
   <meta charset="utf-8">
@@ -36,7 +37,10 @@
     {% include 'MobileSearch' %}
   </footer>
   {% include 'smile-initializer' %}
+  {% include 'BisModal' %}
   {{ 'dayjs.min.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
+  {% if template.name contains 'product' or template.name contains 'collection' or template.name contains 'article' %}
+  {% endif %}
 </body>
 </html>

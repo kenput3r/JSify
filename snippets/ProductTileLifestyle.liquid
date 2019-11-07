@@ -4,7 +4,7 @@
 {%- assign product_price = product.selected_or_first_available_variant.price -%}
 {%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
 <div class="product-tile-lifestyle product-tile-page-{{paginate.current_page}} col {{grid_sizes}}">
-  <div class="frame hoverable z-depth-2">
+  <div class="frame z-depth-2">
     <img 
       class="sidenav-trigger product-image lazy-image"
       src="{{ product.images.last | img_url: '50x' }}" 
@@ -37,6 +37,13 @@
               {{ product_compare_price | money }}
             {% endif %}
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-content show-on-medium-and-down">
+      <div class="row">
+        <div class="col s12">
+          <span class="title">{{ product.title | truncate: 40 }}</span>
         </div>
       </div>
     </div>

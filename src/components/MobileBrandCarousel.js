@@ -10,7 +10,8 @@ export default class MobileBrandCarousel extends BaseClass {
     const options = {
       dist: -200, 
       numVisible: 5, 
-      shift: -150
+      shift: -150,
+      indicators: true
     }
     this.carousel = M.Carousel.init(this.rootElement, options);
   }

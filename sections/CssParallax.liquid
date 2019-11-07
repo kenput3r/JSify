@@ -7,12 +7,20 @@
 {% assign button_text = section.settings.ButtonText %}
 {% assign text_color = section.settings.TextColor %}
 {% assign section_theme = section.settings.SectionTheme %}
+{% if section.settings.CssClass != '' %}
+  {% assign css_class = section.settings.CssClass %}
+{% endif %}
 {% include 'CssParallax' %}
 
 {% schema %}
   {
     "name": " CSS Parallax Section",
     "settings": [
+      {
+        "type": "text",
+        "id": "CssClass",
+        "label": "Custom CSS Class"
+      },
       {
         "type": "radio",
         "id": "SectionTheme",

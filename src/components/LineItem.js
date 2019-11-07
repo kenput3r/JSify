@@ -102,10 +102,12 @@ export default class LineItem extends BaseClass {
     const quantity = this.rootElement.querySelector('.quantity-selector');
     const variant = this.rootElement.querySelector('.variant-selector');
 
-    quantity.addEventListener('change', (e)=> {
-      const updates = {updates: {[this.key]: e.target.value}};
-      this.update(updates);
-    });
+    if(quantity) {
+      quantity.addEventListener('change', (e)=> {
+        const updates = {updates: {[this.key]: e.target.value}};
+        this.update(updates);
+      });
+    }
 
     if(variant) {
       variant.addEventListener('change', (e)=> {
