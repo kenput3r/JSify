@@ -2,7 +2,5 @@
 {%- paginate collection.products by 48 -%}
   {%- for product in collection.products -%}
     {% include 'ProductListItem' %}
-  {%- else -%}
-    <li class="collection-item">no matches</li>
   {%- endfor -%}
 {%- endpaginate -%}

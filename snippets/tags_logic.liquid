@@ -12,6 +12,7 @@
 {% assign collab_tags = '' %}
 {% assign grooming_tags = '' %}
 {% assign merch_tags = '' %}
+{% assign availability_tags = '' %}
 
 {% for tag in collection.tags %}
   {% assign tag_ = tag | append: ',' %}
@@ -43,6 +44,8 @@
     {% assign grooming_tags = grooming_tags | append: tag_ %}
   {% elsif settings.MerchTags contains tag_ %}
     {% assign merch_tags = merch_tags | append: tag_ %}
+  {% elsif settings.AvailabilityTags contains tag_ %}
+    {% assign availability_tags = availability_tags | append: tag_ %}
   {% endif %}
 {% endfor %}
 
@@ -60,8 +63,23 @@
 {% assign collab_tags = collab_tags | split: ',' %}
 {% assign grooming_tags = grooming_tags | split: ',' %}
 {% assign merch_tags = merch_tags | split: ',' %}
+{% assign availability_tags = availability_tags | split: ',' %}
 
 {% capture tags_list %}
+  {% if availability_tags.size > 0 %}
+  <h5 class="first-of-type">Availability</h5>
+  <ul>
+    {% for tag in availability_tags %}
+      {% if current_tags contains tag %}
+        {% assign html = '<i class="material-icons color-s-red">backspace</i> ' | append: tag %}
+        <li class="active">{{ html | link_to_remove_tag: tag }}</li>
+      {% else %}
+        <li>{{ tag | link_to_add_tag: tag }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+
   {% if grooming_tags.size > 0 %}
   <h5 class="first-of-type">Personal Care</h5>
   <ul>
