@@ -88,7 +88,9 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       {% if product.available %}
       <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">Add to cart</button>
       {% else %}
+      {% unless product.variants.size > 1 and product.available == false %}
       <button class="waves-effect waves-teal btn-flat w100" disabled="true">SOLD OUT</button>
+      {% endunless %}
       <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
       {% endif %}
     </div>

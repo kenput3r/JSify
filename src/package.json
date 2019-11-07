@@ -30,7 +30,6 @@
   "dependencies": {
     "dayjs": "^1.8.15",
     "materialize-css": "^1.0.0-rc.2",
-    "placeholder-loading": "^0.2.2",
-    "swiper": "^4.5.0"
+    "placeholder-loading": "^0.2.2"
   }
 }

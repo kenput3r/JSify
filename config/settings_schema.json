@@ -60,6 +60,12 @@
         "name": "Collection Tags",
         "settings": [{
                 "type": "textarea",
+                "id": "AvailabilityTags",
+                "label": "Availability Tags",
+                "info": "settings.AvailabilityTags"
+            },
+            {
+                "type": "textarea",
                 "id": "ApparelAgeGenderTags",
                 "label": "Apparel Age & Gender Tags",
                 "info": "settings.ApparelAgeGenderTags"
