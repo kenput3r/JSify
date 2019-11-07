@@ -130,6 +130,22 @@ Article Template / Blog Template
   h3 {
     margin-top: 2.8rem;
   }
+  .product-tile-lifestyle .frame:hover>.content {
+    display: none;
+    opacity: 0;
+  }
+  .mobile-content {
+    display: block;
+    position: absolute;
+    color: #fff;
+    z-index: 2;
+    top: 5px;
+    left: 5px;
+    text-shadow: 0 0 2px #000;
+    &.show-on-medium-and-down {
+      display: block;
+    }
+  }
 }
 /**************************************************
 Cards
@@ -692,6 +708,12 @@ Helpers
   padding: 0 !important;
 }
 
+.show-on-medium-and-down {
+  @media screen and(min-width: 602px) {
+    display: none;
+  }
+}
+
 .sblock {
   @media screen and(max-width: $small) {
     display: block !important;
@@ -1004,6 +1026,27 @@ Parallax
   background-position: center;
   height: 900px;
   padding-top: 86px;
+  &.break-on-mobile {
+    @media screen and(max-width: $medium) {
+      background-size: contain;
+      background-position: bottom;
+      background-repeat: no-repeat;
+      height: 400px;
+      padding-top: 30px;
+      .css-parallax-details {
+        position: relative;
+        top: 0;
+      }
+      h3, p {
+        color: #000;
+        font-weight: normal !important;
+        text-shadow: none;
+      }
+      h3[style] {
+        font-weight: normal !important;
+      }
+    }
+  }
 
   @media screen and(max-width: 992px) {
     height: 500px;
@@ -1011,6 +1054,9 @@ Parallax
 
   @media screen and(max-width: $medium) {
     background-attachment: scroll;
+  }
+  h3 {
+    font-weight: bold !important;
   }
 }
 
@@ -1631,6 +1677,14 @@ div#smile-ui-container[style] {
           font-size: 1vw;
         }
       }
+    }
+    .mobile-content {
+      position: absolute;
+      color: #fff;
+      z-index: 2;
+      top: 5px;
+      left: 5px;
+      text-shadow: 0 0 2px #000;
     }
   }
 }
@@ -2280,7 +2334,7 @@ div#smile-ui-container[style] {
 **************************************************/
 
 .suavecito-image-scroll {
-  padding: 15px;
+  padding: 15px 0;
   .side-scroll-card {
     max-width: 80%;
     @media only screen and (min-width: $large) {
