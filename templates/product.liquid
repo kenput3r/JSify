@@ -15,6 +15,12 @@
       <hr />
     {% endif %}
 
+    {% assign product_size_chart_type = product.metafields.suave.productSizeChartType %}
+    {% if product_size_chart_type %}
+      {% assign size_chart = 'size-chart-' | append: product_size_chart_type | downcase %}
+      {% include size_chart %}
+    {% endif %}
+
     <div class="snpt">
       {% if product.vendor == 'Suavecita' %}
       <div class='snpt-wdgt--ppg' data-vendor="suavecita">
