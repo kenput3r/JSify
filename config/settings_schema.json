@@ -66,6 +66,12 @@
             },
             {
                 "type": "textarea",
+                "id": "ApparelAgeGenderTags",
+                "label": "Apparel Age & Gender Tags",
+                "info": "settings.ApparelAgeGenderTags"
+            },
+            {
+                "type": "textarea",
                 "id": "ColorTags",
                 "label": "Color Tags",
                 "info": "settings.ColorTags"
