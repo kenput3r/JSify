@@ -15,12 +15,12 @@
   {% assign section_theme = 'suavecito-section' %}
 {% endunless %}
 
-<div class="css-parallax {{section_theme}} lazy-poster" data-src="{{image_src}}" style="background-image:url({{image_src_lazy}});"
+<div class="css-parallax {{section_theme}} lazy-poster {{css_class}}" data-src="{{image_src}}" style="background-image:url({{image_src_lazy}});"
 role="img" aria-label="{{image_alt}}" data-s-module="LazyImage">
   <div class="row  css-parallax-details">
     <div class="col s12 l4 push-l1" style="color:{{text_color}};">
       {% if title %}
-      <h3 style="font-weight: bold !important;">{{title}}</h3>
+      <h3>{{title}}</h3>
       {% endif %}
 
       {% if text %}

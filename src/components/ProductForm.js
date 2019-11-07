@@ -25,7 +25,7 @@ export default class ProductForm extends BaseClass {
         this.ProductTile.querySelector('.product-image').src = this.state.image;
       }
     }else if(this.Carousel) {
-      const images = Array.from(this.Carousel.querySelectorAll('.carousel-image'));
+      const images = Array.from(this.Carousel.rootElement.querySelectorAll('.carousel-image'));
       for(let i = 0; i < images.length; i++) {
         if(images[i].dataset.src === this.state.image) {
           this.Carousel.set(i);
@@ -72,6 +72,13 @@ export default class ProductForm extends BaseClass {
     this.rootElement.querySelector('.product-price').innerHTML = this.state.price;
     this.rootElement.querySelector('.compare-price').innerHTML = this.state.comparePrice;
     this.changeImage();
+    if(this.state.disableAddToCart) {
+      this.rootElement.querySelector('button.add-to-cart').classList.add('disabled');
+      const bis_modal = M.Modal.getInstance(document.querySelector('#BisModal'));
+      bis_modal.open(); 
+    }else{
+      this.rootElement.querySelector('button.add-to-cart').classList.remove('disabled');
+    }
   }
   /**
    * @method handleSubmit - Adds selected product and quantity to cart

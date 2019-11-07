@@ -30,6 +30,7 @@ import DataRequest from './components/DataRequest';
 import PosterCollection from './components/PosterCollection';
 import Poster from './components/Poster';
 import LazyImage from './components/LazyImage';
+import BisModal from './components/BisModal';
 
 const classes = {
     LoadCollectionPageXbutton,
@@ -61,7 +62,8 @@ const classes = {
     DataRequest,
     PosterCollection,
     Poster,
-    LazyImage
+    LazyImage,
+    BisModal
 };
 
 const system = new System(classes);

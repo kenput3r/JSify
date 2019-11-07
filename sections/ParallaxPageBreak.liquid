@@ -4,12 +4,20 @@
 {% assign title = section.settings.Title %}
 {% assign text = section.settings.Text %}
 {% assign text_color = section.settings.TextColor %}
+{% if section.settings.CssClass != '' %}
+  {% assign css_class = section.settings.CssClass %}
+{% endif %}
 {% include 'CssParallax' %}
 
 {% schema %}
   {
     "name": "Parallax Page Break",
     "settings": [
+      {
+        "type": "text",
+        "id": "CssClass",
+        "label": "Custom CSS Class"
+      },
       {
         "id": "Image",
         "type": "image_picker",
