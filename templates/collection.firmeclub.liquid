@@ -4,10 +4,11 @@
 {% if current_tags.size > 0 %}
   {% assign tags_url = '/' %}
   {% for tag in current_tags %}
+    {% assign tag_handle = tag | handleize %}
     {% if forloop.last %}
-      {% assign tags_url = tags_url | append: tag %}
+      {% assign tags_url = tags_url | append: tag_handle %}
     {% else %}
-      {% assign tags_url = tags_url | append: tag | append: '+' %}
+      {% assign tags_url = tags_url | append: tag_handle | append: '+' %}
     {% endif %}
   {% endfor %}
   {% assign url_with_tags = url_with_tags | append: tags_url %}
