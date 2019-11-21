@@ -40,7 +40,7 @@
           <div class="col s8">
             <div class="input-field sort-by">
               {% assign s = collection.sort_by | default: collection.default_sort_by | escape %}
-              <select id="sort-by">
+              <select id="sort-by" class="browser-default">
                 <option {%if s == 'manual' %}selected="true"{%endif%} value="manual">Featured</option>
                 <option {%if s == 'price-ascending' %}selected="true"{%endif%} value="price-ascending">Price: Low to High</option>
                 <option {%if s == 'price-descending' %}selected="true"{%endif%} value="price-descending">Price: High to Low</option>
