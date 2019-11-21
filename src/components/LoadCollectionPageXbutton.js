@@ -35,7 +35,8 @@ export default class LoadCollectionPageXbutton extends BaseClass {
       }
     }
     const template = this.rootElement.dataset.template ? this.rootElement.dataset.template : 'products';
-    let collection_url = `https://${this.collection.url}?view=${template}&page=${next_page}`;
+    const query_operator = this.collection.url.includes('?') ? '&' : '?';
+    const collection_url = `https://${this.collection.url}${query_operator}view=${template}&page=${next_page}`;
 
     //Fetch collection page and insert it into the tile container
     try {

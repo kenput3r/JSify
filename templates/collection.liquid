@@ -14,6 +14,10 @@
   {% assign url_with_tags = url_with_tags | append: tags_url %}
 {% endif %}
 
+{% if collection.sort_by %}
+  {% assign url_with_tags = url_with_tags | append: '?sort_by=' | append: collection.sort_by %}
+{% endif %}
+
 {% paginate collection.products by 24 %}
   <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
     {% include 'CollectionHeader' %}
