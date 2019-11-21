@@ -236,6 +236,16 @@ Collection
       margin-bottom: 0;
     }
   }
+  select#sort-by {
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    color: $s_red;
+    padding-top: 0;
+    font-weight: bold;
+    padding-bottom: 0;
+    -webkit-appearance: none;
+  }
   .select-dropdown {
     color: $s_red;
   }
@@ -1474,6 +1484,10 @@ body.suavecita {
     &:hover {
       color: lighten($s_pink, 10%) !important;
     }
+  }
+
+  select#sort-by {
+    color: $s_pink !important;
   }
 
   #CollectionHeader {
