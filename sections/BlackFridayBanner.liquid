@@ -1,0 +1,48 @@
+{% assign image_src_lazy = section.settings.Image | img_url: '100x' %}
+{% assign image_src = section.settings.Image | img_url: '1000x' %}
+{% assign image_alt = section.settings.AltText %}
+{% assign image_src2 = section.settings.Image2 | img_url: '1000x' %}
+{% assign image_alt2 = section.settings.AltText2 %}
+
+<div class="row black-friday-banner">
+  <div class="col s12 m6">
+    <img class="responsive-img" src="{{image_src}}" alt="{{image_alt}}" />
+  </div>
+  <div class="col s12 m6">
+    <img class="responsive-img" src="{{image_src2}}" alt="{{image_alt2}}" />
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Black Friday Banner",
+    "settings": [
+      {
+        "id": "Image",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "AltText",
+        "type": "text",
+        "label": "Alt Text"
+      },
+      {
+        "id": "Image2",
+        "type": "image_picker",
+        "label": "Image"
+      },
+      {
+        "id": "AltText2",
+        "type": "text",
+        "label": "Alt Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Black Friday Banner",
+        "category": "Banners"
+      }
+    ]
+  }
+{% endschema %}

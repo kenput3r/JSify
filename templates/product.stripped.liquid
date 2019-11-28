@@ -14,9 +14,10 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
     <div class="col padding-none"><h1>{{ product.title }}</h1></div>
   </div>
   {% include 'ProductCarousel' %}
-  {% unless product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
-    {% include 'ProductForm' %}
-  {% endunless %}
+  {% if product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
+    {% assign display = 'hide' %}
+  {% endif %}
+  {% include 'ProductForm' %}
   <div class="row">
     <div class="col padding-none">{{ product.description }}</div>
   </div>

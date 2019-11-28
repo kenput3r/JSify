@@ -4,6 +4,12 @@
 {% unless image_size %}
   {% assign image_size = '100x' %}
 {% endunless %}
+{% assign B2G1F = false %}
+{% for tag in product.tags %}
+  {% if tag == 'B2G1F' %}
+    {% assign B2G1F = true %}
+  {% endif %}
+{% endfor %}
 <div class="product-tile product-tile-page-{{paginate.current_page}} col {{grid_sizes}}" data-s-module="ProductTile">
   <div class="card">
     <div class="card-image">

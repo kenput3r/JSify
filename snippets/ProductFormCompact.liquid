@@ -12,8 +12,10 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     <div class="col s6 product-price padding-left-none">
       {{ product_price | money }}
     </div>
-    <div class="col s6 compare-price padding-left-none">
-      {% if product_compare_price and product_compare_price != product_price %}
+    <div class="col s6 compare-price padding-left-none{%if B2G1F%} b2g1f{%endif%}">
+      {% if B2G1F %}
+        <span>BUY 2 GET 1 FREE <br>*MIX & MATCH</span>
+      {% elsif product_compare_price and product_compare_price != product_price %}
         {{ product_compare_price | money}}
       {% endif %}
     </div>

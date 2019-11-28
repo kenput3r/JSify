@@ -38,11 +38,19 @@ export default class LazyImage extends BaseClass {
     }
 
     observeAndLazyLoad(image) {
+      let image_src = image.dataset.src;
+      if(window.innerWidth < 700 && image.dataset.srcSmall) {
+        image_src = image.dataset.srcSmall;
+      }
       const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if(entry.isIntersecting) {
             if(image.classList.contains('lazy-poster')) {
-              image.style.backgroundImage = `url(${image.dataset.src}`;
+              const background_image = new Image();
+              background_image.onload = function() {
+                image.style.backgroundImage = `url(${this.src}`;
+              }
+              background_image.src = image_src;
             }else{
               image.src = image.dataset.src;
             }
