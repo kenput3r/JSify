@@ -2,4 +2,7 @@
 <div id="MobileHeader" class="mobile-header hide-on-large-only center-align">
   {% include 'dynamic_logo' %}
 </div>
+{% if template == 'cart' %}
+<div class="shipping-banner center-align background-s-yellow" style="font-weight:bold; margin-top:2px">FREE SHIPPING IN U.S. WHEN YOU SPEND $25 <br>*$75 CANADA & MEXICO</div>
+{% endif %}
 {% endunless %}
