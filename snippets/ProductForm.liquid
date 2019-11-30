@@ -1,4 +1,4 @@
-<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}}"
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}} {{display}}"
 data-s-module="ProductForm"
 data-id="{{ product.selected_or_first_available_variant.id }}" 
 data-price="{{ product.selected_or_first_available_variant.price | money_with_currency | strip_html }}"
