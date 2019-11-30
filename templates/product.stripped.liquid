@@ -14,9 +14,10 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
     <div class="col padding-none"><h1>{{ product.title }}</h1></div>
   </div>
   {% include 'ProductCarousel' %}
-  {% unless product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
-    {% include 'ProductForm' %}
-  {% endunless %}
+  {% if product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
+    {% assign display = 'hide' %}
+  {% endif %}
+  {% include 'ProductForm' %}
   <div class="row">
     <div class="col padding-none">{{ product.description }}</div>
   </div>
@@ -26,18 +27,6 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
     {% include 'ProductCompareChart' %}
     <hr />
   {% endif %}
-
-  {% comment %}
-  <div class="snpt">
-    {% if product.vendor == 'Suavecita' %}
-    <div class='snpt-wdgt--ppg' data-vendor="suavecita">
-    </div>
-    {% else %}
-    <div class='snpt-wdgt--ppg' data-vendor="suavecito">
-    </div>
-    {% endif %}
-  </div>
-  {% endcomment %}
 
   {% assign review_count = product.metafields.yotpo['reviews_count'] | plus: 0 %}
   {% if review_count > 0 %}
