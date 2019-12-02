@@ -90,7 +90,7 @@ export default class ProductForm extends BaseClass {
     const headers = new Headers({'Content-Type': 'application/json'});
     const product = {quantity: parseInt(quantity), id: parseInt(this.state.id)};
     try {
-      const data = await fetch('/cart/add.js', {method: 'POST', headers: headers, body:JSON.stringify(product)});
+      const data = await fetch('/cart/add.js', {method: 'POST', credentials: 'same-origin', headers: headers, body:JSON.stringify(product)});
       const response = await data.json();
       if(!response.key) {
         throw new error(response);
