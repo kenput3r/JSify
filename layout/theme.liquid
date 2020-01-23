@@ -26,7 +26,7 @@
   {% endif %}
 </head>
 <body class="template-{{template.name}} {{ template.suffix }} {%if template == product or template == collection%}{{ product.vendor | downcase | strip | replace: ' ', '-' }}{%endif%}">
-  <header role="header">
+  <header>
     {% include 'DesktopNav' %}
     {% include 'MobileHeader' %}
   </header>
@@ -35,7 +35,7 @@
     {% include 'ProductDrawer' %}
     {% include 'ProductImageModal' %}
   </main>
-  <footer role="footer">
+  <footer>
     {% include 'footer_text' %}
     {% include 'MobileNav' %}
     {% include 'MobileMenu' %}

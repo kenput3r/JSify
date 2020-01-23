@@ -11,7 +11,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     <div class="col s12">{% include 'ProductStarRating' %}</div>
     <div class="input-field col s12 m6">
       {% unless product.variants.size == 1 %}
-      <select class="product-option variant-selector">
+      <select class="product-option variant-selector" aria-label="Product Options{% for option in product.options %} - {{option}}{% endfor %}">
         {% for variant in product.variants %}
           {% if variant.image.product_id %}
             {% assign variant_image = variant.image | img_url: 'large' %}
@@ -63,7 +63,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     </div>
     <div class="input-field col s12 m6">
       {% if product.available %}
-      <select class="product-option quantity-selector">
+      <select class="product-option quantity-selector" aria-label="Quantity to purchase">
         {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}
           {% assign x = product.selected_or_first_available_variant.inventory_quantity %}
         {% else %}

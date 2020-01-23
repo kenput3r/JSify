@@ -43,7 +43,7 @@
         {% endfor %}
         {% comment %}Harded items to take advantage of liquid{% endcomment %}
         <li>
-          <a href="#" class="dropdown-trigger" data-target="AccountDropdown"><span><i class="material-icons">person</i></span></a>
+          <a href="#" class="dropdown-trigger" data-target="AccountDropdown"><span><i class="material-icons" title="Account">person</i></span></a>
           <ul id="AccountDropdown" class="dropdown-content">
             {% if customer %}
               <li><a href="/account/logout">Sign Out</a></li>
@@ -58,7 +58,7 @@
         <li class="search-bar">
           <form class="search" action="/search">
             <input type="hidden" name="type" value="product" />
-            <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+            <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}" aria-label="Search For A Product"  />
             <input class="hide" type="submit" value="Search" />
           </form>
         </li>
