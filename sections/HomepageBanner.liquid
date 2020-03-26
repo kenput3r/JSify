@@ -1,0 +1,54 @@
+{% if section.settings.BannerMessageEnabled %}
+<div id="HomepageBanner" 
+style="background-color:{{section.settings.BannerMessageBackgroundColor}};
+  color:{{BannerMessageFontColor}};">
+  <p style="text-align:center; margin-top:0">
+    {{section.settings.BannerMessage}}
+    {% if section.settings.BannerMessageLink %}
+      <br>
+      <a href="{{section.settings.BannerMessageLink}}">VIEW HERE</a>
+    {% endif %}
+  </p>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Homepage Banner",
+    "settings": [
+      {
+        "type": "text",
+        "id": "BannerMessage",
+        "label": "Banner Message"
+      },
+      {
+        "type": "url",
+        "id": "BannerMessageLink",
+        "label": "Message Link"
+      },
+      {
+        "type": "color",
+        "id": "BannerMessageBackgroundColor",
+        "label": "Banner Background Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "BannerMessageFontColor",
+        "label": "Banner Font Color",
+        "default": "#000"
+      },
+      {
+        "type": "checkbox",
+        "id": "BannerMessageEnabled",
+        "label": "Banner Message Enabled"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Banner",
+        "category": "Banners"
+      }
+    ]
+  }
+{% endschema %}

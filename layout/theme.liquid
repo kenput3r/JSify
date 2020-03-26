@@ -25,7 +25,6 @@
     {{ 'vendor/qrcode.js' | shopify_asset_url | script_tag }}
   {% endif %}
 
-
 {%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
 {%- assign time_now = 'now' | date: '%s' %}
 {%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
