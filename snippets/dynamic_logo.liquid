@@ -7,6 +7,8 @@
     {% assign setting_id = 'FirmeClubLogo' %}
   {% elsif collection.handle contains 'suavecito-speed' %}
     {% assign setting_id = 'SpeedShopLogo' %}
+  {% elsif collection.handle contains 'tres-noir' %}
+    {% assign setting_id = 'TresNoirLogo' %}
   {% else %}
    {% assign setting_id = 'SuavecitoLogo' %}
   {% endif %}
@@ -19,6 +21,8 @@
     {% assign setting_id = 'FirmeClubLogo' %}
   {% elsif product.vendor == 'Suavecito Speed' %}
     {% assign setting_id = 'SpeedShopLogo' %}
+  {% elsif product.vendor == 'Tres Noir' %}
+    {% assign setting_id = 'TresNoirLogo' %}
   {% else %}
     {% assign setting_id = 'SuavecitoLogo' %}
   {% endif %}
@@ -31,6 +35,8 @@
     {% assign setting_id = 'FirmeClubLogo' %}
   {% elsif template.suffix == 'suavecitospeed' %}
     {% assign setting_id = 'SpeedShopLogo' %}
+  {% elsif template.suffix == 'tresnoir' %}
+    {% assign setting_id = 'TresNoirLogo' %}
   {% else %}
     {% assign setting_id = 'SuavecitoLogo' %}
   {% endif %}
