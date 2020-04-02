@@ -56,6 +56,12 @@
         "id": "SpeedShopLogo",
         "label": "Speed Shop Logo",
         "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "TresNoirLogo",
+        "label": "Tres Noir Logo",
+        "info": "png or svg"
       }
     ]
   },
