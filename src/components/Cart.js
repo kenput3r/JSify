@@ -29,6 +29,8 @@ export default class Cart extends BaseClass {
         if(event.target.querySelector('[data-remove]')) {
           event.target.removeChild(event.target.querySelector('[data-remove]'));
           event.target.removeAttribute('style');
+          event.target.closest('.line-item').removeAttribute('data-item-error');
+          event.target.closest('.line-item').querySelector('.item-error-message').style.opacity = 0;
           this.checkLimitsAndUpdate();
         }
       });
@@ -44,7 +46,8 @@ export default class Cart extends BaseClass {
       const limit_items = Array.from(this.rootElement.querySelectorAll('[data-max]'));
       const checkout_button = this.rootElement.querySelector('.checkout-button');
       limit_items.map(item => {
-        if(!item.value){
+        const value = parseInt(item.value);
+        if(!value){
           disable_checkout = true;
         }
       });
@@ -52,6 +55,7 @@ export default class Cart extends BaseClass {
         checkout_button.removeAttribute('href');
         checkout_button.classList.add('disabled');
       }else{
+        document.querySelector('.summary-sticky').removeAttribute('data-has-errors');
         checkout_button.href = '/checkout';
         checkout_button.classList.remove('disabled');
       }
