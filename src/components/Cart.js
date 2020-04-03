@@ -20,9 +20,49 @@ export default class Cart extends BaseClass {
     });
   }
 
+  /**
+   * @method bindRemovePlaceholderValue - remove the placeholder option
+   */
+  bindRemovePlaceholderValue() {
+    Array.from(this.rootElement.querySelectorAll('[data-max]')).map(select => {
+      select.addEventListener('change', (event) => {
+        if(event.target.querySelector('[data-remove]')) {
+          event.target.removeChild(event.target.querySelector('[data-remove]'));
+          event.target.removeAttribute('style');
+          this.checkLimitsAndUpdate();
+        }
+      });
+    });
+  }
+
+  /**
+   * @method checkLimitsAndUpdate - check product limits and update message and checkout button
+   */
+  checkLimitsAndUpdate() {
+    if(this.limits) {
+      let disable_checkout = false;
+      const limit_items = Array.from(this.rootElement.querySelectorAll('[data-max]'));
+      const checkout_button = this.rootElement.querySelector('.checkout-button');
+      limit_items.map(item => {
+        if(!item.value){
+          disable_checkout = true;
+        }
+      });
+      if(disable_checkout) {
+        checkout_button.removeAttribute('href');
+        checkout_button.classList.add('disabled');
+      }else{
+        checkout_button.href = '/checkout';
+        checkout_button.classList.remove('disabled');
+      }
+    }
+  }
+
   init() {
     const tooltipped = document.querySelectorAll('.tooltipped');
     const tooltips = M.Tooltip.init(tooltipped);
     this.requireTermsAgreement();
+    this.checkLimitsAndUpdate();
+    this.bindRemovePlaceholderValue();
   }
 }

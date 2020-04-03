@@ -1,13 +1,23 @@
+{% assign has_items_with_limits = false %}
 {% if cart.item_count > 0 %}
+  {% for item in cart.items %}
+    {% if item.product.metafields.suave.max_purchase_quantity > 0 %}
+      {% assign has_items_with_limits = true %}
+    {% endif %}
+  {% endfor %}
   {% if cart.discount_applications.size > 0 %}
   {% assign has_discounts = true %}
   {% endif %}
-  <div class="container" data-s-module="Cart">
+  <div class="container" data-s-module="Cart" {% if has_items_with_limits %}data-limits="true"{% endif %}>
     <h1>Cart</h1>
     <div class="row">
       <div class="col s12 l8">
         {% assign compare_at_discounts = 0 %}
         {% for item in cart.items %}
+          {% assign max = false %}
+          {% if item.product.metafields.suave.max_purchase_quantity %}
+            {% assign max = item.product.metafields.suave.max_purchase_quantity %}
+          {% endif %}
           {% if item.variant.compare_at_price %}
             {% assign difference = item.variant.compare_at_price | minus: item.variant.price %}
             {% assign difference = difference | times: item.quantity %}
@@ -71,22 +81,35 @@
                 </div>
                 <div class="col s3 tiny-remove-padding">
                   {% if product.available %}
-                  <select class="product-option quantity-selector">
+                  <select class="product-option quantity-selector" 
+                  {% if max %} data-max={{max}}{% endif %}
+                  {% if item.quantity > max %}style="background-color:#e53935;"{% endif %}>
                     {% if item.variant.inventory_quantity < 30 %}
                       {% assign x = item.variant.inventory_quantity %}
                     {% else %}
                       {% assign x = 30 %}
+                    {% endif %}
+                    {% if x > max %}
+                      {% assign x = max %}
                     {% endif %}
                     {% for i in (1..x) %}
                     <option value="{{i}}" {%if i == item.quantity%} selected="true"{%endif%}>
                       {{i}}
                     </option>
                     {% endfor %}
+                    {% if item.quantity > max %}
+                    <option value="" data-remove="true" selected="true">--</option>
+                    {% endif %}
                   </select>
                   {% endif %}
                 </div>
               </div> 
             </div>
+            {% if item.quantity > max %}
+            <div class="col s12 right-align" style="color:red;font-weight:bold;margin-bottom:10px;">
+              Please select a max quantity of {{max}}
+            </div>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
