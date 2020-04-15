@@ -13,6 +13,8 @@ export default class Account extends BaseClass {
       customer: {
         id: this.customer,
         email: el.querySelector('.email').value,
+        first_name: el.querySelector('.first-name').value,
+        last_name: el.querySelector('.last-name').value,
         accepts_marketing: '',
         accepts_marketing_updated_at: '',
         marketing_opt_in_level: '',

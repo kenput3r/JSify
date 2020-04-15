@@ -69,6 +69,9 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
         {% else %}
           {% assign x = 30 %}
         {% endif %}
+        {% if product.metafields.suave.max_purchase_quantity %}
+          {% assign x = product.metafields.suave.max_purchase_quantity %}
+        {% endif %}
         {% for i in (1..x) %}
         <option value="{{i}}">{{i}}</option>
         {% endfor %}

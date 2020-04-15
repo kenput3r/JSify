@@ -74,8 +74,10 @@ export default class LineItem extends BaseClass {
           }
 
           //Update DOM Line Item pricing and quantity
-          dom_line_item.querySelector('.final-line-price').innerHTML = this.money(line_item.final_line_price, '$', 'USD');
-          dom_line_item.querySelector('.quantity-selector').value = line_item.quantity;
+          if(!dom_line_item.dataset.itemError) {
+            dom_line_item.querySelector('.final-line-price').innerHTML = this.money(line_item.final_line_price, '$', 'USD');
+            dom_line_item.querySelector('.quantity-selector').value = line_item.quantity;
+          }
 
           //Calculate manual discounts
           //Original Price - Compare At Price * Line Item Qty
@@ -89,9 +91,11 @@ export default class LineItem extends BaseClass {
           }
         }
         //Update Summary
-        document.querySelector('.original-total-price').innerHTML = this.money(original_total_price, '$', 'USD');
-        document.querySelector('.total-discounts').innerHTML = this.money(total_discount, '-$', 'USD');
-        document.querySelector('.cart-total-price').innerHTML = this.money(response.total_price, '$', 'USD');
+        if(!document.querySelector('.summary-sticky').dataset.hasErrors) {
+          document.querySelector('.original-total-price').innerHTML = this.money(original_total_price, '$', 'USD');
+          document.querySelector('.total-discounts').innerHTML = this.money(total_discount, '-$', 'USD');
+          document.querySelector('.cart-total-price').innerHTML = this.money(response.total_price, '$', 'USD');
+        }
       }
     }catch(error) {
       console.log(error);

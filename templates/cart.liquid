@@ -1,19 +1,37 @@
+{% assign has_items_with_limits = false %}
+{% assign has_errors = false %}
 {% if cart.item_count > 0 %}
+  {% for item in cart.items %}
+    {% if item.product.metafields.suave.max_purchase_quantity > 0 %}
+      {% assign has_items_with_limits = true %}
+    {% endif %}
+    {% if item.quantity > item.product.metafields.suave.max_purchase_quantity %}
+      {% assign has_errors = true %}
+    {% endif %}
+  {% endfor %}
   {% if cart.discount_applications.size > 0 %}
   {% assign has_discounts = true %}
   {% endif %}
-  <div class="container" data-s-module="Cart">
+  <div class="container" data-s-module="Cart" {% if has_items_with_limits %}data-limits="true"{% endif %}
+  {% if has_errors = true %} data-has-errors="true"{% endif %}>
     <h1>Cart</h1>
     <div class="row">
       <div class="col s12 l8">
         {% assign compare_at_discounts = 0 %}
         {% for item in cart.items %}
+          {% assign max = false %}
+          {% if item.product.metafields.suave.max_purchase_quantity %}
+            {% assign max = item.product.metafields.suave.max_purchase_quantity %}
+          {% endif %}
+          {% if item.quantity > max %}
+            {% assign item_error = true %}
+          {% endif %}
           {% if item.variant.compare_at_price %}
             {% assign difference = item.variant.compare_at_price | minus: item.variant.price %}
             {% assign difference = difference | times: item.quantity %}
             {% assign compare_at_discounts = compare_at_discounts | plus: difference %}
           {% endif %}
-          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}{%endif%}">
+          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}{%endif%} {% if item_error %}data-item-error="true"{% endif %}>
             <div class="col s3">
               <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
             </div>
@@ -25,7 +43,7 @@
                   <br><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="color-s-red">Remove</a>
                 </div>
                 <div class="col s3 final-line-price">
-                  {{ item.final_line_price | money_with_currency }}
+                  {% unless item_error %}{{ item.final_line_price | money_with_currency }}{% endunless %}
                 </div>
               </div>
               <div class="row">
@@ -71,26 +89,39 @@
                 </div>
                 <div class="col s3 tiny-remove-padding">
                   {% if product.available %}
-                  <select class="product-option quantity-selector">
+                  <select class="product-option quantity-selector" 
+                  {% if max %} data-max={{max}}{% endif %}
+                  {% if item.quantity > max %}style="background-color:#e53935;"{% endif %}>
                     {% if item.variant.inventory_quantity < 30 %}
                       {% assign x = item.variant.inventory_quantity %}
                     {% else %}
                       {% assign x = 30 %}
+                    {% endif %}
+                    {% if x > max %}
+                      {% assign x = max %}
                     {% endif %}
                     {% for i in (1..x) %}
                     <option value="{{i}}" {%if i == item.quantity%} selected="true"{%endif%}>
                       {{i}}
                     </option>
                     {% endfor %}
+                    {% if item.quantity > max %}
+                    <option value="0" data-remove="true" selected="true">--</option>
+                    {% endif %}
                   </select>
                   {% endif %}
                 </div>
               </div> 
             </div>
+            {% if item.quantity > max %}
+            <div class="col s12 right-align item-error-message" style="color:red;font-weight:bold;margin-bottom:10px;">
+              Please select a max quantity of {{max}}
+            </div>
+            {% endif %}
           </div>
         {% endfor %}
       </div>
-      <div class="col s12 l4 summary-sticky">
+      <div class="col s12 l4 summary-sticky" {% if has_errors %}data-has-errors="true"{% endif %}>
         <div class="card grey darken-3">
           <div class="card-content white-text">
             <div class="row">
@@ -101,7 +132,11 @@
                 Original Total
               </div>
               <div class="col s6 right-align original-total-price">
+                {% if has_errors %}
+                  cart errors
+                {% else %}
                   {{ cart.original_total_price | plus: compare_at_discounts | money }}
+                {% endif %}
               </div>
               <div class="col s6">
                 Discounts
@@ -125,7 +160,11 @@
                 Subtotal
               </div>
               <div class="col s6 right-align cart-total-price">
-                {{ cart.total_price | money }}
+                {% if has_errors %}
+                  cart errors
+                {% else %}
+                  {{ cart.total_price | money }}
+                {% endif %}
               </div>
             </div>
           </div>
