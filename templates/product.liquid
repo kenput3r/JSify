@@ -4,7 +4,7 @@
       <div class="col padding-none"><h1>{{ product.title }}</h1></div>
     </div>
     {% include 'ProductCarousel' %}
-    {% unless product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
+    {% unless product.id == 3948242763859 %}
       {% include 'ProductForm' %}
     {% endunless %}
     <div class="row">
@@ -23,20 +23,6 @@
       {% include size_chart %}
     {% endif %}
 
-    {% comment %}
-    deprecated
-    <div class="snpt">
-      {% if product.vendor == 'Suavecita' %}
-      <div class='snpt-wdgt--ppg' data-vendor="suavecita">
-        <script src='https://snapppt.com/widgets/ppg/0fdbe9ce-1f38-4c32-a7a4-78e6a984fd8c' defer class='snapppt-widget'></script>
-      </div>
-      {% else %}
-      <div class='snpt-wdgt--ppg' data-vendor="suavecito">
-        <script src='https://snapppt.com/widgets/ppg/b8a4a3ac-f1db-4f1d-b6bf-d101c36d5f28' defer class='snapppt-widget'></script>
-      </div>
-      {% endif %}
-    </div>
-    {% endcomment %}
     <div class="row">
       <div class="col s12 center-align fbt-container">
 
