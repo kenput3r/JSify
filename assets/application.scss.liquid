@@ -486,6 +486,9 @@ Filters Drawer
 Footer
 **************************************************/
 .footer-nav {
+  .col {
+    margin-bottom: 20px;
+  }
   @media screen and(min-width: $large) {
     padding-top: 20px;
   }
@@ -1078,6 +1081,12 @@ Parallax
       h3[style] {
         font-weight: normal !important;
       }
+    }
+  }
+
+  &.felix_the_cat {
+    @media screen and(max-width: $medium) {
+      padding-top: 16px;
     }
   }
 
@@ -2559,5 +2568,14 @@ div#smile-ui-container[style] {
   }
   .lifestyle-photo {
     padding: 5px;
+  }
+}
+
+/**************************************************
+  User Way
+**************************************************/
+body .userway.userway_p3 {
+  @media only screen and(max-width: 989px) {
+    bottom: 70px !important;
   }
 }
