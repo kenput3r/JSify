@@ -1,0 +1,43 @@
+
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2e218762-822b-4dac-8d39-a68a46db30be"></script>
+<script type="text/javascript">
+  {% if customer %}
+  var customer = {
+    name: {
+      value: '{{customer.name}}',
+      readonly: false
+    },
+    email: {
+      value: '{{customer.email}}',
+      readonly: false
+    },
+    phone: {
+      value: '{{customer.phone}}',
+      readonly: false
+    }
+  }
+  {% endif %}
+
+  window.zESettings = {
+    webWidget: {
+      launcher: {
+        chatLabel: {
+          '*': 'Chat now'
+        },
+        mobile: {
+          labelVisible: false
+        }
+      },
+      offset: {horizontal: '50px', vertical: 0},
+      zIndex: 2147483648
+    }
+  }
+
+  if(customer) {
+    zE('webWidget', 'prefill', customer)
+  }
+  zE('webWidget', 'hide')
+  zE('webWidget:on', 'close', function() {
+    zE('webWidget', 'hide')
+  })
+</script>

@@ -32,6 +32,7 @@
 {%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
 {{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
+{% include 'zendesk_chat' %}
 </head>
 <body class="template-{{template.name}} {{ template.suffix }} {%if template == product or template == collection%}{{ product.vendor | downcase | strip | replace: ' ', '-' }}{%endif%}">
   <header>

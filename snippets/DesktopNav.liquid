@@ -1,3 +1,9 @@
+<script>
+function openChat() {
+  zE('webWidget', 'open')
+  zE('webWidget', 'show')
+}
+</script>
 <div class="nav-fixed-wrapper navbar-fixed hide-on-med-and-down">
   {% include 'header_extras' %}
   <nav id="DesktopNav" class="grey darken-4" data-s-module="DesktopNav" role="navigation" aria-label="Primary Navigation">
@@ -41,7 +47,7 @@
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endif %}
         {% endfor %}
-        {% comment %}Harded items to take advantage of liquid{% endcomment %}
+        {% comment %}Hard coded items to take advantage of liquid{% endcomment %}
         <li>
           <a href="#" class="dropdown-trigger" data-target="AccountDropdown"><span><i class="material-icons" title="Account">person</i></span></a>
           <ul id="AccountDropdown" class="dropdown-content">
@@ -53,6 +59,9 @@
               <li><a href="/account/register">Register</a></li>
             {% endif %}
           </ul>
+        </li>
+        <li>
+          <a role="button" aria-pressed="false" tabindex="0" title="Live Chat" onclick="openChat()"><span><i class="material-icons">chat</i></span></a>
         </li>
         <li class="search-icon"><i class="material-icons">search</i></li>
         <li class="search-bar">
