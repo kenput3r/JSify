@@ -10,6 +10,7 @@ import ProductReviewForm from './components/ProductReviewForm';
 import Cart from './components/Cart';
 import CollectionHeader from './components/CollectionHeader';
 import CollectionTemplateCarousel from './components/CollectionTemplateCarousel';
+import CookieBanner from './components/CookieBanner';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumn from './components/FiltersColumn';
 import LineItem from './components/LineItem';
@@ -42,6 +43,7 @@ const classes = {
     Cart,
     CollectionHeader,
     CollectionTemplateCarousel,
+    CookieBanner,
     FiltersDrawer,
     FiltersColumn,
     LoginForm,
