@@ -20,6 +20,33 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="45a433bf-cde3-4fcc-8175-ef178e39090f" data-blockingmode="auto" type="text/javascript"></script>
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '419004251638614');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=419004251638614&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel Code -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-45019039-5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-45019039-5');
+  </script>
+  <!-- End Global site tag (gtag.js) - Google Analytics -->
   <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/q7EYKyLuCq4wDQ7s0M36GkawfE2I4JDL9gg4wvGY/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>
   {% include 'algolia_scripts' %}
   {% if template.name == 'gift_card' %}
@@ -51,11 +78,11 @@
     {% include 'MobileMenu' %}
     {% include 'MobileSearch' %}
   </footer>
-  {% include 'CookieBanner' %}
   {% include 'smile-initializer' %}
   {% include 'BisModal' %}
   {{ 'dayjs.min.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
+  <script name="MainJS" type="text/javascript" src="{{'main.js' | asset_url}}" data-cookieconsent="ignore"></script>
   {% if template.name contains 'product' or template.name contains 'collection' or template.name contains 'article' %}
   {% endif %}
   <!-- google dynamic remarketing tag for theme.liquid -->

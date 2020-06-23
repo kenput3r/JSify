@@ -10,7 +10,6 @@ import ProductReviewForm from './components/ProductReviewForm';
 import Cart from './components/Cart';
 import CollectionHeader from './components/CollectionHeader';
 import CollectionTemplateCarousel from './components/CollectionTemplateCarousel';
-import CookieBanner from './components/CookieBanner';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumn from './components/FiltersColumn';
 import LineItem from './components/LineItem';
@@ -24,6 +23,7 @@ import OrdersHelp from './components/OrdersHelp';
 import Order from './components/Order';
 import Parallax from './components/Parallax';
 import SideScroll from './components/SideScroll';
+import Subscribe from './components/Subscribe';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
@@ -43,7 +43,6 @@ const classes = {
     Cart,
     CollectionHeader,
     CollectionTemplateCarousel,
-    CookieBanner,
     FiltersDrawer,
     FiltersColumn,
     LoginForm,
@@ -57,6 +56,7 @@ const classes = {
     Order,
     Parallax,
     SideScroll,
+    Subscribe,
     Account,
     AddressForm,
     DataRequest,
