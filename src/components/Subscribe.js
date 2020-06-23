@@ -15,7 +15,7 @@ export default class Subscribe extends BaseClass {
       const phone = form.querySelector(`[name="PHONE"]`);
       const submit = form.querySelector(`[name="subscribe"]`);
       if(email.value.trim() !== '' || phone.value.trim() !== '') {
-        const response = await fetch('https://api.suavecito.com/api/shopify/retail/mailchimp/contact', {
+        const response = await fetch('https://api.suavecito.com/api/shopify/retail/contact', {
           method: 'POST',
           headers: header,
           mode: 'cors',
