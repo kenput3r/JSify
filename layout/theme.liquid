@@ -81,7 +81,6 @@
   {% include 'smile-initializer' %}
   {% include 'BisModal' %}
   <script src="{{ 'dayjs.min.js' | asset_url }}" data-cookieconsent="ignore"></script>
-  {% comment %} {{ 'main.js' | asset_url | script_tag }} {% endcomment %}
   <script name="MainJS" type="text/javascript" src="{{'main.js' | asset_url}}" data-cookieconsent="ignore"></script>
   {% if template.name contains 'product' or template.name contains 'collection' or template.name contains 'article' %}
   {% endif %}
