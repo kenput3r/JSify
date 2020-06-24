@@ -485,46 +485,66 @@ Filters Drawer
 /**************************************************
 Footer
 **************************************************/
-.footer-nav {
-  .col {
-    margin-bottom: 20px;
-  }
-  @media screen and(min-width: $large) {
-    padding-top: 20px;
-  }
-  &.row {
+footer {
+  padding-top: 30px;
+
+  .page-footer {
     background-color: #fff;
+    border-top: 1px solid #9e9e9e;
     color: #000;
-    margin-bottom: 0;
+    padding-bottom: 66px;
+    padding-top: 30px;
   }
-  .col {
+  form {
+    width: 400px;
+    max-width: 100%;
+  }
+  input[type="email"], input[type="tel"] {
+    border: 1px solid #9e9e9e !important;
+  }
+  input[type="submit"] {
+    height: 47px;
+    margin-top: 21px;
+    width: 100%;
+  }
+  li {
+    list-style-type: none;
+  }
+  .social {
+    width: 400px;
+    max-width: 100%;
+    margin-left: auto !important;
     @media screen and(max-width: $small) {
-      margin-bottom: 10px;
+      margin-left: 0 !important;
+    }
+    a {
+      display: inline-block;
+      padding: 0 10px;
+    }
+    img {
+      max-height: 32px;
     }
   }
-  a {
-    color: #000;
-    display: inline-block;
-    padding: 0 10px;
-    &:hover {
-      color: lighten(#000, 40%);
-      img {
-        opacity: 0.6;
-      }
-    }
+  .message {
+    border: 1px solid #9e9e9e;
+    margin-left: auto;
+    margin-top: 15px;
+    padding: 15px;
+    text-align: center;
+    width: 400px;
+    max-width: 100%;
   }
-  .copyright {
+  .accessibility-statement {
+    margin-left: auto;
+    width: 550px;
+    max-width: 100%;
+    text-align: right;
     @media screen and(max-width: $small) {
       text-align: center;
     }
   }
-  .social {
-    text-align: center;
-    img {
-      max-height: 24px;
-    }
-  }
-  .legal {
+  .copy-right {
+    text-align: right;
     @media screen and(max-width: $small) {
       text-align: center;
     }
@@ -598,13 +618,8 @@ h1, h2, h3, h4, h5, h6 {
    font-weight: bold;
  }
 
- .page-footer {
-   background-color: #fff;
-   color: #000;
-   padding-top: 0;
-   @media screen and (max-width: $large) {
-     padding-bottom: 60px;
-   }
+ a[role="button"]:hover {
+   cursor: pointer;
  }
 
  //chrome user agent styles
@@ -870,6 +885,12 @@ Index Template
   main {
     @media screen and(max-width: 992px) {
       padding-top: 0;
+    }
+  }
+  footer {
+    padding-top: 0;
+    .page-footer {
+      border-top: 0;
     }
   }
   //Algolia bug fixes
@@ -2577,5 +2598,11 @@ div#smile-ui-container[style] {
 body .userway.userway_p3 {
   @media only screen and(max-width: 989px) {
     bottom: 70px !important;
+  }
+}
+
+#CybotCookiebotDialog {
+  @media only screen and(max-width: $small) {
+    z-index: 2147483648 !important;
   }
 }

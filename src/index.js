@@ -23,6 +23,7 @@ import OrdersHelp from './components/OrdersHelp';
 import Order from './components/Order';
 import Parallax from './components/Parallax';
 import SideScroll from './components/SideScroll';
+import Subscribe from './components/Subscribe';
 import Account from './components/Account';
 import AddressForm from './components/AddressForm';
 import DataRequest from './components/DataRequest';
@@ -55,6 +56,7 @@ const classes = {
     Order,
     Parallax,
     SideScroll,
+    Subscribe,
     Account,
     AddressForm,
     DataRequest,

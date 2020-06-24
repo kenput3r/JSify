@@ -1,23 +1,93 @@
+{% comment %}
+setting_id is set in dynamic_logo
+{% endcomment %}
+{% if setting_id == 'SuavecitaLogo' %}
+  {% assign message = 'Get it, Rucca!' %}
+{% elsif setting_id == 'FirmeClubLogo' %}
+  {% assign message = 'Stay Firme.' %}
+{% else %}
+  {% assign message = 'Get it, Hombre!' %}
+{% endif %}
 <div class="page-footer"> 
-  <div class="row footer-nav">
-    <div class="col s12 copyright center-align">&copy; {{'now' | date: '%Y' }} Suavecito, Inc.</span></div>
-    <div class="col s12 social">
-      <a href="{{settings.instagram_profile_url}}" title="Suavecito on Instagram">
-        {{'icon-instagram.png' | asset_img_url | img_tag: 'Instragram Icon'}}
-      </a>
-      <a href="{{settings.facebook_profile_url}}" title="Suavecito on Facebook">
-        {{'icon-facebook.png' | asset_img_url | img_tag: 'Facebook Icon'}}
-      </a>
-      <a href="{{settings.twitter_profile_url}}" title="Suavecito on Twitter">
-        {{'icon-twitter.png' | asset_img_url | img_tag: 'Twitter Icon'}}
-      </a>
-      <a href="{{settings.youtube_profile_url}}" title="Suavecito on YouTube">
-        {{'icon-youtube.png' | asset_img_url | img_tag: 'YouTube icon'}}
-      </a>
+  <div class="row">
+    <div class="col s12 m6">
+      <div id="mc_embed_signup">
+        <form action="https://suavecito.us11.list-manage.com/subscribe/post?u=12152c13ec52d80aad4dcf0ba&amp;id=f64074844a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" data-s-module="Subscribe" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+            <div class="row margin-bottom-none">
+              <div class="col s12">
+                <label>Email Address</label>
+                <input type="email" value="" name="EMAIL" id="mce-EMAIL" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_12152c13ec52d80aad4dcf0ba_f64074844a" tabindex="-1" value=""></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s8">
+                <label>Mobile Phone</label>
+                <input type="tel" value="" name="PHONE" id="sms-PHONE" required>
+              </div>
+              <div class="col s4">
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn background-s-red">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s6">
+                <ul>
+                  <li><a href="/pages/suavecito">SUAVECITO</a></li>
+                  <li><a href="/pages/suavecita">SUAVECITA</a></li>
+                  <li><a href="/pages/premium-blends">PREMIUM BLENDS</a></li>
+                  <li><a href="/pages/firme-club">FIRME CLUB</a></li>
+                  <li><a href="/pages/suavecito-speed">SUAVECITO SPEED</a></li>
+                  <li><a href="/collections/tres-noir">TRES NOIR</a></li>
+                </ul>
+              </div>
+              <div class="col s6">
+                <ul>
+                  <li><a href="/pages/terms-and-conditions">TERMS OF USE</a></li>
+                  <li><a href="/pages/terms-and-conditions">PRIVACY POLICY</a></li>
+                  <li><a href="/pages/terms-and-conditions#cookies">COOKIES & DATA</a></li>
+                  <li><a href="/pages/contact">CONTACT</a></li>
+                  <li><a role="button" tabindex="0" aria-pressed="false" onclick="openChat()">LIVE CHAT</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="col s12 legal center-align">
-      <span><a href="{{settings.terms_of_use_url}}" title="Terms of Use">Terms Of Use</a></span>
-      <span><a href="{{settings.privacy_policy_url}}" title="Privacy Policy">Privacy Policy</a></span>
+    <div class="col s12 m6">
+      <div class="row social">
+        <div class="col s3 center">
+          <a href="{{settings.instagram_profile_url}}" title="Suavecito on Instagram">
+            {{'icon-instagram.png' | asset_img_url | img_tag: 'Instragram Icon'}}
+          </a>
+        </div>
+        <div class="col s3 center">
+          <a href="{{settings.facebook_profile_url}}" title="Suavecito on Facebook">
+            {{'icon-facebook.png' | asset_img_url | img_tag: 'Facebook Icon'}}
+          </a>
+        </div>
+        <div class="col s3 center">
+          <a href="{{settings.twitter_profile_url}}" title="Suavecito on Twitter">
+            {{'icon-twitter.png' | asset_img_url | img_tag: 'Twitter Icon'}}
+          </a>
+        </div>
+        <div class="col s3 center">
+          <a href="{{settings.youtube_profile_url}}" title="Suavecito on YouTube">
+            {{'icon-youtube.png' | asset_img_url | img_tag: 'YouTube icon'}}  
+          </a>
+        </div>
+      </div>
+      <div class="message">
+        {{ message }}
+      </div>
+      <div class="accessibility-statement">
+        <p><small>Suavecito is committed to providing a web experience that is accessible to all people by meeting or exceeding the requirements of the WCAG 2.0 AA. Accessibility is an ongoing effort, and we are here to help. Feel free to email us at <a href="mailto:info@suavecito.com">info@suavecito.com</a> or <a role="button" tabindex="0" aria-pressed="false" onclick="openChat()">chat with us live</a> for assistance.</small></p>
+      </div>
+      <div class="copy-right">
+        <p>&copy; {{'now' | date: '%Y' }} Suavecito, Inc.</p>
+      </div>
     </div>
   </div>
 </div>
