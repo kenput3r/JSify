@@ -13,6 +13,10 @@
 {% endif %}
 {% include 'CssParallax' %}
 
+<style>
+  {{ section.settings.CustomCSS }}
+</style>
+
 {% schema %}
   {
     "name": " CSS Parallax Section",
@@ -71,6 +75,12 @@
         "label": "Button Text",
         "info": "Defaults to 'SHOP NOW'",
         "default": "SHOP NOW"
+      },
+      {
+        "id": "CustomCSS",
+        "type": "textarea",
+        "label": "Custom CSS",
+        "info": "Add custom css here"
       }
     ],
     "presets": [

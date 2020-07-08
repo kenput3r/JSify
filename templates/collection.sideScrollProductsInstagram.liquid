@@ -1,0 +1,24 @@
+{%- layout none -%}
+{%- paginate collection.products by 24 -%}
+  {%- for product in collection.products -%}
+    {%- if paginate.current_page == 1 -%}
+      {%- if forloop.index > 6 -%}
+      <div class="side-scroll-card">
+        <div class="row">
+        {%- assign grid_sizes = 's12' -%}
+        {%- include 'ProductTileInstagram' -%}
+        </div>
+      </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="side-scroll-card">
+        <div class="row">
+        {%- assign grid_sizes = 's12' -%}
+        {%- include 'ProductTileInstagram' -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <p>no matches</p>
+  {%- endfor -%}
+{%- endpaginate -%}

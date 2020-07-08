@@ -49,7 +49,7 @@ export default class SideScroll extends BaseClass {
       this.pages = 1;
     }
     this.last_tile = this.getLastTile();
-    const url = this.url+'?view=sideScrollProducts&page=';
+    const url = this.url+'?view='+this.view+'&page=';
     this.rootElement.addEventListener('scroll', async(event) => {
       if(this.page <= this.pages) {
         const scroll_left = event.target.scrollLeft;
