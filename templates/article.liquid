@@ -38,12 +38,16 @@
   
         <div class="card">
           <div class="card-title" style="padding:10px;">Leave A Comment</div>
-          <div class="card-content">
+          <div class="card-content" data-s-module="HpForm">
             {% form 'new_comment', article %}
               {{ form.errors | default_errors }}
               <div class="input-field">
                 <input type="text" name="comment[author]" id="CommentAuthor" value="{%if name%}{{ name }}{%else%}{{form.author}}{%endif%}" autocapitalize="words">
                 <label for="CommentAuthor">NAME</label>
+              </div>
+              <div class="input-field nogo">
+                <input type="text" name="lastname" id="LastName" value="" autocapitalize="words" autocomplete="off" tabindex="-1">
+                <label for="LastName">LAST NAME</label>
               </div>
               <div class="input-field">
                 <input type="email" name="comment[email]" id="CommentEmail" value="{%if email%}{{ email }}{%else%}{{form.email}}{%endif%}" autocorrect="off" autocapitalize="off">
