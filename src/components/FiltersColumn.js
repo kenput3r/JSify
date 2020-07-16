@@ -50,8 +50,12 @@ export default class FiltersColumn extends BaseClass {
     const column = this.rootElement.querySelector('.inner-wrapper');
     const bottom_marker = column.querySelector('.bottom-marker');
     const column_starting_offset = this.offset(column);
+    const Products = document.getElementById('Products');
+    //Handle no need for fixing
+    if(Products.offsetHeight < window.innerHeight) {
+      //**nothing to do here */
     //Handles case when column is shorter than sibling
-    if(column.offsetHeight < window.innerHeight) {
+    }else if(column.offsetHeight < window.innerHeight) {
       window.addEventListener('scroll', (event) => {
         const column_offset = this.offset(column);
         const scrolling_up = this.scrollingUp();
@@ -126,6 +130,12 @@ export default class FiltersColumn extends BaseClass {
           this.absolute_top = false;
           this.fixed_bottom = false;
           this.scroll_change = false;
+        }
+        //swap from fixed bottom to absolute bottom
+        //when footer comes into view
+        const footer = document.getElementsByTagName('footer')[0];
+        if(yPosition >= footer.offsetTop) {
+          column.setAttribute('style', `position:absolute; bottom:140px; width:${this.column_width}px;`);
         }
       });
     }
