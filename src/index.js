@@ -12,6 +12,7 @@ import CollectionHeader from './components/CollectionHeader';
 import CollectionTemplateCarousel from './components/CollectionTemplateCarousel';
 import FiltersDrawer from './components/FiltersDrawer';
 import FiltersColumn from './components/FiltersColumn';
+import HpForm from './components/HpForm';
 import LineItem from './components/LineItem';
 import LoginForm from './components/LoginForm';
 import DesktopNav from './components/DesktopNav';
@@ -45,6 +46,7 @@ const classes = {
     CollectionTemplateCarousel,
     FiltersDrawer,
     FiltersColumn,
+    HpForm,
     LoginForm,
     LineItem,
     DesktopNav,
