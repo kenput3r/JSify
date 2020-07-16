@@ -256,6 +256,18 @@ Collection
   }
 }
 
+#Products[data-column-sibling="FiltersColumn"] {
+  @media screen and(min-width: $large) {
+    margin-left: 0;
+    transition: width linear 300ms, margin linear 300ms;
+  }
+}
+#Products.l9[data-column-sibling="FiltersColumn"] {
+  @media screen and(min-width: $large) {
+    margin-left: 25%;
+  }
+}
+
 /**************************************************
 Collection Template Carousel
 **************************************************/
@@ -426,6 +438,10 @@ Filters Drawer
 }
 #FiltersColumn {
   position: relative;
+  @media screen and(min-width: $large) {
+    position: absolute;
+    height: 100%;
+  }
   .inner-wrapper {
     @media screen and(min-width: $large) {
       padding-bottom: 20px;
