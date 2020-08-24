@@ -51,11 +51,10 @@ $red: #ff0000;
 $white: #ffffff;
 $yellow: #ffff00;
 
-
 /**************************************************
 Fonts
 **************************************************/
-$roboto: 'Roboto', sans-serif;
+$roboto: "Roboto", sans-serif;
 $thin: 100 !important;
 $regular: 400 !important;
 
@@ -63,7 +62,8 @@ $regular: 400 !important;
 Account Template
 ------------------------------------------------------------------------------*/
 .card {
-  small, .small {
+  small,
+  .small {
     font-size: 12px;
   }
 }
@@ -96,9 +96,12 @@ img.faded {
 /**************************************************
 Article Template / Blog Template
 **************************************************/
-.template-article, .template-blog, .template-collection {
+.template-article,
+.template-blog,
+.template-collection {
   background-color: #f5f5f5;
-  #HeaderExtras, .page-footer .footer-nav.row {
+  #HeaderExtras,
+  .page-footer .footer-nav.row {
     background-color: #f5f5f5;
   }
 }
@@ -125,7 +128,7 @@ Article Template / Blog Template
   h3 {
     margin-top: 2.8rem;
   }
-  .product-tile-lifestyle .frame:hover>.content {
+  .product-tile-lifestyle .frame:hover > .content {
     display: none;
     opacity: 0;
   }
@@ -201,7 +204,7 @@ Collection
       -webkit-align-items: center;
       -ms-flex-align: center;
       &:hover {
-        background-color: lighten($s_red, 10%)
+        background-color: lighten($s_red, 10%);
       }
       i {
         padding-right: 5px;
@@ -293,7 +296,7 @@ Collection Template Carousel
           left: 0;
         }
         &.middle {
-          top:50%;
+          top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
         }
@@ -325,7 +328,7 @@ Collection Template Carousel
     }
     &.middle {
       margin-top: 0;
-      top:50%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
@@ -371,12 +374,12 @@ Contact Pages
   }
 }
 .flex-middle {
-  display:inline-flex; 
-  vertical-align: middle; 
+  display: inline-flex;
+  vertical-align: middle;
   margin-bottom: 10px !important;
   &:after {
     display: block;
-    content: '';
+    content: "";
   }
 }
 #contact_form {
@@ -393,7 +396,8 @@ Contact Pages
 /**************************************************
 Filters Drawer
 **************************************************/
-#FiltersDrawer, #FiltersColumn {
+#FiltersDrawer,
+#FiltersColumn {
   -webkit-overflow-scrolling: touch;
   h5 {
     border-top: 1px solid #e2dede;
@@ -405,19 +409,45 @@ Filters Drawer
   ul.colors {
     li {
       background-color: transparent !important;
-      &.black{@include color_drop($black);}
-      &.blue{@include color_drop($blue);}
-      &.brown{@include color_drop($brown);}
-      &.burgundy{@include color_drop($burgundy);}
-      &.cream{@include color_drop($cream);}
-      &.green{@include color_drop($green);}
-      &.grey{@include color_drop($grey);}
-      &.orange{@include color_drop($orange);}
-      &.pink{@include color_drop($pink);}
-      &.purple{@include color_drop($purple);}
-      &.red{@include color_drop($red);}
-      &.white{@include color_drop($white);}
-      &.yellow{@include color_drop($yellow);}
+      &.black {
+        @include color_drop($black);
+      }
+      &.blue {
+        @include color_drop($blue);
+      }
+      &.brown {
+        @include color_drop($brown);
+      }
+      &.burgundy {
+        @include color_drop($burgundy);
+      }
+      &.cream {
+        @include color_drop($cream);
+      }
+      &.green {
+        @include color_drop($green);
+      }
+      &.grey {
+        @include color_drop($grey);
+      }
+      &.orange {
+        @include color_drop($orange);
+      }
+      &.pink {
+        @include color_drop($pink);
+      }
+      &.purple {
+        @include color_drop($purple);
+      }
+      &.red {
+        @include color_drop($red);
+      }
+      &.white {
+        @include color_drop($white);
+      }
+      &.yellow {
+        @include color_drop($yellow);
+      }
       a {
         border-bottom: 4px solid #f5f5f5;
         height: auto;
@@ -441,8 +471,13 @@ Filters Drawer
   @media screen and(min-width: $large) {
     position: absolute;
     height: 100%;
+    padding-bottom: 60px;
   }
   .inner-wrapper {
+    position: sticky;
+    top: 0;
+    overflow-y: scroll;
+    max-height: 100vh;
     @media screen and(min-width: $large) {
       padding-bottom: 20px;
     }
@@ -460,7 +495,7 @@ Filters Drawer
     line-height: 48px;
 
     a {
-      color: rgba(0,0,0,0.87);
+      color: rgba(0, 0, 0, 0.87);
       display: block;
       font-size: 14px;
       font-weight: 500;
@@ -468,7 +503,7 @@ Filters Drawer
       line-height: 48px;
       padding: 0 32px;
       &:hover {
-        background-color: rgba(0,0,0,0.05);
+        background-color: rgba(0, 0, 0, 0.05);
       }
       i {
         float: left;
@@ -476,7 +511,7 @@ Filters Drawer
         line-height: 48px;
         margin: 0 32px 0 0;
         width: 24px;
-        color: rgba(0,0,0,0.54);
+        color: rgba(0, 0, 0, 0.54);
       }
     }
   }
@@ -487,22 +522,23 @@ Filters Drawer
 
 .sidenav {
   li:not(.active) {
-    a, .collapsible-header {
+    a,
+    .collapsible-header {
       &:hover {
-        @media screen and(max-width: $medium){
-          background-color: rgba(255,255,255,1);
+        @media screen and(max-width: $medium) {
+          background-color: rgba(255, 255, 255, 1);
         }
       }
     }
   }
 }
 
-
 /**************************************************
 Footer
 **************************************************/
 footer {
   padding-top: 30px;
+  z-index: 2;
 
   .page-footer {
     background-color: #fff;
@@ -515,7 +551,8 @@ footer {
     width: 400px;
     max-width: 100%;
   }
-  input[type="email"], input[type="tel"] {
+  input[type="email"],
+  input[type="tel"] {
     border: 1px solid #9e9e9e !important;
   }
   input[type="submit"] {
@@ -580,107 +617,112 @@ body {
 }
 
 .container {
-  @media screen and(max-width: $small){
+  @media screen and(max-width: $small) {
     width: 100%;
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $roboto;
   font-weight: $thin;
- }
-
- h1 {
-   font-size: 3rem;
-   @media screen and(max-width: $small) {
-     font-size: 2rem;
-   }
- }
-
- h2 {
-   font-size: 2.8rem;
-   @media screen and(max-width: $small) {
-    font-size: 1.8rem;
-  }
- }
-
- h3 {
-  font-size: 2.6rem;
-  @media screen and(max-width: $small) {
-   font-size: 1.6rem;
- }
 }
 
- main {
-   flex: 1 0 auto;
-   padding-top: 15px;
-   position: relative;
-   @media screen and(max-width: 992px) {
-     margin-bottom: 30px;
-   }
-   @media screen and(min-width: 993px) {
-     margin-top: 86px;
-   }
-   @media screen and(min-width: 2048px) {
-      max-width: 2048px;
-      margin-left: auto;
-      margin-right: auto;
-   }
- }
+h1 {
+  font-size: 3rem;
+  @media screen and(max-width: $small) {
+    font-size: 2rem;
+  }
+}
 
- a {
-   //color: $s_red_compliment;
-   color: $s_red;
-   font-weight: bold;
- }
+h2 {
+  font-size: 2.8rem;
+  @media screen and(max-width: $small) {
+    font-size: 1.8rem;
+  }
+}
 
- a[role="button"]:hover {
-   cursor: pointer;
- }
+h3 {
+  font-size: 2.6rem;
+  @media screen and(max-width: $small) {
+    font-size: 1.6rem;
+  }
+}
 
- //chrome user agent styles
- select {
+main {
+  flex: 1 0 auto;
+  padding-top: 15px;
+  position: relative;
+  @media screen and(max-width: 992px) {
+    margin-bottom: 30px;
+  }
+  @media screen and(min-width: 993px) {
+    margin-top: 86px;
+  }
+  @media screen and(min-width: 2048px) {
+    max-width: 2048px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+a {
+  //color: $s_red_compliment;
+  color: $s_red;
+  font-weight: bold;
+}
+
+a[role="button"]:hover {
+  cursor: pointer;
+}
+
+//chrome user agent styles
+select {
   border-radius: 5px;
   border-width: 1px;
   border-style: solid;
   border-color: rgb(166, 166, 166);
 }
 
- .small-margin-bottom {
-   @media screen and (max-width: $small) {
-     margin-bottom: 20px;
-   }
- }
+.small-margin-bottom {
+  @media screen and (max-width: $small) {
+    margin-bottom: 20px;
+  }
+}
 
- strong {
-   font-weight: 700;
- }
+strong {
+  font-weight: 700;
+}
 
- .summary-sticky {
-   @media screen and(min-width: $large) {
-     position: sticky;
-     position: -webkit-sticky;
-     top: 86px;
-   }
- }
+.summary-sticky {
+  @media screen and(min-width: $large) {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 86px;
+  }
+}
 
- .tiny-remove-padding {
-   @media screen and(max-width: 350px) {
-     padding: 0 !important;
-   }
- }
+.tiny-remove-padding {
+  @media screen and(max-width: 350px) {
+    padding: 0 !important;
+  }
+}
 
- .toast {
-   background-color: $s_yellow !important;
- }
+.toast {
+  background-color: $s_yellow !important;
+}
 
- .tooltipped {
-   &:hover {
-     cursor: pointer;
-   }
- }
+.tooltipped {
+  &:hover {
+    cursor: pointer;
+  }
+}
 
- /**************************************************
+/**************************************************
   Gift Card
 **************************************************/
 #qr-code {
@@ -795,7 +837,8 @@ Helpers
   border: 0;
 }
 
-.videoWrapper, .video-wrapper {
+.videoWrapper,
+.video-wrapper {
   float: none;
   clear: both;
   width: 100%;
@@ -893,7 +936,6 @@ Helpers
   }
 }
 
-
 /**************************************************
 Index Template
 **************************************************/
@@ -930,7 +972,10 @@ Mobile Header
   }
 }
 //vendor overrides
-body.premiumblends, body.firmeclub, body.suavecitospeed, body.tresnoir {
+body.premiumblends,
+body.firmeclub,
+body.suavecitospeed,
+body.tresnoir {
   #MobileHeader {
     img {
       filter: invert(1);
@@ -966,7 +1011,7 @@ body.premiumblends, body.firmeclub, body.suavecitospeed, body.tresnoir {
   }
   .indicators {
     .indicator-item {
-      background-color: rgba(0,0,0,0.05);
+      background-color: rgba(0, 0, 0, 0.05);
       margin-bottom: 0;
       &.active {
         background-color: #000;
@@ -1110,7 +1155,8 @@ Parallax
         position: relative;
         top: 0;
       }
-      h3, p {
+      h3,
+      p {
         color: #000;
         font-weight: normal !important;
         text-shadow: none;
@@ -1135,30 +1181,16 @@ Parallax
     background-attachment: scroll;
   }
 
-  @media only screen 
-  and (min-width: 768px)
-  and (max-height: 1263px)
-  and (orientation: portrait)
-  and (-webkit-min-device-pixel-ratio: 1.5) {
+  @media only screen and (min-width: 768px) and (max-height: 1263px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     background-attachment: scroll;
   }
 
   // ipad pro 12.9
-  @media only screen
-  and (min-width: 1024px)
-  and (max-width: 1024px)
-  and (max-height: 1366px)
-  and (orientation: portrait)
-  and (-webkit-min-device-pixel-ratio: 1.5) {
+  @media only screen and (min-width: 1024px) and (max-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     background-attachment: scroll;
   }
 
-  @media only screen
-  and (min-width: 1024px)
-  and (max-width: 1024px)
-  and (max-height: 1366px)
-  and (orientation: landscape)
-  and (-webkit-min-device-pixel-ratio: 1.5) {
+  @media only screen and (min-width: 1024px) and (max-width: 1024px) and (max-height: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
     background-attachment: scroll;
   }
 
@@ -1172,8 +1204,9 @@ Parallax
   position: sticky;
   position: -webkit-sticky;
   top: 86px;
-  
-  h3, p {
+
+  h3,
+  p {
     text-shadow: #000 0px 0px 10px;
   }
 
@@ -1381,8 +1414,8 @@ Product Compare Chart
 
   .div-table-cell a {
     color: #000;
-    -webkit-transition: all .2s;
-    transition: all .2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
     &:hover {
       color: #222;
     }
@@ -1396,7 +1429,7 @@ Product Compare Chart
     display: table-row;
   }
   .div-table-heading {
-    background-color: #EEE;
+    background-color: #eee;
     display: table-header-group;
   }
   .div-table-head {
@@ -1413,12 +1446,12 @@ Product Compare Chart
     }
   }
   .div-table-heading {
-    background-color: #EEE;
+    background-color: #eee;
     display: table-header-group;
     font-weight: bold;
   }
   .div-table-foot {
-    background-color: #EEE;
+    background-color: #eee;
     display: table-footer-group;
     font-weight: bold;
   }
@@ -1521,7 +1554,9 @@ Side Scroll
 Smile
 **************************************************/
 
-.template-collection, .template-index, .InternetExplorer {
+.template-collection,
+.template-index,
+.InternetExplorer {
   div#smile-ui-container {
     display: none;
   }
@@ -1681,7 +1716,7 @@ DesktopNav
         &:focus {
           border-bottom: 1px solid #fff;
           -webkit-box-shadow: 0 1px 0 0 #fff;
-                  box-shadow: 0 1px 0 0 #fff;
+          box-shadow: 0 1px 0 0 #fff;
         }
       }
     }
@@ -1731,7 +1766,7 @@ div#smile-ui-container[style] {
   display: flex;
   flex-wrap: wrap;
   &.col {
-    padding: .75rem;
+    padding: 0.75rem;
   }
   .frame {
     flex: 0 0 auto;
@@ -1756,7 +1791,7 @@ div#smile-ui-container[style] {
     }
     .content {
       opacity: 0;
-      transition: opacity .1s;
+      transition: opacity 0.1s;
       background-color: rgba(0, 0, 0, 0.9);
       position: absolute;
       top: 0;
@@ -1826,10 +1861,11 @@ div#smile-ui-container[style] {
 .template-search {
   .ais-search-box--input {
     border-bottom: 0 !important;
-    &:focus-within, &:focus {
+    &:focus-within,
+    &:focus {
       box-shadow: none !important;
       height: 3rem !important;
-    } 
+    }
   }
 }
 
@@ -1837,7 +1873,6 @@ div#smile-ui-container[style] {
   Poster Collection
 **************************************************/
 .poster-collection {
-
   .slider[style] {
     @media screen and(max-width: 992px) {
       height: 412px !important;
@@ -1846,10 +1881,9 @@ div#smile-ui-container[style] {
         height: 412px !important;
       }
     }
-    
   }
   .poster {
-    padding: 6px .75rem;
+    padding: 6px 0.75rem;
     @media only screen and (min-width: 992px) {
       padding-right: 0;
     }
@@ -2227,7 +2261,6 @@ div#smile-ui-container[style] {
         transform: translate(0, -50%);
         top: 50%;
         width: 50vw;
-        
       }
     }
   }
@@ -2295,7 +2328,7 @@ div#smile-ui-container[style] {
     grid-template-rows: repeat(10, 10%);
     img {
       width: 100%;
-      transition: all .5s;
+      transition: all 0.5s;
     }
   }
   .text-content {
@@ -2333,7 +2366,7 @@ div#smile-ui-container[style] {
     margin: auto;
   }
   img.image_1 {
-    grid-column: 4 /span 4;
+    grid-column: 4 / span 4;
     grid-row: 2 / span 4;
     z-index: 9;
   }
@@ -2421,7 +2454,6 @@ div#smile-ui-container[style] {
         transform: translate(0, -50%);
         top: 50%;
         width: 50vw;
-        
       }
     }
   }
@@ -2432,24 +2464,24 @@ div#smile-ui-container[style] {
 **************************************************/
 
 .suavecito-categories {
-    padding: 25px 15px;
-    .frame {
-        flex: 0 0 auto;
-        position: relative;
-        width: 100%;
-        padding-top: 80%;
-        img {
-            bottom: 0;
-            height: 100%;
-            left: 0;
-            object-fit: cover;
-            object-position: center;
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 100%;
-        }
+  padding: 25px 15px;
+  .frame {
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+    padding-top: 80%;
+    img {
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
     }
+  }
 }
 
 /**************************************************
@@ -2485,7 +2517,7 @@ div#smile-ui-container[style] {
     }
   }
   .description {
-    padding: 0  15px;
+    padding: 0 15px;
   }
 }
 
@@ -2499,7 +2531,7 @@ div#smile-ui-container[style] {
     margin-bottom: 0;
   }
   .col {
-    padding: 0.50rem;
+    padding: 0.5rem;
     @media only screen and (min-width: $large) {
       padding: 0.75rem;
     }
@@ -2611,7 +2643,8 @@ div#smile-ui-container[style] {
 /**************************************************
   User Way
 **************************************************/
-body .userway.userway_p3 {
+body .userway.userway_p3,
+body .uwy.userway_p3 {
   @media only screen and(max-width: 989px) {
     bottom: 70px !important;
   }
@@ -2623,7 +2656,8 @@ body .userway.userway_p3 {
   }
 }
 
-.nogo {
+.nogo,
+.hp-bcontrol {
   opacity: 0;
   position: absolute;
   top: 0;
@@ -2631,4 +2665,11 @@ body .userway.userway_p3 {
   height: 0;
   width: 0;
   z-index: -1;
+}
+
+/**************************************************
+  login
+**************************************************/
+#Login.valign-wrapper {
+  height: 60vh;
 }

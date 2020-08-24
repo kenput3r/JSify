@@ -4,15 +4,19 @@
     <div class="col s12"><h1>Register For An Account</h1></div>
   </div>
   <div class="row">
-    <div class="col s12 l6 push-l3">
+    <div class="col s12 l6 push-l3 create-customer">
       {% form 'create_customer' %}
 
       {{ form.errors | default_errors }}
       
-
       <div class="input-field">
         <input type="text" value="" name="customer[first_name]" size="30" />
         <label for="first_name">First Name</label>
+      </div>
+
+      <div class="input-field hp-bcontrol">
+        <input type="text" value="" name="hpName" size="30" tabindex="-1" autocomplete="off" />
+        <label for="hpName">Name</label>
       </div>
       
       <div class="input-field">
@@ -36,3 +40,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  const Form = document.querySelector('.create-customer form');
+  const Honeypot = Form.querySelector('.hp-bcontrol input');
+  Form.addEventListener('submit', event => {
+    if(Honeypot.value && Honeypot.value !== '') {
+      event.preventDefault();
+      console.log('nope');
+    }
+  });
+</script>
+
