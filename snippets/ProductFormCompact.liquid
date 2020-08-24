@@ -73,7 +73,9 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     <div class="input-field col s4">
       {% if product.available %}
       <select class="product-option quantity-selector" aria-label="Quantity To Purchase">
-        {% if product.selected_or_first_available_variant.inventory_quantity < 30 %}
+        {% if product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+          {% assign x = 30 %}
+        {% elsif product.selected_or_first_available_variant.inventory_quantity < 30 %}
           {% assign x = product.selected_or_first_available_variant.inventory_quantity %}
         {% else %}
           {% assign x = 30 %}
