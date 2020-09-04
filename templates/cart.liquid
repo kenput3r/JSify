@@ -31,9 +31,9 @@
             {% assign difference = difference | times: item.quantity %}
             {% assign compare_at_discounts = compare_at_discounts | plus: difference %}
           {% endif %}
-          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}{%endif%} {% if item_error %}data-item-error="true"{% endif %}>
+          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}"{%endif%} {% if item_error %}data-item-error="true"{% endif %}>
             <div class="col s3">
-              <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}" />
             </div>
             <div class="col s9">
               <div class="row">
