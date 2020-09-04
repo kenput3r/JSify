@@ -1,10 +1,31 @@
+{%- assign product_price = product.selected_or_first_available_variant.price -%}
+{%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
+
+{%- assign is_20_off = false -%}
+{%- assign is_bogo = false -%}
+{%- for tag in product.tags -%}
+  {%- assign TAG = tag | upcase -%}
+  {%- if TAG == '20% OFF' -%}
+    {%- assign is_20_off = true -%}
+  {%- endif -%}
+  {%- if TAG == 'BOGO' -%}
+    {%- assign is_bogo = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if is_20_off -%}
+  {%- assign product_compare_price = product_price -%}
+  {%- assign product_price = product_price | times: 0.8 -%}
+{%- endif -%}
+
 <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}} {{display}}"
 data-s-module="ProductForm"
 data-id="{{ product.selected_or_first_available_variant.id }}" 
-data-price="{{ product.selected_or_first_available_variant.price | money_with_currency | strip_html }}"
-data-compare-price="{{ product.selected_or_first_available_variant.compare_at_price | money_with_currency | strip_html }}"
+data-price="{{ product_price | money_with_currency | strip_html }}"
+data-compare-price="{{ product_compare_price | money_with_currency | strip_html }}"
 data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
 data-image="{{ product.selected_or_first_available_variant.image }}"
+{%if is_bogo %}data-is-bogo="true"{%endif%}
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
   <div class="row">
@@ -19,10 +40,16 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
             {% assign variant_image = 'no-image' %}
           {% endif %}
           {% if variant.available %}
+            {%- assign variant_price = variant.price -%}
+            {%- assign variant_compare_at_price = variant.compare_at_price -%}
+            {%- if is_20_off -%}
+              {%- assign variant_compare_at_price = variant_price -%}
+              {%- assign variant_price = variant_price | times: 0.8 -%}
+            {%- endif -%}
             <option value="{{ variant.id }}"
             data-id="{{ variant.id }}" 
-            data-price="{{ variant.price | money_with_currency | strip_html }}"
-            data-compare-price="{{ variant.compare_at_price | money_with_currency | strip_html }}"
+            data-price="{{ variant_price | money_with_currency | strip_html }}"
+            data-compare-price="{{ variant_compare_at_price | money_with_currency | strip_html }}"
             data-inventory-quantity="{{ variant.inventory_quantity }}"
             data-image="{{ variant_image }}">
               {{ variant.title }}
@@ -75,20 +102,31 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
           {% assign x = product.metafields.suave.max_purchase_quantity %}
         {% endif %}
         {% for i in (1..x) %}
-        <option value="{{i}}">{{i}}</option>
+          {%- if is_bogo -%}
+            {%- assign modulos = i | modulo: 2 -%}
+            {%- if modulos == 0 -%}
+              <option value="{{i}}">{{i}}</option>
+            {%- endif -%}
+          {%- else -%}
+            <option value="{{i}}">{{i}}</option>
+          {%- endif -%}
         {% endfor %}
       </select>
       {% endif %}
     </div>
-    <div class="col s6 m3 right-align compare-price">
-      {%- assign compare_price = product.selected_or_first_available_variant.compare_at_price -%}
-      {%- assign product_price = product.selected_or_first_available_variant.price -%}
+    {%- if is_bogo %}
+      <div class="col s6 m3 right-align">
+        <span style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;">BOGO</span>
+      </div>
+    {%- endif -%}
+    <div class="col s6 m3 right-align compare-price" {%-if is_bogo -%} style="display:none;"{%-endif-%}>
+      {%- assign compare_price = product_compare_price -%}
       {% if compare_price and compare_price != product_price %}
         {{ compare_price | money }}
       {% endif %}
     </div>
     <div class="col s6 m3 center-align">
-      <span class="product-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+      <span class="product-price">{{ product_price | money }}</span>
     </div>
     <div class="col s6 xs12 small-only-left-50">
       {% if product.available %}
