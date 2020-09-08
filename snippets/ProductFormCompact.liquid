@@ -1,21 +1,25 @@
 {%- assign product_price = product.selected_or_first_available_variant.price -%}
 {%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
 
-{%- assign is_20_off = false -%}
+{%- assign is_percent_off = false -%}
 {%- assign is_bogo = false -%}
+{%- assign discount_multiplier = 1 -%}
 {%- for tag in product.tags -%}
   {%- assign TAG = tag | upcase -%}
-  {%- if TAG == '20% OFF' -%}
-    {%- assign is_20_off = true -%}
+  {%- if TAG contains 'PERCENTOFF' -%}
+    {%- assign is_percent_off = true -%}
+    {%- assign discount_multiplier = TAG | remove: 'PERCENTOFF' -%}
+    {%- assign discount_multiplier = discount_multiplier | times: 0.01 -%}
+    {%- assign discount_multiplier = 1 | minus: discount_multiplier -%}
   {%- endif -%}
   {%- if TAG == 'BOGO' -%}
     {%- assign is_bogo = true -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- if is_20_off -%}
+{%- if is_percent_off -%}
   {%- assign product_compare_price = product_price -%}
-  {%- assign product_price = product_price | times: 0.8 -%}
+  {%- assign product_price = product_price | times: discount_multiplier -%}
 {%- endif -%}
 
 <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form"
@@ -32,7 +36,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
       {{ product_price | money }}
     </div>
     {% if is_bogo %}
-      <div class="col s6 padding-left-none">
+      <div class="col s6 padding-left-none center">
         <span style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;">BOGO</span>
       </div>
     {% endif %}
@@ -54,9 +58,9 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
           {% if variant.available %}
             {%- assign variant_price = variant.price -%}
             {%- assign variant_compare_at_price = variant.compare_at_price -%}
-            {%- if is_20_off -%}
+            {%- if is_percent_off -%}
               {%- assign variant_compare_at_price = variant_price -%}
-              {%- assign variant_price = variant_price | times: 0.8 -%}
+              {%- assign variant_price = variant_price | times: discount_multiplier -%}
             {%- endif -%}
             <option value="{{ variant.id }}"
             data-id="{{ variant.id }}" 
