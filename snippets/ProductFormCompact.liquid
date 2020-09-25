@@ -79,7 +79,8 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
             data-price="{{ variant_price | money_with_currency | strip_html }}"
             data-compare-price="{{ variant_compare_at_price | money_with_currency | strip_html }}"
             data-inventory-quantity="{{ variant.inventory_quantity }}"
-            data-image="{{ variant_image }}">
+            data-image="{{ variant_image }}"
+            data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}">
               {{ variant.title }}
             </option>
           {% else %}
@@ -108,7 +109,8 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
             data-disable-add-to-cart="true"
             data-product-title="{{product.title}}"
             data-variant-title="{{variant.title}}"
-            data-product-id="{{product.id}}">
+            data-product-id="{{product.id}}"
+            data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}">
               {{ variant.title }} - Notify me when back in stock
             </option>
           {% endunless %}
