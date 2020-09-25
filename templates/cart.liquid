@@ -39,6 +39,12 @@
               <div class="row">
                 <div class="col s9">
                   {{ item.product.title }}
+                  {% if item.properties['Estimated Ship Date'] %}
+                    <br>
+                    <span style="background-color:#fab203;font-weight:bold">
+                      <i>Estimated Ship Date: {{ item.properties['Estimated Ship Date']}}</i>
+                    </span>
+                  {% endif %}
                   <br><span class="final-price">${{item.final_price | money_without_currency}}</span> {%if item.variant.compare_at_price%}<span class="compare-at-price" style="text-decoration: line-through; opacity:0.5;">${{item.variant.compare_at_price | money_without_currency}}</span>{%endif%} {%if item.original_price != item.final_price %}<span style="text-decoration: line-through; opacity:0.5;">${{item.original_price | money_without_currency}}</span>{% endif %}
                   <br><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="color-s-red">Remove</a>
                 </div>

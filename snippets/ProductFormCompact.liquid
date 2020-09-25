@@ -1,6 +1,17 @@
 {%- assign product_price = product.selected_or_first_available_variant.price -%}
 {%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
 
+{%- comment %}
+  SET BUTTON TEXT TO PRE-ORDER OR ADD TO CART
+{%- endcomment %}
+{%- assign button_text = 'Add To Cart' -%}
+{%- for tag in product.tags -%}
+  {%- assign TAG = tag | upcase -%}
+  {%- if TAG == 'PREORDER' -%}
+    {%- assign button_text = 'Pre-Order' -%}
+  {%- endif -%}
+{%- endfor -%}
+
 {%- assign is_percent_off = false -%}
 {%- assign is_bogo = false -%}
 {%- assign discount_multiplier = 1 -%}
@@ -28,6 +39,7 @@ data-price="{{ product_price | money_with_currency | strip_html }}"
 data-compare-price="{{ product_compare_price | money_with_currency | strip_html }}"
 data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
 data-image="{{ product.selected_or_first_available_variant.image }}"
+data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
 {%if is_bogo %}data-is-bogo="true"{%endif%}
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
@@ -135,7 +147,7 @@ data-image="{{ product.selected_or_first_available_variant.image }}"
     </div>
     <div class="col s12">
       {% if product.available %}
-      <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">Add to cart</button>
+      <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
       {% else %}
       {% unless product.variants.size > 1 and product.available == false %}
       <button class="waves-effect waves-teal btn-flat w100" disabled="true">SOLD OUT</button>

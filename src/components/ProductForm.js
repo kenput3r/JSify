@@ -128,6 +128,11 @@ export default class ProductForm extends BaseClass {
       quantity: parseInt(quantity),
       id: parseInt(this.state.id),
     };
+    if (this.state.estimatedShipDate.length) {
+      product["properties"] = {
+        "Estimated Ship Date": this.state.estimatedShipDate,
+      };
+    }
     try {
       const data = await fetch("/cart/add.js", {
         method: "POST",
@@ -140,16 +145,18 @@ export default class ProductForm extends BaseClass {
         throw new error(response);
       } else {
         M.toast({ html: "ADDED TO CART" });
-        event.target.innerHTML = "ADDED";
+        const original_button_text = event.target.innerText;
+        event.target.innerText = "ADDED";
         setTimeout(() => {
-          event.target.innerHTML = "ADD TO CART";
+          event.target.innerText = original_button_text;
         }, 3000);
       }
     } catch (error) {
       M.toast({ html: "ERROR - PLEASE TRY AGAIN" });
-      event.target.innerHTML = "ERROR";
+      const original_button_text = event.target.innerText;
+      event.target.innerText = "ERROR";
       setTimeout(() => {
-        event.target.innerHTML = "ADD TO CART";
+        event.target.innerText = original_button_text;
       }, 3000);
     }
   }
