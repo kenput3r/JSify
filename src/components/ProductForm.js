@@ -173,6 +173,7 @@ export default class ProductForm extends BaseClass {
         .querySelector(".add-to-cart")
         .addEventListener("click", this.handleSubmit);
     }
+    M.Tooltip.init(this.rootElement.querySelector('.tooltipped'));
   }
 
   destroy() {
