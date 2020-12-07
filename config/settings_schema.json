@@ -62,6 +62,12 @@
         "id": "TresNoirLogo",
         "label": "Tres Noir Logo",
         "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "CervezaCitoLogo",
+        "label": "Cerveza Cito Logo",
+        "info": "png or svg"
       }
     ]
   },
