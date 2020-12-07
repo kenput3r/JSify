@@ -31,14 +31,20 @@
             {% assign difference = difference | times: item.quantity %}
             {% assign compare_at_discounts = compare_at_discounts | plus: difference %}
           {% endif %}
-          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}{%endif%} {% if item_error %}data-item-error="true"{% endif %}>
+          <div class="row line-item" style="border-bottom:1px solid #f1f1f1" data-s-module="LineItem" {%if item.discount_allocations.size > 0%} data-is-discounted="true"{%endif%} {%if has_discounts%}data-cart-discounted="true"{%endif%} data-key="{{item.key}}" {%if item.variant.compare_at_price%}data-compare-at-price="{{item.variant.compare_at_price}}"{%endif%} {% if item_error %}data-item-error="true"{% endif %}>
             <div class="col s3">
-              <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              <img class="responsive-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}" />
             </div>
             <div class="col s9">
               <div class="row">
                 <div class="col s9">
                   {{ item.product.title }}
+                  {% if item.properties['Estimated Ship Date'] %}
+                    <br>
+                    <span style="background-color:#fab203;font-weight:bold">
+                      <i>Estimated Ship Date: {{ item.properties['Estimated Ship Date']}}</i>
+                    </span>
+                  {% endif %}
                   <br><span class="final-price">${{item.final_price | money_without_currency}}</span> {%if item.variant.compare_at_price%}<span class="compare-at-price" style="text-decoration: line-through; opacity:0.5;">${{item.variant.compare_at_price | money_without_currency}}</span>{%endif%} {%if item.original_price != item.final_price %}<span style="text-decoration: line-through; opacity:0.5;">${{item.original_price | money_without_currency}}</span>{% endif %}
                   <br><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="color-s-red">Remove</a>
                 </div>

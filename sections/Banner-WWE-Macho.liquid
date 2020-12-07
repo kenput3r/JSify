@@ -1,0 +1,40 @@
+{% assign image_src_lazy = section.settings.banner | img_url: '100x' %}
+{% assign image_src = section.settings.banner | img_url: '2048x' %}
+{% assign image_alt = section.settings.banner.alt %}
+
+<div>
+  <img class="lazy-image" 
+        src="{{ image_src_lazy }}" 
+        data-src="{{ image_src }}" 
+        alt="{{ image_alt | escape }}" 
+        data-s-module="LazyImage">
+</div>
+
+{% schema %}
+  {
+    "name": "Banner - WWE - Macho",
+    "class": "wwe-banner-section",
+    "tag": "section",
+    "settings": [
+      {
+        "id": "banner",
+        "type": "image_picker",
+        "label": "Banner"
+      }
+    ]
+  }
+{% endschema %}
+{% stylesheet 'scss' %}
+  .wwe-banner-section {
+    position: relative;
+    max-width: 100%;
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0;
+  }
+{% endstylesheet %}

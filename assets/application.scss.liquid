@@ -941,9 +941,7 @@ Index Template
 **************************************************/
 .template-index {
   main {
-    @media screen and(max-width: 992px) {
-      padding-top: 0;
-    }
+    padding-top: 0;
   }
   footer {
     padding-top: 0;
@@ -1547,6 +1545,10 @@ Side Scroll
     .product-form {
       min-height: 161px;
     }
+    .estimated-ship-date[style] {
+      bottom: auto !important;
+      top: 15px;
+    }
   }
 }
 
@@ -1966,6 +1968,7 @@ div#smile-ui-container[style] {
   }
   main {
     padding-top: 0;
+    height: 100vh;
     .container-404 {
       display: flex;
       flex-wrap: wrap;
@@ -1986,6 +1989,7 @@ div#smile-ui-container[style] {
           width: 100%;
         }
         .text-content {
+          color: #fff;
           position: absolute;
           bottom: 100px;
           left: 0;
@@ -1993,17 +1997,6 @@ div#smile-ui-container[style] {
           text-align: center;
         }
       }
-    }
-  }
-  footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1000;
-    .footer-nav {
-      background-color: #371e12;
     }
   }
 }
