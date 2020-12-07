@@ -14,6 +14,8 @@
 
 {%- assign is_percent_off = false -%}
 {%- assign is_bogo = false -%}
+{%- assign is_b2g1f = false -%}
+{%- assign is_cyber_monday = false -%}
 {%- assign discount_multiplier = 1 -%}
 {%- for tag in product.tags -%}
   {%- assign TAG = tag | upcase -%}
@@ -25,6 +27,10 @@
   {%- endif -%}
   {%- if TAG == 'BOGO' -%}
     {%- assign is_bogo = true -%}
+  {%- elsif TAG == 'B2G1F' -%}
+    {%- assign is_b2g1f = true -%}
+  {%- elsif TAG == 'CYBERMONDAY' -%}
+    {%- assign is_cyber_monday = true -%}
   {%- endif -%}
 {%- endfor -%}
 
@@ -41,6 +47,7 @@ data-inventory-quantity="{{ product.selected_or_first_available_variant.inventor
 data-image="{{ product.selected_or_first_available_variant.image }}"
 data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
 {%if is_bogo %}data-is-bogo="true"{%endif%}
+{%if is_b2g1f %}data-is-b2g1f="true"{%endif%}
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}>
   <div class="row">
@@ -52,7 +59,16 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
         <span style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;">BOGO</span>
       </div>
     {% endif %}
-      <div class="col s6 compare-price padding-left-none" {% if is_bogo %}style="display:none;"{%endif%}>
+    {% if is_b2g1f %}
+      <div class="col s6 padding-left-none center">
+        <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 3 items with this tag and the third item will be free at checkout!">B2G1F <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
+      </div>
+    {%- elsif is_cyber_monday -%}
+      <div class="col s6 right-align">
+        <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 2 items with this tag and the second item will be free at checkout!">BOGO <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
+      </div>
+    {%- endif -%}
+      <div class="col s6 compare-price padding-left-none" {% if is_bogo or is_b2g1f or is_cyber_monday %}style="display:none;"{%endif%}>
         {% if product_compare_price and product_compare_price != product_price %}
           {{ product_compare_price | money}}
         {% endif %}
@@ -123,7 +139,9 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
       <select 
         class="product-option quantity-selector" 
         aria-label="Quantity To Purchase" 
-        {%- if is_bogo -%} data-is-bogo="true"{%- endif -%}>
+        {%- if is_bogo -%} data-is-bogo="true"{%- endif -%}
+        {%- if is_b2g1f -%} data-is-b2g1f="true"{%- endif -%}
+        >
         {% if product.selected_or_first_available_variant.inventory_policy == 'continue' %}
           {% assign x = 30 %}
         {% elsif product.selected_or_first_available_variant.inventory_quantity < 30 %}
