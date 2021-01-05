@@ -167,6 +167,27 @@
     ]
   },
   {
+    "name": "Promotions",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sale_tag",
+        "label": "Sale Tag",
+        "info": "A tag used to indicate that a product is on sale"
+      },
+      {
+        "type": "range",
+        "id": "sale_discount",
+        "min": 0,
+        "max": 95,
+        "step": 5,
+        "unit": "%",
+        "label": "Discount Percentage",
+        "default": 0
+      }
+    ]
+  },
+  {
     "name": "Social",
     "settings": [
       {
