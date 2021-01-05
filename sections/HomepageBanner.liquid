@@ -1,8 +1,8 @@
 {% if section.settings.BannerMessageEnabled %}
 <div id="HomepageBanner" 
 style="background-color:{{section.settings.BannerMessageBackgroundColor}};
-  color:{{BannerMessageFontColor}};">
-  <p style="text-align:center; margin-top:0">
+  color:{{section.settings.BannerMessageFontColor}};">
+  <p style="text-align:center; margin-top:0; margin-bottom: 0;border-bottom:2px solid {{section.settings.BannerMessageBackgroundColor}}">
     {{section.settings.BannerMessage}}
     {% if section.settings.BannerMessageLink %}
       <br>
@@ -10,6 +10,9 @@ style="background-color:{{section.settings.BannerMessageBackgroundColor}};
     {% endif %}
   </p>
 </div>
+<style>
+  {{ section.settings.CustomCSS }}
+</style>
 {% endif %}
 
 {% schema %}
@@ -42,6 +45,12 @@ style="background-color:{{section.settings.BannerMessageBackgroundColor}};
         "type": "checkbox",
         "id": "BannerMessageEnabled",
         "label": "Banner Message Enabled"
+      },
+      {
+        "id": "CustomCSS",
+        "type": "textarea",
+        "label": "Custom CSS",
+        "info": "Add custom css here"
       }
     ],
     "presets": [
