@@ -1,7 +1,7 @@
 <div class="row">
   {% if section.settings.featuredCollection != empty %}
     <div class="col s12">
-      <h3>New Stuff</h3>
+      <h3>{{section.settings.sidebarTitle}}</h3>
     </div>
     {% for product in collections[section.settings.featuredCollection].products limit: 12 %}
       {% assign remainder = forloop.index | modulo: 3 %}
@@ -22,6 +22,12 @@
         "id": "featuredCollection",
         "type": "collection",
         "label": "Featured Collection"
+      },
+      {
+        "id": "sidebarTitle",
+        "type": "text",
+        "label": "Sidebar Title",
+        "default": "New Stuff"
       }
     ]
   }
