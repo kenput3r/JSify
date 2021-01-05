@@ -18,13 +18,13 @@
 {%- assign is_cyber_monday = false -%}
 {%- assign discount_multiplier = 1 -%}
 {%- for tag in product.tags -%}
-  {%- assign TAG = tag | upcase -%}
-  {%- if TAG contains 'PERCENTOFF' -%}
+  {%- if tag == settings.sale_tag -%}
     {%- assign is_percent_off = true -%}
-    {%- assign discount_multiplier = TAG | remove: 'PERCENTOFF' -%}
+    {%- assign discount_multiplier = settings.sale_discount -%}
     {%- assign discount_multiplier = discount_multiplier | times: 0.01 -%}
     {%- assign discount_multiplier = 1 | minus: discount_multiplier -%}
   {%- endif -%}
+  {%- assign TAG = tag | upcase -%}
   {%- if TAG == 'BOGO' -%}
     {%- assign is_bogo = true -%}
   {%- elsif TAG == 'B2G1F' -%}
@@ -37,6 +37,7 @@
 {%- if is_percent_off -%}
   {%- assign product_compare_price = product_price -%}
   {%- assign product_price = product_price | times: discount_multiplier -%}
+  {%- assign product_price = product_price | ceil -%}
 {%- endif -%}
 
 <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form"
@@ -89,6 +90,7 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
             {%- if is_percent_off -%}
               {%- assign variant_compare_at_price = variant_price -%}
               {%- assign variant_price = variant_price | times: discount_multiplier -%}
+              {%- assign variant_price = variant_price | ceil -%}
             {%- endif -%}
             <option value="{{ variant.id }}"
             data-id="{{ variant.id }}" 

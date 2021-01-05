@@ -62,6 +62,12 @@
         "id": "TresNoirLogo",
         "label": "Tres Noir Logo",
         "info": "png or svg"
+      },
+      {
+        "type": "image_picker",
+        "id": "CervezaCitoLogo",
+        "label": "Cerveza Cito Logo",
+        "info": "png or svg"
       }
     ]
   },
@@ -157,6 +163,27 @@
         "id": "MerchTags",
         "label": "Merch & More Tags",
         "info": "settings.MerchTags"
+      }
+    ]
+  },
+  {
+    "name": "Promotions",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sale_tag",
+        "label": "Sale Tag",
+        "info": "A tag used to indicate that a product is on sale"
+      },
+      {
+        "type": "range",
+        "id": "sale_discount",
+        "min": 0,
+        "max": 95,
+        "step": 5,
+        "unit": "%",
+        "label": "Discount Percentage",
+        "default": 0
       }
     ]
   },

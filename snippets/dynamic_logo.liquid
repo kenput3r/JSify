@@ -9,6 +9,8 @@
     {% assign setting_id = 'SpeedShopLogo' %}
   {% elsif collection.handle contains 'tres-noir' %}
     {% assign setting_id = 'TresNoirLogo' %}
+  {% elsif collection.handle contains 'cerveza-cito' %}
+    {% assign setting_id = 'CervezaCitoLogo' %}
   {% else %}
    {% assign setting_id = 'SuavecitoLogo' %}
   {% endif %}
@@ -23,6 +25,8 @@
     {% assign setting_id = 'SpeedShopLogo' %}
   {% elsif product.vendor == 'Tres Noir' %}
     {% assign setting_id = 'TresNoirLogo' %}
+  {% elsif product.vendor == 'Cerveza Cito' %}
+    {% assign setting_id = 'CervezaCitoLogo' %}
   {% else %}
     {% assign setting_id = 'SuavecitoLogo' %}
   {% endif %}
@@ -37,6 +41,8 @@
     {% assign setting_id = 'SpeedShopLogo' %}
   {% elsif template.suffix == 'tresnoir' %}
     {% assign setting_id = 'TresNoirLogo' %}
+  {% elsif template.suffix == 'cervezacito' %}
+    {% assign setting_id = 'CervezaCitoLogo' %}
   {% else %}
     {% assign setting_id = 'SuavecitoLogo' %}
   {% endif %}
