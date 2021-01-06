@@ -1,5 +1,10 @@
 {% include 'tags_logic' %}
 {% assign url_with_tags = shop.domain | append: collection.url %}
+{% if collection.products.size > 0 %}
+  {% assign products_classes = "col m12 l9 transition-width" %}
+{% else %}
+  {% assign products_classes = "col m12 l12 transition-width" %}
+{% endif %}
 
 {% if current_tags.size > 0 %}
   {% assign tags_url = '/' %}
@@ -20,16 +25,33 @@
 
 {% paginate collection.products by 24 %}
   <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
-    {% include 'CollectionHeader' %}
 
-    {% include 'FiltersColumn' %}
+    {% if collection.products.length > 0 %}
+      {% include 'CollectionHeader' %}
+      {% include 'FiltersColumn' %}
+    {% else %}
+      {% if collection.image %}
+        <h1 style="margin-top: -15px;">
+          <img 
+          srcset="{{collection.image | img_url: '2048x'}} 2048w,
+                  {{collection.image | img_url: '1920x'}} 1920w,
+                  {{collection.image | img_url: '500x'}} 500w,"
+          sizes="100vw"
+          src="{{collection.image | img_url: '1920x'}}" alt="{{collection.title}}" style="max-width:100%; width: 100%;" />
+        </h1>
+      {% else %}
+        <h1>{{collection.title}}</h1>
+      {% endif %}
+    {% endif %}
 
-    <div id="Products" class="col m12 l9 transition-width" data-column-sibling="FiltersColumn">
+    <div id="Products" class="{{products_classes}}" data-column-sibling="FiltersColumn">
       <div class="tile-container row">
         {% for product in collection.products %}
           {% include 'ProductTile' %}
         {% else %}
-          <p>no matches</p>
+          <div class="collection-description">
+            {{collection.description}}
+          </div>
         {% endfor %}
       </div>
       {% if paginate.pages > 1 %}
