@@ -49,7 +49,7 @@
         {% for product in collection.products %}
           {% include 'ProductTile' %}
         {% else %}
-          <div class="collection-description">
+          <div>
             {{collection.description}}
           </div>
         {% endfor %}
