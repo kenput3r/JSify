@@ -85,6 +85,9 @@
   {% if template.name contains 'product' %}
     {% include 'SetSliderHeight' %}
   {% endif %}
+  
+  <script src="//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=suavecito.myshopify.com"></script>
+
   <!-- google dynamic remarketing tag for theme.liquid -->
     {% if template contains 'product' %}
       {% unless template contains 'finder' %}
@@ -149,8 +152,6 @@
           };
         </script>
     {% endif %}
-
-  <script src="//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=suavecito.myshopify.com"></script>
 
     {% comment %}
     <!-- Google Code for Remarketing Tag -->
