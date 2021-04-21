@@ -59,7 +59,7 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
       <select class="product-option variant-selector" aria-label="Product Options{% for option in product.options %} - {{option}}{% endfor %}">
         {% for variant in product.variants %}
           {% if variant.image.product_id %}
-            {% assign variant_image = variant.image | img_url: 'large' %}
+            {% assign variant_image = variant.image | img_url: '400x' %}
           {% else %}
             {% assign variant_image = 'no-image' %}
           {% endif %}

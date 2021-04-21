@@ -1,0 +1,68 @@
+{% include 'tags_logic' %}
+{% assign url_with_tags = shop.domain | append: collection.url %}
+{% if collection.products.size > 0 %}
+  {% assign products_classes = "col m12 l9 transition-width" %}
+{% else %}
+  {% assign products_classes = "col m12 l12 transition-width" %}
+{% endif %}
+
+{% if current_tags.size > 0 %}
+  {% assign tags_url = '/' %}
+  {% for tag in current_tags %}
+    {% assign tag_handle = tag | handleize %}
+    {% if forloop.last %}
+      {% assign tags_url = tags_url | append: tag_handle %}
+    {% else %}
+      {% assign tags_url = tags_url | append: tag_handle | append: '+' %}
+    {% endif %}
+  {% endfor %}
+  {% assign url_with_tags = url_with_tags | append: tags_url %}
+{% endif %}
+
+{% if collection.sort_by %}
+  {% assign url_with_tags = url_with_tags | append: '?sort_by=' | append: collection.sort_by %}
+{% endif %}
+
+{% paginate collection.products by 24 %}
+  <div id="Collection" class="row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
+
+    {% if collection.products.length > 0 %}
+      {% include 'CollectionHeader' %}
+      {% include 'FiltersColumn' %}
+    {% else %}
+      {% if collection.image %}
+        <h1 style="margin-top: -15px;">
+          <img 
+          srcset="{{collection.image | img_url: '2048x'}} 2048w,
+                  {{collection.image | img_url: '1920x'}} 1920w,
+                  {{collection.image | img_url: '500x'}} 500w,"
+          sizes="100vw"
+          src="{{collection.image | img_url: '1920x'}}" alt="{{collection.title}}" style="max-width:100%; width: 100%;" />
+        </h1>
+      {% else %}
+        <h1>{{collection.title}}</h1>
+      {% endif %}
+    {% endif %}
+
+    <div id="Products" class="{{products_classes}}" data-column-sibling="FiltersColumn">
+      <div class="tile-container row">
+        {% for product in collection.products %}
+          {% include 'ProductTile' %}
+        {% else %}
+          <div>
+            {{collection.description}}
+          </div>
+        {% endfor %}
+      </div>
+      {% if paginate.pages > 1 %}
+        <div class="col s12 center-align">
+          <div class="loading-more-products hide">
+              {% include 'preloader' %}
+          </div>
+          <button class="waves-effect waves-light btn background-s-red" data-s-module="LoadCollectionPageXbutton" data-load-more-button="true" data-next-page-number="2">LOAD MORE</button>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endpaginate %}
+{% include 'FiltersDrawer' %}

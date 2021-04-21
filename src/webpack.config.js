@@ -9,7 +9,7 @@ module.exports = {
         bundleCss: './index.scss',
     },
     devtool: 'source-map',
-    mode: "production",
+    mode: "development",
     output: {
         path: path.resolve(__dirname, '../assets'),
         filename: './[name].js',
