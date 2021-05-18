@@ -1,10 +1,8 @@
 <div class="login-form" data-s-module="LoginForm">
   <h4 class="form-title">Sign In</h4>
-  <form class="customer-login" method="post" action="/account/login" accept-charset="UTF-8">
+  {% form 'customer_login' %}
   {{ form.errors | default_errors }}
   <input type="hidden" name="form_type" value="customer_login"><input type="hidden" name="utf8" value="✓">
-
-  {{ form.errors | default_errors }}
 
   <label for="customer_email">Email Address</label>
   <input type="email" name="customer[email]" />
@@ -14,7 +12,7 @@
 
   <input class="btn waves-effect waves-light background-s-red" type="submit" value="Sign In" />
   <button class="btn-flat waves-effect waves-light" data-form="customer_login">Forgot your password?</button>
-  </form>
+  {% endform %}
 
   <div id="RecoverPassword" class="hide recover-password">
     {% form 'recover_customer_password' %}
@@ -30,3 +28,11 @@
     {% endform %}
   </div>
 </div>
+
+<style>
+  #errors {
+    background-color: #ffebee;
+    border: 1px solid #e53935;
+    color: #b71c1c;
+  }
+</style>
