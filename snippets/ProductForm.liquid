@@ -141,15 +141,15 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
       </select>
       {% endif %}
     </div>
-    {%- if is_bogo %}
+    {%- if is_bogo and settings.show_buy_offer_tags %}
       <div class="col s6 m3 right-align">
         <span style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;">BOGO</span>
       </div>
-    {%- elsif is_b2g1f -%}
+    {%- elsif is_b2g1f and settings.show_buy_offer_tags -%}
       <div class="col s6 m3 right-align">
         <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 3 items with this tag and the third item will be free at checkout!">B2G1F <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
       </div>
-    {%- elsif is_cyber_monday -%}
+    {%- elsif is_cyber_monday and settings.show_buy_offer_tags -%}
       <div class="col s6 m3 right-align">
         <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 2 items with this tag and the second item will be free at checkout!">BOGO <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
       </div>
