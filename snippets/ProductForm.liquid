@@ -24,7 +24,7 @@
     {%- assign discount_multiplier = discount_multiplier | times: 0.01 -%}
     {%- assign discount_multiplier = 1 | minus: discount_multiplier -%}
   {%- endif -%}
-  {%- assign Tag = tag | upcase -%}
+  {%- assign TAG = tag | upcase -%}
   {%- if TAG == 'BOGO' -%}
     {%- assign is_bogo = true -%}
   {%- elsif TAG == 'B2G1F' -%}
