@@ -1,7 +1,12 @@
 <div id="Product">
   <div class="container">
     <div class="row valign-wrapper">
-      <div class="col padding-none"><h1>{{ product.title }}</h1></div>
+      <div class="col padding-none">
+        <h1>
+          {{ product.title }}<br />
+          <small style="font-size:50%;">{{product.variants.first.sku}}{% if product.variants.first.sku && product.variants.first.barcode %} - {{product.variants.first.barcode}}{% endif%}</small>
+        </h1>
+      </div>
     </div>
     {% include 'ProductCarousel' %}
     {% unless product.id == 3948242763859 %}

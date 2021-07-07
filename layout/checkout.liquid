@@ -54,4 +54,19 @@
     {% include 'smile-points-slider' %}
     {{ tracking_code }}
   </body>
+  <script>
+    var eu_countries = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden'];
+    $(document).on('page:load', function() {
+      var $CountrySelect = $('#checkout_shipping_address_country');
+      if($CountrySelect) {
+        $CountrySelect.on('change', function() {
+          var country = $CountrySelect.val();
+          console.log(country)
+          if(eu_countries.includes(country)) {
+            alert("Notice: Suavecito, Inc. does not collect VAT, duties, and/or fees on your behalf. You may be responsible for any applicable VAT, duties and/or fees. These added costs are out of Suavecito, Inc.'s control and may exceed the merchandise value in some cases.")
+          }
+        })
+      }
+    })
+  </script>
 </html>

@@ -184,6 +184,13 @@
         "unit": "%",
         "label": "Discount Percentage",
         "default": 0
+      },
+      {
+        "type": "checkbox",
+        "id": "show_buy_offer_tags",
+        "label": "Show Buy Offer Tags (B2G1F, BOGO)",
+        "default": false,
+        "info": "Check this to show yellow tags indicating the item is on sale"
       }
     ]
   },
