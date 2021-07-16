@@ -1,0 +1,11 @@
+<div class="build-regimen">
+  <h2 class="center-align">BUILD YOUR REGIMEN</h2>
+  <div class="row">  
+    {%- for product in collections['hair-treatment'].all_products limit: product_limit -%}
+        <div class="col s12 m6 product-card">
+          {% assign grid_sizes = 's12' %}
+          {% include 'BuildRegimenProductTile' %}
+        </div>
+      {%- endfor -%}
+  </div>
+</div>

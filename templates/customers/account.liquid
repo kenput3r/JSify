@@ -1,5 +1,13 @@
 <!-- /templates/customers/account.liquid -->
 {% include 'secrets' %}
+{% assign has_subscriptions = false %}
+{% for order in customer.orders %}
+  {% for line_item in order.line_items | limit: 4 %}
+    {% if line_item.selling_plan_allocation != "" %}
+      {% assign has_subscriptions = true %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
 <div id="Account" data-s-module="Account" data-customer="{{customer.id}}" data-secret="{{customer.id | hmac_sha256: hmac_sha256_secret}}" data-address-id="{{customer.default_address.id}}">
   <div class="container">
     <div class="row">
@@ -34,6 +42,20 @@
                 <p><a href="/account/addresses" class="btn-flat" style="color:#ffab40">manage addresses({{customer.addresses_count}})</a></p>
                 {% endif %}
               </div>
+              {% if has_subscriptions %}
+              <div class="card-action white-text">
+                <p>We'll send an email with a verification link to your email address.</p>
+                <button 
+                  data-s-module="ManageSubscriptionsButton"
+                  data-customer-email="{{ customer.email }}"
+                  data-customer-id="{{ customer.id }}"
+                  class="btn-flat manage-subscriptions" 
+                  style="color:#ffab40"
+                  >
+                    MANAGE SUBSCRIPTIONS
+                  </button>
+              </div>
+              {% endif %}
               <div class="card-action white-text">
                 Points: <span class="sweettooth-points-balance"></span> <button class="btn-flat redeem-points" style="color:#ffab40">REDEEM</button>
               </div>

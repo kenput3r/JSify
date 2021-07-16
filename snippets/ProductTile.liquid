@@ -4,7 +4,7 @@
 {% unless image_size %}
   {% assign image_size = '100x' %}
 {% endunless %}
-<div class="product-tile product-tile-page-{{paginate.current_page}} col {{grid_sizes}}" data-s-module="ProductTile">
+<div class="product-tile product-tile-page-{{paginate.current_page}} col {{grid_sizes}}{% if product.template_suffix == 'subscription' %} subscription{% endif %}" data-s-module="ProductTile" data-template="{{product.template_suffix}}">
   <div class="card">
     <div class="card-image">
       <img class="sidenav-trigger product-image lazy-image" 
@@ -15,7 +15,8 @@
       src="{{ product.featured_image.src | img_url: image_size }}" 
       data-src="{{ product.featured_image.src | img_url: '400x' }}" 
       alt="{{ product.featured_image.alt | escape }}" 
-      data-s-module="LazyImage">
+      data-s-module="LazyImage"
+      >
       {% if product.metafields.suave['estimated_ship_date'] %}
       <span 
         class="estimated-ship-date"
@@ -29,11 +30,15 @@
           Estimated Ship Date: {{ product.metafields.suave['estimated_ship_date'] }}
       </span>
       {% endif %}
-      <a href="#" class="btn-floating halfway-fab waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}" class="material-icons">visibility</i></a>
+      <a href="#" class="btn-floating halfway-fab waves-effect waves-light sidenav-trigger background-s-red" data-target="ProductDrawer"><i data-page-title="{{product.title}}" data-url="https://{{shop.domain}}{{product.url}}?view=stripped" data-id="{{product.id}}" data-template="{{product.template_suffix}}" class="material-icons">visibility</i></a>
     </div>
     <div class="card-content">
       <span class="card-title"><a href="{{ product.url | within: collection }}" class="text-s-red-compliment{%if product.title.size > 40%} tooltipped{%endif%}" data-position="bottom" data-tooltip="{{product.title}}">{{ product.title | truncate: 40 }}</a></span>
-      {% include 'ProductFormCompact' %}
+      {% if product.template_suffix == 'minoxidil' or product.template_suffix == 'subscription' or product.template_suffix == 'subscription_v2' %}
+        {% include 'ProductFormCompactSubscription' %}
+      {% else %}
+        {% include 'ProductFormCompact' %}
+      {% endif %}
     </div>
   </div>
 </div>

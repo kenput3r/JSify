@@ -2708,3 +2708,50 @@ body.coming_soon {
     margin-bottom: 0;
   }
 }
+
+/**************************************************
+  SUBSCRIPTIONS
+**************************************************/
+.purchase-options {
+  fieldset {
+    border-radius: 5px;
+    border-width: 2px;
+  }
+  select {
+    display: block;
+  }
+  [type=radio]:checked, [type=radio]:not(:checked) {
+    position: relative;
+    pointer-events: auto;
+  }
+}
+
+/**************************************************
+  BUILD REGIMEN
+**************************************************/
+#Product-Minoxidil {
+  h1 {
+    color: #bc360a;
+    font-weight: 700;
+  }
+  .build-regimen {
+    h2 {
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+  @media only screen and(max-width: $small) {
+    .valign-wrapper {
+      display: block;
+    }
+  }
+  .build-totals {
+    .build-total-title {
+      font-weight: bold;
+    }
+    .build-total-price {
+      font-weight: bold;
+      font-size: 2em;
+    }
+  }
+}

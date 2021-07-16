@@ -3,6 +3,11 @@ import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
 import ProductForm from './components/ProductForm';
+import ProductFormSubscription from './components/ProductFormSubscription';
+import ProductFormCompactSubscription from './components/ProductFormCompactSubscription';
+import ProductFormSubscriptionV2 from './components/ProductFormSubscriptionV2';
+import ProductFormBuildRegimen from './components/ProductFormBuildRegimen';
+import ProductMinoxidil from './components/ProductMinoxidil';
 import ProductCarousel from './components/ProductCarousel';
 import ProductTile from './components/ProductTile';
 import ProductReviews from './components/ProductReviews';
@@ -31,11 +36,17 @@ import PosterCollection from './components/PosterCollection';
 import Poster from './components/Poster';
 import LazyImage from './components/LazyImage';
 import BisModal from './components/BisModal';
+import ManageSubscriptionsButton from './components/ManageSubscriptionsButton';
 
 const classes = {
     LoadCollectionPageXbutton,
     ProductDrawer,
     ProductForm,
+    ProductFormSubscription,
+    ProductFormCompactSubscription,
+    ProductFormSubscriptionV2,
+    ProductFormBuildRegimen,
+    ProductMinoxidil,
     ProductCarousel,
     ProductTile,
     ProductReviews,
@@ -63,7 +74,8 @@ const classes = {
     PosterCollection,
     Poster,
     LazyImage,
-    BisModal
+    BisModal,
+    ManageSubscriptionsButton
 };
 
 const system = new System(classes);

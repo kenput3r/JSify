@@ -46,6 +46,9 @@
                       <i>Estimated Ship Date: {{ item.properties['Estimated Ship Date']}}</i>
                     </span>
                   {% endif %}
+                   <br><span class="selling-plan-name" {% if item.selling_plan_allocation == empty %}style="display: none;"{% endif %}>
+                    {{ item.selling_plan_allocation.selling_plan.name }}
+                  </span>
                   <br><span class="final-price">${{item.final_price | money_without_currency}}</span> {%if item.variant.compare_at_price%}<span class="compare-at-price" style="text-decoration: line-through; opacity:0.5;">${{item.variant.compare_at_price | money_without_currency}}</span>{%endif%} {%if item.original_price != item.final_price %}<span style="text-decoration: line-through; opacity:0.5;">${{item.original_price | money_without_currency}}</span>{% endif %}
                   <br><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="color-s-red">Remove</a>
                 </div>

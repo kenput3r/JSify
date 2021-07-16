@@ -1,0 +1,33 @@
+<div class="build-regimen-product">
+  <div class="container">
+    <div class="row valign-wrapper">
+      <div class="col s12 m4">
+        <img class="responsive-img" src="{{ product.images[0].src | img_url: '400x' }}" alt="{{ product.images[0].alt }}"/>
+      </div>
+      <div class="col s12 m8">
+        <div class="row">
+          <div class="col s12">
+            <h1>
+              <a href="{{ product.url }}">
+                {{ product.title }}
+              </a>
+            </h1>
+            {% if product.metafields.suave.product_size %}
+            <h5>
+              {{ product.metafields.suave.product_size }}
+            </h5>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            {% if product.metafields.suave.short_description %}{{ product.metafields.suave.short_description }}{% endif %}
+          </div>
+          <div class="col s12">
+            {% include 'ProductFormBuildRegimen' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

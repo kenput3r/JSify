@@ -2,6 +2,8 @@ import BaseClass from '../system/BaseClass';
 import insertDrawerContent from '../utils/insertDrawerContent';
 import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
+import ProductFormSubscription from '../components/ProductFormSubscription';
+import ProductFormSubscriptionv2 from '../components/ProductFormSubscriptionV2';
 import ProductReviews from '../components/ProductReviews';
 //import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
@@ -41,6 +43,7 @@ export default class ProductDrawer extends BaseClass {
       product_url = product_url + '?view=stripped';
     }
     const page_title = event.target.dataset.pageTitle;
+    const product_template = event.target.dataset.template;
     //Used as popstate callback to close the Drawer
     //ToDo: stop browser from reloading, or abandon function and event listener
     const close = (event)=> {
@@ -71,7 +74,13 @@ export default class ProductDrawer extends BaseClass {
     const carousel_container = this.rootElement.querySelector('.product-carousel');
     this.Carousel = new ProductCarousel(carousel_container);
     const form = this.rootElement.getElementsByClassName('product-form')[0];
-    this.ProductForm = new ProductForm(form, {Carousel: this.Carousel});
+    if (product_template === 'subscription') {
+      this.ProductForm = new ProductFormSubscription(form, {Carousel: this.Carousel});
+    } else if (product_template === 'subscription_v2') {
+      this.ProductForm = new ProductFormSubscriptionv2(form, {Carousel: this.Carousel});
+    } else {     
+      this.ProductForm = new ProductForm(form, {Carousel: this.Carousel});
+    }
     const review_container = this.rootElement.querySelector('.product-reviews');
     const yotpo = new ProductReviews(review_container, {product_id: product_id});
     const review_form_container = this.rootElement.querySelector('.review-form');
