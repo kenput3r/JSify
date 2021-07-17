@@ -2730,6 +2730,12 @@ body.coming_soon {
   BUILD REGIMEN
 **************************************************/
 #Product-Minoxidil {
+  position: relative;
+  @media only screen and(max-width: 1200px) {
+    .container {
+      width: 80%;
+    }
+  }
   h1 {
     color: #bc360a;
     font-weight: 700;
@@ -2746,6 +2752,25 @@ body.coming_soon {
     }
   }
   .build-totals {
+    margin-bottom: 0;
+    padding: 1rem 0;
+    background-color: #fff;
+    transition: .28s ease;
+    &.sticky-totals {
+      z-index: 1000;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      rigth: 0;
+      width: 100%;
+      border-top: 1px solid #9e9e9e;
+      @media only screen and(max-width: $small) {
+        top: 0;
+        bottom: initial;
+        border-top: none;
+        border-bottom: 1px solid #9e9e9e;
+      }
+    }
     .build-total-title {
       font-weight: bold;
     }
@@ -2753,5 +2778,27 @@ body.coming_soon {
       font-weight: bold;
       font-size: 2em;
     }
+  }
+  .product-card {
+    @media only screen and(max-width: 1200px) {
+      .container {
+        width: 90%;
+      }
+      .row {
+        margin-bottom: 10px;
+      }
+      .valign-wrapper {
+        display: block;
+      }
+      h3 {
+        font-size: 2rem;
+      }
+      h5 {
+        font-size: 1.2rem;
+      }
+    }
+    &:nth-child(odd) {
+      clear: left;
+    } 
   }
 }

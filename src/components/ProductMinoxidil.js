@@ -10,12 +10,17 @@ export default class ProductMinoxidil extends BaseClass {
   constructor(rootElement, args) {
     super(rootElement, args);
     this.state = {};
+    this.includedCount = 1;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleIncludedChange = this.handleIncludedChange.bind(this);
     this.calculateBuildTotal = this.calculateBuildTotal.bind(this);
+    this.handleDisplayBuildTotals = this.handleDisplayBuildTotals.bind(this);
     this.init();
   }
   
+  /**
+   * @method calculateBuildtotal - Calculates the build total cost.
+   */
   calculateBuildTotal() {
     const build_price_total = this.rootElement.querySelector('.build-total-price');
     const included_items = this.rootElement.querySelectorAll("input[type=checkbox]");
@@ -30,6 +35,9 @@ export default class ProductMinoxidil extends BaseClass {
     build_price_total.innerHTML = `$${(new_total / 100).toFixed(2)} USD`;
   }
   
+  /**
+   * @method handleIncludedPriceChange - Triggers price recalculation.
+   */
   handleIncludedPriceChange() {
     const included = this.rootElement.querySelectorAll("input[type=checkbox]");
     included.forEach(checkbox => {
@@ -56,8 +64,13 @@ export default class ProductMinoxidil extends BaseClass {
     });
   }
 
+  /**
+   * @method handleIncludedChange - Calls calculateBuildTotal
+   * @param {event} event 
+   */
   handleIncludedChange(event) {
     this.calculateBuildTotal();
+    this.handleDisplayBuildTotals(event);
   }
   
   /**
@@ -101,6 +114,13 @@ export default class ProductMinoxidil extends BaseClass {
           event.target.innerText = original_button_text;
         }, 3000);
       }
+      // remove sticky totals
+      this.rootElement.querySelector(".build-totals").classList.remove("sticky-totals");
+      included_items.forEach((item, index) => {
+        if (index !== 0) item.checked = false;
+      });
+      this.includedCount = 1;
+      this.calculateBuildTotal();
     } catch (error) {
       M.toast({ html: "ERROR - PLEASE TRY AGAIN" });
       const original_button_text = event.target.innerText;
@@ -110,13 +130,67 @@ export default class ProductMinoxidil extends BaseClass {
       }, 3000);
     }
   }
+  
+  /**
+   * @method handleScrollToBuild
+   * @param {event} event 
+   */
+  handleScrollToBuild(event) {
+    const selector = event.target.getAttribute('data-target');
+    const target = document.querySelector(selector);
+    const elementPosition = target.offsetTop;
+    const offsetPosition = elementPosition;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+    });
+  }
+  
+  handleDisplayBuildTotals(event) {
+    const build_total = this.rootElement.querySelector(".build-totals");
+    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const trigger = included[included.length - 1];
+    // show
+    if (event.target.checked) {
+      this.includedCount += 1;
+      if (window.pageYOffset < trigger.offsetTop - window.innerHeight) {
+        build_total.classList.add("sticky-totals");
+      }
+    } else {
+      this.includedCount -= 1;
+    }
+    // hide
+    if (this.includedCount === 1) {
+      build_total.classList.remove("sticky-totals");
+    }
+  }
+  
+  handleHideBuildTotals() {
+    const build_total = this.rootElement.querySelector(".build-totals");
+    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const trigger = included[included.length - 1];
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset >= trigger.offsetTop - window.innerHeight) {
+        build_total.classList.remove("sticky-totals");
+      }
+      if (this.includedCount >= 2 && window.pageYOffset < trigger.offsetTop - window.innerHeight) {
+        build_total.classList.add("sticky-totals");
+      }
+    });
+  }
 
   init() {
     this.state = this.rootElement.dataset;
     if (this.state.available) {
-      this.rootElement
-        .querySelector(".add-to-cart")
-        .addEventListener("click", this.handleSubmit);
+      // this.rootElement
+      //   .querySelector(".add-to-cart")
+      //   .addEventListener("click", this.handleSubmit);
+      const add_to_cart_btns = this.rootElement
+        .querySelectorAll(".add-to-cart");
+      add_to_cart_btns.forEach(btn => {
+        btn.addEventListener("click", this.handleSubmit);
+      });
     }
     M.Tooltip.init(this.rootElement.querySelector(".tooltipped"));
     const included = this.rootElement.querySelectorAll("input[type=checkbox]");
@@ -124,24 +198,22 @@ export default class ProductMinoxidil extends BaseClass {
       checkbox.addEventListener("change", this.handleIncludedChange);
     });
     this.handleIncludedPriceChange();
-    // set height of subscription cards
-    const product_cards = this.rootElement.querySelectorAll(".product-card");
-    let max_height = 0;
-    product_cards.forEach(card => {
-      if (card.offsetHeight > max_height) {
-        max_height = card.offsetHeight;
-      }
-    });
-    product_cards.forEach(card => {
-      card.style.height = `${max_height}px`;
-    });
+    // scroll
+    this.rootElement.querySelector('.scroll')
+      .addEventListener("click", this.handleScrollToBuild);
+    this.handleHideBuildTotals();
   }
 
   destroy() {
     if (this.state.available) {
-      this.rootElement
-        .querySelector(".add-to-cart")
-        .removeEventListener("click", this.handleSubmit);
+      // this.rootElement
+      //   .querySelector(".add-to-cart")
+      //   .removeEventListener("click", this.handleSubmit);
+      const add_to_cart_btns = this.rootElement
+        .querySelectorAll(".add-to-cart");
+      add_to_cart_btns.forEach(btn => {
+        btn.removeEventListener("click", this.handleSubmit);
+      });
     }
     const included = this.rootElement.querySelectorAll("input[type=checkbox]");
     included.forEach(checkbox => {

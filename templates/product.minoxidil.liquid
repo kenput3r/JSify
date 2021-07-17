@@ -3,6 +3,7 @@
   {%if product.available%}data-available="{{product.available}}"{%endif%}
   data-price="{{ product_price | money_with_currency | strip_html }}"
 >
+  {% section 'Banner-Minoxidil' %}
   <div class="container">
     <div class="row valign-wrapper">
       <div class="col s12 m6">
@@ -34,16 +35,30 @@
         </div>
       </div>
     </div>
-
+    
     <div class="row">
+      <div class="col s12">
+        {% if product.available %}
+        <div class="right-align">        
+          <button class="btn waves-effect waves-light add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
+          <button data-target="#Build-Regimen" class="btn-flat waves-effect waves-light scroll" type="button" name="build">Or Build Regimen</button>
+        </div>
+        {% else %}
+        <button class="waves-effect waves-teal btn-flat" disabled="true">SOLD OUT</button>
+        <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% comment %} <div class="row">
       <div class="col s12 center-align fbt-container">
 
       </div>
-    </div>
+    </div> {% endcomment %}
     
 
     <div class="section-wrapper" style="padding: 20px 0;">
-      {% section 'subscription-build-regimen' %}
+      {% section 'Subscription-Build-Regimen' %}
     </div>
     
     <div class="row">
@@ -51,19 +66,18 @@
     </div>
     
     <div class="row build-totals">
-      <div class="col s8"></div>
-      <div class="col s4">
-        <span class="build-total-title">YOUR TOTAL: </span><span class="build-total-price" data-price="{{ product.price }}">{{ product_price | money_with_currency | strip_html }}</span>
-      </div>  
-      <div class="col s8"></div>
-      <div class="col s4 xs12">
-        {% if product.available %}
-        <button class="btn waves-effect waves-light add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
-        {% else %}
-        <button class="waves-effect waves-teal btn-flat" disabled="true">SOLD OUT</button>
-        <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
-        {% endif %}
+      <div class="col s12">
+        <div class="totals center-align">
+          <span class="build-total-title">YOUR TOTAL: </span><span class="build-total-price" data-price="{{ product.price }}">{{ product_price | money_with_currency | strip_html }}</span><br/>
+          {% if product.available %}
+          <button class="btn waves-effect waves-light add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
+          {% else %}
+          <button class="waves-effect waves-teal btn-flat" disabled="true">SOLD OUT</button>
+          <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
+          {% endif %}
+        </div>
       </div>
     </div>
+    
   </div>
 </div>

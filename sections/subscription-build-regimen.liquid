@@ -1,11 +1,26 @@
-<div class="build-regimen">
+<div id="Build-Regimen" class="build-regimen">
   <h2 class="center-align">BUILD YOUR REGIMEN</h2>
   <div class="row">  
-    {%- for product in collections['hair-treatment'].all_products limit: product_limit -%}
+    {%- for product in collections[section.settings.collection].all_products limit: product_limit -%}
         <div class="col s12 m6 product-card">
           {% assign grid_sizes = 's12' %}
-          {% include 'BuildRegimenProductTile' %}
+          {% include 'ProductTileBuildRegimen' %}
         </div>
       {%- endfor -%}
   </div>
 </div>
+
+{% schema %}
+{
+  "name": "Build Regimen",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {    
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ]
+}
+{% endschema %}

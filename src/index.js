@@ -1,4 +1,8 @@
 import './node_modules/materialize-css/dist/js/materialize.min.js';
+import smoothscroll from 'smoothscroll-polyfill';
+// kick off the polyfill!
+smoothscroll.polyfill();
+
 import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
