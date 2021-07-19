@@ -58,7 +58,9 @@
     
 
     <div class="section-wrapper" style="padding: 20px 0;">
-      {% section 'Subscription-Build-Regimen' %}
+      {% assign excluded_product_id = product.id %}
+      {% include 'SubscriptionBuildRegimen' %}
+      {% comment %} {% section 'subscription-build-regimen' %} {% endcomment %}
     </div>
     
     <div class="row">
@@ -80,4 +82,6 @@
     </div>
     
   </div>
+  
+  {% include 'HairLossTreatmentInfo' %}
 </div>

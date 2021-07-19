@@ -777,6 +777,18 @@ Helpers
   color: $s_yellow !important;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .h100 {
   height: 100%;
   img {
@@ -2756,6 +2768,7 @@ body.coming_soon {
     padding: 1rem 0;
     background-color: #fff;
     transition: .28s ease;
+    margin-bottom: 20px;
     &.sticky-totals {
       z-index: 1000;
       position: fixed;
@@ -2764,6 +2777,7 @@ body.coming_soon {
       rigth: 0;
       width: 100%;
       border-top: 1px solid #9e9e9e;
+      margin-bottom: 0;
       @media only screen and(max-width: $small) {
         top: 0;
         bottom: initial;
@@ -2800,5 +2814,51 @@ body.coming_soon {
     &:nth-child(odd) {
       clear: left;
     } 
+  }
+}
+
+/**************************************************
+  HAIR LOSS TREATMENT INFO
+**************************************************/
+.hair-loss-treatment-info {
+  padding-bottom: 10px;
+  background-color: #e9dccd;
+  .hair-loss-treatment-logo {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .title {
+    text-align: center;
+    padding: 20px 0;
+    h3 {      
+      border-top: 2px solid #822808;
+      border-bottom: 2px solid #822808;
+      padding: 10px;
+      display: inline;
+    }
+  }
+  .product-divider {
+    border: 1px solid #822808;
+  }
+  .underlined-title {
+    color: #822808;
+    font-weight: bold;
+    border-bottom: 2px solid #822808;
+    display: inline;
+    line-height: 2rem;
+  }
+  .text-smaller {
+    font-size: .7rem;
+  }
+  .center-img {
+    display: block;
+    margin: auto;
+  }
+  @media only screen and(max-width: $small) {
+    .mobile-column-reverse {      
+      display: flex !important;
+      flex-direction: column-reverse;
+    }
   }
 }
