@@ -100,9 +100,15 @@ export default class ProductFormSubscription extends BaseClass {
     this.rootElement.querySelector(
       ".product-price"
     ).innerHTML = this.state.price;
-    this.rootElement.querySelector(
-      ".compare-price"
-    ).innerHTML = this.state.comparePrice;
+    if (this.state.comparePrice.replace(/[^0-9.-]+/g,"") > this.state.price.replace(/[^0-9.-]+/g,"")) {       
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = this.state.comparePrice;
+    } else {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = "";
+    }
     this.changeImage();
     if (this.state.disableAddToCart) {
       this.rootElement
@@ -129,9 +135,15 @@ export default class ProductFormSubscription extends BaseClass {
     this.rootElement.querySelector(
       ".product-price"
     ).innerHTML = this.state.price;
-    this.rootElement.querySelector(
-      ".compare-price"
-    ).innerHTML = this.state.comparePrice;
+    if (this.state.comparePrice.replace(/[^0-9.-]+/g,"") > this.state.price.replace(/[^0-9.-]+/g,"")) {      
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = this.state.comparePrice;
+    } else {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = "";
+    }
 
     this.state.sellingPlan = value;
   }
@@ -139,8 +151,6 @@ export default class ProductFormSubscription extends BaseClass {
   handlePurchaseOptionChange(event) {
     const value = event.target.value;
     const selling_plans = this.rootElement.querySelector(".selling-plans");
-    const price = this.rootElement.querySelector(".product-price");
-    const compare_at_price = this.rootElement.querySelector(".compare-price");
     const variant_selector = this.rootElement.querySelector(".variant-selector");
     const quantity_selector = this.rootElement.querySelector(".quantity-selector");
     if (value === "one-time") {
@@ -149,9 +159,6 @@ export default class ProductFormSubscription extends BaseClass {
       selling_plans.style.display = "none";
       if (variant_selector)  variant_selector.style.display = "block";
       this.state.sellingPlan = null;
-      // change price to default
-      price.innerHTML = this.state.price;
-      compare_at_price.innerHTML = this.state.comparePrice;
     } else {
       // subscribe & save
       selling_plans.style.display = "block";
@@ -159,12 +166,23 @@ export default class ProductFormSubscription extends BaseClass {
       const first_available_option = this.rootElement.querySelector('option[data-disabled="enabled"]');
       if (first_available_option) first_available_option.selected = true;
       this.state = first_available_option.dataset;
-      price.innerHTML = this.state.price;
-      compare_at_price.innerHTML = this.state.comparePrice;
       // disable quantity selector
       quantity_selector.selectedIndex = 0;
       quantity_selector.dispatchEvent(new Event('change'));
       quantity_selector.disabled = true;
+    }
+    // change pricing
+    this.rootElement.querySelector(
+      ".product-price"
+    ).innerHTML = this.state.price;
+    if (this.state.comparePrice.replace(/[^0-9.-]+/g, "") > this.state.price.replace(/[^0-9.-]+/g, "")) {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = this.state.comparePrice;
+    } else {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = "";
     }
     this.state.purchaseOption = value;
   }

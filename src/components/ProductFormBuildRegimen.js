@@ -28,9 +28,15 @@ export default class ProductFormBuildRegimen extends BaseClass {
     this.rootElement.querySelector(
       ".product-price"
     ).innerHTML = this.state.price;
-    this.rootElement.querySelector(
-      ".compare-price"
-    ).innerHTML = this.state.comparePrice;
+    if (this.state.comparePrice.replace(/[^0-9.-]+/g,"") > this.state.price.replace(/[^0-9.-]+/g,"")) {       
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = this.state.comparePrice;
+    } else {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = "";
+    }
     // trigger change purchase option
     const purchase_options = this.rootElement.querySelectorAll("input[type=radio][name=purchase_option]");
     purchase_options[0].checked = true;
@@ -47,9 +53,15 @@ export default class ProductFormBuildRegimen extends BaseClass {
     this.rootElement.querySelector(
       ".product-price"
     ).innerHTML = this.state.price;
-    this.rootElement.querySelector(
-      ".compare-price"
-    ).innerHTML = this.state.comparePrice;
+    if (this.state.comparePrice.replace(/[^0-9.-]+/g,"") > this.state.price.replace(/[^0-9.-]+/g,"")) {      
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = this.state.comparePrice;
+    } else {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = "";
+    }
 
     this.state.sellingPlan = value;
     // add data to checkbox
@@ -66,17 +78,12 @@ export default class ProductFormBuildRegimen extends BaseClass {
   handlePurchaseOptionChange(event) {
     const value = event.target.value;
     const selling_plans = this.rootElement.querySelector(".selling-plans");
-    const price = this.rootElement.querySelector(".product-price");
-    const compare_at_price = this.rootElement.querySelector(".compare-price");
     const variant_selector = this.rootElement.querySelector(".variant-selector");
     if (value === "one-time") {
       this.state = this.rootElement.dataset;
       selling_plans.style.display = "none";
       if (variant_selector)  variant_selector.style.display = "block";
       this.state.sellingPlan = null;
-      // change price to default
-      price.innerHTML = this.state.price;
-      compare_at_price.innerHTML = this.state.comparePrice;
     } else {
       // subscribe & save
       selling_plans.style.display = "block";
@@ -84,8 +91,19 @@ export default class ProductFormBuildRegimen extends BaseClass {
       const first_available_option = this.rootElement.querySelector('option[data-disabled="enabled"]');
       if (first_available_option) first_available_option.selected = true;
       this.state = first_available_option.dataset;
-      price.innerHTML = this.state.price;
-      compare_at_price.innerHTML = this.state.comparePrice;
+    }
+    // change pricing
+    this.rootElement.querySelector(
+      ".product-price"
+    ).innerHTML = this.state.price;
+    if (this.state.comparePrice.replace(/[^0-9.-]+/g,"") > this.state.price.replace(/[^0-9.-]+/g,"")) {      
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = this.state.comparePrice;
+    } else {
+      this.rootElement.querySelector(
+        ".compare-price"
+      ).innerHTML = "";
     }
     // add data to checkbox
     const include = this.rootElement.querySelector("input[type=checkbox]");

@@ -117,7 +117,9 @@ export default class ProductMinoxidil extends BaseClass {
       // remove sticky totals
       this.rootElement.querySelector(".build-totals").classList.remove("sticky-totals");
       included_items.forEach((item, index) => {
-        if (index !== 0) item.checked = false;
+        // if (index !== 0) item.checked = false;
+        item.checked = false;
+        item.disabled = false;
       });
       this.includedCount = 1;
       this.calculateBuildTotal();
