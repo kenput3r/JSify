@@ -122,6 +122,8 @@ export default class ProductFormBuildRegimen extends BaseClass {
         .addEventListener("change", this.handleChange);
     }
     M.Tooltip.init(this.rootElement.querySelector('.tooltipped'));
+    const include = this.rootElement.querySelector("input[type=checkbox]");
+    include.dataset.price = this.state.priceNumber;
     // Purchase Options
     const purchase_options = this.rootElement
       .querySelectorAll("input[type=radio][name=purchase_option]");
