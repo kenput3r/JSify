@@ -5,9 +5,19 @@
 >
   {% section 'Banner-Minoxidil' %}
   <div class="container">
-    <div class="row valign-wrapper">
+    <div class="row">
       <div class="col s12 m6">
-        <img class="responsive-img" src="{{ product.images[0].src | img_url: '800x' }}" alt="{{ product.images[0].alt }}"/>
+        {% comment %} <img 
+          class="responsive-img featured-img"
+          src="{{ product.images[0].src | img_url: '800x' }}" 
+          alt="{{ product.images[0].alt }}"/> {% endcomment %}
+        <img class="featured-img responsive-img modal-trigger"
+          alt="{{ product.images[0].alt | escape }}"
+          data-target="ProductImageModal" 
+          data-src="{{ product.images[0].src | img_url: '800x' }}" 
+          data-small-src="{{ product.images[0].src | img_url: '50x' }}" 
+          data-full-src="{{ product.images[0].src | img_url: '2048x' }}"
+          src="{{ product.images[0]src | img_url: '800x' }}"/>
       </div>
       <div class="col s12 m6">
         <div class="row">
@@ -24,7 +34,21 @@
         </div>
         <div class="row">
           <div class="col s12">
-            {% if product.metafields.suave.short_description %}{{ product.metafields.suave.short_description }}{% endif %}
+            {% if product.metafields.suave.short_description %}{{ product.metafields.suave.short_description }} <span class="display-more">(more info)</span>{% endif %}
+          </div>
+          <div class="col s12 more-info compressed">
+          {% if product.title contains 'Minoxidil' %}
+            {% include 'more_info_minoxidil' %}
+          {% elsif product.title == 'Matte Hair Cream with DHT Blocker' %}
+            {% include 'more_info_matte_hair_cream' %}
+          {% elsif product.title == 'Thickening Shampoo' or product.title == 'Thickening Conditioner' or product.title == 'Thickening Shampoo & Conditioner Set' %}
+            {% include 'more_info_thickening_shampoo_conditioner' %}
+          {% elsif product.title == 'Hair Loss Treatment Kit' %}
+            {% assign display_title = true %}
+            {% include 'more_info_minoxidil' %}
+            {% include 'more_info_matte_hair_cream' %}
+            {% include 'more_info_thickening_shampoo_conditioner' %}
+          {% endif %}
           </div>
         </div>
         <div class="row">
@@ -60,7 +84,6 @@
     <div class="section-wrapper" style="padding: 20px 0;">
       {% assign excluded_product_id = product.id %}
       {% include 'SubscriptionBuildRegimen' %}
-      {% comment %} {% section 'subscription-build-regimen' %} {% endcomment %}
     </div>
     
     <div class="row">
@@ -83,5 +106,33 @@
     
   </div>
   
-  {% include 'HairLossTreatmentInfo' %}
 </div>
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>

@@ -2,7 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <img class="responsive-img" src="{{ product.images[0].src | img_url: '400x' }}" alt="{{ product.images[0].alt }}"/>
+        <img 
+          class="featured-img responsive-img modal-trigger" 
+          data-target="ProductImageModal" 
+          data-src="{{ product.images[0].src | img_url: '400x' }}" 
+          data-small-src="{{ product.images[0].src | img_url: '50x' }}" 
+          data-full-src="{{ product.images[0].src | img_url: '2048x' }}"
+          src="{{ product.images[0].src | img_url: '400x' }}"
+          alt="{{ product.images[0].alt }}"/>
       </div>
       <div class="col s12">
         <div class="row">

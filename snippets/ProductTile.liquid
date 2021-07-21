@@ -34,7 +34,7 @@
     </div>
     <div class="card-content">
       <span class="card-title"><a href="{{ product.url | within: collection }}" class="text-s-red-compliment{%if product.title.size > 40%} tooltipped{%endif%}" data-position="bottom" data-tooltip="{{product.title}}">{{ product.title | truncate: 40 }}</a></span>
-      {% if product.template_suffix == 'minoxidil' or product.template_suffix == 'subscription' or product.template_suffix == 'subscription_v2' %}
+      {% if product.template_suffix == 'minoxidil' or product.template_suffix == 'subscription' %}
         {% include 'ProductFormCompactSubscription' %}
       {% else %}
         {% include 'ProductFormCompact' %}

@@ -17,10 +17,8 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
   {% if product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
     {% assign display = 'hide' %}
   {% endif %}
-  {% if product.template_suffix == 'subscription' %}
+  {% if product.template_suffix == 'subscription' or product.template_suffix == 'minoxidil' %}
     {% include 'ProductFormSubscription' %}
-  {% elsif product.template_suffix == 'subscription_v2' %}
-    {% include 'ProductFormSubscriptionV2' %}
   {% else %}
     {% include 'ProductForm' %}
   {% endif %}

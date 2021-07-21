@@ -1,7 +1,7 @@
 <div id="Build-Regimen" class="build-regimen">
   <h2 class="center-align">BUILD YOUR REGIMEN</h2>
   <div class="row">  
-    {%- for product in collections['hair-loss-treatment'].all_products limit: product_limit -%}
+    {%- for product in collections['hair-loss-prevention'].all_products limit: product_limit -%}
       {% unless excluded_product_id == product.id %}
         <div class="col s12 m6 product-card">
           {% assign grid_sizes = 's12' %}

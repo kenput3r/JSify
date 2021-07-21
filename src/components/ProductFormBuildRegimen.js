@@ -14,7 +14,6 @@ export default class ProductFormBuildRegimen extends BaseClass {
     this.handleChange = this.handleChange.bind(this);
     this.handlePurchaseOptionChange = this.handlePurchaseOptionChange.bind(this);
     this.handleSellingPlanChange = this.handleSellingPlanChange.bind(this);
-    this.handleScrollToTotal = this.handleScrollToTotal.bind(this);
     this.init();
   }
 
@@ -112,23 +111,6 @@ export default class ProductFormBuildRegimen extends BaseClass {
     include.dataset.id = this.state.id;
     this.state.purchaseOption = value;
   }
-  
-  /**
-   * @method handleScrollToTotal - Scrolls page to build total.
-   * @param {event} event 
-   */
-  handleScrollToTotal(event) {
-    if (event.target.checked) {      
-      const target = document.querySelector('.build-totals');
-      const elementPosition = target.offsetTop;
-      const offsetPosition = elementPosition;
-  
-      window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-      });
-    }
-  }
 
   init() {
     this.state = this.rootElement.dataset;
@@ -149,9 +131,6 @@ export default class ProductFormBuildRegimen extends BaseClass {
       selector.addEventListener("change", this.handleSellingPlanChange);
     });
     purchase_options[0].dispatchEvent(new Event('change'));
-    // this.rootElement.querySelectorAll("input[type=checkbox]").forEach(checkbox => {
-    //   checkbox.addEventListener("change", this.handleScrollToTotal)
-    // });
   }
 
   destroy() {
@@ -160,18 +139,5 @@ export default class ProductFormBuildRegimen extends BaseClass {
         .querySelector(".variant-selector")
         .removeEventListener("change", this.handleChange);
     }
-    // Purchase Options
-    this.rootElement
-      .querySelectorAll("input[type=radio][name=purchase_option]").forEach(option => {
-      option.removeListener("change", this.handlePurchaseOptionChange);
-    });
-    this.rootElement
-      .querySelectorAll(".selling-plans").forEach(selector => {
-      selector.removeListener("change", this.handleSellingPlanChange);
-    });
-    // this.rootElement
-    //   .querySelectorAll("input[type=checkbox]").forEach(checkbox => {
-    //   checkbox.removeEventListener("change", this.handleScrollToTotal)
-    // });
   }
 }

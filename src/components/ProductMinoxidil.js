@@ -15,6 +15,8 @@ export default class ProductMinoxidil extends BaseClass {
     this.handleIncludedChange = this.handleIncludedChange.bind(this);
     this.calculateBuildTotal = this.calculateBuildTotal.bind(this);
     this.handleDisplayBuildTotals = this.handleDisplayBuildTotals.bind(this);
+    this.handleDisplayMore = this.handleDisplayMore.bind(this);
+    this.modalOnOpenStart = this.modalOnOpenStart.bind(this);
     this.init();
   }
   
@@ -149,6 +151,10 @@ export default class ProductMinoxidil extends BaseClass {
     });
   }
   
+  /**
+   * @method handleDisplayBuildTotals
+   * @param {event} event 
+   */
   handleDisplayBuildTotals(event) {
     const build_total = this.rootElement.querySelector(".build-totals");
     const included = this.rootElement.querySelectorAll("input[type=checkbox]");
@@ -168,6 +174,9 @@ export default class ProductMinoxidil extends BaseClass {
     }
   }
   
+  /**
+   * @method handleHideBuildTotals
+   */
   handleHideBuildTotals() {
     const build_total = this.rootElement.querySelector(".build-totals");
     const included = this.rootElement.querySelectorAll("input[type=checkbox]");
@@ -180,6 +189,48 @@ export default class ProductMinoxidil extends BaseClass {
         build_total.classList.add("sticky-totals");
       }
     });
+  }
+  
+  /**
+   * @method handleDisplayMore
+   */
+  handleDisplayMore() {
+    const more_info = this.rootElement.querySelector(".more-info");
+    if (more_info.classList.contains("expanded")) {
+      more_info.classList.remove("expanded");
+    } else {
+      more_info.classList.add("expanded");
+    }
+    // if (more_info.style.display === 'none') {
+    //   more_info.style = "block"
+    // } else {
+    //   more_info.style.display = "none";
+    // }
+  }
+  
+  /**
+   * @method modalOnOpenStart - Load the smaller image, blurred, then load the larger image
+   * once it is ready.
+   */
+  modalOnOpenStart() {
+    const fullSrc = event.target.dataset.fullSrc;
+    const smallSrc = event.target.dataset.smallSrc;
+    const alt = event.target.getAttribute('alt');
+    const div = document.querySelector('.modal-image');
+    div.innerHTML = `<img src="${smallSrc} alt="${alt} class="responsive-img preview" />`;
+    const fullImage = new Image();
+    fullImage.src = fullSrc;
+    fullImage.alt = alt;
+    fullImage.className = 'responsive-img';
+    if(fullImage.complete) { 
+    div.innerHTML = '';
+    div.appendChild(fullImage);
+    }else{ 
+      fullImage.onload = () => {
+        div.innerHTML = '';
+        div.appendChild(fullImage);
+      }
+    }
   }
 
   init() {
@@ -204,6 +255,17 @@ export default class ProductMinoxidil extends BaseClass {
     this.rootElement.querySelector('.scroll')
       .addEventListener("click", this.handleScrollToBuild);
     this.handleHideBuildTotals();
+    // display more info
+    this.rootElement.querySelector(".display-more")
+      .addEventListener("click", this.handleDisplayMore);
+    // image modal
+    if(window.innerWidth > 601) {
+      const modal_container = document.querySelector('#ProductImageModal');
+      const modal_options = {
+        onOpenStart: this.modalOnOpenStart
+      }
+      const Modal = M.Modal.init(modal_container, modal_options);
+    }
   }
 
   destroy() {

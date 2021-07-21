@@ -129,6 +129,10 @@ export default class ProductFormSubscription extends BaseClass {
     purchase_options[0].dispatchEvent(new Event('change'));
   }
   
+  /**
+   * @method handleSellingPlanChange
+   * @param {event} event 
+   */
   handleSellingPlanChange(event) {
     const value = event.target.value;
     this.state = event.target.options[event.target.selectedIndex].dataset;
@@ -148,6 +152,10 @@ export default class ProductFormSubscription extends BaseClass {
     this.state.sellingPlan = value;
   }
 
+  /**
+   * @method handlePurchaseOptionChange
+   * @param {event} event 
+   */
   handlePurchaseOptionChange(event) {
     const value = event.target.value;
     const selling_plans = this.rootElement.querySelector(".selling-plans");
@@ -275,16 +283,5 @@ export default class ProductFormSubscription extends BaseClass {
         .querySelector(".add-to-cart")
         .removeEventListener("click", this.handleSubmit);
     }
-    // Purchase Options
-    const purchase_options = this.rootElement
-      .querySelectorAll("input[type=radio][name=purchase_option]");
-    purchase_options.forEach(option => {
-      option.removeListener("change", this.handlePurchaseOptionChange);
-    });
-    const selling_plan_selectors = this.rootElement
-      .querySelectorAll(".selling-plans");
-    selling_plan_selectors.forEach(selector => {
-      selector.removeListener("change", this.handleSellingPlanChange);
-    });
   }
 }

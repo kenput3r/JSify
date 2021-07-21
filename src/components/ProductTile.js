@@ -17,10 +17,10 @@ export default class ProductTile extends BaseClass {
     M.Tooltip.init(this.rootElement.querySelector('.tooltipped'));
     const form = this.rootElement.querySelector('.product-form');
     const product_template = this.rootElement.dataset.template;
-    if (product_template === 'subscription' || product_template === 'subscription_v2') {
-      const NewProductForm = new ProductFormCompactSubscription(form, {ProductTile: this.rootElement});
+    if (product_template === 'subscription' || product_template === 'minoxidil') {
+      new ProductFormCompactSubscription(form, {ProductTile: this.rootElement});
     } else {
-      const NewProductForm = new ProductForm(form, {ProductTile: this.rootElement}); 
+      new ProductForm(form, {ProductTile: this.rootElement}); 
     }
   }
 }

@@ -3,7 +3,6 @@ import insertDrawerContent from '../utils/insertDrawerContent';
 import insertDrawerPlaceholder from '../utils/insertDrawerPlaceholder';
 import ProductForm from '../components/ProductForm';
 import ProductFormSubscription from '../components/ProductFormSubscription';
-import ProductFormSubscriptionv2 from '../components/ProductFormSubscriptionV2';
 import ProductReviews from '../components/ProductReviews';
 //import renderSnptScript from '../utils/renderSnptScript';
 import ProductReviewForm from './ProductReviewForm';
@@ -74,10 +73,8 @@ export default class ProductDrawer extends BaseClass {
     const carousel_container = this.rootElement.querySelector('.product-carousel');
     this.Carousel = new ProductCarousel(carousel_container);
     const form = this.rootElement.getElementsByClassName('product-form')[0];
-    if (product_template === 'subscription') {
-      this.ProductForm = new ProductFormSubscription(form, {Carousel: this.Carousel});
-    } else if (product_template === 'subscription_v2') {
-      this.ProductForm = new ProductFormSubscriptionv2(form, {Carousel: this.Carousel});
+    if (product_template === 'subscription' || product_template === 'minoxidil') {
+      this.ProductForm = new ProductFormSubscription(form, { Carousel: this.Carousel });
     } else {     
       this.ProductForm = new ProductForm(form, {Carousel: this.Carousel});
     }

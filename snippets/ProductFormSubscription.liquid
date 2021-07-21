@@ -83,7 +83,7 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
 {% endif %}
   
   <div class="row">
-    <div class="col s12 m6">
+    <div class="input-field col s12 m6">
     {% comment %} ALL SELLING PLANS IN VARIANT DROPDOWN {% endcomment %}
       <select class="selling-plans selling-plan-selector" name="selling_plan" style="display: none;">
         {% for variant in product.variants %}
