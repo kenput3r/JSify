@@ -73,8 +73,10 @@ export default class ProductDrawer extends BaseClass {
     const carousel_container = this.rootElement.querySelector('.product-carousel');
     this.Carousel = new ProductCarousel(carousel_container);
     const form = this.rootElement.getElementsByClassName('product-form')[0];
-    if (product_template === 'subscription' || product_template === 'minoxidil') {
+    if (product_template === 'subscription') {
       this.ProductForm = new ProductFormSubscription(form, { Carousel: this.Carousel });
+    } else if(product_template === 'minoxidil') {
+      this.ProductForm = new ProductFormSubscription(form);
     } else {     
       this.ProductForm = new ProductForm(form, {Carousel: this.Carousel});
     }

@@ -7,10 +7,6 @@
   <div class="container">
     <div class="row">
       <div class="col s12 m6">
-        {% comment %} <img 
-          class="responsive-img featured-img"
-          src="{{ product.images[0].src | img_url: '800x' }}" 
-          alt="{{ product.images[0].alt }}"/> {% endcomment %}
         <img class="featured-img responsive-img modal-trigger"
           alt="{{ product.images[0].alt | escape }}"
           data-target="ProductImageModal" 
@@ -73,18 +69,10 @@
         {% endif %}
       </div>
     </div>
-
-    {% comment %} <div class="row">
-      <div class="col s12 center-align fbt-container">
-
-      </div>
-    </div> {% endcomment %}
     
-
     <div class="section-wrapper" style="padding: 20px 0;">
       {% assign excluded_product_id = product.id %}
       {% include 'SubscriptionBuildRegimen' %}
-    </div>
     
     <div class="row">
       <div class="divider"></div>
@@ -104,6 +92,27 @@
       </div>
     </div>
     
+    <div class="row" style="display: none;">
+      <div class="col s12 center-align fbt-container">
+
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="container">
+    {% assign review_count = product.metafields.yotpo['reviews_count'] | plus: 0 %}
+    {% if review_count > 0 %}
+    <h3>REVIEWS</h3>
+    {% else %}
+    <h3>LEAVE A REVIEW</h3>
+    {% endif %}
+    <div class="row">
+      <div class="col s12 center-align"><a href="#TemplateProductReviewForm" class="modal-trigger color-s-red"><i class="material-icons">edit</i> WRITE REVIEW</a></div>
+    </div>
+    <div class="product-reviews" data-s-module="ProductReviews" data-product_id="{{product.id}}"></div>
+    {% assign id = 'TemplateProductReviewForm' %}
+    {% include 'ReviewModal' %}
   </div>
   
 </div>

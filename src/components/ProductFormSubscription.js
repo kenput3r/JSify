@@ -125,8 +125,10 @@ export default class ProductFormSubscription extends BaseClass {
     }
     // trigger change purchase option
     const purchase_options = this.rootElement.querySelectorAll("input[type=radio][name=purchase_option]");
-    purchase_options[0].checked = true;
-    purchase_options[0].dispatchEvent(new Event('change'));
+    if (purchase_options.length > 0) {      
+      purchase_options[0].checked = true;
+      purchase_options[0].dispatchEvent(new Event('change'));
+    }
   }
   
   /**
@@ -161,38 +163,42 @@ export default class ProductFormSubscription extends BaseClass {
     const selling_plans = this.rootElement.querySelector(".selling-plans");
     const variant_selector = this.rootElement.querySelector(".variant-selector");
     const quantity_selector = this.rootElement.querySelector(".quantity-selector");
-    if (value === "one-time") {
-      this.state = this.rootElement.dataset;
-      quantity_selector.disabled = false;
-      selling_plans.style.display = "none";
-      if (variant_selector)  variant_selector.style.display = "block";
-      this.state.sellingPlan = null;
-    } else {
-      // subscribe & save
-      selling_plans.style.display = "block";
-      if (variant_selector) variant_selector.style.display = "none";
-      const first_available_option = this.rootElement.querySelector('option[data-disabled="enabled"]');
-      if (first_available_option) first_available_option.selected = true;
-      this.state = first_available_option.dataset;
-      // disable quantity selector
-      quantity_selector.selectedIndex = 0;
-      quantity_selector.dispatchEvent(new Event('change'));
-      quantity_selector.disabled = true;
-    }
-    // change pricing
-    this.rootElement.querySelector(
-      ".product-price"
-    ).innerHTML = this.state.price;
-    if (this.state.comparePrice.replace(/[^0-9.-]+/g, "") > this.state.price.replace(/[^0-9.-]+/g, "")) {
+    if (selling_plans) {      
+      if (value === "one-time") {
+        this.state = this.rootElement.dataset;
+        quantity_selector.disabled = false;
+        selling_plans.style.display = "none";
+        if (variant_selector)  variant_selector.style.display = "block";
+        this.state.sellingPlan = null;
+      } else {
+        // subscribe & save
+        selling_plans.style.display = "block";
+        if (variant_selector) variant_selector.style.display = "none";
+        const first_available_option = this.rootElement.querySelector('option[data-disabled="enabled"]');
+        if (first_available_option) first_available_option.selected = true;
+        this.state = first_available_option.dataset;
+        // disable quantity selector
+        if (quantity_selector) {        
+          quantity_selector.selectedIndex = 0;
+          quantity_selector.dispatchEvent(new Event('change'));
+          quantity_selector.disabled = true;
+        }
+      }
+      // change pricing
       this.rootElement.querySelector(
-        ".compare-price"
-      ).innerHTML = this.state.comparePrice;
-    } else {
-      this.rootElement.querySelector(
-        ".compare-price"
-      ).innerHTML = "";
+        ".product-price"
+      ).innerHTML = this.state.price;
+      if (this.state.comparePrice.replace(/[^0-9.-]+/g, "") > this.state.price.replace(/[^0-9.-]+/g, "")) {
+        this.rootElement.querySelector(
+          ".compare-price"
+        ).innerHTML = this.state.comparePrice;
+      } else {
+        this.rootElement.querySelector(
+          ".compare-price"
+        ).innerHTML = "";
+      }
+      this.state.purchaseOption = value;
     }
-    this.state.purchaseOption = value;
   }
   
   /**
@@ -260,15 +266,19 @@ export default class ProductFormSubscription extends BaseClass {
     // Purchase Options
     const purchase_options = this.rootElement
       .querySelectorAll("input[type=radio][name=purchase_option]");
-    purchase_options.forEach(option => {
-      option.addEventListener("change", this.handlePurchaseOptionChange);
-    });
+    if (purchase_options.length > 0) {      
+      purchase_options.forEach(option => {
+        option.addEventListener("change", this.handlePurchaseOptionChange);
+      });
+      purchase_options[0].dispatchEvent(new Event('change'));
+    }
     const selling_plan_selectors = this.rootElement
       .querySelectorAll(".selling-plans");
-    selling_plan_selectors.forEach(selector => {
-      selector.addEventListener("change", this.handleSellingPlanChange);
-    });
-    purchase_options[0].dispatchEvent(new Event('change'));
+    if (selling_plan_selectors.length > 0) {      
+      selling_plan_selectors.forEach(selector => {
+        selector.addEventListener("change", this.handleSellingPlanChange);
+      });
+    }
   }
 
   destroy() {

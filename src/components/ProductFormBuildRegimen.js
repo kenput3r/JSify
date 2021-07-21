@@ -38,8 +38,10 @@ export default class ProductFormBuildRegimen extends BaseClass {
     }
     // trigger change purchase option
     const purchase_options = this.rootElement.querySelectorAll("input[type=radio][name=purchase_option]");
-    purchase_options[0].checked = true;
-    purchase_options[0].dispatchEvent(new Event('change'));
+    if (purchase_options.length > 0) {      
+      purchase_options[0].checked = true;
+      purchase_options[0].dispatchEvent(new Event('change'));
+    }
   }
   
   /**
@@ -123,14 +125,19 @@ export default class ProductFormBuildRegimen extends BaseClass {
     // Purchase Options
     const purchase_options = this.rootElement
       .querySelectorAll("input[type=radio][name=purchase_option]");
-    purchase_options.forEach(option => {
-      option.addEventListener("change", this.handlePurchaseOptionChange);
-    });
-    this.rootElement
-      .querySelectorAll(".selling-plans").forEach(selector => {
-      selector.addEventListener("change", this.handleSellingPlanChange);
-    });
-    purchase_options[0].dispatchEvent(new Event('change'));
+    if (purchase_options.length > 0) {      
+      purchase_options.forEach(option => {
+        option.addEventListener("change", this.handlePurchaseOptionChange);
+      });
+      purchase_options[0].dispatchEvent(new Event('change'));
+    }
+    const selling_plans = this.rootElement
+      .querySelectorAll(".selling-plans");
+    if (selling_plans.length > 0) {      
+      selling_plans.forEach(selector => {
+        selector.addEventListener("change", this.handleSellingPlanChange);
+      });
+    }
   }
 
   destroy() {

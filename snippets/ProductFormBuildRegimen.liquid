@@ -54,14 +54,14 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
 {%if product.available%}data-available="{{product.available}}"{%endif%}
 {%if product.variants.size > 1%}data-has-variants="true"{%endif%}
 >
-
 {% comment %}START SELLING PLAN{% endcomment %}
 {% assign has_subscriptions = false %}
 {% if product.selling_plan_groups.size > 0 %}
   {% assign has_subscriptions = true %}
 {% endif %}
-{% if has_subscriptions %}
-  <div class="row purchase-options">
+<div class="row purchase-options">
+  {% comment %} <div class="col s12">{% include 'ProductStarRating' %}</div> {% endcomment %}
+  {% if has_subscriptions %}
     <div class="col s12">
       <fieldset>
       <legend>Purchase Options</legend>
@@ -80,8 +80,8 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
         </label>
       </p>
     </div>
-  </div>
-{% endif %}
+  {% endif %}
+</div>
   
   <div class="row">
     <div class="col s12">
