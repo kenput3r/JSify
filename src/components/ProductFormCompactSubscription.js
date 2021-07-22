@@ -179,10 +179,12 @@ export default class ProductFormCompactSubscription extends BaseClass {
     M.Tooltip.init(this.rootElement.querySelector('.tooltipped'));
     const selling_plan_selector = this.rootElement
       .querySelector(".selling-plan-selector");
-    selling_plan_selector.addEventListener("change", this.handleChange);
-    if (this.state.requiresSellingPlan === 'true') {      
-      selling_plan_selector.selectedIndex = 0;
-      selling_plan_selector.dispatchEvent(new Event('change'));
+    if (selling_plan_selector) {      
+      selling_plan_selector.addEventListener("change", this.handleChange);
+      if (this.state.requiresSellingPlan === 'true') {      
+        selling_plan_selector.selectedIndex = 0;
+        selling_plan_selector.dispatchEvent(new Event('change'));
+      }
     }
   }
 

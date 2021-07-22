@@ -117,7 +117,6 @@ export default class ProductReviews extends BaseClass {
    * @param {number} next_page - The reviews page number to fetch
    */
   viewMoreButton(next_page) {
-    console.log('BUILD THE BUTTON')
     //Build the button
     const button = document.createElement('DIV');
     button.classList.add('row', 'button-container');
