@@ -25,10 +25,10 @@ export default class ProductMinoxidil extends BaseClass {
    */
   calculateBuildTotal() {
     const build_price_total = this.rootElement.querySelector('.build-total-price');
-    const included_items = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included_items = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included_items.length > 0) {      
       let new_total = 0;
-      included_items.forEach(item => {
+      included_items.forEach((item, index) => {
         if (item.checked) {        
           const price = parseInt(item.dataset.price);
           new_total += price;
@@ -43,7 +43,7 @@ export default class ProductMinoxidil extends BaseClass {
    * @method handleIncludedPriceChange - Triggers price recalculation.
    */
   handleIncludedPriceChange() {
-    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included.length > 0) {      
       included.forEach(checkbox => {
         // Select the node that will be observed for mutations
@@ -85,7 +85,7 @@ export default class ProductMinoxidil extends BaseClass {
    */
   async handleSubmit(event) {
     event.preventDefault();
-    const included_items = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included_items = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included_items.length > 0) {
       let products = [];
       included_items.forEach(item => {
@@ -163,7 +163,7 @@ export default class ProductMinoxidil extends BaseClass {
    */
   handleDisplayBuildTotals(event) {
     const build_total = this.rootElement.querySelector(".build-totals");
-    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included.length > 0) {      
       const trigger = included[included.length - 1];
       // show
@@ -187,7 +187,7 @@ export default class ProductMinoxidil extends BaseClass {
    */
   handleHideBuildTotals() {
     const build_total = this.rootElement.querySelector(".build-totals");
-    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included.length > 0) {      
       const trigger = included[included.length - 1];
       window.addEventListener("scroll", () => {
@@ -253,7 +253,7 @@ export default class ProductMinoxidil extends BaseClass {
       }
     }
     M.Tooltip.init(this.rootElement.querySelector(".tooltipped"));
-    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included.length > 0) {      
       included.forEach(checkbox => {
         checkbox.addEventListener("change", this.handleIncludedChange);
@@ -294,7 +294,7 @@ export default class ProductMinoxidil extends BaseClass {
         });
       }
     }
-    const included = this.rootElement.querySelectorAll("input[type=checkbox]");
+    const included = this.rootElement.querySelectorAll("input.include[type=checkbox]");
     if (included.length > 0) {      
       included.forEach(checkbox => {
         checkbox.removeEventListener("change", this.handleIncludedChange);

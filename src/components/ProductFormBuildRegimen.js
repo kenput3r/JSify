@@ -66,7 +66,7 @@ export default class ProductFormBuildRegimen extends BaseClass {
 
     this.state.sellingPlan = value;
     // add data to checkbox
-    const include = this.rootElement.querySelector("input[type=checkbox]");
+    const include = this.rootElement.querySelector("input.include[type=checkbox]");
     include.dataset.price = this.state.priceNumber;
     include.dataset.sellingPlan = this.state.sellingPlan;
     include.dataset.id = this.state.id;
@@ -107,7 +107,7 @@ export default class ProductFormBuildRegimen extends BaseClass {
       ).innerHTML = "";
     }
     // add data to checkbox
-    const include = this.rootElement.querySelector("input[type=checkbox]");
+    const include = this.rootElement.querySelector("input.include[type=checkbox]");
     include.dataset.price = this.state.priceNumber;
     include.dataset.sellingPlan = this.state.sellingPlan;
     include.dataset.id = this.state.id;
@@ -122,7 +122,7 @@ export default class ProductFormBuildRegimen extends BaseClass {
         .addEventListener("change", this.handleChange);
     }
     M.Tooltip.init(this.rootElement.querySelector('.tooltipped'));
-    const include = this.rootElement.querySelector("input[type=checkbox]");
+    const include = this.rootElement.querySelector("input.include[type=checkbox]");
     include.dataset.price = this.state.priceNumber;
     // Purchase Options
     const purchase_options = this.rootElement

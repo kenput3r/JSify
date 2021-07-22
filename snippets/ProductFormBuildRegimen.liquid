@@ -230,7 +230,7 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
         <label>
           <input
             type="checkbox"
-            class="filled-in" 
+            class="filled-in include" 
             {%if checked %}checked{% endif %}
             {%if checked %}disabled{% endif %}
             data-id="{{ product.selected_or_first_available_variant.id }}"
@@ -243,7 +243,7 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
         <label>
           <input
             type="checkbox"
-            class="filled-in" 
+            class="filled-in include" 
             disabled
             data-id="{{ product.selected_or_first_available_variant.id }}"
             data-selling-plan=""
