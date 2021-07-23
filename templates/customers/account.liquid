@@ -3,7 +3,7 @@
 {% assign has_subscriptions = false %}
 {% for order in customer.orders %}
   {% for line_item in order.line_items | limit: 4 %}
-    {% if line_item.selling_plan_allocation != "" %}
+    {% if line_item.selling_plan_allocation != blank %}
       {% assign has_subscriptions = true %}
     {% endif %}
   {% endfor %}
