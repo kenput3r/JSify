@@ -24,9 +24,11 @@ export default class ProductFormBuildRegimen extends BaseClass {
    */
   handleChange(event) {
     this.state = event.target.options[event.target.selectedIndex].dataset;
+    const include = this.rootElement.querySelector("input.include[type=checkbox]");
     this.rootElement.querySelector(
       ".product-price"
     ).innerHTML = this.state.price;
+    include.dataset.price = this.state.priceNumber;
     if (this.state.comparePrice.replace(/[^0-9.-]+/g,"") > this.state.price.replace(/[^0-9.-]+/g,"")) {       
       this.rootElement.querySelector(
         ".compare-price"
@@ -37,11 +39,11 @@ export default class ProductFormBuildRegimen extends BaseClass {
       ).innerHTML = "";
     }
     // trigger change purchase option
-    const purchase_options = this.rootElement.querySelectorAll("input[type=radio][name=purchase_option]");
-    if (purchase_options.length > 0) {      
-      purchase_options[0].checked = true;
-      purchase_options[0].dispatchEvent(new Event('change'));
-    }
+    // const purchase_options = this.rootElement.querySelectorAll("input[type=radio][name=purchase_option]");
+    // if (purchase_options.length > 0) {      
+    //   purchase_options[0].checked = true;
+    //   purchase_options[0].dispatchEvent(new Event('change'));
+    // }
   }
   
   /**
@@ -85,6 +87,8 @@ export default class ProductFormBuildRegimen extends BaseClass {
       selling_plans.style.display = "none";
       if (variant_selector)  variant_selector.style.display = "block";
       this.state.sellingPlan = null;
+      variant_selector.options[0].selected = true;
+      variant_selector[0].dispatchEvent(new Event('change'));
     } else {
       // subscribe & save
       selling_plans.style.display = "block";
