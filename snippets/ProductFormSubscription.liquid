@@ -1,0 +1,257 @@
+{%- assign product_price = product.selected_or_first_available_variant.price -%}
+{%- assign product_compare_price = product.selected_or_first_available_variant.compare_at_price -%}
+
+{%- comment %}
+  SET BUTTON TEXT TO PRE-ORDER OR ADD TO CART
+{%- endcomment %}
+{%- assign button_text = 'Add To Cart' -%}
+{%- for tag in product.tags -%}
+  {%- assign TAG = tag | upcase -%}
+  {%- if TAG == 'PREORDER' -%}
+    {%- assign button_text = 'Pre-Order' -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign is_percent_off = false -%}
+{%- assign is_bogo = false -%}
+{%- assign is_b2g1f = false -%}
+{%- assign is_cyber_monday = false -%}
+{%- assign discount_multiplier = 1 -%}
+{%- for tag in product.tags -%}
+  {%- if tag == settings.sale_tag -%}
+    {%- assign is_percent_off = true -%}
+    {%- assign discount_multiplier = settings.sale_discount -%}
+    {%- assign discount_multiplier = discount_multiplier | times: 0.01 -%}
+    {%- assign discount_multiplier = 1 | minus: discount_multiplier -%}
+  {%- endif -%}
+  {%- assign TAG = tag | upcase -%}
+  {%- if TAG == 'BOGO' -%}
+    {%- assign is_bogo = true -%}
+  {%- elsif TAG == 'B2G1F' -%}
+    {%- assign is_b2g1f = true -%}
+  {%- elsif TAG == 'CYBERMONDAY' -%}
+    {%- assign is_cyber_monday = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if is_percent_off -%}
+  {%- assign product_compare_price = product_price -%}
+  {%- assign product_price = product_price | times: discount_multiplier -%}
+  {%- assign product_price = product_price | ceil -%}
+{%- endif -%}
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-page-{{paginate.current_page}} {{display}}"
+data-s-module="ProductFormSubscription"
+data-id="{{ product.selected_or_first_available_variant.id }}" 
+data-price="{{ product_price | money_with_currency | strip_html }}"
+data-compare-price="{{ product_compare_price | money_with_currency | strip_html }}"
+data-inventory-quantity="{{ product.selected_or_first_available_variant.inventory_quantity }}"
+data-image="{{ product.selected_or_first_available_variant.image }}"
+data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
+{%if is_bogo %}data-is-bogo="true"{%endif%}
+{%if is_b2g1f %}data-is-b2g1f="true"{%endif%}
+{%if product.available%}data-available="{{product.available}}"{%endif%}
+{%if product.variants.size > 1%}data-has-variants="true"{%endif%}
+>
+{% comment %}START SELLING PLAN{% endcomment %}
+{% assign has_subscriptions = false %}
+{% if product.selling_plan_groups.size > 0 %}
+  {% assign has_subscriptions = true %}
+{% endif %}
+<div class="row purchase-options">
+  {% if has_subscriptions %}
+    {% comment %} <div class="col s12">{% include 'ProductStarRating' %}</div> {% endcomment %}
+    <div class="col s12">
+      <fieldset>
+      <legend>Purchase Options</legend>
+      {% unless product.requires_selling_plan %}
+      <p>
+        <label>
+          <input class="purchase-option with-gap" name="purchase_option" type="radio" value="one-time" checked />
+          <span>One-Time Purchase</span>
+        </label>
+      </p>
+      {% endunless %}
+      <p>
+        <label>
+          <input class="purchase-option with-gap" name="purchase_option" type="radio" value="subscribe" {% if product.requires_selling_plan %}checked{% endif %}/>
+          <span>Subscribe</span>
+        </label>
+      </p>
+    </div>
+  {% endif %}
+</div>
+  
+  <div class="row">
+    <div class="input-field col s12 m6">
+    {% comment %} ALL SELLING PLANS IN VARIANT DROPDOWN {% endcomment %}
+      <select class="selling-plans selling-plan-selector" name="selling_plan" style="display: none;">
+        {% for variant in product.variants %}
+          {% if variant.image.product_id %}
+            {% assign variant_image = variant.image | img_url: '400x' %}
+          {% else %}
+            {% assign variant_image = 'no-image' %}
+          {% endif %}
+          <optgroup {% if variant.title != 'Default Title' %}label="{{ variant.title }}"{% else %}label="{{ product.title }}"{% endif %}>
+            {% for allocation in variant.selling_plan_allocations %}
+              {% if variant.available %}
+                <option value="{{ allocation.selling_plan.id }}" 
+                  data-id="{{ variant.id }}" 
+                  data-price="{{ allocation.price | money_with_currency | strip_html }}" 
+                  data-compare-price="{{ variant.price | money_with_currency | strip_html }}"
+                  data-inventory-quantity="{{ variant.inventory_quantity }}"
+                  data-image="{{ variant_image }}"
+                  data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
+                  data-selling-plan="{{ allocation.selling_plan.id }}"
+                  data-disabled="enabled"
+                >
+                  {% if variant.title != 'Default Title' %}{{ variant.title }} - {% endif %}{{ allocation.selling_plan.name }}
+                </option>
+              {% else %}
+                <option value="{{ allocation.selling_plan.id }}" 
+                  data-id="{{ variant.id }}" 
+                  data-price="{{ allocation.price | money_with_currency | strip_html }}" 
+                  data-compare-price="{{ variant.price | money_with_currency | strip_html }}"
+                  data-inventory-quantity="{{ variant.inventory_quantity }}"
+                  data-image="{{ variant_image }}"
+                  data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
+                  data-selling-plan="{{ allocation.selling_plan.id }}"
+                  data-disabled="disabled"
+                  {%unless variant.available%}disabled="disabled"{%endunless%}
+                >
+                  {% if variant.title != 'Default Title' %}{{ variant.title }} - {% endif %}{{ allocation.selling_plan.name }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+      </select>
+      {% comment %} ALL SELLING PLANS IN VARIANT DROPDOWN {% endcomment %}
+      {% unless product.variants.size == 1 or product.requires_selling_plan %}
+      <select class="product-option variant-selector" aria-label="Product Options{% for option in product.options %} - {{option}}{% endfor %}">
+        {% for variant in product.variants %}
+          {% if variant.image.product_id %}
+            {% assign variant_image = variant.image | img_url: '400x' %}
+          {% else %}
+            {% assign variant_image = 'no-image' %}
+          {% endif %}
+          {% if variant.available %}
+            {%- assign variant_price = variant.price -%}
+            {%- assign variant_compare_at_price = variant.compare_at_price -%}
+            {%- if is_percent_off -%}
+              {%- assign variant_compare_at_price = variant_price -%}
+              {%- assign variant_price = variant_price | times: discount_multiplier -%}
+              {%- assign variant_price = variant_price | ceil -%}
+            {%- endif -%}
+            <option value="{{ variant.id }}"
+            data-id="{{ variant.id }}" 
+            data-price="{{ variant_price | money_with_currency | strip_html }}"
+            data-compare-price="{{ variant_compare_at_price | money_with_currency | strip_html }}"
+            data-inventory-quantity="{{ variant.inventory_quantity }}"
+            data-image="{{ variant_image }}"
+            data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
+            >
+              {{ variant.title }}
+            </option>
+          {% else %}
+            <option disabled="disabled">
+              {{ variant.title }} - sold out
+            </option>
+          {% endif %}
+        {% endfor %}
+        {% comment %}
+            used for back in stock notifications
+        {% endcomment %}
+        {% for variant in product.variants %}
+          {% if variant.image.product_id %}
+            {% assign variant_image = variant.image | img_url: 'large' %}
+          {% else %}
+            {% assign variant_image = 'no-image' %}
+          {% endif %}
+          {% unless variant.available %}
+            <option value="{{ variant.id }}"
+            data-id="{{ variant.id }}"
+            data-variant-id="{{ variant.id }}" 
+            data-price="{{ variant.price | money_with_currency | strip_html }}"
+            data-compare-price="{{ variant.compare_at_price | money_with_currency | strip_html }}"
+            data-inventory-quantity="0"
+            data-image="{{ variant_image }}"
+            data-disable-add-to-cart="true"
+            data-product-title="{{product.title}}"
+            data-variant-title="{{variant.title}}"
+            data-product-id="{{product.id}}"
+            data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
+            {% for allocation in variant.selling_plan_allocations %}
+              data-selling-plan-{{ allocation.selling_plan.id }}="{{ allocation.price }}"
+            {% endfor %}
+            >
+              {{ variant.title }} - Notify me when back in stock
+            </option>
+          {% endunless %}
+        {% endfor %}
+      </select>
+      {% endunless %}
+    </div>
+    <div class="input-field col s12 m6">
+      {% if product.available %}
+      <select class="product-option quantity-selector" aria-label="Quantity to purchase">
+        {% if product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+          {% assign x = 30 %}
+        {% elsif product.selected_or_first_available_variant.inventory_quantity < 30 %}
+          {% assign x = product.selected_or_first_available_variant.inventory_quantity %}
+        {% else %}
+          {% assign x = 30 %}
+        {% endif %}
+        {% if product.metafields.suave.max_purchase_quantity %}
+          {% assign x = product.metafields.suave.max_purchase_quantity %}
+        {% endif %}
+        {% for i in (1..x) %}
+          {%- if is_bogo -%}
+            {%- assign modulos = i | modulo: 2 -%}
+            {%- if modulos == 0 -%}
+              <option value="{{i}}">{{i}}</option>
+            {%- endif -%}
+          {%- else -%}
+            <option value="{{i}}">{{i}}</option>
+          {%- endif -%}
+        {% endfor %}
+      </select>
+      {% endif %}
+    </div>
+    {%- if is_bogo and settings.show_buy_offer_tags %}
+      <div class="col s6 m3 right-align">
+        <span style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;">BOGO</span>
+      </div>
+    {%- elsif is_b2g1f and settings.show_buy_offer_tags -%}
+      <div class="col s6 m3 right-align">
+        <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 3 items with this tag and the third item will be free at checkout!">B2G1F <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
+      </div>
+    {%- elsif is_cyber_monday and settings.show_buy_offer_tags -%}
+      <div class="col s6 m3 right-align">
+        <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 2 items with this tag and the second item will be free at checkout!">BOGO <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
+      </div>
+    {%- endif -%}
+    <div class="col s6 m3 right-align compare-price" {%-if is_bogo or is_b2g1f or is_cyber_monday -%} style="display:none;"{%-endif-%}>
+      {%- assign compare_price = product_compare_price -%}
+      {% if compare_price and compare_price != product_price %}
+        {{ compare_price | money }}
+      {% endif %}
+    </div>
+    <div class="col s6 m3 center-align">
+      <span class="product-price">{{ product_price | money }}</span>
+    </div>
+    <div class="col s6 xs12 small-only-left-50">
+      {% if product.available %}
+      <button class="btn waves-effect waves-light w100 add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
+      {% else %}
+      <button class="waves-effect waves-teal btn-flat w100" disabled="true">SOLD OUT</button>
+      <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
+      {% endif %}
+    </div>
+    {% if product.metafields.suave['estimated_ship_date'] %}
+      <div class='col s12 right-align' style="padding-top: 10px;">
+        <span style="background-color:#fab203;font-weight:bold">Estimated Ship Date: {{ product.metafields.suave['estimated_ship_date'] }}</span>
+      </div>
+    {% endif %}
+  </div>
+</form>

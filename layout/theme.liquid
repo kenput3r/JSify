@@ -66,7 +66,9 @@
   <script src="{{ 'dayjs.min.js' | asset_url }}" data-cookieconsent="ignore"></script>
   <script name="MainJS" type="text/javascript" src="{{'main.js' | asset_url}}" data-cookieconsent="ignore"></script>
   {% if template.name contains 'product' %}
-    {% include 'SetSliderHeight' %}
+  	{% unless template.suffix == 'minoxidil' or template.suffix == 'subscription' %}
+      {% include 'SetSliderHeight' %}
+  	{% endunless %}
   {% endif %}
   
   <script src="//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=suavecito.myshopify.com"></script>

@@ -17,7 +17,11 @@ data-image="{{ product.featured_image.src | img_url: 'large' }}"
   {% if product.id == 3948242763859 or product.id == 2535605207123 or product.id == 2535605567571 %}
     {% assign display = 'hide' %}
   {% endif %}
-  {% include 'ProductForm' %}
+  {% if product.template_suffix == 'subscription' or product.template_suffix == 'minoxidil' %}
+    {% include 'ProductFormSubscription' %}
+  {% else %}
+    {% include 'ProductForm' %}
+  {% endif %}
   <div class="row">
     <div class="col padding-none">{{ product.description }}</div>
   </div>

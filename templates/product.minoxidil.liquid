@@ -1,0 +1,147 @@
+<div id="Product-Minoxidil"
+  data-s-module="ProductMinoxidil"
+  {%if product.available%}data-available="{{product.available}}"{%endif%}
+  data-price="{{ product_price | money_with_currency | strip_html }}"
+>
+  {% section 'Banner-Minoxidil' %}
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6">
+        <img class="featured-img responsive-img modal-trigger"
+          alt="{{ product.images[0].alt | escape }}"
+          data-target="ProductImageModal" 
+          data-src="{{ product.images[0].src | img_url: '800x' }}" 
+          data-small-src="{{ product.images[0].src | img_url: '50x' }}" 
+          data-full-src="{{ product.images[0].src | img_url: '2048x' }}"
+          src="{{ product.images[0]src | img_url: '800x' }}"/>
+      </div>
+      <div class="col s12 m6">
+        <div class="row">
+          <div class="col">
+            <h1>
+              {{ product.title }}
+            </h1>
+            {% if product.metafields.suave.product_size %}
+            <h5>
+              {{ product.metafields.suave.product_size }}
+            </h5>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            {% if product.metafields.suave.short_description %}{{ product.metafields.suave.short_description }} <span class="display-more">(more info)</span>{% endif %}
+          </div>
+          <div class="col s12 more-info compressed">
+          {% if product.title contains 'Minoxidil' %}
+            {% include 'more_info_minoxidil' %}
+          {% elsif product.title == 'Matte Hair Cream with DHT Blocker' %}
+            {% include 'more_info_matte_hair_cream' %}
+          {% elsif product.title == 'Thickening Shampoo' or product.title == 'Thickening Conditioner' or product.title == 'Thickening Shampoo & Conditioner Set' %}
+            {% include 'more_info_thickening_shampoo_conditioner' %}
+          {% elsif product.title == 'Hair Loss Treatment Kit' %}
+            {% assign display_title = true %}
+            {% include 'more_info_minoxidil' %}
+            {% include 'more_info_matte_hair_cream' %}
+            {% include 'more_info_thickening_shampoo_conditioner' %}
+          {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            {% assign checked = 'checked' %}
+            {% include 'ProductFormBuildRegimen' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col s12">
+        {% if product.available %}
+        <div class="right-align">        
+          <button class="btn waves-effect waves-light add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
+          <button data-target="#Build-Regimen" class="btn-flat waves-effect waves-light scroll" type="button" name="build">Or Build Regimen</button>
+        </div>
+        {% else %}
+        <button class="waves-effect waves-teal btn-flat" disabled="true">SOLD OUT</button>
+        <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="section-wrapper" style="padding: 20px 0;">
+      {% assign excluded_product_id = product.id %}
+      {% include 'SubscriptionBuildRegimen' %}
+    
+    <div class="row">
+      <div class="divider"></div>
+    </div>
+    
+    <div class="row build-totals">
+      <div class="col s12">
+        <div class="totals center-align">
+          <span class="build-total-title">YOUR TOTAL: </span><span class="build-total-price" data-price="{{ product.price }}">{{ product_price | money_with_currency | strip_html }}</span><br/>
+          {% if product.available %}
+          <button class="btn waves-effect waves-light add-to-cart background-s-red" type="submit" name="add">{{ button_text }}</button>
+          {% else %}
+          <button class="waves-effect waves-teal btn-flat" disabled="true">SOLD OUT</button>
+          <a href="#BisModal" class="btn-flat waves-effect waves-light w100 modal-trigger bis-modal-trigger color-s-red center-align" data-variant-id="{{product.selected_or_first_available_variant.id}}" data-product-title="{{product.title}}" data-variant-title="{{variant.title}}" data-product-id="{{product.id}}">NOTIFY WHEN BACK IN STOCK</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="row" style="display: none;">
+      <div class="col s12 center-align fbt-container">
+
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="container">
+    {% assign review_count = product.metafields.yotpo['reviews_count'] | plus: 0 %}
+    {% if review_count > 0 %}
+    <h3>REVIEWS</h3>
+    {% else %}
+    <h3>LEAVE A REVIEW</h3>
+    {% endif %}
+    <div class="row">
+      <div class="col s12 center-align"><a href="#TemplateProductReviewForm" class="modal-trigger color-s-red"><i class="material-icons">edit</i> WRITE REVIEW</a></div>
+    </div>
+    <div class="product-reviews" data-s-module="ProductReviews" data-product_id="{{product.id}}"></div>
+    {% assign id = 'TemplateProductReviewForm' %}
+    {% include 'ReviewModal' %}
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>

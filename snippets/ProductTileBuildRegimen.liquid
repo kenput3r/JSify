@@ -1,0 +1,43 @@
+<div class="build-regimen-product">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <img 
+          class="featured-img responsive-img modal-trigger" 
+          data-target="ProductImageModal" 
+          data-src="{{ product.images[0].src | img_url: '400x' }}" 
+          data-small-src="{{ product.images[0].src | img_url: '50x' }}" 
+          data-full-src="{{ product.images[0].src | img_url: '2048x' }}"
+          src="{{ product.images[0].src | img_url: '400x' }}"
+          alt="{{ product.images[0].alt }}"/>
+      </div>
+      <div class="col s12">
+        <div class="row">
+          <div class="col s12">
+            <h3>
+              <a href="{{ product.url }}">
+                {{ product.title }}
+              </a>
+            </h3>
+            {% if product.metafields.suave.product_size %}
+            <h5>
+              {{ product.metafields.suave.product_size }}
+            </h5>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            {% if product.metafields.suave.short_description %}{{ product.metafields.suave.short_description }}{% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            {% assign checked = false %}
+            {% include 'ProductFormBuildRegimen' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

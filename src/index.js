@@ -1,8 +1,15 @@
 import './node_modules/materialize-css/dist/js/materialize.min.js';
+import smoothscroll from 'smoothscroll-polyfill';
+// kick off the polyfill!
+smoothscroll.polyfill();
 import System from './system/system';
 import LoadCollectionPageXbutton from './components/LoadCollectionPageXbutton';
 import ProductDrawer from './components/ProductDrawer';
 import ProductForm from './components/ProductForm';
+import ProductFormSubscription from './components/ProductFormSubscription';
+import ProductFormCompactSubscription from './components/ProductFormCompactSubscription';
+import ProductFormBuildRegimen from './components/ProductFormBuildRegimen';
+import ProductMinoxidil from './components/ProductMinoxidil';
 import ProductCarousel from './components/ProductCarousel';
 import ProductTile from './components/ProductTile';
 import ProductReviews from './components/ProductReviews';
@@ -31,11 +38,17 @@ import PosterCollection from './components/PosterCollection';
 import Poster from './components/Poster';
 import LazyImage from './components/LazyImage';
 import BisModal from './components/BisModal';
+import ManageSubscriptionsButton from './components/ManageSubscriptionsButton';
+import HairLossPrevention from './components/HairLossPrevention';
 
 const classes = {
     LoadCollectionPageXbutton,
     ProductDrawer,
     ProductForm,
+    ProductFormSubscription,
+    ProductFormCompactSubscription,
+    ProductFormBuildRegimen,
+    ProductMinoxidil,
     ProductCarousel,
     ProductTile,
     ProductReviews,
@@ -63,7 +76,9 @@ const classes = {
     PosterCollection,
     Poster,
     LazyImage,
-    BisModal
+    BisModal,
+    ManageSubscriptionsButton,
+    HairLossPrevention
 };
 
 const system = new System(classes);
