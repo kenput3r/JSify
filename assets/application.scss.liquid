@@ -3125,3 +3125,107 @@ body.coming_soon {
     }
   }
 }
+
+/**************************************************
+  FF COLLECTION
+**************************************************/
+@font-face {
+  font-family: "XballItalic";
+  font-style: normal;
+  src: url({{ "XBall-Italic.ttf" | asset_url }}) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Xball";
+  font-style: normal;
+  src: url({{ "XBall.ttf" | asset_url }}) format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AntiqueOliveStdNordItalic";
+  font-style: normal;
+  src: url({{ "Antique-Olive-Std-Nord-Italic.otf" | asset_url }}) format("opentype");
+  font-display: swap;
+}
+.template-collection.fast_and_furious {
+  .ff-collection {    
+    background-image: url("https://cdn.shopify.com/s/files/1/0274/1389/files/tread-marks.jpg?v=1627515416");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: cover;
+  }
+  h2 {
+    color: #fff;
+    font-weight: bold;
+  }
+  .underlined {
+    color: #fff;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+    margin: 3rem 0;
+    h2 {
+      font-family: "AntiqueOliveStdNordItalic";
+      margin: 6px 0 1px 0;
+    }
+  }
+  .product-title {
+    margin: 0;
+    a {      
+      font-family: "Xball";
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 2rem;
+      line-height: 1.4rem;
+    }
+  }
+  .product-size {
+    font-family: "Xball";
+    font-size: 1.4rem;
+    color: #cccccc;
+  }
+  .product-tile-ff {
+    margin: 3rem 0;
+    &:nth-child(odd) {
+      clear: left;
+    } 
+    .row {
+      background-color: transparent;
+      .col {
+        background-color: transparent;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+    .display-more {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .product-form-ff {
+      .description {
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .price {
+        font-family: "Xball";
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #cccccc;
+      }
+      .btn {
+        font-family: "Xball";
+        background-color: #999999;
+        font-size: 1.4rem;
+        padding: 0;
+        height: 3rem;
+      }
+    }
+  }
+  @media only screen and(max-width: $xlarge) {
+    .container {
+      width: 90%;
+    } 
+  }
+}

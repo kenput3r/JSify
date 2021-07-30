@@ -1,0 +1,65 @@
+{% include 'tags_logic' %}
+{% assign url_with_tags = shop.domain | append: collection.url %}
+
+{% if current_tags.size > 0 %}
+  {% assign tags_url = '/' %}
+  {% for tag in current_tags %}
+    {% assign tag_handle = tag | handleize %}
+    {% if forloop.last %}
+      {% assign tags_url = tags_url | append: tag_handle %}
+    {% else %}
+      {% assign tags_url = tags_url | append: tag_handle | append: '+' %}
+    {% endif %}
+  {% endfor %}
+  {% assign url_with_tags = url_with_tags | append: tags_url %}
+{% endif %}
+
+{% if collection.sort_by %}
+  {% assign url_with_tags = url_with_tags | append: '?sort_by=' | append: collection.sort_by %}
+{% endif %}
+
+{% paginate collection.products by 24 %}
+  <div id="Collection" class="ff-collection row" data-collection="true" data-url="{{url_with_tags | downcase}}" data-page-title="{{page_title}}" data-page-size="{{paginate.page_size}}" data-pages="{{paginate.pages}}" data-current-page="{{paginate.current_page}}">
+    {% section 'Banner-FF' %}
+ 
+    <div class="container">
+    
+      <div id="Products" class="col s12">
+        <div class="underlined">
+          <h2>HAIR</h2>
+        </div>
+        <div class="hair tile-container row">
+          {% for product in collection.products limit: 3 %}
+            {% include 'ProductTileFF' %}
+          {% endfor %}
+        </div>
+        <div class="underlined">
+          <h2>SHAVE</h2>
+        </div>
+        <div class="shave tile-container row">
+          {% for product in collection.products offset: 3 limit: 2 %}
+            {% include 'ProductTileFF' %}
+          {% endfor %}
+        </div>
+        <div class="underlined">
+          <h2>OTHER</h2>
+        </div>
+        <div class="other tile-container row">
+          {% for product in collection.products offset: 5 limit: 2 %}
+            {% include 'ProductTileFF' %}
+          {% endfor %}
+        </div>
+        <div class="underlined">
+          <h2>APPAREL</h2>
+        </div>
+        <div class="apparel tile-container row">
+          {% for product in collection.products offset: 7 %}
+            {% include 'ProductTileFF' %}
+          {% endfor %}
+        </div>
+        
+      </div>
+    </div>
+  </div>
+{% endpaginate %}
+{% include 'FiltersDrawer' %}

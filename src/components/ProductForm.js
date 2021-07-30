@@ -14,6 +14,7 @@ export default class ProductForm extends BaseClass {
     this.changeImage = this.changeImage.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDisplayMore = this.handleDisplayMore.bind(this);
     this.init();
   }
 
@@ -160,6 +161,23 @@ export default class ProductForm extends BaseClass {
       }, 3000);
     }
   }
+  
+  /**
+   * @method handleDisplayMore
+   */
+  handleDisplayMore() {
+    const full_desc = this.rootElement.querySelector(".full-description");
+    const trunc_desc = this.rootElement.querySelector(".truncated-description");
+    if (full_desc && trunc_desc) {      
+      if (full_desc.classList.contains("expanded")) {
+        full_desc.classList.remove("expanded");
+        trunc_desc.classList.remove("compressed");
+      } else {
+        full_desc.classList.add("expanded");
+        trunc_desc.classList.add("compressed");
+      }
+    }
+  }
 
   init() {
     this.state = this.rootElement.dataset;
@@ -174,6 +192,11 @@ export default class ProductForm extends BaseClass {
         .addEventListener("click", this.handleSubmit);
     }
     M.Tooltip.init(this.rootElement.querySelector('.tooltipped'));
+    // display more info
+    const display_more = this.rootElement.querySelectorAll(".display-more");
+    if (display_more) {
+      display_more.forEach(el => el.addEventListener("click", this.handleDisplayMore));
+    }
   }
 
   destroy() {

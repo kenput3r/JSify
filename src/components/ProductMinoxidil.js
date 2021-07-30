@@ -206,10 +206,12 @@ export default class ProductMinoxidil extends BaseClass {
    */
   handleDisplayMore() {
     const more_info = this.rootElement.querySelector(".more-info");
-    if (more_info.classList.contains("expanded")) {
-      more_info.classList.remove("expanded");
-    } else {
-      more_info.classList.add("expanded");
+    if (more_info) {      
+      if (more_info.classList.contains("expanded")) {
+        more_info.classList.remove("expanded");
+      } else {
+        more_info.classList.add("expanded");
+      }
     }
   }
   

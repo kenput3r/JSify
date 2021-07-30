@@ -1,0 +1,48 @@
+{% unless grid_sizes %}
+  {% assign grid_sizes = 's12 m6 l6' %}
+{% endunless %}
+{% unless image_size %}
+  {% assign image_size = '100x' %}
+{% endunless %}
+
+<div class="product-tile product-tile-page-{{paginate.current_page}} product-tile-ff col {{grid_sizes}}" data-s-module="ProductTile" data-template="{{product.template_suffix}}">
+  <div class="row">
+    <div class="col s12 l6">
+      <img class="product-image lazy-image" 
+      data-id={{product.id}} 
+      data-img-src="{{ product.metafields.suave.transparent_image }}"
+      {%if product.metafields.suave.transparent_image %}
+      src="{{ product.metafields.suave.transparent_image | file_img_url: image_size }}" 
+      data-src="{{ product.metafields.suave.transparent_image | file_img_url: '400x' }}"
+      {% else %}
+      src="{{ product.featured_image.src | img_url: image_size }}" 
+      data-src="{{ product.featured_image.src | img_url: '400x' }}"
+      {% endif %} 
+      alt="{{ product.title | escape }}" 
+      data-s-module="LazyImage"
+      >
+      {% if product.metafields.suave['estimated_ship_date'] %}
+      <span 
+        class="estimated-ship-date"
+        style="background-color:#fab203;
+        font-weight:bold;
+        line-height:1.2;
+        position:absolute;
+        bottom:-15px;
+        left: 20px;
+        padding: 5px;">
+          Estimated Ship Date: {{ product.metafields.suave['estimated_ship_date'] }}
+      </span>
+      {% endif %}
+    </div>
+    <div class="col s12 l6">
+      <p class="product-title"><a href="{{ product.url | within: collection }}" class="{%if product.title.size > 40%} tooltipped{%endif%}" data-position="bottom" data-tooltip="{{product.title}}">{{ product.title | truncate: 40 }}</a></p>
+        {% if product.metafields.suave.product_size %}
+        <span class="product-size">
+          {{ product.metafields.suave.product_size}}
+        </span>
+        {% endif %}
+        {% include 'ProductFormCompactFF' %}
+    </div>
+  </div>
+</div>
