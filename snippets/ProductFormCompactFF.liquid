@@ -66,11 +66,6 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
         <span class="tooltipped" style="font-weight:bold;font-size:1.5em;background-color:#fab203;display:inline-block;padding:0 5px;" data-tooltip="Add any 2 items with this tag and the second item will be free at checkout!">BOGO <i class="material-icons" style="vertical-align:middle;margin-top: -3px;">help</i></span>
       </div>
     {%- endif -%}
-      <div class="col s6 compare-price padding-left-none" {% if is_bogo or is_b2g1f or is_cyber_monday %}style="display:none;"{%endif%}>
-        {% if product_compare_price and product_compare_price != product_price %}
-          {{ product_compare_price | money}}
-        {% endif %}
-      </div>
     <div class="col s12 padding-none star-rating-container">{%include 'ProductStarRating'%}</div>
     
     <div class="col description truncated-description">
@@ -81,6 +76,11 @@ data-estimated-ship-date="{{ product.metafields.suave['estimated_ship_date'] }}"
       {{ product.description }}
     </div>
     
+    {% if product_compare_price and product_compare_price != product_price %}
+    <div class="col s12 compare-price" {% if is_bogo or is_b2g1f or is_cyber_monday %}style="display:none;"{%endif%}>
+        {{ product_compare_price | money}}
+    </div>
+    {% endif %}
     <div class="col s12">
       <span class="price">{{ product.price | money_with_currency | strip_html }}</span>
     </div>

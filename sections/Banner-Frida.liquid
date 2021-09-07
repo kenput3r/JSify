@@ -1,0 +1,51 @@
+{% assign image_src_lazy = section.settings.banner | img_url: '100x' %}
+{% assign image_src = section.settings.banner | img_url: '2048x' %}
+{% assign image_alt = section.settings.banner.alt %}
+
+<img class="lazy-image" 
+  src="{{ image_src_lazy }}" 
+  data-src="{{ image_src }}" 
+  alt="{{ image_alt | escape }}" 
+  data-s-module="LazyImage"/>
+
+{% schema %}
+  {
+    "name": "Banner - Frida",
+    "class": "ff-banner-section",
+    "tag": "section",
+    "settings": [
+      {
+        "id": "banner",
+        "type": "image_picker",
+        "label": "Banner"
+      }
+    ]
+  }
+{% endschema %}
+{% stylesheet 'scss' %}
+  .ff-banner-section {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    img {
+      max-width: 100%;
+      width: 100%;
+    }
+    .overlay {
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: #fff;
+      opacity: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+  main {
+    padding-top: 0 !important;
+    padding-bottom: 0;
+  }
+{% endstylesheet %}
